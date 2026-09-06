@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tecnologías del secreto: un ensayo en código sobre la esteganografía oral, la criptografía textil y las redes acústicas de resistencia." />
   <title>Tecnologías del secreto — Ensayo en código</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,290 +10,162 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Atmósfera visual: grano analógico y luminiscencia de lectura -->
-  <atmosfera-grano aria-hidden="true"></atmosfera-grano>
-  <cursor-luminiscencia aria-hidden="true"></cursor-luminiscencia>
+  <manuscrito>
 
-  <cabecera-ensayo>
-    <navegacion-manuscrito aria-label="Navegación del manuscrito">
-      <enlace-inicio href="#inicio" aria-label="Volver al inicio del ensayo">TS<separador-sigla title="Tecnologías del Secreto">·</separador-sigla>01</enlace-inicio>
-    </navegacion-manuscrito>
-    <estado-canal>
-      <faro-activo aria-hidden="true"></faro-activo>
-      <canal-etiqueta>CANAL SEGURO / <registro-tiempo fecha="1763">1763</registro-tiempo>—PRESENTE</canal-etiqueta>
-    </estado-canal>
-    <disparador-sonoro role="button" tabindex="0" class="sound-button" id="soundToggle" aria-pressed="false" aria-label="Activar o desactivar atmósfera sonora">
-      ATMÓSFERA SONORA: <estado-sonido>OFF</estado-sonido>
-    </disparador-sonoro>
-  </cabecera-ensayo>
+    <saludo>Buenos días.</saludo>
 
-  <cuerpo-manuscrito>
-    <ensayo tema="tecnologias-del-secreto" id="inicio">
+    <modulo nombre="apertura">
+      <pensamiento>
+        Cuando en las primeras clases empezamos definiendo qué era la tecnología, yo siempre pensaba en artefactos tecnológicos, como el computador o el celular. Para mí, la tecnología estaba relacionada con objetos nuevos, digitales o con algún tipo de avance. Pero en esta clase entendí que estaba viendo la tecnología de una manera muy limitada.
+      </pensamiento>
 
-      <!-- ====================================================================
-           PRÓLOGO: LA TECNOLOGÍA COMO RESPUESTA CREATIVA FRENTE A UNA LIMITACIÓN
-           ==================================================================== -->
-      <modulo nombre="prologo" id="prologo">
-        <subtitulo-archivo><registro-tiempo fecha="2026">ARCHIVO 01</registro-tiempo> · ENSAYO EN CÓDIGO Y POÉTICA DIGITAL</subtitulo-archivo>
-        <numero-archivo aria-hidden="true">01</numero-archivo>
-        <titulo-principal>Tecnologías<destaque-titulo>del secreto</destaque-titulo></titulo-principal>
+      <revelacion>
+        A partir del fotoensayo sobre Surinam entendí que la tecnología también puede ser un sistema que una comunidad construye para responder a una necesidad. No necesariamente tiene que existir un objeto nuevo. Puede surgir de algo que ya existe, cuando las personas encuentran una manera diferente de utilizarlo.
+      </revelacion>
 
-        <dedicatoria>Buenos días, Liliana.</dedicatoria>
+      <observacion>
+        Esto fue lo que más me llamó la atención del fotoensayo. Las personas esclavizadas estaban en una situación en la que incluso comunicarse podía representar un riesgo. Tenían prohibido hablar entre ellas y estaban siendo vigiladas constantemente. Entonces tuvieron que encontrar otras maneras de transmitir información sin que esa comunicación fuera evidente para quienes las vigilaban.
+      </observacion>
 
-        <pensamiento modulo="definicion-de-tecnica" estado="apertura">
-          <prosa-principal>
-            Cuando en las primeras clases empezamos definiendo qué era la tecnología, yo siempre pensaba en artefactos tecnológicos, como el computador o el celular. Para mí, la tecnología estaba relacionada con objetos nuevos, digitales o con algún tipo de avance. Pero en esta clase entendí que estaba viendo la tecnología de una manera muy limitada.
-          </prosa-principal>
-          <sentimiento tipo="revelacion">
-            A partir del fotoensayo sobre Surinam entendí que la tecnología también puede ser un sistema que una comunidad construye para responder a una necesidad. No necesariamente tiene que existir un objeto nuevo. Puede surgir de algo que ya existe, cuando las personas encuentran una manera diferente de utilizarlo.
-          </sentimiento>
-          <concepto nombre="resistencia-comunitaria">
-            Esto fue lo que más me llamó la atención del fotoensayo. Las personas esclavizadas estaban en una situación en la que incluso comunicarse podía representar un riesgo. Tenían prohibido hablar entre ellas y estaban siendo vigiladas constantemente. Entonces tuvieron que encontrar otras maneras de transmitir información sin que esa comunicación fuera evidente para quienes las vigilaban.
-          </concepto>
-          <afirmacion tipo="respuesta-creativa">
-            Utilizaron historias, telas, canciones, el agua y su propia memoria. Y para mí ahí aparece una idea diferente de tecnología: <resalte-concepto>la tecnología como una respuesta creativa frente a una limitación.</resalte-concepto>
-          </afirmacion>
-          <proposito-diseno>
-            Eso fue lo que quise llevar a mi página web. No quería simplemente representar las tres tecnologías del fotoensayo, sino entender qué había detrás de ellas y traducir su lógica a una experiencia digital.
-          </proposito-diseno>
-        </pensamiento>
+      <memoria>
+        Utilizaron historias, telas, canciones, el agua y su propia memoria. Y para mí ahí aparece una idea diferente de tecnología: <concepto>la tecnología como una respuesta creativa frente a una limitación.</concepto>
+      </memoria>
 
-        <!-- Poética del código fuente / Bloque conceptual de estilos -->
-        <partitura-codigo aria-label="Declaración conceptual de la trama del ensayo">
-          <bloque-sintaxis>
-            <linea-sintaxis><selector>.trama-de-la-resistencia</selector> {</linea-sintaxis>
-            <linea-sintaxis>  <propiedad>materia</propiedad>: <valor>voz, tela, agua, memoria</valor>;</linea-sintaxis>
-            <linea-sintaxis>  <propiedad>front-end</propiedad>: <valor>cuento cotidiano, pañuelo de cabeza, canto de remeros</valor>;</linea-sintaxis>
-            <linea-sintaxis>  <propiedad>back-end</propiedad>: <valor>estrategia de escape, alerta temprana, red de libertad</valor>;</linea-sintaxis>
-            <linea-sintaxis>  <propiedad>cifrado</propiedad>: <valor>la mirada prejuiciosa del vigilante</valor>;</linea-sintaxis>
-            <linea-sintaxis>}</linea-sintaxis>
-          </bloque-sintaxis>
-        </partitura-codigo>
+      <intencion>
+        Eso fue lo que quise llevar a mi página web. No quería simplemente representar las tres tecnologías del fotoensayo, sino entender qué había detrás de ellas y traducir su lógica a una experiencia digital.
+      </intencion>
+    </modulo>
 
-        <navegacion-lectura aria-label="Comenzar lectura">
-          <enlace-lectura href="#esteganografia-oral">
-            <linea-guia aria-hidden="true"></linea-guia>
-            DESCIENDE PARA DESDOBLAR EL TEXTO
-          </enlace-lectura>
-        </navegacion-lectura>
-      </modulo>
+    <modulo nombre="primera-tecnologia-el-mito-de-anansi">
+      <titulo-seccion>Primera tecnología: el mito de Anansi</titulo-seccion>
 
-      <!-- ====================================================================
-           I. PRIMERA TECNOLOGÍA: EL MITO DE ANANSI
-           ==================================================================== -->
-      <modulo nombre="esteganografia-oral" id="esteganografia-oral">
-        <cabecera-capitulo>
-          <indice-capitulo><clave-indice>SECCIÓN I</clave-indice> / 03</indice-capitulo>
-          <categoria-tecnologia>PRIMERA TECNOLOGÍA · LA PALABRA CIFRADA</categoria-tecnologia>
-          <titulo-capitulo>El mito de Anansi:<destaque-titulo>esteganografía oral</destaque-titulo></titulo-capitulo>
-        </cabecera-capitulo>
+      <relato>
+        La primera tecnología son los cuentos de la araña Anansi.
+      </relato>
 
-        <tecnologia tipo="oralidad-esteganografica" tradicion="akan" mito="kwaku-anansi">
-          <relato>
-            La primera tecnología son los cuentos de la araña Anansi. En el fotoensayo, las historias de Anansi podían parecer simples cuentos, pero para quienes conocían su significado podían contener mensajes que no eran evidentes para los demás. La historia funcionaba entonces como una forma de esconder y transmitir información al mismo tiempo.
-          </relato>
-          <estrategia tipo="camuflaje-narrativo">
-            Esto me hizo pensar que la información no siempre tiene que ser visible para ser efectiva.
-          </estrategia>
+      <comprension>
+        En el fotoensayo, las historias de Anansi podían parecer simples cuentos, pero para quienes conocían su significado podían contener mensajes que no eran evidentes para los demás. La historia funcionaba entonces como una forma de esconder y transmitir información al mismo tiempo.
+      </comprension>
 
-          <referente fuente="reflexion-de-diseno" fecha="1763">
-            <cita-texto>
-              «Esconder información también puede ser una forma de comunicación. No todo tiene que estar expuesto inmediatamente. A veces, la persona que recibe el mensaje también tiene que participar para poder encontrarlo.»
-            </cita-texto>
-            <cita-origen>— Cuaderno de diseño: De la esteganografía oral a la interacción</cita-origen>
-          </referente>
+      <afirmacion>
+        Esto me hizo pensar que <secreto>la información no siempre tiene que ser visible para ser efectiva.</secreto>
+      </afirmacion>
 
-          <topologia red="anansi">
-            Por eso, en mi página quise trabajar con una segunda capa de información. A simple vista, la página parece un texto continuo, pero existen mensajes que permanecen ocultos y que solo aparecen cuando el usuario interactúa con ella.
-          </topologia>
+      <traduccion-digital>
+        Por eso, en mi página quise trabajar con una segunda capa de información. A simple vista, la página parece un texto continuo, pero existen mensajes que permanecen ocultos y que solo aparecen cuando el usuario interactúa con ella.
+      </traduccion-digital>
 
-          <!-- Figura interactiva: La red de transmisión -->
-          <figura-interactiva class="web-figure" aria-label="Diagrama de red de transmisión oral">
-            <rotulo-figura>
-              <resalte-figura>FIGURA 1.1:</resalte-figura> Topología de la red de Anansi — Nodos cardinales de navegación nocturna codificados en el relato.
-            </rotulo-figura>
-            <diagrama-red aria-hidden="true">
-              <nodo-central>ANANSI</nodo-central>
-              <nodo-red class="n1">RUTA</nodo-red>
-              <nodo-red class="n2">NOCHE</nodo-red>
-              <nodo-red class="n3">RÍO</nodo-red>
-              <nodo-red class="n4">ESPERA</nodo-red>
-            </diagrama-red>
-          </figura-interactiva>
+      <reflexion>
+        Para mí, esto fue importante porque entendí que esconder información también puede ser una forma de comunicación. No todo tiene que estar expuesto inmediatamente. A veces, la persona que recibe el mensaje también tiene que participar para poder encontrarlo.
+      </reflexion>
+    </modulo>
 
-          <!-- Capa oculta / decodificador del ensayo -->
-          <nota-cifrada aria-label="Capa de descifrado interactivo">
-            <encabezado-cifrado>CAPA OCULTA / PASA EL CURSOR O TOCA PARA DECIFRAR</encabezado-cifrado>
-            <texto-cifrado>La información no siempre tiene que ser visible para ser efectiva.</texto-cifrado>
-            <texto-descifrado>[ DESCIFRADO: Esconder información también es comunicar. Quien recibe el mensaje participa para encontrarlo. ]</texto-descifrado>
-          </nota-cifrada>
-        </tecnologia>
-      </modulo>
+    <modulo nombre="segunda-tecnologia-los-panuelos-angisa">
+      <titulo-seccion>Segunda tecnología: los pañuelos angisa</titulo-seccion>
 
-      <!-- ====================================================================
-           II. SEGUNDA TECNOLOGÍA: LOS PAÑUELOS ANGISAS
-           ==================================================================== -->
-      <modulo nombre="criptografia-textil" id="criptografia-textil">
-        <cabecera-capitulo>
-          <indice-capitulo><clave-indice>SECCIÓN II</clave-indice> / 03</indice-capitulo>
-          <categoria-tecnologia>SEGUNDA TECNOLOGÍA · EL CUERPO Y EL TEJIDO</categoria-tecnologia>
-          <titulo-capitulo>Los pañuelos angisa:<destaque-titulo>criptografía textil</destaque-titulo></titulo-capitulo>
-        </cabecera-capitulo>
+      <relato>
+        La segunda tecnología son los pañuelos en la cabeza, las angisas.
+      </relato>
 
-        <tecnologia tipo="criptografia-textil" objeto="angisa" region="surinam-antillas">
-          <contexto-historico>
-            La segunda tecnología son los pañuelos en la cabeza, las angisas. En el fotoensayo, las mujeres utilizaban diferentes formas de doblar la tela para transmitir mensajes sin necesidad de hablar. Una prenda cotidiana podía convertirse en un lenguaje.
-          </contexto-historico>
-          <gramatica-textil>
-            Lo que más me interesó de esta tecnología fue que el objeto no cambió, cambió la manera en que las personas lo utilizaban. Esto lo relacioné directamente con el diseño de mi página. Tomé la idea del pliegue y la convertí en diferentes comportamientos visuales durante el scroll.
-          </gramatica-textil>
+      <comprension>
+        En el fotoensayo, las mujeres utilizaban diferentes formas de doblar la tela para transmitir mensajes sin necesidad de hablar. Una prenda cotidiana podía convertirse en un lenguaje.
+      </comprension>
 
-          <!-- Estudio de los tres pliegues angisas -->
-          <estudio-pliegues aria-label="Estudio semiótico de los tres pliegues">
-            
-            <pliegue nombre="el-secreto" tipo="esteganograma" accion="doblar-interior" class="fold-secret">
-              <cabecera-pliegue>
-                <codigo-pliegue>PLIEGUE / 01 · ESTEGANOGRAMA</codigo-pliegue>
-                <nombre-pliegue>El Secreto</nombre-pliegue>
-              </cabecera-pliegue>
-              <descripcion-pliegue>
-                Primero está El Secreto, donde el texto está casi oculto y aparece cuando el usuario pasa el mouse sobre él.
-              </descripcion-pliegue>
-              <interaccion-pliegue>
-                <mensaje-oculto>«El objeto no cambió, cambió la manera en que las personas lo utilizaban.»</mensaje-oculto>
-                <pista-pliegue>PASA EL CURSOR O TOCA PARA REVELAR</pista-pliegue>
-              </interaccion-pliegue>
-            </pliegue>
+      <descubrimiento>
+        Lo que más me interesó de esta tecnología fue que <enfasis>el objeto no cambió, cambió la manera en que las personas lo utilizaban.</enfasis>
+      </descubrimiento>
 
-            <pliegue nombre="la-alerta" tipo="senal-temprana" estado="vigilancia" class="fold-alert">
-              <cabecera-pliegue>
-                <codigo-pliegue>PLIEGUE / 02 · SEÑAL TEMPRANA</codigo-pliegue>
-                <nombre-pliegue>La Alerta</nombre-pliegue>
-              </cabecera-pliegue>
-              <descripcion-pliegue>
-                Después está La Alerta, donde el bloque se inclina y cambia a un tono rojizo para interrumpir la lectura y llamar la atención.
-              </descripcion-pliegue>
-              <interaccion-pliegue>
-                <glifo-alerta aria-hidden="true">▲</glifo-alerta>
-                <microtexto-estado>ESTADO: VIGILANCIA MÁXIMA</microtexto-estado>
-              </interaccion-pliegue>
-            </pliegue>
+      <traduccion-digital>
+        Esto lo relacioné directamente con el diseño de mi página. Tomé la idea del pliegue y la convertí en diferentes comportamientos visuales durante el scroll.
+      </traduccion-digital>
 
-            <pliegue nombre="la-resistencia" tipo="declaracion-politica" postura="dignidad" class="fold-resistance">
-              <cabecera-pliegue>
-                <codigo-pliegue>PLIEGUE / 03 · DECLARACIÓN POLÍTICA</codigo-pliegue>
-                <nombre-pliegue>La Resistencia</nombre-pliegue>
-              </cabecera-pliegue>
-              <descripcion-pliegue>
-                Y finalmente está La Resistencia, donde el bloque cerrado y la sombra profunda funcionan visualmente como una especie de protección.
-              </descripcion-pliegue>
-              <interaccion-pliegue>
-                <glifo-escudo aria-hidden="true">▣</glifo-escudo>
-                <microtexto-estado>POSTURA: PROTECCIÓN Y DIGNIDAD</microtexto-estado>
-              </interaccion-pliegue>
-            </pliegue>
+      <estudio-pliegues>
+        <pliegue tipo="el-secreto">
+          Primero está El Secreto, donde el texto está casi oculto y aparece cuando el usuario pasa el mouse sobre él.
+        </pliegue>
 
-          </estudio-pliegues>
+        <pliegue tipo="la-alerta">
+          Después está La Alerta, donde el bloque se inclina y cambia a un tono rojizo para interrumpir la lectura y llamar la atención.
+        </pliegue>
 
-          <conclusion-textil>
-            Pero más allá de copiar los dobleces de las angisas, lo que intenté conservar fue su lógica: un elemento cotidiano puede convertirse en un lenguaje cuando existe la necesidad de comunicar algo. Y eso también me hizo cuestionar mi propia manera de diseñar. Muchas veces pensamos que para crear algo nuevo necesitamos inventar algo completamente diferente. Este ejercicio me hizo pensar que también podemos diseñar a partir de transformar lo que ya existe y darle otro significado.
-          </conclusion-textil>
-        </tecnologia>
-      </modulo>
+        <pliegue tipo="la-resistencia">
+          Y finalmente está La Resistencia, donde el bloque cerrado y la sombra profunda funcionan visualmente como una especie de protección.
+        </pliegue>
+      </estudio-pliegues>
 
-      <!-- ====================================================================
-           III. TERCERA TECNOLOGÍA: LAS CANCIONES EN EL RÍO
-           ==================================================================== -->
-      <modulo nombre="redes-acusticas" id="redes-acusticas">
-        <cabecera-capitulo>
-          <indice-capitulo><clave-indice>SECCIÓN III</clave-indice> / 03</indice-capitulo>
-          <categoria-tecnologia>TERCERA TECNOLOGÍA · EL MEDIO Y LA ACÚSTICA FLUVIAL</categoria-tecnologia>
-          <titulo-capitulo>Las canciones en el río:<destaque-titulo>redes acústicas</destaque-titulo></titulo-capitulo>
-        </cabecera-capitulo>
+      <aprendizaje>
+        Pero más allá de copiar los dobleces de las angisas, lo que intenté conservar fue su lógica: <concepto>un elemento cotidiano puede convertirse en un lenguaje cuando existe la necesidad de comunicar algo.</concepto>
+      </aprendizaje>
 
-        <tecnologia tipo="acustica-fluvial" canal="rio" conductividad="alta">
-          <canto protocolo="llamado-y-respuesta" modulacion="frecuencia">
-            La tercera tecnología son las canciones de los remeros. En el fotoensayo, las canciones podían parecer simplemente parte del trabajo, pero también funcionaban como una manera de transmitir información y mantener conexiones. El río, además de ser un espacio de desplazamiento, se convertía en un medio por donde podía viajar el sonido.
-          </canto>
-          <mecanica-acustica>
-            Lo que me interesó aquí fue entender que el medio también puede convertirse en parte de la tecnología. En mi página quise llevar esta idea al final de la experiencia. Por eso utilicé una animación de ondas que hace referencia al movimiento del río y un código QR que permite acceder a una pista de audio donde se escucha este cierre en mi propia voz.
-          </mecanica-acustica>
+      <cuestionamiento>
+        Y eso también me hizo cuestionar mi propia manera de diseñar. Muchas veces pensamos que para crear algo nuevo necesitamos inventar algo completamente diferente. Este ejercicio me hizo pensar que también podemos diseñar a partir de transformar lo que ya existe y darle otro significado.
+      </cuestionamiento>
+    </modulo>
 
-          <!-- Lienzo visual de las ondas del río -->
-          <figura-interactiva class="river-figure" aria-label="Visualización de la oscilación acústica sobre el agua">
-            <rotulo-figura>
-              <resalte-figura>FIGURA 3.1:</resalte-figura> Modulación de ondas del río — El agua convertida en canal físico de transmisión y propagación.
-            </rotulo-figura>
-            <lienzo-fluvial id="riverCanvas" aria-label="Simulación de ondas de agua y sonido"></lienzo-fluvial>
-          </figura-interactiva>
+    <modulo nombre="tercera-tecnologia-las-canciones-en-el-rio">
+      <titulo-seccion>Tercera tecnología: las canciones en el río</titulo-seccion>
 
-          <resonancia-ancestral>
-            De alguna manera, estoy haciendo el mismo ejercicio pero con otro medio. El río se convierte en pantalla, el sonido se convierte en audio digital y la comunicación que antes viajaba entre personas ahora llega al usuario a través de una interacción.
-          </resonancia-ancestral>
+      <relato>
+        La tercera tecnología son las canciones de los remeros.
+      </relato>
 
-          <!-- Transmisión de voz y QR de cierre -->
-          <caja-transmision aria-label="Cierre sonoro y código de transmisión">
-            <envoltura-qr>
-              <matriz-qr role="img" aria-label="Código QR para acceder a la pista de audio con el cierre narrado en mi propia voz"></matriz-qr>
-              <disparador-cierre id="voiceButton" class="qr-overlay" role="button" tabindex="0" aria-label="Escuchar la conclusión narrada"></disparador-cierre>
-            </envoltura-qr>
-            <info-transmision>
-              <etiqueta-transmision>TRANSMISIÓN DE CIERRE / VOZ PROPIA</etiqueta-transmision>
-              <instruccion-transmision>Escanea el código con tu dispositivo móvil o activa el botón para escuchar la reflexión final en audio.</instruccion-transmision>
-              <disparador-oral class="text-button" id="voiceButtonText" role="button" tabindex="0">
-                ▶ ESCUCHAR REFLEXIÓN FINAL
-              </disparador-oral>
-            </info-transmision>
-          </caja-transmision>
-        </tecnologia>
-      </modulo>
+      <comprension>
+        En el fotoensayo, las canciones podían parecer simplemente parte del trabajo, pero también funcionaban como una manera de transmitir información y mantener conexiones. El río, además de ser un espacio de desplazamiento, se convertía en un medio por donde podía viajar el sonido.
+      </comprension>
 
-      <!-- ====================================================================
-           REFLEXIÓN FINAL
-           ==================================================================== -->
-      <modulo nombre="epilogo" id="epilogo">
-        <cabecera-capitulo>
-          <categoria-tecnologia>CONCLUSIÓN</categoria-tecnologia>
-          <titulo-capitulo>Reflexión<destaque-titulo>final</destaque-titulo></titulo-capitulo>
-        </cabecera-capitulo>
+      <descubrimiento>
+        Lo que me interesó aquí fue entender que <enfasis>el medio también puede convertirse en parte de la tecnología.</enfasis>
+      </descubrimiento>
 
-        <conclusion-ensayo>
-          <parrafo-conclusion>
-            Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología. Antes pensaba en la tecnología como algo que nosotros utilizamos. Ahora pienso que también puede ser algo que construimos cuando tenemos una necesidad y buscamos una manera de responder a ella.
-          </parrafo-conclusion>
-          
-          <parrafo-conclusion>
-            El fotoensayo me hizo pensar que muchas veces llamamos tecnología únicamente a aquello que reconocemos como moderno: una pantalla, un computador, un programa. Pero al mirar estas historias, me di cuenta de que también hubo tecnología en la manera en que una comunidad utilizó una historia para ocultar un mensaje, una tela para comunicarse en silencio o una canción para mantener un vínculo.
-          </parrafo-conclusion>
+      <traduccion-digital>
+        En mi página quise llevar esta idea al final de la experiencia. Por eso utilicé una animación de ondas que hace referencia al movimiento del río y un código QR que permite acceder a una pista de audio donde se escucha este cierre en mi propia voz.
+        <onda-rio id="riverCanvas" aria-label="Animación de ondas de sonido y agua"></onda-rio>
+        <voz-cierre id="voiceTrigger" role="button" tabindex="0" aria-label="Escuchar reflexión final en mi propia voz">
+          <codigo-qr role="img" aria-label="Código QR con pista de audio en mi propia voz"></codigo-qr>
+          <etiqueta-audio>▶ ESCUCHAR EN MI PROPIA VOZ</etiqueta-audio>
+        </voz-cierre>
+      </traduccion-digital>
 
-          <cita-cierre>
-            «La tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos.»
-          </cita-cierre>
+      <resonancia>
+        De alguna manera, estoy haciendo el mismo ejercicio pero con otro medio. El río se convierte en pantalla, el sonido se convierte en audio digital y la comunicación que antes viajaba entre personas ahora llega al usuario a través de una interacción.
+      </resonancia>
+    </modulo>
 
-          <parrafo-cierre>
-            Eso también cambió mi manera de mirar mi propia página. Al principio pensaba que simplemente estaba haciendo una traducción del fotoensayo a un formato digital. Pero durante el proceso entendí que realmente estaba intentando hacer lo mismo que hicieron esas comunidades: tomar un medio disponible y encontrar una manera diferente de utilizarlo para comunicar algo.
-          </parrafo-cierre>
+    <modulo nombre="reflexion-final">
+      <titulo-seccion>Reflexión final</titulo-seccion>
 
-          <parrafo-cierre>
-            Por eso, para mí, esta entrega no se trata solamente de hacer una página web sobre tres tecnologías del fotoensayo. Se trata de entender que diseñar también puede ser encontrar nuevas formas de comunicar cuando las formas tradicionales no son suficientes.
-          </parrafo-cierre>
+      <pensamiento>
+        Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología.
+      </pensamiento>
 
-          <parrafo-cierre>
-            Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres.
-          </parrafo-cierre>
+      <aprendizaje>
+        Antes pensaba en la tecnología como algo que nosotros utilizamos. Ahora pienso que también puede ser algo que <concepto>construimos cuando tenemos una necesidad y buscamos una manera de responder a ella.</concepto>
+      </aprendizaje>
 
-          <agradecimiento-final>Muchas gracias.</agradecimiento-final>
-        </conclusion-ensayo>
-      </modulo>
+      <reflexion>
+        El fotoensayo me hizo pensar que muchas veces llamamos tecnología únicamente a aquello que reconocemos como moderno: una pantalla, un computador, un programa. Pero al mirar estas historias, me di cuenta de que también hubo tecnología en la manera en que una comunidad utilizó una historia para ocultar un mensaje, una tela para comunicarse en silencio o una canción para mantener un vínculo.
+      </reflexion>
 
-    </ensayo>
-  </cuerpo-manuscrito>
+      <consigna>
+        Y creo que ahí está mi principal reflexión: <cita>la tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos.</cita>
+      </consigna>
 
-  <colofon-ensayo>
-    <item-colofon>TECNOLOGÍAS DEL SECRETO · ENSAYO EN CÓDIGO</item-colofon>
-    <item-colofon>INVESTIGACIÓN, CÓDIGO Y NARRATIVA SOBRE RESISTENCIA HISTÓRICA</item-colofon>
-    <item-colofon><registro-tiempo fecha="2026">2026</registro-tiempo> · FIN DE TRANSMISIÓN</item-colofon>
-  </colofon-ensayo>
+      <autoexamen>
+        Eso también cambió mi manera de mirar mi propia página. Al principio pensaba que simplemente estaba haciendo una traducción del fotoensayo a un formato digital. Pero durante el proceso entendí que realmente estaba intentando hacer lo mismo que hicieron esas comunidades: tomar un medio disponible y encontrar una manera diferente de utilizarlo para comunicar algo.
+      </autoexamen>
+
+      <conclusion>
+        Por eso, para mí, esta entrega no se trata solamente de hacer una página web sobre tres tecnologías del fotoensayo. Se trata de entender que diseñar también puede ser encontrar nuevas formas de comunicar cuando las formas tradicionales no son suficientes.
+      </conclusion>
+
+      <cierre>
+        Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres.
+      </cierre>
+
+      <despedida>Muchas gracias.</despedida>
+    </modulo>
+
+  </manuscrito>
 
   <script src="script.js"></script>
 </body>

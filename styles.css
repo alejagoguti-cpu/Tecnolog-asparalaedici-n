@@ -1,6 +1,6 @@
 /* ==========================================================================
-   TECNOLOGÍAS DEL SECRETO — ENSAYO EDITORIAL EN CÓDIGO
-   Poética del código, lenguajes relacionales y estética editorial clandestina
+   TECNOLOGÍAS DEL SECRETO — ENSAYO EN CÓDIGO
+   Poética del código y ensayo editorial
    ========================================================================== */
 
 :root {
@@ -8,121 +8,63 @@
   --ink-soft: #161d20;
   --ink-deep: #0a0d0e;
   --paper: #e7dfcf;
-  --paper-dim: rgba(231, 223, 207, 0.78);
+  --paper-dim: rgba(231, 223, 207, 0.82);
   --paper-faint: rgba(231, 223, 207, 0.45);
   --acid: #d7ff38;
   --red: #b8332c;
   --mist: #91a7a4;
   --line: rgba(231, 223, 207, 0.16);
   --line-light: rgba(231, 223, 207, 0.28);
-  --line-acid: rgba(215, 255, 56, 0.35);
   
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-mono: "DM Mono", "Courier New", monospace;
-  --measure-prose: 72ch;
+  --measure-prose: 68ch;
 }
 
 /* --------------------------------------------------------------------------
-   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS DEL ENSAYO EN CÓDIGO
+   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS
    -------------------------------------------------------------------------- */
-cuerpo-manuscrito,
-ensayo,
+manuscrito,
 modulo,
-cabecera-ensayo,
-navegacion-manuscrito,
-estado-canal,
-subtitulo-archivo,
-numero-archivo,
-titulo-principal,
-dedicatoria,
+saludo,
+titulo-seccion,
 pensamiento,
-prosa-principal,
-sentimiento,
-concepto,
-afirmacion,
-partitura-codigo,
-bloque-sintaxis,
-linea-sintaxis,
-navegacion-lectura,
-cabecera-capitulo,
-indice-capitulo,
-categoria-tecnologia,
-titulo-capitulo,
-tecnologia,
+revelacion,
+observacion,
+memoria,
+intencion,
 relato,
-estrategia,
-referente,
-cita-texto,
-cita-origen,
-topologia,
-figura-interactiva,
-rotulo-figura,
-diagrama-red,
-nota-cifrada,
-encabezado-cifrado,
-texto-cifrado,
-texto-descifrado,
-contexto-historico,
-gramatica-textil,
+comprension,
+afirmacion,
+traduccion-digital,
+reflexion,
+descubrimiento,
 estudio-pliegues,
 pliegue,
-cabecera-pliegue,
-codigo-pliegue,
-nombre-pliegue,
-descripcion-pliegue,
-interaccion-pliegue,
-mensaje-oculto,
-pista-pliegue,
-microtexto-estado,
-conclusion-textil,
-canto,
-mecanica-acustica,
-lienzo-fluvial,
-resonancia-ancestral,
-caja-transmision,
-envoltura-qr,
-matriz-qr,
-info-transmision,
-etiqueta-transmision,
-instruccion-transmision,
-conclusion-ensayo,
-parrafo-conclusion,
-cita-cierre,
-parrafo-cierre,
-proposito-diseno,
-agradecimiento-final,
-colofon-ensayo,
-item-colofon {
+aprendizaje,
+cuestionamiento,
+onda-rio,
+voz-cierre,
+codigo-qr,
+etiqueta-audio,
+resonancia,
+consigna,
+autoexamen,
+conclusion,
+cierre,
+despedida {
   display: block;
 }
 
-destaque-titulo,
-enlace-inicio,
-separador-sigla,
-registro-tiempo,
-faro-activo,
-canal-etiqueta,
-disparador-sonoro,
-disparador-oral,
-disparador-cierre,
-estado-sonido,
-clave-indice,
-resalte-figura,
-resalte-concepto,
-selector,
-propiedad,
-valor,
-enlace-lectura,
-linea-guia,
-nodo-central,
-nodo-red,
-glifo-alerta,
-glifo-escudo {
-  display: inline-block;
+concepto,
+secreto,
+enfasis,
+cita {
+  display: inline;
 }
 
 /* --------------------------------------------------------------------------
-   RESET Y CONFIGURACIÓN GLOBAL
+   RESET Y ESTILOS GLOBALES
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -137,10 +79,10 @@ body {
   margin: 0;
   background-color: var(--ink);
   color: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 16px;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
   line-height: 1.85;
-  overflow-x: hidden;
+  padding: 4rem 1.5rem 8rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -151,640 +93,146 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   ATMÓSFERA VISUAL (GRAIN & CURSOR GLOW)
+   CUERPO DEL MANUSCRITO
    -------------------------------------------------------------------------- */
-atmosfera-grano {
-  position: fixed;
-  inset: 0;
-  opacity: 0.065;
-  pointer-events: none;
-  z-index: 50;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-}
-
-cursor-luminiscencia {
-  position: fixed;
-  width: 32rem;
-  height: 32rem;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(215, 255, 56, 0.07), transparent 68%);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 1;
-  transition: opacity 0.3s ease;
-}
-
-/* --------------------------------------------------------------------------
-   CABECERA DEL MANUSCRITO
-   -------------------------------------------------------------------------- */
-cabecera-ensayo {
-  height: 72px;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 20;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 6vw;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  border-bottom: 1px solid var(--line);
-  background: rgba(16, 21, 23, 0.75);
-  backdrop-filter: blur(10px);
-}
-
-enlace-inicio {
-  color: var(--acid);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  cursor: pointer;
-}
-
-separador-sigla {
-  color: var(--paper);
-  font-style: normal;
-}
-
-estado-canal {
-  opacity: 0.75;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-faro-activo {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: var(--acid);
-  box-shadow: 0 0 10px var(--acid);
-}
-
-.sound-button,
-.text-button,
-disparador-sonoro,
-disparador-oral {
-  border: 1px solid var(--line);
-  background: rgba(231, 223, 207, 0.04);
-  color: var(--paper);
-  font-family: inherit;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  padding: 7px 14px;
-  cursor: pointer;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-  user-select: none;
-}
-
-.sound-button:hover,
-.text-button:hover,
-disparador-sonoro:hover,
-disparador-oral:hover {
-  border-color: var(--acid);
-  background: rgba(215, 255, 56, 0.08);
-  color: var(--acid);
-}
-
-estado-sonido {
-  color: var(--acid);
-  font-weight: 600;
-}
-
-/* --------------------------------------------------------------------------
-   ESTRUCTURA Y CUERPO DEL ENSAYO
-   -------------------------------------------------------------------------- */
-ensayo {
-  max-width: 1080px;
+manuscrito {
+  max-width: var(--measure-prose);
   margin: 0 auto;
-  padding: 0 6vw;
-  position: relative;
-  z-index: 2;
 }
 
-/* --------------------------------------------------------------------------
-   PRÓLOGO Y APERTURA
-   -------------------------------------------------------------------------- */
-modulo[nombre="prologo"] {
-  min-height: 95vh;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 18vh 0 10vh;
+saludo {
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--acid);
+  margin-bottom: 3.5rem;
+}
+
+modulo {
+  margin-bottom: 5rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid var(--line);
 }
 
-modulo[nombre="prologo"]::before {
-  content: "";
-  position: absolute;
-  width: 55vw;
-  height: 55vw;
-  max-width: 650px;
-  max-height: 650px;
-  border: 1px dashed var(--line);
-  border-radius: 50%;
-  right: -5vw;
-  top: 15vh;
-  z-index: -1;
-  opacity: 0.4;
-  animation: rotate-orbit 60s linear infinite;
+modulo:last-of-type {
+  border-bottom: none;
 }
 
-subtitulo-archivo,
-categoria-tecnologia {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: var(--acid);
-  margin: 0 0 1.2rem;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-numero-archivo {
-  position: absolute;
-  right: 0;
-  top: 18vh;
-  font-family: var(--font-serif);
-  font-size: clamp(8rem, 20vw, 18rem);
-  line-height: 0.75;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--line);
-  opacity: 0.45;
-  pointer-events: none;
-  user-select: none;
-}
-
-titulo-principal {
-  font-family: var(--font-serif);
-  font-size: clamp(3.8rem, 9vw, 8.5rem);
+titulo-seccion {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   font-weight: 600;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
-  margin: 1rem 0 3.5rem;
-}
-
-destaque-titulo {
-  color: var(--acid);
-  font-style: italic;
-  font-weight: 400;
-  display: block;
-}
-
-dedicatoria {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-style: italic;
-  color: var(--acid);
-  margin-bottom: 1.2rem;
-}
-
-pensamiento {
-  max-width: var(--measure-prose);
-}
-
-prosa-principal {
-  font-size: 1.18rem;
-  line-height: 1.85;
+  line-height: 1.2;
   color: var(--paper);
-  margin-bottom: 1.5rem;
+  margin: 3rem 0 2rem;
+  letter-spacing: -0.02em;
 }
 
-sentimiento,
-concepto,
-afirmacion,
-proposito-diseno {
-  color: var(--paper-dim);
-  font-size: 1.02rem;
-  line-height: 1.9;
-  margin-bottom: 1.5rem;
-}
-
-resalte-concepto {
-  color: var(--acid);
-  font-weight: 500;
-}
-
-/* Partitura de código conceptual */
-partitura-codigo {
-  margin: 2.5rem 0 1rem;
-  padding: 1.5rem 2rem;
-  background: rgba(10, 13, 14, 0.85);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--acid);
-  border-radius: 4px;
-  max-width: var(--measure-prose);
-}
-
-bloque-sintaxis {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  line-height: 1.7;
-  white-space: pre-wrap;
-}
-
-linea-sintaxis {
-  display: block;
-}
-
-selector {
-  color: var(--acid);
-  font-weight: 500;
-}
-
-propiedad {
-  color: var(--mist);
-}
-
-valor {
-  color: var(--paper);
-}
-
-navegacion-lectura {
-  margin-top: 3.5rem;
-}
-
-enlace-lectura {
-  display: inline-flex;
-  align-items: center;
-  color: var(--paper);
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-enlace-lectura:hover {
-  color: var(--acid);
-}
-
-linea-guia {
-  width: 46px;
-  height: 1px;
-  background-color: var(--acid);
-  margin-right: 12px;
-  animation: stretch-pulse 2s ease-in-out infinite;
-}
-
-/* --------------------------------------------------------------------------
-   MÓDULOS Y CAPÍTULOS DEL ENSAYO
-   -------------------------------------------------------------------------- */
-modulo:not([nombre="prologo"]) {
-  padding: 10rem 0;
-  border-bottom: 1px solid var(--line);
-  position: relative;
-}
-
-cabecera-capitulo {
-  margin-bottom: 4rem;
-}
-
-indice-capitulo {
-  color: var(--acid);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  margin: 0 0 0.8rem;
-}
-
-clave-indice {
-  font-style: normal;
-  font-weight: 500;
-}
-
-titulo-capitulo {
-  font-family: var(--font-serif);
-  font-size: clamp(2.6rem, 6vw, 5.2rem);
-  font-weight: 600;
-  line-height: 0.96;
-  letter-spacing: -0.04em;
-  margin: 0.8rem 0 0;
-}
-
-tecnologia {
-  max-width: var(--measure-prose);
-}
-
+pensamiento,
+revelacion,
+observacion,
+memoria,
+intencion,
 relato,
-estrategia,
-topologia,
-contexto-historico,
-gramatica-textil,
-conclusion-textil,
-canto,
-mecanica-acustica,
-resonancia-ancestral,
-parrafo-conclusion,
-parrafo-cierre {
-  font-size: 1.05rem;
-  line-height: 1.95;
+comprension,
+afirmacion,
+traduccion-digital,
+reflexion,
+descubrimiento,
+aprendizaje,
+cuestionamiento,
+resonancia,
+consigna,
+autoexamen,
+conclusion,
+cierre {
+  margin-bottom: 1.75rem;
   color: var(--paper-dim);
-  margin-bottom: 2rem;
 }
 
-/* --------------------------------------------------------------------------
-   REFERENTES Y CITAS EDITORIALES
-   -------------------------------------------------------------------------- */
-referente,
-cita-cierre {
-  margin: 3.5rem 0;
-  padding: 2.2rem 2.5rem;
-  border-left: 3px solid var(--acid);
-  background: rgba(231, 223, 207, 0.025);
-  position: relative;
-}
-
-cita-texto,
-cita-cierre {
-  font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
-  line-height: 1.5;
-  color: var(--paper);
-  font-style: italic;
-  margin: 0 0 1rem;
-}
-
-cita-origen {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--mist);
-  font-style: normal;
-  text-transform: uppercase;
-}
-
-/* --------------------------------------------------------------------------
-   FIGURAS INTERACTIVAS Y TOPOLOGÍAS
-   -------------------------------------------------------------------------- */
-figura-interactiva {
-  margin: 4.5rem 0 3.5rem;
-  padding: 2.5rem;
-  border: 1px solid var(--line);
-  background: rgba(16, 21, 23, 0.6);
-  border-radius: 4px;
-}
-
-rotulo-figura {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--mist);
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-resalte-figura {
+concepto {
   color: var(--acid);
   font-weight: 600;
 }
 
-/* Diagrama de red de Anansi */
-diagrama-red {
-  height: 380px;
-  position: relative;
-  background:
-    radial-gradient(circle at center, rgba(215, 255, 56, 0.12), transparent 4%),
-    repeating-radial-gradient(circle at center, transparent 0 30px, rgba(231, 223, 207, 0.12) 31px 32px, transparent 33px 54px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-  border-radius: 4px;
-}
-
-diagrama-red::before,
-diagrama-red::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0 29deg, rgba(231, 223, 207, 0.14) 30deg 31deg, transparent 32deg 59deg);
-}
-
-nodo-central {
-  position: absolute;
-  z-index: 3;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid var(--acid);
-  background: var(--ink);
+enfasis {
   color: var(--acid);
-  padding: 10px 18px;
-  border-radius: 20px;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  font-weight: 500;
-  box-shadow: 0 0 20px rgba(215, 255, 56, 0.25);
+  font-style: italic;
 }
 
-nodo-red {
-  position: absolute;
-  color: var(--paper);
-  background: rgba(16, 21, 23, 0.9);
-  border: 1px solid var(--line-light);
-  padding: 5px 10px;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  z-index: 4;
-  border-radius: 2px;
-}
-
-nodo-red.n1 { left: 15%; top: 22%; }
-nodo-red.n2 { right: 15%; top: 24%; }
-nodo-red.n3 { left: 20%; bottom: 20%; }
-nodo-red.n4 { right: 20%; bottom: 18%; }
-
-/* Capa oculta / decodificador */
-nota-cifrada {
-  margin: 3.5rem 0;
-  padding: 2.5rem;
-  border: 1px solid var(--line-light);
-  background: rgba(231, 223, 207, 0.02);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: border-color 0.4s ease, background-color 0.4s ease;
-}
-
-nota-cifrada:hover {
-  border-color: var(--line-acid);
-  background: rgba(215, 255, 56, 0.025);
-}
-
-encabezado-cifrado {
-  font-size: 10px;
-  letter-spacing: 0.16em;
+cita {
+  font-style: italic;
   color: var(--acid);
-  margin-bottom: 0.8rem;
-  text-transform: uppercase;
 }
 
-texto-cifrado {
-  font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 3.2vw, 2.2rem);
-  line-height: 1.25;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(231, 223, 207, 0.45);
-  margin: 0 0 1.2rem;
-  transition: all 0.6s ease;
-}
-
-nota-cifrada:hover texto-cifrado {
-  color: var(--paper);
-  text-shadow: 0 0 25px rgba(215, 255, 56, 0.22);
-  -webkit-text-stroke: 0px transparent;
-}
-
-texto-descifrado {
-  display: block;
-  font-size: 11px;
+secreto {
+  background: rgba(215, 255, 56, 0.08);
+  border-bottom: 1px dashed var(--acid);
   color: var(--acid);
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 0.5s ease;
-  line-height: 1.6;
+  padding: 0 4px;
+  cursor: help;
+  transition: all 0.3s ease;
 }
 
-nota-cifrada:hover texto-descifrado {
-  max-height: 5rem;
-  opacity: 1;
-  margin-top: 0.8rem;
+secreto:hover {
+  background: var(--acid);
+  color: var(--ink);
 }
 
 /* --------------------------------------------------------------------------
-   ESTUDIO DE PLIEGUES ANGISAS (CRIPTOGRAFÍA TEXTIL)
+   ESTUDIO DE PLIEGUES (ANGISAS)
    -------------------------------------------------------------------------- */
 estudio-pliegues {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-  margin: 3.5rem 0 3rem;
 }
 
 pliegue {
-  min-height: 380px;
-  padding: 2rem 1.8rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid var(--line);
-  background: rgba(231, 223, 207, 0.03);
+  padding: 1.5rem 1.8rem;
   border-radius: 4px;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  transition: all 0.4s ease;
 }
 
-pliegue:hover {
-  transform: translateY(-6px);
-  border-color: var(--line-light);
+pliegue[tipo="el-secreto"] {
+  background: rgba(231, 223, 207, 0.03);
+  border: 1px solid var(--line);
+  color: var(--paper-faint);
+  filter: blur(1.5px);
+  cursor: pointer;
 }
 
-codigo-pliegue {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: var(--mist);
-  margin: 0 0 0.5rem;
-}
-
-nombre-pliegue {
-  font-family: var(--font-serif);
-  font-size: 1.85rem;
-  font-weight: 600;
-  margin: 0;
-  color: var(--paper);
-}
-
-descripcion-pliegue {
-  font-size: 12.5px;
-  line-height: 1.75;
-  color: var(--paper-dim);
-  margin: 1.2rem 0;
-}
-
-interaccion-pliegue {
-  border-top: 1px solid var(--line);
-  padding-top: 1rem;
-}
-
-/* Pliegue 1: El secreto */
-pliegue.fold-secret {
-  background: rgba(189, 207, 183, 0.06);
-  border-color: rgba(189, 207, 183, 0.22);
-}
-
-mensaje-oculto {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--paper);
-  opacity: 0.12;
-  filter: blur(4px);
-  transition: all 0.5s ease;
-  margin: 0 0 0.6rem;
-}
-
-pliegue.fold-secret:hover mensaje-oculto {
-  opacity: 1;
+pliegue[tipo="el-secreto"]:hover {
   filter: blur(0);
-}
-
-pista-pliegue {
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  color: var(--acid);
-  display: block;
-}
-
-/* Pliegue 2: La alerta */
-pliegue.fold-alert {
-  background: rgba(184, 51, 44, 0.12);
-  border-color: rgba(184, 51, 44, 0.45);
-}
-
-pliegue.fold-alert:hover {
-  box-shadow: 0 10px 25px rgba(184, 51, 44, 0.25);
-  border-color: var(--red);
-}
-
-glifo-alerta {
-  font-size: 1.8rem;
-  color: var(--red);
-  display: block;
-  margin-bottom: 0.4rem;
-  animation: pulse-alert 1.5s infinite;
-}
-
-microtexto-estado {
-  font-size: 10px;
-  letter-spacing: 0.1em;
   color: var(--paper);
-  margin: 0;
-  font-weight: 500;
+  border-color: var(--acid);
+  background: rgba(215, 255, 56, 0.05);
 }
 
-/* Pliegue 3: La resistencia */
-pliegue.fold-resistance {
-  background: rgba(16, 21, 23, 0.85);
-  border-color: rgba(231, 223, 207, 0.28);
-  box-shadow: inset 0 0 0 2px rgba(231, 223, 207, 0.08);
+pliegue[tipo="la-alerta"] {
+  background: rgba(184, 51, 44, 0.08);
+  border: 1px solid rgba(184, 51, 44, 0.35);
+  border-left: 4px solid var(--red);
+  color: var(--paper);
+  transform: rotate(-0.5deg);
 }
 
-glifo-escudo {
-  font-size: 1.6rem;
-  color: var(--acid);
-  display: block;
-  margin-bottom: 0.4rem;
+pliegue[tipo="la-resistencia"] {
+  background: rgba(16, 21, 23, 0.95);
+  border: 1px solid var(--line-light);
+  color: var(--paper);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 /* --------------------------------------------------------------------------
-   CAPÍTULO DEL RÍO Y REDES ACÚSTICAS
+   CANAL DEL RÍO Y VOZ DE CIERRE
    -------------------------------------------------------------------------- */
-#riverCanvas,
-lienzo-fluvial {
+onda-rio {
   width: 100%;
-  height: 260px;
-  display: block;
+  height: 140px;
+  margin: 2rem 0 1.5rem;
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(16, 21, 23, 0.8), rgba(18, 40, 42, 0.4));
   border: 1px solid var(--line);
@@ -792,178 +240,103 @@ lienzo-fluvial {
   overflow: hidden;
 }
 
-lienzo-fluvial canvas {
+onda-rio canvas {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* Transmisión de voz y QR */
-caja-transmision {
-  margin: 4.5rem 0 2rem;
-  padding: 2.5rem;
-  border: 1px solid var(--line-light);
-  background: rgba(24, 47, 49, 0.25);
-  border-radius: 4px;
-  display: flex;
-  gap: 2.5rem;
+voz-cierre {
+  display: inline-flex;
   align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background: rgba(231, 223, 207, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
 }
 
-envoltura-qr {
-  width: 140px;
-  height: 140px;
+voz-cierre:hover {
+  border-color: var(--acid);
+  background: rgba(215, 255, 56, 0.06);
+}
+
+codigo-qr {
+  width: 80px;
+  height: 80px;
   flex: none;
-  margin: 0;
-  position: relative;
-  background: var(--paper);
-  padding: 8px;
-  border-radius: 2px;
-}
-
-envoltura-qr img,
-matriz-qr {
-  display: block;
-  width: 100%;
-  height: 100%;
+  background-color: var(--paper);
   background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fexample.com%2Ftecnologias-del-secreto%3Faudio%3Dvoz-del-rio");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 2px;
 }
 
-.qr-overlay,
-disparador-cierre {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-}
-
-etiqueta-transmision {
-  font-size: 11px;
-  letter-spacing: 0.16em;
+etiqueta-audio {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
   color: var(--acid);
-  margin: 0 0 0.5rem;
-  text-transform: uppercase;
 }
 
-instruccion-transmision {
-  font-size: 12.5px;
-  line-height: 1.75;
-  color: var(--paper-dim);
-  margin: 0 0 1rem;
-}
-
-/* --------------------------------------------------------------------------
-   REFLEXIÓN FINAL Y CONCLUSIÓN
-   -------------------------------------------------------------------------- */
-conclusion-ensayo {
-  max-width: var(--measure-prose);
-  margin: 2rem 0;
-}
-
-parrafo-conclusion,
-parrafo-cierre {
-  color: var(--paper);
-  font-size: 1.06rem;
-  line-height: 1.9;
-  margin-bottom: 1.8rem;
-}
-
-cita-cierre {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
-  font-style: italic;
-  line-height: 1.6;
-  color: var(--acid);
-  margin: 2.5rem 0;
-  padding-left: 1.8rem;
-  border-left: 2px solid var(--acid);
-}
-
-agradecimiento-final {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
+despedida {
+  font-size: 1.8rem;
   font-style: italic;
   color: var(--paper);
-  margin-top: 3rem;
-  letter-spacing: 0.02em;
+  margin-top: 3.5rem;
 }
 
 /* --------------------------------------------------------------------------
-   COLOFÓN Y PIE DE PÁGINA
+   OPTIMIZACIÓN DE IMPRESIÓN DEL CÓDIGO
    -------------------------------------------------------------------------- */
-colofon-ensayo {
-  border-top: 1px solid var(--line);
-  padding: 2.5rem 6vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--ink-deep);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  color: var(--mist);
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-item-colofon {
-  font-size: inherit;
-}
-
-/* --------------------------------------------------------------------------
-   ANIMACIONES Y RESPONSIVE DESIGN
-   -------------------------------------------------------------------------- */
-@keyframes rotate-orbit {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes stretch-pulse {
-  0%, 100% { width: 35px; }
-  50% { width: 65px; }
-}
-
-@keyframes pulse-alert {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.9); }
-}
-
-@media (max-width: 820px) {
-  cabecera-ensayo {
-    padding: 0 5vw;
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 11pt;
+    line-height: 1.6;
+    padding: 0;
   }
-  estado-canal {
+
+  manuscrito {
+    max-width: 100%;
+  }
+
+  modulo {
+    border-bottom: 1px solid #cccccc;
+    page-break-inside: avoid;
+  }
+
+  titulo-seccion,
+  saludo,
+  concepto,
+  enfasis,
+  cita,
+  secreto {
+    color: #000000 !important;
+    background: none !important;
+  }
+
+  pliegue {
+    filter: none !important;
+    color: #111111 !important;
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  onda-rio {
     display: none;
   }
-  ensayo {
-    padding: 0 5vw;
-  }
-  modulo {
-    padding: 6rem 0 !important;
-  }
-  estudio-pliegues {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  pliegue {
-    min-height: 260px;
-  }
-  diagrama-red {
-    height: 280px;
-  }
-  caja-transmision {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.8rem;
-    gap: 1.5rem;
-  }
-  colofon-ensayo {
-    flex-direction: column;
-    align-items: flex-start;
+
+  voz-cierre {
+    border: 1px solid #ccc;
+    background: #f9f9f9;
   }
 }
-
