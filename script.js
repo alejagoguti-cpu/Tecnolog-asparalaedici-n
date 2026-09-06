@@ -99,283 +99,181 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 2. INYECCIÓN VISUAL EN <pensamiento>: HOLOGRAMAS & ALERTA ROJA
+  // 2. RED 3D COMUNITARIA EN CANVAS (<red-comunidad-3d>)
   // ==========================================================================
-  const pensamientoEl = document.querySelector('pensamiento');
-  if (pensamientoEl) {
-    const visualBox = document.createElement('div');
-    visualBox.className = 'visual-artefactos-container';
-    visualBox.innerHTML = `
-      <div class="holograma-card" title="Computador Personal">
-        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="12" rx="2"/><path d="M6 20h12M12 16v4"/></svg>
-        <span>COMPUTADOR</span>
-      </div>
-      <div class="holograma-card" title="Teléfono Celular">
-        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg>
-        <span>CELULAR</span>
-      </div>
-      <div class="holograma-card" title="Dispositivo Digital Inteligente">
-        <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
-        <span>OBJETO DIGITAL</span>
-      </div>
-      <div class="holograma-card" title="Microprocesador">
-        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
-        <span>CIRCUITO / AVANCE</span>
-      </div>
-    `;
-    pensamientoEl.appendChild(visualBox);
+  const comCanvas = document.getElementById('comunidadCanvas');
+  if (comCanvas) {
+    const cctx = comCanvas.getContext('2d');
+    let rotAngle = 0;
+    const numNodes = 22;
+    const nodes3D = [];
 
-    const alertaRed = document.createElement('div');
-    alertaRed.className = 'alerta-limitacion-red';
-    alertaRed.innerHTML = `
-      <div class="icono-alerta">⚠</div>
-      <div class="texto-alerta">
-        <strong>ERROR COGNITIVO // VISIÓN REDUCCIONISTA:</strong><br>
-        La tecnología no es solo el artefacto físico digital. Es la capacidad comunitaria de responder creativamente ante una limitación.
-      </div>
-    `;
-    pensamientoEl.appendChild(alertaRed);
-  }
+    for (let i = 0; i < numNodes; i++) {
+      const phi = Math.acos(-1 + (2 * i) / numNodes);
+      const theta = Math.sqrt(numNodes * Math.PI) * phi;
+      nodes3D.push({
+        x: Math.cos(theta) * Math.sin(phi),
+        y: Math.sin(theta) * Math.sin(phi),
+        z: Math.cos(phi)
+      });
+    }
 
-  // ==========================================================================
-  // 3. INYECCIÓN VISUAL EN <definicion>: PORTAL SURINAM & RED 3D COMUNITARIA
-  // ==========================================================================
-  const definicionEl = document.querySelector('definicion');
-  if (definicionEl) {
-    const surinamContainer = document.createElement('div');
-    surinamContainer.className = 'visual-surinam-container';
-    surinamContainer.innerHTML = `
-      <div class="foto-surinam-card">
-        <div class="foto-surinam-meta">
-          <h4>FOTOENSAYO SURINAM</h4>
-          <p>[COORD: 05°50′N 55°10′W // CUENCA FLUVIAL]</p>
-        </div>
-      </div>
-      <div class="canvas-red-3d-box">
-        <span class="badge-red">RED 3D // SISTEMA COMUNITARIO</span>
-        <canvas id="comunidadCanvas"></canvas>
-      </div>
-    `;
-    definicionEl.appendChild(surinamContainer);
+    function draw3DNetwork() {
+      const rect = comCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width;
+      const h = rect.height;
 
-    // Motor de Red 3D en Canvas
-    const comCanvas = document.getElementById('comunidadCanvas');
-    if (comCanvas) {
-      const cctx = comCanvas.getContext('2d');
-      let rotAngle = 0;
-      const numNodes = 20;
-      const nodes3D = [];
-
-      for (let i = 0; i < numNodes; i++) {
-        const phi = Math.acos(-1 + (2 * i) / numNodes);
-        const theta = Math.sqrt(numNodes * Math.PI) * phi;
-        nodes3D.push({
-          x: Math.cos(theta) * Math.sin(phi),
-          y: Math.sin(theta) * Math.sin(phi),
-          z: Math.cos(phi),
-          pulse: Math.random() * Math.PI
-        });
+      if (comCanvas.width !== Math.floor(w * dpr) || comCanvas.height !== Math.floor(h * dpr)) {
+        comCanvas.width = Math.floor(w * dpr);
+        comCanvas.height = Math.floor(h * dpr);
+        cctx.scale(dpr, dpr);
       }
 
-      function draw3DNetwork() {
-        const rect = comCanvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        const w = rect.width;
-        const h = rect.height;
+      cctx.clearRect(0, 0, w, h);
+      rotAngle += 0.014;
 
-        if (comCanvas.width !== Math.floor(w * dpr) || comCanvas.height !== Math.floor(h * dpr)) {
-          comCanvas.width = Math.floor(w * dpr);
-          comCanvas.height = Math.floor(h * dpr);
-          cctx.scale(dpr, dpr);
-        }
+      const radius = Math.min(w, h) * 0.38;
+      const centerX = w / 2;
+      const centerY = h / 2;
+      const projectedNodes = [];
 
-        cctx.clearRect(0, 0, w, h);
-        rotAngle += 0.012;
+      nodes3D.forEach((n) => {
+        const cosY = Math.cos(rotAngle);
+        const sinY = Math.sin(rotAngle);
+        const x1 = n.x * cosY - n.z * sinY;
+        const z1 = n.z * cosY + n.x * sinY;
 
-        const radius = Math.min(w, h) * 0.38;
-        const centerX = w / 2;
-        const centerY = h / 2;
-        const projectedNodes = [];
+        const cosX = Math.cos(rotAngle * 0.5);
+        const sinX = Math.sin(rotAngle * 0.5);
+        const y2 = n.y * cosX - z1 * sinX;
+        const z2 = z1 * cosX + n.y * sinX;
 
-        nodes3D.forEach((n) => {
-          // Rotación 3D en eje Y y X
-          const cosY = Math.cos(rotAngle);
-          const sinY = Math.sin(rotAngle);
-          const x1 = n.x * cosY - n.z * sinY;
-          const z1 = n.z * cosY + n.x * sinY;
-
-          const cosX = Math.cos(rotAngle * 0.5);
-          const sinX = Math.sin(rotAngle * 0.5);
-          const y2 = n.y * cosX - z1 * sinX;
-          const z2 = z1 * cosX + n.y * sinX;
-
-          const perspective = 300 / (300 + z2 * radius);
-          projectedNodes.push({
-            px: centerX + x1 * radius * perspective,
-            py: centerY + y2 * radius * perspective,
-            depth: z2,
-            scale: perspective
-          });
+        const perspective = 320 / (320 + z2 * radius);
+        projectedNodes.push({
+          px: centerX + x1 * radius * perspective,
+          py: centerY + y2 * radius * perspective,
+          depth: z2,
+          scale: perspective
         });
+      });
 
-        // Dibujar filamentos de conexión entre nodos cercanos
-        cctx.beginPath();
-        for (let i = 0; i < projectedNodes.length; i++) {
-          for (let j = i + 1; j < projectedNodes.length; j++) {
-            const dx = projectedNodes[i].px - projectedNodes[j].px;
-            const dy = projectedNodes[i].py - projectedNodes[j].py;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < radius * 0.8) {
-              const alpha = Math.max(0, 1 - dist / (radius * 0.8)) * 0.35;
-              cctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
-              cctx.lineWidth = 1;
-              cctx.moveTo(projectedNodes[i].px, projectedNodes[i].py);
-              cctx.lineTo(projectedNodes[j].px, projectedNodes[j].py);
-            }
+      // Filamentos de conexión entre nodos cercanos
+      cctx.beginPath();
+      for (let i = 0; i < projectedNodes.length; i++) {
+        for (let j = i + 1; j < projectedNodes.length; j++) {
+          const dx = projectedNodes[i].px - projectedNodes[j].px;
+          const dy = projectedNodes[i].py - projectedNodes[j].py;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < radius * 0.85) {
+            const alpha = Math.max(0, 1 - dist / (radius * 0.85)) * 0.4;
+            cctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
+            cctx.lineWidth = 1.1;
+            cctx.moveTo(projectedNodes[i].px, projectedNodes[i].py);
+            cctx.lineTo(projectedNodes[j].px, projectedNodes[j].py);
           }
         }
-        cctx.stroke();
-
-        // Dibujar nodos luminosos
-        projectedNodes.forEach((pn) => {
-          const nodeRadius = Math.max(1.8, 3.5 * pn.scale);
-          cctx.save();
-          cctx.beginPath();
-          cctx.arc(pn.px, pn.py, nodeRadius, 0, Math.PI * 2);
-          cctx.fillStyle = pn.depth > 0 ? '#00f0ff' : '#ffffff';
-          cctx.shadowColor = '#00f0ff';
-          cctx.shadowBlur = 10;
-          cctx.fill();
-          cctx.restore();
-        });
-
-        requestAnimationFrame(draw3DNetwork);
       }
-      draw3DNetwork();
+      cctx.stroke();
+
+      // Nodos luminosos
+      projectedNodes.forEach((pn) => {
+        const nodeRadius = Math.max(2, 3.8 * pn.scale);
+        cctx.save();
+        cctx.beginPath();
+        cctx.arc(pn.px, pn.py, nodeRadius, 0, Math.PI * 2);
+        cctx.fillStyle = pn.depth > 0 ? '#00f0ff' : '#ffffff';
+        cctx.shadowColor = '#00f0ff';
+        cctx.shadowBlur = 10;
+        cctx.fill();
+        cctx.restore();
+      });
+
+      requestAnimationFrame(draw3DNetwork);
     }
+    draw3DNetwork();
   }
 
   // ==========================================================================
-  // 4. INYECCIÓN VISUAL EN <vigilancia>: SCANNER RADAR
+  // 3. TELARAÑA CRIPTOGRÁFICA DE ANANSI (<visor-anansi>)
   // ==========================================================================
-  const vigilanciaEl = document.querySelector('vigilancia');
-  if (vigilanciaEl) {
-    const radarBox = document.createElement('div');
-    radarBox.className = 'radar-vigilancia-box';
-    radarBox.innerHTML = `
-      <div class="radar-sweep-line"></div>
-      <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #fca5a5; letter-spacing: 0.14em;">
-        [ESCÁNER COLONIAL: INTERCEPTACIÓN DE COMUNICACIONES DETECTADA // SE REQUIERE CODIFICACIÓN DE EMERGENCIA]
-      </div>
-    `;
-    vigilanciaEl.appendChild(radarBox);
-  }
+  const webCanvas = document.getElementById('anansiWebCanvas');
+  if (webCanvas) {
+    const wctx = webCanvas.getContext('2d');
+    let webTime = 0;
 
-  // ==========================================================================
-  // 5. INYECCIÓN VISUAL EN <memoria>: CÁPSULAS INTERACTIVAS
-  // ==========================================================================
-  const memoriaEl = document.querySelector('memoria');
-  if (memoriaEl) {
-    const capsulasBox = document.createElement('div');
-    capsulasBox.className = 'capsulas-memoria-grid';
-    capsulasBox.innerHTML = `
-      <div class="capsula-item"><span>📖</span> HISTORIAS</div>
-      <div class="capsula-item"><span>🧣</span> TELAS</div>
-      <div class="capsula-item"><span>🎵</span> CANCIONES</div>
-      <div class="capsula-item"><span>🌊</span> EL AGUA</div>
-      <div class="capsula-item"><span>🧠</span> MEMORIA VIVA</div>
-    `;
-    memoriaEl.insertBefore(capsulasBox, memoriaEl.firstChild);
-  }
+    function drawAnansiWeb() {
+      const rect = webCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width;
+      const h = rect.height;
 
-  // ==========================================================================
-  // 6. INYECCIÓN VISUAL EN <historias-anansi>: TELARAÑA CRIPTOGRÁFICA
-  // ==========================================================================
-  const anansiEl = document.querySelector('historias-anansi');
-  if (anansiEl) {
-    const webBox = document.createElement('div');
-    webBox.className = 'visual-anansi-web';
-    webBox.innerHTML = '<canvas id="anansiWebCanvas"></canvas>';
-    anansiEl.insertBefore(webBox, anansiEl.querySelector('capas'));
+      if (webCanvas.width !== Math.floor(w * dpr) || webCanvas.height !== Math.floor(h * dpr)) {
+        webCanvas.width = Math.floor(w * dpr);
+        webCanvas.height = Math.floor(h * dpr);
+        wctx.scale(dpr, dpr);
+      }
 
-    const webCanvas = document.getElementById('anansiWebCanvas');
-    if (webCanvas) {
-      const wctx = webCanvas.getContext('2d');
-      let webTime = 0;
+      wctx.clearRect(0, 0, w, h);
+      webTime += 0.015;
 
-      function drawAnansiWeb() {
-        const rect = webCanvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        const w = rect.width;
-        const h = rect.height;
+      const centerX = w / 2;
+      const centerY = h / 2;
+      const maxR = Math.min(w, h) * 0.44;
+      const spokes = 8;
+      const rings = 5;
 
-        if (webCanvas.width !== Math.floor(w * dpr) || webCanvas.height !== Math.floor(h * dpr)) {
-          webCanvas.width = Math.floor(w * dpr);
-          webCanvas.height = Math.floor(h * dpr);
-          wctx.scale(dpr, dpr);
-        }
+      // Radios
+      wctx.save();
+      wctx.beginPath();
+      for (let i = 0; i < spokes; i++) {
+        const angle = (i * 2 * Math.PI) / spokes + Math.sin(webTime * 0.4) * 0.08;
+        wctx.moveTo(centerX, centerY);
+        wctx.lineTo(centerX + Math.cos(angle) * maxR, centerY + Math.sin(angle) * maxR);
+      }
+      wctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
+      wctx.lineWidth = 1.2;
+      wctx.stroke();
+      wctx.restore();
 
-        wctx.clearRect(0, 0, w, h);
-        webTime += 0.015;
-
-        const centerX = w / 2;
-        const centerY = h / 2;
-        const maxR = Math.min(w, h) * 0.44;
-        const spokes = 8;
-        const rings = 5;
-
-        // Radios de la telaraña
+      // Anillos concéntricos espirales
+      for (let r = 1; r <= rings; r++) {
+        const ringR = (maxR / rings) * r;
         wctx.save();
         wctx.beginPath();
-        for (let i = 0; i < spokes; i++) {
+        for (let i = 0; i <= spokes; i++) {
           const angle = (i * 2 * Math.PI) / spokes + Math.sin(webTime * 0.4) * 0.08;
-          wctx.moveTo(centerX, centerY);
-          wctx.lineTo(centerX + Math.cos(angle) * maxR, centerY + Math.sin(angle) * maxR);
+          const wobble = Math.sin(webTime * 2 + r + i) * 3;
+          const x = centerX + Math.cos(angle) * (ringR + wobble);
+          const y = centerY + Math.sin(angle) * (ringR + wobble);
+          if (i === 0) wctx.moveTo(x, y);
+          else wctx.lineTo(x, y);
         }
-        wctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
-        wctx.lineWidth = 1.2;
+        wctx.strokeStyle = `rgba(168, 85, 247, ${0.25 + (r / rings) * 0.4})`;
+        wctx.lineWidth = 1.4;
+        wctx.shadowColor = '#d946ef';
+        wctx.shadowBlur = 8;
         wctx.stroke();
         wctx.restore();
-
-        // Anillos concéntricos espirales
-        for (let r = 1; r <= rings; r++) {
-          const ringR = (maxR / rings) * r;
-          wctx.save();
-          wctx.beginPath();
-          for (let i = 0; i <= spokes; i++) {
-            const angle = (i * 2 * Math.PI) / spokes + Math.sin(webTime * 0.4) * 0.08;
-            const wobble = Math.sin(webTime * 2 + r + i) * 3;
-            const x = centerX + Math.cos(angle) * (ringR + wobble);
-            const y = centerY + Math.sin(angle) * (ringR + wobble);
-            if (i === 0) wctx.moveTo(x, y);
-            else wctx.lineTo(x, y);
-          }
-          wctx.strokeStyle = `rgba(168, 85, 247, ${0.2 + (r / rings) * 0.4})`;
-          wctx.lineWidth = 1.4;
-          wctx.shadowColor = '#d946ef';
-          wctx.shadowBlur = 8;
-          wctx.stroke();
-          wctx.restore();
-        }
-
-        // Núcleo Araña Anansi
-        wctx.save();
-        wctx.beginPath();
-        wctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
-        wctx.fillStyle = '#ffffff';
-        wctx.shadowColor = '#a855f7';
-        wctx.shadowBlur = 15;
-        wctx.fill();
-        wctx.restore();
-
-        requestAnimationFrame(drawAnansiWeb);
       }
-      drawAnansiWeb();
+
+      // Núcleo Anansi
+      wctx.save();
+      wctx.beginPath();
+      wctx.arc(centerX, centerY, 5.5, 0, Math.PI * 2);
+      wctx.fillStyle = '#ffffff';
+      wctx.shadowColor = '#a855f7';
+      wctx.shadowBlur = 15;
+      wctx.fill();
+      wctx.restore();
+
+      requestAnimationFrame(drawAnansiWeb);
     }
+    drawAnansiWeb();
   }
 
   // ==========================================================================
-  // 7. ESPECTRO HIDRO-ACÚSTICO FLUVIAL INTERACTIVO (RÍO CUÁNTICO)
+  // 4. ESPECTRO HIDRO-ACÚSTICO FLUVIAL INTERACTIVO (RÍO CUÁNTICO)
   // ==========================================================================
   const riverContainer = document.querySelector('#rio');
   if (riverContainer) {
@@ -504,10 +402,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 8. FÍSICA 3D DE PLIEGUES KINÉTICOS (ANGISAS) CON BRILLO ESPECULAR
+  // 5. FÍSICA 3D EN TARJETAS DE ARTEFACTOS Y PLIEGUES KINÉTICOS
   // ==========================================================================
-  const pliegueCards = document.querySelectorAll('secreto, alerta, resistencia');
-  pliegueCards.forEach((card) => {
+  const interactiveCards = document.querySelectorAll('secreto, alerta, resistencia, artefacto');
+  interactiveCards.forEach((card) => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -526,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // 9. SÍNTESIS DE VOZ Y TRANSMISIÓN DE AUDIO (CIERRE DEL ENSAYO)
+  // 6. SÍNTESIS DE VOZ Y TRANSMISIÓN DE AUDIO (CIERRE DEL ENSAYO)
   // ==========================================================================
   const closingNarrative =
     'Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología. La tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos. Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres. Muchas gracias.';

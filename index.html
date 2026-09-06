@@ -11,14 +11,14 @@
 </head>
 <body>
   <!-- ==========================================================================
-       * / * /  SISTEMA HUD : NAVEGACIÓN Y MONITOREO CUÁNTICO  / * / *
+       * / * /  LIENZO AMBIENTAL & SISTEMA HUD GLOBAL  / * / *
        ========================================================================== -->
   <fondo-luz id="ambientCanvas"></fondo-luz>
 
   <ensayo>
 
     <!-- ==========================================================================
-         * / * /  00. APERTURA : SALUDO PROTOCOLAR & UMBRAL  / * / *
+         * / * /  00. APERTURA : SALUDO PROTOCOLAR & TERMINAL  / * / *
          ========================================================================== -->
     <saludo data-section="00" data-label="APERTURA">Buenos días.</saludo>
 
@@ -27,19 +27,90 @@
          * / * /  Sector: Recontextualización de la técnica y la limitación  / * / *
          ========================================================================== -->
     <origen data-section="01" data-title="ORIGEN // SISTEMA COMUNITARIO">
+      
       <pensamiento>
         Cuando en las primeras clases empezamos definiendo qué era la tecnología, yo siempre pensaba en artefactos tecnológicos, como el computador o el celular. Para mí, la tecnología estaba relacionada con objetos nuevos, digitales o con algún tipo de avance. Pero en esta clase entendí que estaba viendo la tecnología de una manera muy limitada.
+
+        <!-- Visualización de artefactos digitales iniciales -->
+        <artefactos-visuales>
+          <artefacto data-tipo="computador">
+            <icono-artefacto>
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="12" rx="2"/><path d="M6 20h12M12 16v4"/></svg>
+            </icono-artefacto>
+            <nombre-artefacto>COMPUTADOR</nombre-artefacto>
+          </artefacto>
+
+          <artefacto data-tipo="celular">
+            <icono-artefacto>
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg>
+            </icono-artefacto>
+            <nombre-artefacto>CELULAR</nombre-artefacto>
+          </artefacto>
+
+          <artefacto data-tipo="digital">
+            <icono-artefacto>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+            </icono-artefacto>
+            <nombre-artefacto>OBJETO DIGITAL</nombre-artefacto>
+          </artefacto>
+
+          <artefacto data-tipo="avance">
+            <icono-artefacto>
+              <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+            </icono-artefacto>
+            <nombre-artefacto>MICROCHIP / AVANCE</nombre-artefacto>
+          </artefacto>
+        </artefactos-visuales>
+
+        <!-- Sello de alerta roja: Limitación cognitiva -->
+        <alerta-limitacion>
+          <icono-alerta>⚠</icono-alerta>
+          <texto-alerta>
+            <strong>ERROR COGNITIVO // VISIÓN REDUCCIONISTA:</strong><br />
+            La tecnología no es solo el artefacto físico digital. Es la capacidad humana y comunitaria de responder creativamente ante una limitación.
+          </texto-alerta>
+        </alerta-limitacion>
       </pensamiento>
 
       <definicion>
         A partir del fotoensayo sobre Surinam entendí que la tecnología también puede ser un sistema que una comunidad construye para responder a una necesidad. No necesariamente tiene que existir un objeto nuevo. Puede surgir de algo que ya existe, cuando las personas encuentran una manera diferente de utilizarlo.
+
+        <!-- Galería visual: Fotoensayo Surinam y Red 3D Comunitaria -->
+        <galeria-surinam>
+          <foto-surinam>
+            <meta-surinam>
+              <titulo-surinam>FOTOENSAYO SURINAM</titulo-surinam>
+              <coord-surinam>[COORD: 05°50′N 55°10′W // CUENCA FLUVIAL]</coord-surinam>
+            </meta-surinam>
+          </foto-surinam>
+
+          <red-comunidad-3d>
+            <badge-red>RED 3D // SISTEMA COMUNITARIO</badge-red>
+            <canvas id="comunidadCanvas"></canvas>
+          </red-comunidad-3d>
+        </galeria-surinam>
       </definicion>
 
       <vigilancia>
         Esto fue lo que más me llamó la atención del fotoensayo. Las personas esclavizadas estaban en una situación en la que incluso comunicarse podía representar un riesgo. Tenían prohibido hablar entre ellas y estaban siendo vigiladas constantemente. Entonces tuvieron que encontrar otras maneras de transmitir información sin que esa comunicación fuera evidente para quienes las vigilaban.
+
+        <!-- Escáner visual de vigilancia colonial -->
+        <escaner-vigilancia>
+          <linea-escaner></linea-escaner>
+          <aviso-vigilancia>[ESCÁNER COLONIAL: VIGILANCIA PERMANENTE // COMUNICACIÓN CLANDESTINA REQUERIDA]</aviso-vigilancia>
+        </escaner-vigilancia>
       </vigilancia>
 
       <memoria>
+        <!-- Constelación de recursos y memoria viva -->
+        <constelacion-recursos>
+          <recurso-item><span>📖</span> HISTORIAS</recurso-item>
+          <recurso-item><span>🧣</span> TELAS</recurso-item>
+          <recurso-item><span>🎵</span> CANCIONES</recurso-item>
+          <recurso-item><span>🌊</span> EL AGUA</recurso-item>
+          <recurso-item><span>🧠</span> MEMORIA VIVA</recurso-item>
+        </constelacion-recursos>
+
         Utilizaron historias, telas, canciones, el agua y su propia memoria. Y para mí ahí aparece una idea diferente de tecnología: <clave>la tecnología como una respuesta creativa frente a una limitación.</clave>
       </memoria>
 
@@ -62,6 +133,11 @@
       <camuflaje>
         En el fotoensayo, las historias de Anansi podían parecer simples cuentos, pero para quienes conocían su significado podían contener mensajes que no eran evidentes para los demás. La historia funcionaba entonces como una forma de esconder y transmitir información al mismo tiempo.
       </camuflaje>
+
+      <!-- Telaraña geométrica criptográfica -->
+      <visor-anansi>
+        <canvas id="anansiWebCanvas"></canvas>
+      </visor-anansi>
 
       <mensaje>
         Esto me hizo pensar que <clave>la información no siempre tiene que ser visible para ser efectiva.</clave>
@@ -99,6 +175,7 @@
         Esto lo relacioné directamente con el diseño de mi página. Tomé la idea del pliegue y la convertí en diferentes comportamientos visuales durante el scroll.
       </pantalla>
 
+      <!-- 3 Pliegues Cinéticos en 3D -->
       <secreto>
         Primero está El Secreto, donde el texto está casi oculto y aparece cuando el usuario pasa el mouse sobre él.
       </secreto>
@@ -143,8 +220,10 @@
         En mi página quise llevar esta idea al final de la experiencia. Por eso utilicé una animación de ondas que hace referencia al movimiento del río y un código QR que permite acceder a una pista de audio donde se escucha este cierre en mi propia voz.
       </experiencia>
 
+      <!-- Osciloscopio Cuántico Fluvial -->
       <rio id="rio"></rio>
 
+      <!-- Módulo de Voz y Código QR -->
       <voz id="voz">
         <qr></qr>
         <escuchar>ESCUCHAR EN MI PROPIA VOZ</escuchar>
