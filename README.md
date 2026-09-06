@@ -1,15 +1,31 @@
-# Tecnologías del secreto
+# Tecnologías del Secreto — Ensayo Editorial Interactivo
 
-Abre `index.html` en Chrome, Edge o cualquier navegador moderno.
+Un ensayo crítico, riguroso e interactivo sobre las tecnologías de la resistencia, la esteganografía oral, la criptografía textil y las redes acústicas desarrolladas por comunidades esclavizadas y oprimidas en las Américas y el Caribe.
 
-La web funciona sin instalación. Para la experiencia visual completa necesita conexión una sola vez, porque carga una tipografía y el QR desde internet.
+## Estructura Semántica (HTML5)
 
-## Personalizar el cierre con tu propia voz
+El código ha sido redactado con estricta semántica HTML5 orientada a la lectura ensayística y académica, evitando etiquetas genéricas:
 
-Actualmente el botón **Escuchar cierre** usa la voz disponible del navegador en español. Para poner una grabación propia:
+- `<article class="essay">`: Contenedor principal del cuerpo del ensayo.
+- `<header class="essay-hero">`: Prólogo y apertura conceptual (*Buenos días, Liliana* / Reconceptualización de la técnica).
+- `<section class="chapter">`: Capítulos y movimientos argumentativos:
+  1. **Sección I — Esteganografía oral:** El mito de Anansi y la codificación de rutas de escape.
+  2. **Sección II — Criptografía textil:** Los pañuelos *angisa* y la gramática silenciosa del vestuario.
+  3. **Sección III — Redes acústicas:** Las canciones de remeros en el río y la modulación sonora de datos.
+- `<section class="essay-conclusion">`: Epílogo y conclusiones sobre la persistencia y la libertad comunitaria.
+- Elementos semánticos enriquecidos: `<aside>`, `<figure>`, `<figcaption>`, `<blockquote>`, `<cite>`, `<dfn>`, `<time>`, `<mark>`, `<output>`.
 
-1. Guarda tu audio como `voz-del-rio.mp3` dentro de esta misma carpeta.
-2. En `script.js`, sustituye la función `speakClosing()` por un reproductor de ese archivo, por ejemplo: `new Audio('voz-del-rio.mp3').play();`.
-3. Para que el QR abra una página pública con el audio, publica esta carpeta (GitHub Pages, Netlify o similar) y reemplaza la dirección que aparece en `index.html` dentro de `api.qrserver.com` por la dirección final de tu página.
+## Características Interactivas
 
-El código incluye comentarios en español que indican qué momento del guion representa cada bloque.
+- **Topología de Anansi (`figure.web-figure`):** Diagrama interactivo de los nodos cardinales de navegación.
+- **Capa Criptográfica (`aside.cipher-note`):** Desencriptación en tiempo real al pasar el cursor o interactuar.
+- **Estudio Semiótico de Pliegues (`section.folds-study`):** Demostración táctil de los tres pliegues angisa (*El Secreto*, *La Alerta*, *La Resistencia*).
+- **Lienzo Acústico Fluvial (`canvas#riverCanvas`):** Simulación de oscilaciones sonoras en agua con soporte Web Audio API y atmósfera sonora.
+- **Sintetizador Narrativo y QR:** Transmisión de voz integrada para escuchar la conclusión del ensayo.
+
+## Instrucciones de Uso
+
+1. Abre `index.html` en Chrome, Edge, Firefox o Safari.
+2. La lectura es fluida y adaptable a cualquier tamaño de pantalla.
+3. Para escuchar el cierre narrado, pulsa **▶ ESCUCHAR CONCLUSIÓN DEL ENSAYO** o escanea el código QR.
+
