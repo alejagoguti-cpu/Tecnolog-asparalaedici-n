@@ -1,10 +1,11 @@
 /**
- * TECNOLOGÍAS DEL SECRETO — INTERACTIVIDAD DEL ENSAYO
- * Sistema visual cromático inmersivo, ondas lumínicas y síntesis sonora
+ * TECNOLOGÍAS DEL SECRETO — INTERACTIVIDAD DEL ENSAYO PRO
+ * Motor Cuántico: Aurora Cromática Adaptativa por Sección, Física 3D de Pliegues,
+ * Espectro Hidro-Acústico Fluido y Síntesis Sonora
  */
 
 // ==========================================================================
-// 1. LIENZO AMBIENTAL CROMÁTICO (FONDO DE LUZ GLOBAL)
+// 1. LIENZO AMBIENTAL CROMÁTICO ADAPTATIVO (FONDO DE LUZ POR SECCIONES)
 // ==========================================================================
 const ambientContainer = document.querySelector('#ambientCanvas');
 if (ambientContainer) {
@@ -16,6 +17,40 @@ if (ambientContainer) {
   const ctx = canvas.getContext('2d');
   let time = 0;
   let scrollY = window.scrollY;
+
+  // Paletas de color por tema de sección
+  const sectionThemes = {
+    '00': { r: 0, g: 240, b: 255 },    // Cyan
+    '01': { r: 0, g: 240, b: 255 },    // Cyan Origen
+    '02': { r: 168, g: 85, b: 247 },   // Violeta Anansi
+    '03': { r: 255, g: 0, b: 127 },    // Magenta Angisa
+    '04': { r: 0, g: 229, b: 255 },    // Turquesa Río
+    '05': { r: 255, g: 184, b: 0 }     // Ámbar Cierre
+  };
+
+  let currentRGB = { r: 0, g: 240, b: 255 };
+  let targetRGB = { r: 0, g: 240, b: 255 };
+
+  // Detección de sección activa con IntersectionObserver
+  const sections = document.querySelectorAll('saludo, origen, historias-anansi, panuelos-angisa, canciones-rio, cierre');
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -40% 0px',
+    threshold: 0.2
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const secId = entry.target.getAttribute('data-section') || '01';
+        if (sectionThemes[secId]) {
+          targetRGB = sectionThemes[secId];
+        }
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((sec) => sectionObserver.observe(sec));
 
   window.addEventListener('scroll', () => {
     scrollY = window.scrollY;
@@ -41,49 +76,44 @@ if (ambientContainer) {
 
     ctx.clearRect(0, 0, w, h);
 
+    // Suavizado e interpolación de color
+    currentRGB.r += (targetRGB.r - currentRGB.r) * 0.04;
+    currentRGB.g += (targetRGB.g - currentRGB.g) * 0.04;
+    currentRGB.b += (targetRGB.b - currentRGB.b) * 0.04;
+
     const docHeight = document.documentElement.scrollHeight - window.innerHeight || 1;
     const scrollProgress = Math.min(1, Math.max(0, scrollY / docHeight));
 
-    // Auras radiales dinámicas que viajan con el scroll
-    // 1. Aura Azul (Origen)
-    const orb1X = w * (0.2 + Math.sin(time * 0.4) * 0.08);
-    const orb1Y = h * (0.25 + Math.cos(time * 0.3) * 0.06 - scrollProgress * 0.3);
-    const grad1 = ctx.createRadialGradient(orb1X, orb1Y, 10, orb1X, orb1Y, w * 0.45);
-    grad1.addColorStop(0, 'rgba(59, 130, 246, 0.12)');
-    grad1.addColorStop(1, 'rgba(59, 130, 246, 0)');
+    // Aura 1: Núcleo Primario Dinámico
+    const orb1X = w * (0.3 + Math.sin(time * 0.35) * 0.12);
+    const orb1Y = h * (0.3 + Math.cos(time * 0.28) * 0.1 - scrollProgress * 0.15);
+    const grad1 = ctx.createRadialGradient(orb1X, orb1Y, 20, orb1X, orb1Y, w * 0.5);
+    grad1.addColorStop(0, `rgba(${Math.round(currentRGB.r)}, ${Math.round(currentRGB.g)}, ${Math.round(currentRGB.b)}, 0.14)`);
+    grad1.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = grad1;
     ctx.fillRect(0, 0, w, h);
 
-    // 2. Aura Magenta / Púrpura (Angisas / Anansi)
-    const orb2X = w * (0.8 - Math.sin(time * 0.35) * 0.08);
-    const orb2Y = h * (0.5 + Math.sin(time * 0.5) * 0.08);
-    const grad2 = ctx.createRadialGradient(orb2X, orb2Y, 10, orb2X, orb2Y, w * 0.48);
-    grad2.addColorStop(0, 'rgba(236, 72, 153, 0.11)');
-    grad2.addColorStop(1, 'rgba(236, 72, 153, 0)');
+    // Aura 2: Contraluz Cromático
+    const orb2X = w * (0.75 - Math.sin(time * 0.4) * 0.1);
+    const orb2Y = h * (0.6 + Math.sin(time * 0.45) * 0.12);
+    const grad2 = ctx.createRadialGradient(orb2X, orb2Y, 30, orb2X, orb2Y, w * 0.45);
+    grad2.addColorStop(0, `rgba(${Math.round(255 - currentRGB.r * 0.3)}, ${Math.round(currentRGB.g * 0.5)}, ${Math.round(255 - currentRGB.b * 0.2)}, 0.09)`);
+    grad2.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = grad2;
     ctx.fillRect(0, 0, w, h);
 
-    // 3. Aura Ámbar / Dorada (Río y Cierre)
-    const orb3X = w * (0.5 + Math.cos(time * 0.45) * 0.1);
-    const orb3Y = h * (0.75 + scrollProgress * 0.2);
-    const grad3 = ctx.createRadialGradient(orb3X, orb3Y, 15, orb3X, orb3Y, w * 0.52);
-    grad3.addColorStop(0, 'rgba(245, 158, 11, 0.13)');
-    grad3.addColorStop(1, 'rgba(245, 158, 11, 0)');
-    ctx.fillStyle = grad3;
-    ctx.fillRect(0, 0, w, h);
-
-    time += 0.012;
+    time += 0.015;
     requestAnimationFrame(drawAmbient);
   }
   drawAmbient();
 }
 
 // ==========================================================================
-// 2. ONDA DE SONIDO CROMÁTICA EN EL RÍO
+// 2. ESPECTRO HIDRO-ACÚSTICO FLUVIAL INTERACTIVO (RÍO CUÁNTICO)
 // ==========================================================================
-const riverContainer = document.querySelector('#rio') || document.querySelector('#riverCanvas');
+const riverContainer = document.querySelector('#rio');
 if (riverContainer) {
-  let canvas = riverContainer.tagName.toLowerCase() === 'canvas' ? riverContainer : riverContainer.querySelector('canvas');
+  let canvas = riverContainer.querySelector('canvas');
   if (!canvas) {
     canvas = document.createElement('canvas');
     riverContainer.appendChild(canvas);
@@ -91,18 +121,22 @@ if (riverContainer) {
 
   const ctx = canvas.getContext('2d');
   let time = 0;
+  let mouseX = 0;
   let isHovered = false;
 
   riverContainer.addEventListener('mouseenter', () => { isHovered = true; });
   riverContainer.addEventListener('mouseleave', () => { isHovered = false; });
+  riverContainer.addEventListener('mousemove', (e) => {
+    const rect = riverContainer.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+  });
 
   const nodes = [
-    { label: 'el río como tecnología', pct: 0.12, color: '#60a5fa' },
-    { label: 'memoria', pct: 0.32, color: '#818cf8' },
-    { label: 'secreto', pct: 0.48, color: '#c084fc' },
-    { label: 'sonido', pct: 0.65, color: '#f472b6' },
-    { label: 'resistencia', pct: 0.82, color: '#fb923c' },
-    { label: 'libertad', pct: 0.94, color: '#fbbf24' }
+    { label: '[01 // ACÚSTICA FLUVIAL]', pct: 0.12, color: '#00e5ff' },
+    { label: '[02 // MEMORIA ORAL]', pct: 0.32, color: '#38bdf8' },
+    { label: '[03 // CRIPTOGRAFÍA EN CANTO]', pct: 0.50, color: '#a855f7' },
+    { label: '[04 // PROPAGACIÓN HÍDRICA]', pct: 0.68, color: '#ec4899' },
+    { label: '[05 // RESISTENCIA COLECTIVA]', pct: 0.85, color: '#ffb800' }
   ];
 
   function drawRiver() {
@@ -120,125 +154,96 @@ if (riverContainer) {
     ctx.clearRect(0, 0, w, h);
 
     const midY = h * 0.52;
-    const hoverAmp = isHovered ? 1.25 : 1.0;
+    const hoverAmp = isHovered ? 1.3 : 1.0;
 
-    // Auras difusas y resplandor cromático volumétrico
-    const glow1 = ctx.createRadialGradient(w * 0.35, midY - 20, 10, w * 0.35, midY, 90);
-    glow1.addColorStop(0, 'rgba(59, 130, 246, 0.28)');
-    glow1.addColorStop(1, 'rgba(59, 130, 246, 0)');
-    ctx.fillStyle = glow1;
+    // Resplandor ambiental interior del sonar
+    const riverGlow = ctx.createRadialGradient(w * 0.5, midY, 10, w * 0.5, midY, w * 0.55);
+    riverGlow.addColorStop(0, 'rgba(0, 229, 255, 0.18)');
+    riverGlow.addColorStop(0.5, 'rgba(168, 85, 247, 0.12)');
+    riverGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = riverGlow;
     ctx.fillRect(0, 0, w, h);
 
-    const glow2 = ctx.createRadialGradient(w * 0.62, midY + 10, 10, w * 0.62, midY, 100);
-    glow2.addColorStop(0, 'rgba(236, 72, 153, 0.25)');
-    glow2.addColorStop(1, 'rgba(236, 72, 153, 0)');
-    ctx.fillStyle = glow2;
-    ctx.fillRect(0, 0, w, h);
+    // Gradiente Espectral
+    const streamGrad = ctx.createLinearGradient(0, 0, w, 0);
+    streamGrad.addColorStop(0.0, '#00e5ff');
+    streamGrad.addColorStop(0.35, '#38bdf8');
+    streamGrad.addColorStop(0.65, '#a855f7');
+    streamGrad.addColorStop(0.85, '#ff007f');
+    streamGrad.addColorStop(1.0, '#ffb800');
 
-    const glow3 = ctx.createRadialGradient(w * 0.85, midY, 15, w * 0.85, midY, 110);
-    glow3.addColorStop(0, 'rgba(245, 158, 11, 0.32)');
-    glow3.addColorStop(1, 'rgba(245, 158, 11, 0)');
-    ctx.fillStyle = glow3;
-    ctx.fillRect(0, 0, w, h);
-
-    // Gradiente lineal cromático
-    const strokeGrad = ctx.createLinearGradient(w * 0.08, 0, w * 0.95, 0);
-    strokeGrad.addColorStop(0.0, '#3b82f6');
-    strokeGrad.addColorStop(0.25, '#6366f1');
-    strokeGrad.addColorStop(0.5, '#ec4899');
-    strokeGrad.addColorStop(0.75, '#f97316');
-    strokeGrad.addColorStop(1.0, '#fbbf24');
-
-    function getWaveY(x, phase, scale) {
+    function calculateWave(x, phase, scale) {
       const normX = x / w;
       const envelope = Math.sin(normX * Math.PI);
-      const wave1 = Math.sin(normX * 8 + time * 1.5 + phase) * (h * 0.22 * scale);
-      const wave2 = Math.cos(normX * 14 - time * 0.8) * (h * 0.08 * scale);
-      const wave3 = Math.sin(normX * 22 + time * 2.0) * (h * 0.03 * scale);
-      return midY + (wave1 + wave2 + wave3) * envelope * hoverAmp;
+      const mouseInfluence = isHovered ? Math.exp(-Math.pow((x - mouseX) / (w * 0.18), 2)) * 0.4 : 0;
+      const wave1 = Math.sin(normX * 9 + time * 1.8 + phase) * (h * 0.22 * scale);
+      const wave2 = Math.cos(normX * 16 - time * 1.1) * (h * 0.08 * scale);
+      const wave3 = Math.sin(normX * 24 + time * 2.4) * (h * 0.03 * scale);
+      return midY + (wave1 + wave2 + wave3 + mouseInfluence * h * 0.15) * envelope * hoverAmp;
     }
 
-    // Onda armónica superior
+    // Trazo 1: Onda Principal
     ctx.save();
     ctx.beginPath();
     for (let x = 0; x <= w; x += 3) {
-      const y = getWaveY(x, 0, 1.0);
+      const y = calculateWave(x, 0, 1.0);
       if (x === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     }
-    ctx.strokeStyle = strokeGrad;
-    ctx.lineWidth = 2.4;
-    ctx.shadowColor = 'rgba(236, 72, 153, 0.7)';
-    ctx.shadowBlur = 14;
+    ctx.strokeStyle = streamGrad;
+    ctx.lineWidth = 2.6;
+    ctx.shadowColor = 'rgba(0, 229, 255, 0.8)';
+    ctx.shadowBlur = 18;
     ctx.stroke();
     ctx.restore();
 
-    // Onda armónica inferior
+    // Trazo 2: Onda Armónica Secundaria
     ctx.save();
     ctx.beginPath();
     for (let x = 0; x <= w; x += 3) {
-      const y = getWaveY(x, Math.PI * 0.75, -0.85);
+      const y = calculateWave(x, Math.PI * 0.8, -0.75);
       if (x === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     }
-    const lowerGrad = ctx.createLinearGradient(w * 0.1, 0, w * 0.9, 0);
-    lowerGrad.addColorStop(0.0, 'rgba(59, 130, 246, 0.7)');
-    lowerGrad.addColorStop(0.5, 'rgba(168, 85, 247, 0.7)');
-    lowerGrad.addColorStop(1.0, 'rgba(245, 158, 11, 0.8)');
-    ctx.strokeStyle = lowerGrad;
+    ctx.strokeStyle = 'rgba(168, 85, 247, 0.75)';
     ctx.lineWidth = 1.6;
-    ctx.shadowColor = 'rgba(59, 130, 246, 0.5)';
-    ctx.shadowBlur = 10;
+    ctx.shadowColor = 'rgba(168, 85, 247, 0.6)';
+    ctx.shadowBlur = 12;
     ctx.stroke();
     ctx.restore();
 
-    // Línea punteada orbital entre nodos
-    ctx.save();
-    ctx.beginPath();
-    ctx.setLineDash([3, 5]);
-    for (let x = 0; x <= w; x += 4) {
-      const y = getWaveY(x, Math.PI * 0.35, 0.35);
-      if (x === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.strokeStyle = 'rgba(240, 237, 230, 0.35)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    ctx.restore();
-
-    // Nodos luminosos y tipografía flotante
+    // Nodos de Frecuencia Flotantes
     nodes.forEach((node, i) => {
       const x = w * node.pct;
-      const isTop = i % 2 === 1;
-      const y = getWaveY(x, isTop ? 0 : Math.PI * 0.75, isTop ? 1.0 : -0.85);
+      const isUpper = i % 2 === 0;
+      const y = calculateWave(x, isUpper ? 0 : Math.PI * 0.8, isUpper ? 1.0 : -0.75);
 
       ctx.save();
       ctx.beginPath();
-      ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+      ctx.arc(x, y, 4, 0, Math.PI * 2);
       ctx.fillStyle = '#ffffff';
       ctx.shadowColor = node.color;
-      ctx.shadowBlur = 12;
+      ctx.shadowBlur = 15;
       ctx.fill();
       ctx.restore();
 
       ctx.save();
-      ctx.font = '500 11px "DM Mono", monospace';
+      ctx.font = '600 10.5px "DM Mono", monospace';
       ctx.fillStyle = node.color;
       ctx.textAlign = 'center';
-      const textOffset = isTop ? -14 : 18;
+      const textOffset = isUpper ? -16 : 20;
       ctx.fillText(node.label, x, y + textOffset);
       ctx.restore();
     });
 
-    time += 0.018;
+    time += 0.02;
     requestAnimationFrame(drawRiver);
   }
-
   drawRiver();
 }
 
 // ==========================================================================
-// 3. EFECTO 3D EN TARJETAS DE PLIEGUES (ANGISAS)
+// 3. FÍSICA 3D DE PLIEGUES KINÉTICOS (ANGISAS) CON BRILLO ESPECULAR
 // ==========================================================================
 const pliegueCards = document.querySelectorAll('secreto, alerta, resistencia');
 pliegueCards.forEach((card) => {
@@ -248,10 +253,10 @@ pliegueCards.forEach((card) => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotX = ((y - centerY) / centerY) * -6;
-    const rotY = ((x - centerX) / centerX) * 6;
+    const rotX = ((y - centerY) / centerY) * -8;
+    const rotY = ((x - centerX) / centerX) * 8;
 
-    card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-3px)`;
+    card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
   });
 
   card.addEventListener('mouseleave', () => {
@@ -260,7 +265,7 @@ pliegueCards.forEach((card) => {
 });
 
 // ==========================================================================
-// 4. SINTETIZADOR DE VOZ PARA EL CIERRE DEL ENSAYO
+// 4. SÍNTESIS DE VOZ Y TRANSMISIÓN DE AUDIO (CIERRE DEL ENSAYO)
 // ==========================================================================
 const closingNarrative =
   'Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología. La tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos. Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres. Muchas gracias.';
@@ -275,12 +280,12 @@ function speakClosing() {
   const utterance = new SpeechSynthesisUtterance(closingNarrative);
   utterance.lang = 'es-CO';
   utterance.rate = 0.88;
-  utterance.pitch = 0.88;
+  utterance.pitch = 0.9;
 
   window.speechSynthesis.speak(utterance);
 }
 
-const voiceTrigger = document.querySelector('#voz') || document.querySelector('#voiceTrigger');
+const voiceTrigger = document.querySelector('#voz');
 if (voiceTrigger) {
   voiceTrigger.addEventListener('click', speakClosing);
   voiceTrigger.addEventListener('keydown', (e) => {
@@ -290,6 +295,7 @@ if (voiceTrigger) {
     }
   });
 }
+
 
 
 

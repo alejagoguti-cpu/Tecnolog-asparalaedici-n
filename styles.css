@@ -1,47 +1,52 @@
 /* ==========================================================================
-   TECNOLOGÍAS DEL SECRETO — MANIFIESTO CÓDIGO FUTURISTA & EDITORIAL
-   Diseño HUD Holográfico, Ondas Cuánticas y Poética Interactiva
+   TECNOLOGÍAS DEL SECRETO — MANIFIESTO CÓDIGO FUTURISTA & EDITORIAL PRO
+   Diseño de Alta Fidelidad: Identidades Visuales por Sección, HUD Holográfico,
+   Física 3D de Pliegues, Espectro Acústico Cuántico y Poética Interactiva
    ========================================================================== */
 
 :root {
-  --bg-deep: #030508;
-  --bg-hud: rgba(9, 14, 26, 0.78);
-  --bg-hud-hover: rgba(14, 22, 42, 0.92);
+  /* Paleta Base Obsidian & Espacio */
+  --bg-deep: #020408;
+  --bg-panel: rgba(8, 12, 22, 0.78);
+  --bg-panel-hover: rgba(12, 18, 34, 0.92);
   
-  --neon-cyan: #00f0ff;
-  --neon-violet: #a855f7;
-  --neon-magenta: #ff007f;
-  --neon-amber: #ffb800;
-  --neon-lime: #00ff88;
+  /* Temas Cromáticos por Sección */
+  --theme-global: #00f0ff;
+  --theme-origen: #00f0ff;      /* Cyan cibernético / terminal */
+  --theme-anansi: #a855f7;      /* Violeta cuántico / criptografía */
+  --theme-angisa: #ff007f;      /* Magenta neón / cinética */
+  --theme-rio: #00e5ff;         /* Turquesa fluvial / acústica */
+  --theme-cierre: #ffb800;      /* Ámbar solar / libertad */
   
-  --glow-cyan: rgba(0, 240, 255, 0.5);
+  /* Luces y Resplandor */
+  --glow-cyan: rgba(0, 240, 255, 0.45);
+  --glow-violet: rgba(168, 85, 247, 0.45);
   --glow-magenta: rgba(255, 0, 127, 0.45);
-  --glow-amber: rgba(255, 184, 0, 0.5);
+  --glow-amber: rgba(255, 184, 0, 0.45);
   
+  /* Tipografía y Superficie */
   --paper: #f0f4f8;
-  --paper-dim: rgba(240, 244, 248, 0.86);
-  --paper-faint: rgba(240, 244, 248, 0.48);
+  --paper-dim: rgba(240, 244, 248, 0.84);
+  --paper-faint: rgba(240, 244, 248, 0.45);
   
   --font-cyber: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
   --font-mono: "DM Mono", "Courier New", monospace;
   
-  --border-hud: rgba(0, 240, 255, 0.22);
-  --border-hud-glow: rgba(0, 240, 255, 0.6);
-  --measure-prose: 72ch;
+  --measure-prose: 74ch;
 }
 
 /* ==========================================================================
-   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS Y CONCEPTUALES
+   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS (100% ETIQUETAS SEMÁNTICAS)
    ========================================================================== */
 fondo-luz,
 ensayo,
+saludo,
 origen,
 historias-anansi,
 panuelos-angisa,
 canciones-rio,
 cierre,
-saludo,
 titulo,
 pensamiento,
 definicion,
@@ -84,7 +89,7 @@ clave {
 }
 
 /* ==========================================================================
-   RESET Y ATMÓSFERA CIBERNÉTICA
+   RESET & ATMÓSFERA CIBERNÉTICA GLOBAL
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -100,21 +105,22 @@ body {
   margin: 0;
   background-color: var(--bg-deep);
   background-image: 
-    linear-gradient(to right, rgba(0, 240, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 240, 255, 0.025) 1px, transparent 1px);
-  background-size: 48px 48px;
+    radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.04) 0%, transparent 60%),
+    linear-gradient(to right, rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
   color: var(--paper);
   font-family: var(--font-cyber);
   font-size: 1.15rem;
   line-height: 1.88;
-  padding: 5rem 1.5rem 12rem;
+  padding: 6rem 1.5rem 14rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Línea de escaneo láser continuo de fondo */
+/* Rayo Láser de Escaneo Continuo */
 body::before {
   content: "";
   position: fixed;
@@ -122,22 +128,22 @@ body::before {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-magenta), transparent);
-  box-shadow: 0 0 15px var(--neon-cyan);
-  opacity: 0.7;
-  z-index: 10;
+  background: linear-gradient(90deg, transparent, var(--theme-origen), var(--theme-anansi), var(--theme-angisa), var(--theme-cierre), transparent);
+  box-shadow: 0 0 18px var(--theme-origen);
+  opacity: 0.75;
+  z-index: 100;
   pointer-events: none;
-  animation: laserScan 8s linear infinite;
+  animation: laserSweep 9s ease-in-out infinite;
 }
 
-@keyframes laserScan {
+@keyframes laserSweep {
   0% { transform: translateY(0vh); opacity: 0; }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.8; }
+  15% { opacity: 0.85; }
+  85% { opacity: 0.85; }
   100% { transform: translateY(100vh); opacity: 0; }
 }
 
-/* Lienzo de auras cuánticas */
+/* Lienzo de Auras Dinámicas */
 fondo-luz {
   position: fixed;
   top: 0;
@@ -146,7 +152,7 @@ fondo-luz {
   height: 100vh;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 fondo-luz canvas {
@@ -156,294 +162,546 @@ fondo-luz canvas {
 }
 
 ::selection {
-  background-color: var(--neon-cyan);
+  background-color: var(--theme-global);
   color: var(--bg-deep);
   text-shadow: none;
 }
 
 /* ==========================================================================
-   CUERPO DEL MANUSCRITO EDITORIAL & HUD DE TRAYECTORIA
+   TRAYECTORIA EDITORIAL & GUÍA LÁSER LATERAL
    ========================================================================== */
 ensayo {
   max-width: var(--measure-prose);
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  padding-left: clamp(1.5rem, 5vw, 4rem);
-  border-left: 1px dashed rgba(0, 240, 255, 0.35);
-}
-
-saludo {
-  font-size: clamp(2.4rem, 6vw, 3.8rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
-  background: linear-gradient(135deg, #ffffff 0%, var(--neon-cyan) 45%, var(--neon-magenta) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 4.5rem;
-  filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.35));
+  padding-left: clamp(1.8rem, 6vw, 4.5rem);
+  border-left: 1px dashed rgba(0, 240, 255, 0.3);
 }
 
 /* ==========================================================================
-   MÓDULOS HOLOGRÁFICOS HUD DE CADA SECCIÓN
+   SECCIÓN 00: SALUDO & UMBRAL EDITORIAL PRO
+   ========================================================================== */
+saludo {
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  background: linear-gradient(135deg, #ffffff 0%, var(--theme-origen) 50%, var(--theme-anansi) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5rem;
+  position: relative;
+  display: inline-block;
+  filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.4));
+}
+
+saludo::after {
+  content: attr(data-label) " // ENCRIPTACIÓN DE SURINAM [LAT 05°50'N : LNG 55°10'W]";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  color: var(--theme-origen);
+  -webkit-text-fill-color: var(--theme-origen);
+  margin-top: 1rem;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   ESTRUCTURA GENERAL DE MÓDULOS HUD POR SECCIÓN
    ========================================================================== */
 origen,
 historias-anansi,
 panuelos-angisa,
 canciones-rio,
 cierre {
-  margin-bottom: 5.5rem;
-  padding: 3rem 2.5rem;
-  background: var(--bg-hud);
-  border: 1px solid var(--border-hud);
-  border-radius: 12px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  margin-bottom: 6.5rem;
+  padding: 3.5rem 3rem;
+  border-radius: 16px;
   position: relative;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 240, 255, 0.04);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-origen:hover,
-historias-anansi:hover,
-panuelos-angisa:hover,
-canciones-rio:hover,
-cierre:hover {
-  background: var(--bg-hud-hover);
-  border-color: var(--neon-cyan);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 240, 255, 0.2), inset 0 0 40px rgba(0, 240, 255, 0.08);
-  transform: translateY(-3px);
-}
-
-/* Nodos de trayectoria luminosos con pulso cuático */
+/* Nodo de Trayectoria Luminoso en la Guía Lateral */
 origen::before,
 historias-anansi::before,
 panuelos-angisa::before,
 canciones-rio::before,
 cierre::before {
   position: absolute;
-  left: calc(-1 * clamp(1.5rem, 5vw, 4rem) - 8px);
-  top: 3.5rem;
-  width: 15px;
-  height: 15px;
+  left: calc(-1 * clamp(1.8rem, 6vw, 4.5rem) - 9px);
+  top: 3.8rem;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
   background: var(--bg-deep);
-  border: 2px solid var(--neon-cyan);
-  box-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--glow-cyan);
   content: "";
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 2;
 }
 
-origen:hover::before,
-historias-anansi:hover::before,
-panuelos-angisa:hover::before,
-canciones-rio:hover::before,
-cierre:hover::before {
-  background: var(--neon-cyan);
-  transform: scale(1.5);
-  box-shadow: 0 0 25px var(--neon-cyan), 0 0 50px var(--neon-cyan);
-}
-
-/* ==========================================================================
-   TÍTULOS HOLOGRÁFICOS & TIPOGRAFÍA DE ALTO IMPACTO
-   ========================================================================== */
-titulo {
-  font-size: clamp(1.85rem, 4vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  margin: 0 0 2.5rem 0;
-  color: #ffffff;
-  background: linear-gradient(135deg, #ffffff 10%, var(--neon-cyan) 60%, var(--neon-amber) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.25));
-}
-
-pensamiento,
-definicion,
-vigilancia,
-memoria,
-intencion,
-relato,
-camuflaje,
-mensaje,
-silencio,
-lenguaje,
-transformacion,
-pantalla,
-logica,
-diseno,
-sonido,
-medio,
-experiencia,
-eco,
-construccion,
-mirada,
-esencia,
-proceso,
-sentido,
-libertad {
-  margin-bottom: 2rem;
-  color: var(--paper-dim);
-  font-size: 1.18rem;
-  line-height: 1.95;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-pensamiento:hover,
-definicion:hover,
-vigilancia:hover,
-memoria:hover,
-silencio:hover,
-lenguaje:hover,
-transformacion:hover,
-sonido:hover,
-construccion:hover,
-mirada:hover,
-libertad:hover {
-  color: #ffffff;
-}
-
-/* ==========================================================================
-   RESPLANDOR INTERACTIVO Y DECODIFICACIÓN LÁSER
-   ========================================================================== */
-clave {
-  color: #ffffff;
-  font-weight: 600;
+/* Micro-Insignia Superior del HUD de cada Sección */
+origen::after,
+historias-anansi::after,
+panuelos-angisa::after,
+canciones-rio::after,
+cierre::after {
+  content: attr(data-title);
+  position: absolute;
+  top: -14px;
+  left: 28px;
   font-family: var(--font-mono);
-  font-size: 1.05em;
-  position: relative;
-  padding: 2px 8px;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  padding: 4px 14px;
   border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  z-index: 3;
 }
 
-clave:hover {
-  color: var(--bg-deep);
-  background: var(--neon-cyan);
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 25px var(--neon-cyan), 0 0 45px var(--glow-cyan);
-  text-shadow: none;
+/* ==========================================================================
+   SECCIÓN 01: ORIGEN // TERMINAL CYBER-DOSSIER
+   ========================================================================== */
+origen {
+  background: linear-gradient(165deg, rgba(8, 20, 36, 0.85) 0%, rgba(3, 7, 14, 0.95) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(0, 240, 255, 0.04);
 }
 
-/* Caja decodificadora cuántica en capas */
-capas {
+origen::before {
+  border: 2px solid var(--theme-origen);
+  box-shadow: 0 0 18px var(--theme-origen), 0 0 35px var(--glow-cyan);
+}
+
+origen::after {
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  color: var(--theme-origen);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+origen:hover {
+  border-color: var(--theme-origen);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 240, 255, 0.18);
+  transform: translateY(-4px);
+}
+
+origen:hover::before {
+  background: var(--theme-origen);
+  transform: scale(1.4);
+  box-shadow: 0 0 30px var(--theme-origen);
+}
+
+/* Bloques interiores de Origen */
+pensamiento {
+  font-family: var(--font-cyber);
+  font-size: 1.22rem;
+  line-height: 1.9;
+  color: var(--paper);
+  margin-bottom: 2.2rem;
+}
+
+definicion {
   position: relative;
   padding: 1.8rem 2.2rem;
-  background: rgba(168, 85, 247, 0.1);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  border-left: 4px solid var(--neon-violet);
-  border-radius: 8px;
+  background: rgba(0, 240, 255, 0.05);
+  border-left: 3px solid var(--theme-origen);
+  border-radius: 0 10px 10px 0;
+  margin: 2.4rem 0;
+  font-size: 1.15rem;
+}
+
+vigilancia {
+  position: relative;
+  padding: 1.8rem 2.2rem;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+  margin: 2.4rem 0;
+  color: #fee2e2;
+}
+
+vigilancia::before {
+  content: "[ESTADO: VIGILANCIA PERMANENTE]";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #f87171;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+memoria {
+  margin: 2.4rem 0;
+  font-size: 1.18rem;
+}
+
+intencion {
+  margin-top: 2.4rem;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: rgba(240, 244, 248, 0.8);
+  border-top: 1px solid rgba(0, 240, 255, 0.15);
+  padding-top: 1.8rem;
+}
+
+/* ==========================================================================
+   SECCIÓN 02: HISTORIAS-ANANSI // MATRIZ CRIPTOGRÁFICA ULTRAVIOLETA
+   ========================================================================== */
+historias-anansi {
+  background: linear-gradient(165deg, rgba(22, 10, 38, 0.85) 0%, rgba(6, 3, 14, 0.95) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.32);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 0 45px rgba(168, 85, 247, 0.05);
+}
+
+historias-anansi::before {
+  border: 2px solid var(--theme-anansi);
+  box-shadow: 0 0 18px var(--theme-anansi), 0 0 35px var(--glow-violet);
+}
+
+historias-anansi::after {
+  background: rgba(168, 85, 247, 0.14);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: var(--theme-anansi);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+}
+
+historias-anansi:hover {
+  border-color: var(--theme-anansi);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(168, 85, 247, 0.2);
+  transform: translateY(-4px);
+}
+
+historias-anansi:hover::before {
+  background: var(--theme-anansi);
+  transform: scale(1.4);
+  box-shadow: 0 0 30px var(--theme-anansi);
+}
+
+/* Título Anansi */
+historias-anansi titulo {
+  background: linear-gradient(135deg, #ffffff 10%, var(--theme-anansi) 70%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.35));
+}
+
+relato {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-style: italic;
+  color: #f3e8ff;
+  margin-bottom: 2.2rem;
+  line-height: 1.6;
+}
+
+camuflaje {
+  position: relative;
+  padding: 1.8rem 2.2rem;
+  background: rgba(168, 85, 247, 0.06);
+  border: 1px dashed rgba(168, 85, 247, 0.35);
+  border-radius: 10px;
+  margin: 2.2rem 0;
+  transition: all 0.35s ease;
+}
+
+camuflaje:hover {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: var(--theme-anansi);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.25);
+}
+
+mensaje {
+  margin: 2.2rem 0;
+  font-size: 1.2rem;
+}
+
+capas {
+  position: relative;
+  padding: 2.2rem 2.4rem;
+  background: linear-gradient(135deg, rgba(30, 15, 50, 0.8), rgba(12, 6, 24, 0.95));
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  border-left: 5px solid var(--theme-anansi);
+  border-radius: 12px;
+  margin: 2.5rem 0;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(168, 85, 247, 0.15);
+  backdrop-filter: blur(16px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  margin: 2rem 0;
-  backdrop-filter: blur(12px);
+}
+
+capas::before {
+  content: "[ESTRATIFICACIÓN DE DATOS // SEGUNDA CAPA ACTIVADA]";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--theme-anansi);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
 }
 
 capas:hover {
-  background: rgba(168, 85, 247, 0.2);
-  border-color: var(--neon-magenta);
-  box-shadow: 0 0 35px rgba(168, 85, 247, 0.4), 0 10px 30px rgba(0, 0, 0, 0.6);
-  transform: scale(1.01);
+  border-color: #d946ef;
+  background: linear-gradient(135deg, rgba(45, 20, 75, 0.9), rgba(18, 8, 35, 0.98));
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 45px rgba(217, 70, 239, 0.35);
+  transform: scale(1.015);
+}
+
+silencio {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: rgba(243, 232, 255, 0.85);
+  margin-top: 2.2rem;
+  border-left: 2px solid rgba(168, 85, 247, 0.4);
+  padding-left: 1.5rem;
 }
 
 /* ==========================================================================
-   PLIEGUES DE LAS ANGISAS: HOLOGRAMAS 3D INTERACTIVOS
+   SECCIÓN 03: PAÑUELOS-ANGISA // TOPOLOGÍA KINÉTICA Y ORIGAMI 3D
    ========================================================================== */
 panuelos-angisa {
+  background: linear-gradient(165deg, rgba(32, 8, 22, 0.85) 0%, rgba(10, 3, 7, 0.95) 100%);
+  border: 1px solid rgba(255, 0, 127, 0.32);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 0 45px rgba(255, 0, 127, 0.05);
   perspective: 1200px;
 }
 
+panuelos-angisa::before {
+  border: 2px solid var(--theme-angisa);
+  box-shadow: 0 0 18px var(--theme-angisa), 0 0 35px var(--glow-magenta);
+}
+
+panuelos-angisa::after {
+  background: rgba(255, 0, 127, 0.14);
+  border: 1px solid rgba(255, 0, 127, 0.45);
+  color: var(--theme-angisa);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.25);
+}
+
+panuelos-angisa:hover {
+  border-color: var(--theme-angisa);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 0, 127, 0.2);
+  transform: translateY(-4px);
+}
+
+panuelos-angisa:hover::before {
+  background: var(--theme-angisa);
+  transform: scale(1.4);
+  box-shadow: 0 0 30px var(--theme-angisa);
+}
+
+panuelos-angisa titulo {
+  background: linear-gradient(135deg, #ffffff 10%, var(--theme-angisa) 65%, #ffb800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.35));
+}
+
+lenguaje {
+  margin: 2rem 0;
+  font-size: 1.18rem;
+}
+
+transformacion {
+  margin: 2.2rem 0;
+  font-size: 1.22rem;
+}
+
+pantalla {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: rgba(255, 240, 246, 0.85);
+  margin-bottom: 2.5rem;
+}
+
+/* Tríada de Pliegues 3D */
 secreto,
 alerta,
 resistencia {
-  margin: 2.2rem 0;
-  padding: 2rem 2.2rem;
-  border-radius: 10px;
+  margin: 2.5rem 0;
+  padding: 2.2rem 2.4rem;
+  border-radius: 12px;
   font-family: var(--font-mono);
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.85;
   position: relative;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   transform-style: preserve-3d;
-  transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.15s ease-out, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
 }
 
-/* 1. El Secreto */
+/* 1. El Secreto (Descodificación por desenfoque) */
 secreto {
-  background: rgba(10, 20, 38, 0.75);
+  background: rgba(10, 22, 42, 0.8);
   border: 1px solid rgba(0, 240, 255, 0.35);
-  border-left: 4px solid var(--neon-cyan);
-  color: rgba(240, 244, 248, 0.5);
-  filter: blur(1.5px);
-  cursor: pointer;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+  border-left: 5px solid var(--theme-origen);
+  color: rgba(240, 244, 248, 0.45);
+  filter: blur(1.8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+}
+
+secreto::before {
+  content: "[PLIEGUE 01 // EL SECRETO — HOVER PARA REVELAR]";
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--theme-origen);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
 }
 
 secreto:hover {
   filter: blur(0);
   color: #ffffff;
-  border-color: var(--neon-cyan);
-  background: rgba(14, 30, 60, 0.9);
-  box-shadow: 0 0 40px var(--glow-cyan), 0 15px 45px rgba(0, 0, 0, 0.7);
+  border-color: var(--theme-origen);
+  background: rgba(14, 32, 65, 0.95);
+  box-shadow: 0 0 45px var(--glow-cyan), 0 20px 50px rgba(0, 0, 0, 0.75);
 }
 
-/* 2. La Alerta */
+/* 2. La Alerta (Inclinación angular & pulso cromático) */
 alerta {
-  background: rgba(45, 10, 28, 0.75);
+  background: rgba(48, 10, 30, 0.8);
   border: 1px solid rgba(255, 0, 127, 0.45);
-  border-left: 4px solid var(--neon-magenta);
+  border-left: 5px solid var(--theme-angisa);
   color: #fff0f6;
-  transform: rotate(-0.5deg);
-  box-shadow: 0 10px 35px rgba(255, 0, 127, 0.25);
+  transform: rotate(-0.6deg);
+  box-shadow: 0 12px 35px rgba(255, 0, 127, 0.25);
+}
+
+alerta::before {
+  content: "[PLIEGUE 02 // LA ALERTA — TRANSMISIÓN CRÍTICA]";
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--theme-angisa);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
 }
 
 alerta:hover {
-  border-color: var(--neon-magenta);
-  background: rgba(65, 12, 40, 0.9);
-  box-shadow: 0 0 45px var(--glow-magenta), 0 15px 45px rgba(0, 0, 0, 0.7);
+  border-color: var(--theme-angisa);
+  background: rgba(72, 14, 45, 0.95);
+  box-shadow: 0 0 50px var(--glow-magenta), 0 20px 50px rgba(0, 0, 0, 0.75);
 }
 
-/* 3. La Resistencia */
+/* 3. La Resistencia (Blindaje Carbono Solar) */
 resistencia {
-  background: rgba(18, 14, 8, 0.95);
+  background: rgba(22, 16, 8, 0.95);
   border: 1px solid rgba(255, 184, 0, 0.45);
-  border-left: 4px solid var(--neon-amber);
+  border-left: 5px solid var(--theme-cierre);
   color: #fffdf5;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 184, 0, 0.15);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 184, 0, 0.15);
+}
+
+resistencia::before {
+  content: "[PLIEGUE 03 // LA RESISTENCIA — BARRERA PROTECTORA]";
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--theme-cierre);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
 }
 
 resistencia:hover {
-  border-color: var(--neon-amber);
-  background: rgba(28, 20, 10, 0.98);
-  box-shadow: 0 0 45px var(--glow-amber), 0 15px 45px rgba(0, 0, 0, 0.85);
+  border-color: var(--theme-cierre);
+  background: rgba(35, 24, 10, 0.98);
+  box-shadow: 0 0 50px var(--glow-amber), 0 20px 50px rgba(0, 0, 0, 0.85);
+}
+
+logica {
+  margin: 2.5rem 0 2rem;
+  font-size: 1.2rem;
+}
+
+diseno {
+  font-family: var(--font-cyber);
+  font-size: 1.15rem;
+  color: rgba(255, 240, 246, 0.9);
+  border-top: 1px solid rgba(255, 0, 127, 0.18);
+  padding-top: 1.8rem;
 }
 
 /* ==========================================================================
-   RÍO CUÁNTICO: ESPECTRO DE ONDAS Y AUDIO
+   SECCIÓN 04: CANCIONES-RIO // ESPECTRO ACÚSTICO FLUVIAL & SONAR
    ========================================================================== */
+canciones-rio {
+  background: linear-gradient(165deg, rgba(6, 22, 34, 0.88) 0%, rgba(3, 8, 14, 0.96) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 0 50px rgba(0, 229, 255, 0.06);
+}
+
+canciones-rio::before {
+  border: 2px solid var(--theme-rio);
+  box-shadow: 0 0 18px var(--theme-rio), 0 0 35px rgba(0, 229, 255, 0.5);
+}
+
+canciones-rio::after {
+  background: rgba(0, 229, 255, 0.14);
+  border: 1px solid rgba(0, 229, 255, 0.45);
+  color: var(--theme-rio);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+}
+
+canciones-rio:hover {
+  border-color: var(--theme-rio);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(0, 229, 255, 0.22);
+  transform: translateY(-4px);
+}
+
+canciones-rio:hover::before {
+  background: var(--theme-rio);
+  transform: scale(1.4);
+  box-shadow: 0 0 30px var(--theme-rio);
+}
+
+canciones-rio titulo {
+  background: linear-gradient(135deg, #ffffff 10%, var(--theme-rio) 60%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.35));
+}
+
+sonido {
+  margin: 2rem 0;
+  font-size: 1.18rem;
+}
+
+medio {
+  margin: 2.2rem 0;
+  font-size: 1.22rem;
+}
+
+experiencia {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: rgba(224, 242, 254, 0.9);
+  margin-bottom: 2.5rem;
+}
+
+/* Espectro del Río Fluvial Cuántico */
 rio {
   width: 100%;
-  height: 260px;
-  margin: 3.5rem 0 2.5rem;
+  height: 280px;
+  margin: 3.5rem 0 3rem;
   border-radius: 14px;
-  background: radial-gradient(circle at 50% 50%, rgba(12, 18, 36, 0.95), rgba(4, 6, 12, 0.98));
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: radial-gradient(circle at 50% 50%, rgba(10, 24, 45, 0.95), rgba(3, 7, 14, 0.98));
+  border: 1px solid rgba(0, 229, 255, 0.35);
   position: relative;
   overflow: hidden;
   box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.8),
-    inset 0 0 60px rgba(0, 240, 255, 0.12);
+    0 25px 60px rgba(0, 0, 0, 0.85),
+    inset 0 0 70px rgba(0, 229, 255, 0.14);
 }
 
 rio canvas {
@@ -452,66 +710,222 @@ rio canvas {
   display: block;
 }
 
-/* Módulo de voz y transmisión cuántica */
+/* Transmisión de Audio y Módulo QR */
 voz {
   display: inline-flex;
   align-items: center;
-  gap: 2rem;
-  margin: 2.5rem 0;
-  padding: 1.5rem 2.2rem;
-  background: rgba(14, 20, 36, 0.85);
-  border: 1px solid rgba(255, 184, 0, 0.45);
-  border-radius: 10px;
+  gap: 2.2rem;
+  margin: 2rem 0 3rem;
+  padding: 1.6rem 2.4rem;
+  background: linear-gradient(135deg, rgba(16, 26, 46, 0.9), rgba(8, 14, 26, 0.98));
+  border: 1px solid rgba(255, 184, 0, 0.5);
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 184, 0, 0.15);
+  backdrop-filter: blur(14px);
 }
 
 voz:hover {
-  border-color: var(--neon-amber);
-  background: rgba(24, 32, 56, 0.98);
-  box-shadow: 0 0 45px var(--glow-amber), 0 15px 45px rgba(0, 0, 0, 0.7);
+  border-color: var(--theme-cierre);
+  background: linear-gradient(135deg, rgba(26, 38, 68, 0.98), rgba(14, 20, 38, 1));
+  box-shadow: 0 0 50px var(--glow-amber), 0 20px 50px rgba(0, 0, 0, 0.8);
   transform: translateY(-3px);
 }
 
 qr {
-  width: 82px;
-  height: 82px;
+  width: 88px;
+  height: 88px;
   flex: none;
   background-color: #ffffff;
   background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fexample.com%2Ftecnologias-del-secreto%3Faudio%3Dvoz-del-rio");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 6px;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
 }
 
 escuchar {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
-  letter-spacing: 0.14em;
-  font-weight: 600;
-  background: linear-gradient(135deg, #ffffff 20%, var(--neon-amber) 100%);
+  font-size: 1rem;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 10%, var(--theme-cierre) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: block;
 }
 
-despedida {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #ffffff 30%, var(--neon-magenta) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-top: 4.5rem;
-  filter: drop-shadow(0 0 25px rgba(255, 0, 127, 0.35));
+escuchar::after {
+  content: "CLICK PARA REPRODUCIR SÍNTESIS";
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--theme-rio);
+  -webkit-text-fill-color: var(--theme-rio);
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
+eco {
+  margin-top: 2.5rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #e0f2fe;
 }
 
 /* ==========================================================================
-   OPTIMIZACIÓN PARA IMPRESIÓN CONTINUA EN PAPEL (BLANCO Y NEGRO PURO)
+   SECCIÓN 05: CIERRE // MANIFIESTO SOLAR & LIBERTAD
+   ========================================================================== */
+cierre {
+  background: linear-gradient(165deg, rgba(26, 20, 6, 0.88) 0%, rgba(8, 6, 2, 0.98) 100%);
+  border: 1px solid rgba(255, 184, 0, 0.38);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 0 50px rgba(255, 184, 0, 0.08);
+}
+
+cierre::before {
+  border: 2px solid var(--theme-cierre);
+  box-shadow: 0 0 18px var(--theme-cierre), 0 0 35px var(--glow-amber);
+}
+
+cierre::after {
+  background: rgba(255, 184, 0, 0.14);
+  border: 1px solid rgba(255, 184, 0, 0.45);
+  color: var(--theme-cierre);
+  box-shadow: 0 0 15px rgba(255, 184, 0, 0.25);
+}
+
+cierre:hover {
+  border-color: var(--theme-cierre);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 184, 0, 0.25);
+  transform: translateY(-4px);
+}
+
+cierre:hover::before {
+  background: var(--theme-cierre);
+  transform: scale(1.4);
+  box-shadow: 0 0 30px var(--theme-cierre);
+}
+
+cierre titulo {
+  background: linear-gradient(135deg, #ffffff 10%, var(--theme-cierre) 70%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255, 184, 0, 0.35));
+}
+
+construccion,
+mirada,
+proceso,
+sentido {
+  margin: 2.2rem 0;
+  font-size: 1.18rem;
+}
+
+esencia {
+  position: relative;
+  padding: 2rem 2.4rem;
+  background: rgba(255, 184, 0, 0.07);
+  border: 1px solid rgba(255, 184, 0, 0.35);
+  border-radius: 10px;
+  margin: 2.5rem 0;
+  font-size: 1.25rem;
+  line-height: 1.9;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+esencia::before {
+  content: "[AXIOMA FUNDAMENTAL // LA ESENCIA TÉCNICA]";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--theme-cierre);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+libertad {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+  line-height: 1.7;
+  font-style: italic;
+  color: #fffbeb;
+  background: linear-gradient(135deg, rgba(255, 184, 0, 0.12), rgba(255, 184, 0, 0.02));
+  border-left: 4px solid var(--theme-cierre);
+  padding: 2.5rem 2.8rem;
+  border-radius: 0 12px 12px 0;
+  margin: 3.5rem 0;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 184, 0, 0.15);
+}
+
+despedida {
+  font-size: clamp(2.6rem, 6vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #ffffff 20%, var(--theme-cierre) 70%, #ff007f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 5rem;
+  filter: drop-shadow(0 0 30px rgba(255, 184, 0, 0.45));
+}
+
+despedida::after {
+  content: attr(data-label) " // TRANSMISIÓN COMPLETADA CON ÉXITO";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  color: var(--theme-cierre);
+  -webkit-text-fill-color: var(--theme-cierre);
+  margin-top: 1rem;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   ELEMENTO CLAVE INTERACTIVO CON EXPANSOR HOLOGRÁFICO
+   ========================================================================== */
+clave {
+  color: #ffffff;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 1.05em;
+  position: relative;
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline;
+}
+
+clave:hover {
+  color: var(--bg-deep);
+  background: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 25px #ffffff, 0 0 50px var(--theme-global);
+  text-shadow: none;
+}
+
+/* ==========================================================================
+   TÍTULOS GENERALES
+   ========================================================================== */
+titulo {
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin: 0 0 2.8rem 0;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   OPTIMIZACIÓN DE IMPRESIÓN CONTINUA EN PAPEL (BLANCO Y NEGRO PURO)
    ========================================================================== */
 @media print {
   body {
@@ -543,7 +957,7 @@ despedida {
     border: none !important;
     border-bottom: 1px solid #cccccc !important;
     border-radius: 0 !important;
-    padding: 2rem 0 !important;
+    padding: 2.2rem 0 !important;
     box-shadow: none !important;
     page-break-inside: avoid;
   }
@@ -552,7 +966,14 @@ despedida {
   historias-anansi::before,
   panuelos-angisa::before,
   canciones-rio::before,
-  cierre::before {
+  cierre::before,
+  origen::after,
+  historias-anansi::after,
+  panuelos-angisa::after,
+  canciones-rio::after,
+  cierre::after,
+  saludo::after,
+  despedida::after {
     display: none !important;
   }
 
@@ -574,10 +995,17 @@ despedida {
     padding: 0 !important;
   }
 
-  capas {
+  capas,
+  vigilancia,
+  definicion,
+  camuflaje,
+  esencia,
+  libertad {
     background: none !important;
     border: none !important;
     padding: 0 !important;
+    box-shadow: none !important;
+    color: #111111 !important;
   }
 
   secreto,
@@ -591,6 +1019,15 @@ despedida {
     box-shadow: none !important;
   }
 
+  secreto::before,
+  alerta::before,
+  resistencia::before,
+  capas::before,
+  vigilancia::before,
+  esencia::before {
+    display: none !important;
+  }
+
   rio {
     display: none;
   }
@@ -600,6 +1037,7 @@ despedida {
     background: #f9f9f9;
   }
 }
+
 
 
 
