@@ -127,7 +127,7 @@ if (riverContainer) {
 
 // 3. Sintetizador de voz para el cierre del ensayo
 const closingNarrative =
-  'La tecnología no empezó con internet ni con las pantallas. Ha existido siempre en el ingenio de las personas para organizarse, resistir y ser libres con lo que tienen a la mano. La verdadera innovación radica en proteger la dignidad y la vida. Muchas gracias.';
+  'Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología. La tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos. Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres. Muchas gracias.';
 
 function speakClosing() {
   if (!('speechSynthesis' in window)) {

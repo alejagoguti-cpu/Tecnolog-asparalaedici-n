@@ -89,6 +89,8 @@ conclusion-ensayo,
 parrafo-conclusion,
 cita-cierre,
 parrafo-cierre,
+proposito-diseno,
+agradecimiento-final,
 colofon-ensayo,
 item-colofon {
   display: block;
@@ -106,6 +108,7 @@ disparador-cierre,
 estado-sonido,
 clave-indice,
 resalte-figura,
+resalte-concepto,
 selector,
 propiedad,
 valor,
@@ -352,11 +355,17 @@ prosa-principal {
 
 sentimiento,
 concepto,
-afirmacion {
+afirmacion,
+proposito-diseno {
   color: var(--paper-dim);
   font-size: 1.02rem;
   line-height: 1.9;
   margin-bottom: 1.5rem;
+}
+
+resalte-concepto {
+  color: var(--acid);
+  font-weight: 500;
 }
 
 /* Partitura de código conceptual */
@@ -846,6 +855,43 @@ instruccion-transmision {
   line-height: 1.75;
   color: var(--paper-dim);
   margin: 0 0 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   REFLEXIÓN FINAL Y CONCLUSIÓN
+   -------------------------------------------------------------------------- */
+conclusion-ensayo {
+  max-width: var(--measure-prose);
+  margin: 2rem 0;
+}
+
+parrafo-conclusion,
+parrafo-cierre {
+  color: var(--paper);
+  font-size: 1.06rem;
+  line-height: 1.9;
+  margin-bottom: 1.8rem;
+}
+
+cita-cierre {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--acid);
+  margin: 2.5rem 0;
+  padding-left: 1.8rem;
+  border-left: 2px solid var(--acid);
+}
+
+agradecimiento-final {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--paper);
+  margin-top: 3rem;
+  letter-spacing: 0.02em;
 }
 
 /* --------------------------------------------------------------------------
