@@ -4,7 +4,7 @@
  */
 
 // 1. Seguimiento fluido de luminiscencia del cursor
-const glow = document.querySelector('.cursor-glow');
+const glow = document.querySelector('cursor-luminiscencia, .cursor-glow');
 if (glow) {
   window.addEventListener('pointermove', (event) => {
     glow.style.left = `${event.clientX}px`;

@@ -1,6 +1,6 @@
 /* ==========================================================================
    TECNOLOGÍAS DEL SECRETO — ENSAYO EDITORIAL EN CÓDIGO
-   Inspirado en la poética del código, lenguajes relacionales y estética editorial
+   Poética del código, lenguajes relacionales y estética editorial clandestina
    ========================================================================== */
 
 :root {
@@ -20,6 +20,90 @@
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-mono: "DM Mono", "Courier New", monospace;
   --measure-prose: 72ch;
+}
+
+/* --------------------------------------------------------------------------
+   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS DEL ENSAYO EN CÓDIGO
+   -------------------------------------------------------------------------- */
+cuerpo-manuscrito,
+ensayo,
+modulo,
+cabecera-ensayo,
+navegacion-manuscrito,
+estado-canal,
+subtitulo-archivo,
+numero-archivo,
+titulo-principal,
+dedicatoria,
+pensamiento,
+prosa-principal,
+sentimiento,
+concepto,
+afirmacion,
+partitura-codigo,
+navegacion-lectura,
+cabecera-capitulo,
+indice-capitulo,
+categoria-tecnologia,
+titulo-capitulo,
+tecnologia,
+relato,
+estrategia,
+referente,
+cita-texto,
+cita-origen,
+topologia,
+figura-interactiva,
+rotulo-figura,
+diagrama-red,
+nota-cifrada,
+encabezado-cifrado,
+texto-cifrado,
+texto-descifrado,
+contexto-historico,
+gramatica-textil,
+estudio-pliegues,
+pliegue,
+cabecera-pliegue,
+codigo-pliegue,
+nombre-pliegue,
+descripcion-pliegue,
+interaccion-pliegue,
+mensaje-oculto,
+pista-pliegue,
+microtexto-estado,
+conclusion-textil,
+canto,
+mecanica-acustica,
+resonancia-ancestral,
+caja-transmision,
+envoltura-qr,
+info-transmision,
+etiqueta-transmision,
+instruccion-transmision,
+conclusion-ensayo,
+parrafo-conclusion,
+cita-cierre,
+parrafo-cierre,
+colofon-ensayo,
+item-colofon {
+  display: block;
+}
+
+destaque-titulo,
+enlace-inicio,
+faro-activo,
+canal-etiqueta,
+selector,
+propiedad,
+valor,
+enlace-lectura,
+linea-guia,
+nodo-central,
+nodo-red,
+glifo-alerta,
+glifo-escudo {
+  display: inline-block;
 }
 
 /* --------------------------------------------------------------------------
@@ -51,18 +135,10 @@ body {
   color: var(--ink);
 }
 
-/* Elementos personalizados del ensayo en código */
-pensamiento,
-relato,
-canto,
-pliegue {
-  display: block;
-}
-
 /* --------------------------------------------------------------------------
    ATMÓSFERA VISUAL (GRAIN & CURSOR GLOW)
    -------------------------------------------------------------------------- */
-.grain {
+atmosfera-grano {
   position: fixed;
   inset: 0;
   opacity: 0.065;
@@ -71,7 +147,7 @@ pliegue {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 }
 
-.cursor-glow {
+cursor-luminiscencia {
   position: fixed;
   width: 32rem;
   height: 32rem;
@@ -84,9 +160,9 @@ pliegue {
 }
 
 /* --------------------------------------------------------------------------
-   CABECERA PRINCIPAL (MASTHEAD)
+   CABECERA DEL MANUSCRITO
    -------------------------------------------------------------------------- */
-.masthead {
+cabecera-ensayo {
   height: 72px;
   position: absolute;
   top: 0;
@@ -103,35 +179,33 @@ pliegue {
   backdrop-filter: blur(10px);
 }
 
-.sigil {
+enlace-inicio {
   color: var(--acid);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.14em;
+  cursor: pointer;
 }
 
-.sigil dfn {
+enlace-inicio dfn {
   color: var(--paper);
   font-style: normal;
 }
 
-.status {
-  margin: 0;
+estado-canal {
   opacity: 0.75;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.status-beacon {
-  display: inline-block;
+faro-activo {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background-color: var(--acid);
   box-shadow: 0 0 10px var(--acid);
-  padding: 0;
 }
 
 .sound-button,
@@ -161,9 +235,9 @@ pliegue {
 }
 
 /* --------------------------------------------------------------------------
-   ESTRUCTURA DEL ENSAYO
+   ESTRUCTURA Y CUERPO DEL ENSAYO
    -------------------------------------------------------------------------- */
-.essay {
+ensayo {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 6vw;
@@ -172,9 +246,9 @@ pliegue {
 }
 
 /* --------------------------------------------------------------------------
-   PRÓLOGO Y APERTURA (HERO)
+   PRÓLOGO Y APERTURA
    -------------------------------------------------------------------------- */
-.essay-hero {
+modulo[nombre="prologo"] {
   min-height: 95vh;
   position: relative;
   display: flex;
@@ -184,7 +258,7 @@ pliegue {
   border-bottom: 1px solid var(--line);
 }
 
-.essay-hero::before {
+modulo[nombre="prologo"]::before {
   content: "";
   position: absolute;
   width: 55vw;
@@ -200,7 +274,8 @@ pliegue {
   animation: rotate-orbit 60s linear infinite;
 }
 
-.eyebrow {
+subtitulo-archivo,
+categoria-tecnologia {
   font-size: 11px;
   letter-spacing: 0.16em;
   color: var(--acid);
@@ -209,11 +284,10 @@ pliegue {
   font-weight: 500;
 }
 
-.hero-number {
+numero-archivo {
   position: absolute;
   right: 0;
   top: 18vh;
-  margin: 0;
   font-family: var(--font-serif);
   font-size: clamp(8rem, 20vw, 18rem);
   line-height: 0.75;
@@ -224,7 +298,7 @@ pliegue {
   user-select: none;
 }
 
-.split-title {
+titulo-principal {
   font-family: var(--font-serif);
   font-size: clamp(3.8rem, 9vw, 8.5rem);
   font-weight: 600;
@@ -233,18 +307,14 @@ pliegue {
   margin: 1rem 0 3.5rem;
 }
 
-.split-title em {
+destaque-titulo {
   color: var(--acid);
   font-style: italic;
   font-weight: 400;
   display: block;
 }
 
-.prologue-prose {
-  max-width: var(--measure-prose);
-}
-
-.salutation {
+dedicatoria {
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-style: italic;
@@ -252,33 +322,28 @@ pliegue {
   margin-bottom: 1.2rem;
 }
 
-.lead {
+pensamiento {
+  max-width: var(--measure-prose);
+}
+
+prosa-principal {
   font-size: 1.18rem;
   line-height: 1.85;
   color: var(--paper);
   margin-bottom: 1.5rem;
 }
 
-.lead em {
-  color: var(--acid);
-  font-style: normal;
-  border-bottom: 1px dotted var(--acid);
-}
-
-.prologue-prose p {
+sentimiento,
+concepto,
+afirmacion {
   color: var(--paper-dim);
   font-size: 1.02rem;
+  line-height: 1.9;
   margin-bottom: 1.5rem;
 }
 
-mark {
-  background: transparent;
-  color: var(--acid);
-  font-weight: 500;
-}
-
-/* Bloque de código conceptual / Poética del CSS */
-.code-specimen {
+/* Partitura de código conceptual */
+partitura-codigo {
   margin: 2.5rem 0 1rem;
   padding: 1.5rem 2rem;
   background: rgba(10, 13, 14, 0.85);
@@ -288,46 +353,46 @@ mark {
   max-width: var(--measure-prose);
 }
 
-.code-specimen pre {
+partitura-codigo pre {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 12.5px;
   line-height: 1.7;
 }
 
-.code-specimen .selector {
+selector {
   color: var(--acid);
   font-weight: 500;
 }
 
-.code-specimen .prop {
+propiedad {
   color: var(--mist);
 }
 
-.code-specimen .val {
+valor {
   color: var(--paper);
 }
 
-.scroll-navigation {
+navegacion-lectura {
   margin-top: 3.5rem;
 }
 
-.scroll-invite {
+enlace-lectura {
   display: inline-flex;
   align-items: center;
   color: var(--paper);
   text-decoration: none;
   font-size: 11px;
   letter-spacing: 0.14em;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.scroll-invite:hover {
+enlace-lectura:hover {
   color: var(--acid);
 }
 
-.invite-line {
-  display: inline-block;
+linea-guia {
   width: 46px;
   height: 1px;
   background-color: var(--acid);
@@ -336,31 +401,31 @@ mark {
 }
 
 /* --------------------------------------------------------------------------
-   CAPÍTULOS TEMÁTICOS DEL ENSAYO
+   MÓDULOS Y CAPÍTULOS DEL ENSAYO
    -------------------------------------------------------------------------- */
-.chapter {
+modulo:not([nombre="prologo"]) {
   padding: 10rem 0;
   border-bottom: 1px solid var(--line);
   position: relative;
 }
 
-.chapter-header {
+cabecera-capitulo {
   margin-bottom: 4rem;
 }
 
-.chapter-index {
+indice-capitulo {
   color: var(--acid);
   font-size: 11px;
   letter-spacing: 0.16em;
   margin: 0 0 0.8rem;
 }
 
-.chapter-index dfn {
+indice-capitulo dfn {
   font-style: normal;
   font-weight: 500;
 }
 
-.chapter h2 {
+titulo-capitulo {
   font-family: var(--font-serif);
   font-size: clamp(2.6rem, 6vw, 5.2rem);
   font-weight: 600;
@@ -369,37 +434,32 @@ mark {
   margin: 0.8rem 0 0;
 }
 
-.chapter h2 em {
-  color: var(--acid);
-  font-style: italic;
-  font-weight: 400;
-}
-
-.chapter-body {
+tecnologia {
   max-width: var(--measure-prose);
 }
 
-.chapter-body p {
+relato,
+estrategia,
+topologia,
+contexto-historico,
+gramatica-textil,
+conclusion-textil,
+canto,
+mecanica-acustica,
+resonancia-ancestral,
+parrafo-conclusion,
+parrafo-cierre {
   font-size: 1.05rem;
   line-height: 1.95;
   color: var(--paper-dim);
   margin-bottom: 2rem;
 }
 
-.chapter-body p strong {
-  color: var(--paper);
-  font-weight: 500;
-}
-
-.chapter-body p em {
-  color: var(--acid);
-  font-style: italic;
-}
-
 /* --------------------------------------------------------------------------
-   CITAS Y EPÍGRAFES EDITORIALES
+   REFERENTES Y CITAS EDITORIALES
    -------------------------------------------------------------------------- */
-blockquote {
+referente,
+cita-cierre {
   margin: 3.5rem 0;
   padding: 2.2rem 2.5rem;
   border-left: 3px solid var(--acid);
@@ -407,7 +467,8 @@ blockquote {
   position: relative;
 }
 
-blockquote p {
+cita-texto,
+cita-cierre {
   font-family: var(--font-serif);
   font-size: clamp(1.2rem, 2.8vw, 1.6rem);
   line-height: 1.5;
@@ -416,7 +477,7 @@ blockquote p {
   margin: 0 0 1rem;
 }
 
-blockquote cite {
+cita-origen {
   display: block;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -427,9 +488,9 @@ blockquote cite {
 }
 
 /* --------------------------------------------------------------------------
-   FIGURAS INTERACTIVAS Y DIAGRAMAS
+   FIGURAS INTERACTIVAS Y TOPOLOGÍAS
    -------------------------------------------------------------------------- */
-.interactive-figure {
+figura-interactiva {
   margin: 4.5rem 0 3.5rem;
   padding: 2.5rem;
   border: 1px solid var(--line);
@@ -437,7 +498,7 @@ blockquote cite {
   border-radius: 4px;
 }
 
-.figure-caption {
+rotulo-figura {
   font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--mist);
@@ -445,12 +506,12 @@ blockquote cite {
   line-height: 1.6;
 }
 
-.figure-caption strong {
+rotulo-figura strong {
   color: var(--acid);
 }
 
 /* Diagrama de red de Anansi */
-.web-diagram {
+diagrama-red {
   height: 380px;
   position: relative;
   background:
@@ -461,15 +522,15 @@ blockquote cite {
   border-radius: 4px;
 }
 
-.web-diagram::before,
-.web-diagram::after {
+diagrama-red::before,
+diagrama-red::after {
   content: "";
   position: absolute;
   inset: 0;
   background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0 29deg, rgba(231, 223, 207, 0.14) 30deg 31deg, transparent 32deg 59deg);
 }
 
-.web-center {
+nodo-central {
   position: absolute;
   z-index: 3;
   left: 50%;
@@ -486,7 +547,7 @@ blockquote cite {
   box-shadow: 0 0 20px rgba(215, 255, 56, 0.25);
 }
 
-.node {
+nodo-red {
   position: absolute;
   color: var(--paper);
   background: rgba(16, 21, 23, 0.9);
@@ -498,13 +559,13 @@ blockquote cite {
   border-radius: 2px;
 }
 
-.n1 { left: 15%; top: 22%; }
-.n2 { right: 15%; top: 24%; }
-.n3 { left: 20%; bottom: 20%; }
-.n4 { right: 20%; bottom: 18%; }
+nodo-red.n1 { left: 15%; top: 22%; }
+nodo-red.n2 { right: 15%; top: 24%; }
+nodo-red.n3 { left: 20%; bottom: 20%; }
+nodo-red.n4 { right: 20%; bottom: 18%; }
 
 /* Capa oculta / decodificador */
-.cipher-note {
+nota-cifrada {
   margin: 3.5rem 0;
   padding: 2.5rem;
   border: 1px solid var(--line-light);
@@ -514,17 +575,20 @@ blockquote cite {
   transition: border-color 0.4s ease, background-color 0.4s ease;
 }
 
-.cipher-note:hover {
+nota-cifrada:hover {
   border-color: var(--line-acid);
   background: rgba(215, 255, 56, 0.025);
 }
 
-.cipher-header .eyebrow {
+encabezado-cifrado {
   font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--acid);
   margin-bottom: 0.8rem;
+  text-transform: uppercase;
 }
 
-.cipher-text {
+texto-cifrado {
   font-family: var(--font-serif);
   font-size: clamp(1.4rem, 3.2vw, 2.2rem);
   line-height: 1.25;
@@ -534,13 +598,13 @@ blockquote cite {
   transition: all 0.6s ease;
 }
 
-.cipher-note:hover .cipher-text {
+nota-cifrada:hover texto-cifrado {
   color: var(--paper);
   text-shadow: 0 0 25px rgba(215, 255, 56, 0.22);
   -webkit-text-stroke: 0px transparent;
 }
 
-.decoded {
+texto-descifrado {
   display: block;
   font-size: 11px;
   color: var(--acid);
@@ -551,7 +615,7 @@ blockquote cite {
   line-height: 1.6;
 }
 
-.cipher-note:hover .decoded {
+nota-cifrada:hover texto-descifrado {
   max-height: 5rem;
   opacity: 1;
   margin-top: 0.8rem;
@@ -560,14 +624,14 @@ blockquote cite {
 /* --------------------------------------------------------------------------
    ESTUDIO DE PLIEGUES ANGISAS (CRIPTOGRAFÍA TEXTIL)
    -------------------------------------------------------------------------- */
-.folds-study {
+estudio-pliegues {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin: 3.5rem 0 3rem;
 }
 
-.fold-card {
+pliegue {
   min-height: 380px;
   padding: 2rem 1.8rem;
   position: relative;
@@ -580,19 +644,19 @@ blockquote cite {
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.fold-card:hover {
+pliegue:hover {
   transform: translateY(-6px);
   border-color: var(--line-light);
 }
 
-.fold-card-header .fold-code {
+codigo-pliegue {
   font-size: 10px;
   letter-spacing: 0.12em;
   color: var(--mist);
   margin: 0 0 0.5rem;
 }
 
-.fold-card-header h3 {
+nombre-pliegue {
   font-family: var(--font-serif);
   font-size: 1.85rem;
   font-weight: 600;
@@ -600,25 +664,25 @@ blockquote cite {
   color: var(--paper);
 }
 
-.fold-description {
+descripcion-pliegue {
   font-size: 12.5px;
   line-height: 1.75;
   color: var(--paper-dim);
   margin: 1.2rem 0;
 }
 
-.fold-interaction {
+interaccion-pliegue {
   border-top: 1px solid var(--line);
   padding-top: 1rem;
 }
 
 /* Pliegue 1: El secreto */
-.fold-secret {
+pliegue.fold-secret {
   background: rgba(189, 207, 183, 0.06);
   border-color: rgba(189, 207, 183, 0.22);
 }
 
-.fold-secret .concealed {
+mensaje-oculto {
   font-size: 13px;
   line-height: 1.6;
   color: var(--paper);
@@ -628,12 +692,12 @@ blockquote cite {
   margin: 0 0 0.6rem;
 }
 
-.fold-secret:hover .concealed {
+pliegue.fold-secret:hover mensaje-oculto {
   opacity: 1;
   filter: blur(0);
 }
 
-.fold-hint {
+pista-pliegue {
   font-size: 9px;
   letter-spacing: 0.1em;
   color: var(--acid);
@@ -641,17 +705,17 @@ blockquote cite {
 }
 
 /* Pliegue 2: La alerta */
-.fold-alert {
+pliegue.fold-alert {
   background: rgba(184, 51, 44, 0.12);
   border-color: rgba(184, 51, 44, 0.45);
 }
 
-.fold-alert:hover {
+pliegue.fold-alert:hover {
   box-shadow: 0 10px 25px rgba(184, 51, 44, 0.25);
   border-color: var(--red);
 }
 
-.alert-glyph {
+glifo-alerta {
   font-size: 1.8rem;
   color: var(--red);
   display: block;
@@ -659,7 +723,7 @@ blockquote cite {
   animation: pulse-alert 1.5s infinite;
 }
 
-.fold-microtext {
+microtexto-estado {
   font-size: 10px;
   letter-spacing: 0.1em;
   color: var(--paper);
@@ -668,13 +732,13 @@ blockquote cite {
 }
 
 /* Pliegue 3: La resistencia */
-.fold-resistance {
+pliegue.fold-resistance {
   background: rgba(16, 21, 23, 0.85);
   border-color: rgba(231, 223, 207, 0.28);
   box-shadow: inset 0 0 0 2px rgba(231, 223, 207, 0.08);
 }
 
-.shield-glyph {
+glifo-escudo {
   font-size: 1.6rem;
   color: var(--acid);
   display: block;
@@ -684,10 +748,6 @@ blockquote cite {
 /* --------------------------------------------------------------------------
    CAPÍTULO DEL RÍO Y REDES ACÚSTICAS
    -------------------------------------------------------------------------- */
-.river-figure {
-  margin: 4rem 0;
-}
-
 #riverCanvas {
   width: 100%;
   height: 260px;
@@ -698,7 +758,7 @@ blockquote cite {
 }
 
 /* Transmisión de voz y QR */
-.transmission-box {
+caja-transmision {
   margin: 4.5rem 0 2rem;
   padding: 2.5rem;
   border: 1px solid var(--line-light);
@@ -709,7 +769,7 @@ blockquote cite {
   align-items: center;
 }
 
-.qr-figure {
+envoltura-qr {
   width: 140px;
   height: 140px;
   flex: none;
@@ -720,7 +780,7 @@ blockquote cite {
   border-radius: 2px;
 }
 
-.qr-figure img {
+envoltura-qr img {
   display: block;
   width: 100%;
   height: 100%;
@@ -735,7 +795,15 @@ blockquote cite {
   background: transparent;
 }
 
-.transmission-info p {
+etiqueta-transmision {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--acid);
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+instruccion-transmision {
   font-size: 12.5px;
   line-height: 1.75;
   color: var(--paper-dim);
@@ -743,64 +811,9 @@ blockquote cite {
 }
 
 /* --------------------------------------------------------------------------
-   EPÍLOGO Y CONCLUSIONES DEL ENSAYO
-   -------------------------------------------------------------------------- */
-.essay-conclusion {
-  padding: 10rem 0 8rem;
-  position: relative;
-}
-
-.conclusion-header {
-  margin-bottom: 3.5rem;
-}
-
-.conclusion-header h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 6.5vw, 5.6rem);
-  font-weight: 600;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  margin: 0.8rem 0 0;
-}
-
-.conclusion-header h2 em {
-  color: var(--acid);
-  font-style: italic;
-  font-weight: 400;
-}
-
-.conclusion-prose {
-  max-width: var(--measure-prose);
-}
-
-.conclusion-prose p {
-  font-size: 1.08rem;
-  line-height: 1.95;
-  color: var(--paper-dim);
-  margin-bottom: 2rem;
-}
-
-.closing-quote {
-  margin: 4rem 0;
-  padding: 2.8rem 3rem;
-  border-left: 4px solid var(--acid);
-  background: rgba(215, 255, 56, 0.035);
-  border-radius: 0 4px 4px 0;
-}
-
-.closing-quote p {
-  font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
-  line-height: 1.4;
-  color: var(--paper);
-  font-style: italic;
-  margin: 0;
-}
-
-/* --------------------------------------------------------------------------
    COLOFÓN Y PIE DE PÁGINA
    -------------------------------------------------------------------------- */
-.colophon {
+colofon-ensayo {
   border-top: 1px solid var(--line);
   padding: 2.5rem 6vw;
   display: flex;
@@ -814,7 +827,7 @@ blockquote cite {
   gap: 1rem;
 }
 
-.colophon-item small {
+item-colofon {
   font-size: inherit;
 }
 
@@ -836,37 +849,35 @@ blockquote cite {
 }
 
 @media (max-width: 820px) {
-  .masthead {
+  cabecera-ensayo {
     padding: 0 5vw;
   }
-  .status {
+  estado-canal {
     display: none;
   }
-  .essay {
+  ensayo {
     padding: 0 5vw;
   }
-  .chapter,
-  .essay-hero,
-  .essay-conclusion {
-    padding: 6rem 0;
+  modulo {
+    padding: 6rem 0 !important;
   }
-  .folds-study {
+  estudio-pliegues {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  .fold-card {
+  pliegue {
     min-height: 260px;
   }
-  .web-diagram {
+  diagrama-red {
     height: 280px;
   }
-  .transmission-box {
+  caja-transmision {
     flex-direction: column;
     align-items: flex-start;
     padding: 1.8rem;
     gap: 1.5rem;
   }
-  .colophon {
+  colofon-ensayo {
     flex-direction: column;
     align-items: flex-start;
   }

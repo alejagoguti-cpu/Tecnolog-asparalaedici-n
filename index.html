@@ -11,286 +11,274 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Atmósfera visual: grano analógico y señal lumínica -->
-  <aside class="grain" aria-hidden="true"></aside>
-  <aside class="cursor-glow" aria-hidden="true"></aside>
+  <!-- Atmósfera visual: grano analógico y luminiscencia de lectura -->
+  <atmosfera-grano aria-hidden="true"></atmosfera-grano>
+  <cursor-luminiscencia aria-hidden="true"></cursor-luminiscencia>
 
-  <header class="masthead">
-    <nav class="masthead-nav" aria-label="Navegación del manuscrito">
-      <a class="sigil" href="#inicio" aria-label="Volver al inicio del ensayo">TS<dfn title="Tecnologías del Secreto">·</dfn>01</a>
-    </nav>
-    <p class="status">
-      <mark class="status-beacon" aria-hidden="true"></mark>
-      <span>CANAL SEGURO / <time datetime="1763">1763</time>—PRESENTE</span>
-    </p>
+  <cabecera-ensayo>
+    <navegacion-manuscrito aria-label="Navegación del manuscrito">
+      <enlace-inicio href="#inicio" aria-label="Volver al inicio del ensayo">TS<dfn title="Tecnologías del Secreto">·</dfn>01</enlace-inicio>
+    </navegacion-manuscrito>
+    <estado-canal>
+      <faro-activo aria-hidden="true"></faro-activo>
+      <canal-etiqueta>CANAL SEGURO / <time datetime="1763">1763</time>—PRESENTE</canal-etiqueta>
+    </estado-canal>
     <button type="button" class="sound-button" id="soundToggle" aria-pressed="false">
       ATMÓSFERA SONORA: <strong>OFF</strong>
     </button>
-  </header>
+  </cabecera-ensayo>
 
-  <main>
-    <article class="essay" id="inicio">
+  <cuerpo-manuscrito>
+    <ensayo tema="tecnologias-del-secreto" id="inicio">
 
       <!-- ====================================================================
            PRÓLOGO: EL CÓDIGO COMO COSTURA Y LENGUAJE RELACIONAL
            ==================================================================== -->
-      <header class="essay-hero" id="prologo">
-        <p class="eyebrow"><time datetime="2026">ARCHIVO 01</time> · ENSAYO EN CÓDIGO Y LECTURA CRÍTICA</p>
-        <p class="hero-number" aria-hidden="true">01</p>
-        <h1 class="split-title">Tecnologías<br><em>del secreto</em></h1>
+      <modulo nombre="prologo" id="prologo">
+        <subtitulo-archivo><time datetime="2026">ARCHIVO 01</time> · ENSAYO EN CÓDIGO Y POÉTICA DIGITAL</subtitulo-archivo>
+        <numero-archivo aria-hidden="true">01</numero-archivo>
+        <titulo-principal>Tecnologías<destaque-titulo>del secreto</destaque-titulo></titulo-principal>
 
-        <section class="prologue-prose">
-          <p class="salutation">Buenos días, Liliana.</p>
+        <dedicatoria>Buenos días, Liliana.</dedicatoria>
 
-          <pensamiento modulo="definicion-de-tecnica" estado="apertura">
-            <p class="lead">
-              El código es un lenguaje que permite relacionar: pensamientos, emociones y sensaciones; entradas, salidas y modulaciones; mandatos, silencios, transmisiones y excepciones; memorias, desvelos, resistencias y fugas.
-            </p>
-            <p>
-              Solemos cometer el error de confinar la palabra <em>tecnología</em> al cristal líquido de una pantalla o a la frialdad de un procesador de silicio. Sin embargo, todo se trata desde siempre de <strong>lenguajes secretos que nadie ve, pero que existen</strong>. Doblar y desdoblar el lenguaje, desdoblar y doblar el textil. Ir y venir entre sus partes, cuestionarlas, observarlas, comprenderlas. Dar el tiempo para que hablen y las escuchemos, para encontrar los puntos abiertos que nos permiten relacionarnos con ellas desde dentro hacia fuera.
-            </p>
-            <p>
-              Cuando el poder hegemónico prohíbe la palabra directa, vigila los cuerpos y confisca la escritura, la tecnología muta hacia lo imperceptible: se aloja en el cuento de la abuela, en el almidón de un pañuelo doblado sobre la cabeza y en la vibración acústica de un río nocturno.
-            </p>
-          </pensamiento>
-        </section>
+        <pensamiento modulo="definicion-de-tecnica" estado="apertura">
+          <prosa-principal>
+            El código es un lenguaje que permite relacionar: pensamientos, emociones y sensaciones; entradas, salidas y modulaciones; mandatos, silencios, transmisiones y excepciones; memorias, desvelos, resistencias y fugas.
+          </prosa-principal>
+          <sentimiento tipo="asombro">
+            Solemos cometer el error de confinar la palabra tecnología al cristal líquido de una pantalla o a la frialdad de un procesador de silicio.
+          </sentimiento>
+          <concepto nombre="lenguaje-secreto">
+            Todo se trata desde siempre de lenguajes secretos que nadie ve, pero que existen. Doblar y desdoblar el lenguaje, desdoblar y doblar el textil. Ir y volver entre sus partes, cuestionarlas, observarlas, comprenderlas. Dar el tiempo para que hablen y las escuchemos, para encontrar los puntos abiertos que nos permiten relacionarnos con ellas. Puntos abiertos que permiten ver lo que hay por dentro desde fuera.
+          </concepto>
+          <afirmacion tipo="mutacion-invisible">
+            Cuando el poder hegemónico prohíbe la palabra directa, vigila los cuerpos y confisca la escritura, la tecnología no desaparece: muta hacia lo imperceptible. Se aloja en el cuento de la abuela, en el almidón de un pañuelo doblado sobre la cabeza y en la vibración acústica de un río nocturno.
+          </afirmacion>
+        </pensamiento>
 
         <!-- Poética del código fuente / Bloque conceptual de estilos -->
-        <figure class="code-specimen" aria-label="Declaración conceptual de la trama del ensayo">
-          <pre><code><span class="selector">.trama-de-la-resistencia</span> {
-  <span class="prop">materia</span>: <span class="val">voz, tela, agua</span>;
-  <span class="prop">front-end</span>: <span class="val">fábula inocente, vestuario doméstico, canto de faena</span>;
-  <span class="prop">back-end</span>: <span class="val">mapa de fuga, señal de peligro, protocolo de libertad</span>;
-  <span class="prop">cifrado</span>: <span class="val">el prejuicio del opresor</span>;
+        <partitura-codigo aria-label="Declaración conceptual de la trama del ensayo">
+          <pre><code><selector>.trama-de-la-resistencia</selector> {
+  <propiedad>materia</propiedad>: <valor>voz, tela, agua</valor>;
+  <propiedad>front-end</propiedad>: <valor>fábula inocente, vestuario doméstico, canto de faena</valor>;
+  <propiedad>back-end</propiedad>: <valor>mapa de fuga, señal de peligro, protocolo de libertad</valor>;
+  <propiedad>cifrado</propiedad>: <valor>el prejuicio del opresor</valor>;
 }</code></pre>
-        </figure>
+        </partitura-codigo>
 
-        <nav class="scroll-navigation" aria-label="Comenzar lectura">
-          <a class="scroll-invite" href="#esteganografia-oral">
-            <span class="invite-line" aria-hidden="true"></span>
+        <navegacion-lectura aria-label="Comenzar lectura">
+          <enlace-lectura href="#esteganografia-oral">
+            <linea-guia aria-hidden="true"></linea-guia>
             DESCIENDE PARA DESDOBLAR EL TEXTO
-          </a>
-        </nav>
-      </header>
+          </enlace-lectura>
+        </navegacion-lectura>
+      </modulo>
 
       <!-- ====================================================================
            I. ESTEGANOGRAFÍA ORAL: EL MITO DE ANANSI
            ==================================================================== -->
-      <section class="chapter" id="esteganografia-oral" aria-labelledby="titulo-capitulo-1">
-        <header class="chapter-header">
-          <p class="chapter-index"><dfn>SECCIÓN I</dfn> / 03</p>
-          <p class="eyebrow">PRIMERA TECNOLOGÍA · LA PALABRA CIFRADA</p>
-          <h2 id="titulo-capitulo-1">El mito de Anansi:<br><em>esteganografía oral</em></h2>
-        </header>
+      <modulo nombre="esteganografia-oral" id="esteganografia-oral">
+        <cabecera-capitulo>
+          <indice-capitulo><dfn>SECCIÓN I</dfn> / 03</indice-capitulo>
+          <categoria-tecnologia>PRIMERA TECNOLOGÍA · LA PALABRA CIFRADA</categoria-tecnologia>
+          <titulo-capitulo>El mito de Anansi:<destaque-titulo>esteganografía oral</destaque-titulo></titulo-capitulo>
+        </cabecera-capitulo>
 
-        <section class="chapter-body">
-          <relato tradicion="akan" dispositivo="fabula-tactica">
-            <p>
-              En las noches de las plantaciones del Caribe y las Américas, los barracones se convertían en nodos de una red distribuida de transmisión oral. Alrededor del fuego, las personas esclavizadas narraban las aventuras de <strong>Kwaku Anansi</strong>, la pequeña araña astuta que engañaba al tigre soberbio, burlaba a la serpiente y desafiaba a los reyes del bosque.
-            </p>
-            <p>
-              Para los capataces y colonos que vigilaban a la distancia, aquello era mero folclore infantil, un balbuceo inocuo de entretenimiento. Esa mirada paternalista y prejuiciosa fue precisamente la clave de seguridad del sistema. Lo que el amo no podía concebir como inteligencia se convertía en el envoltorio perfecto para transmitir instrucciones de escape, coordenadas fluviales y horarios de relevo de las guardias.
-            </p>
+        <tecnologia tipo="oralidad-esteganografica" tradicion="akan" mito="kwaku-anansi">
+          <relato>
+            En las noches de las plantaciones del Caribe y las Américas, los barracones se convertían en nodos de una red distribuida de transmisión oral. Alrededor del fuego, las personas esclavizadas narraban las aventuras de Kwaku Anansi, la pequeña araña astuta que engañaba al tigre soberbio, burlaba a la serpiente y desafiaba a los reyes del bosque.
           </relato>
+          <estrategia tipo="camuflaje-narrativo">
+            Para los capataces y colonos que vigilaban a la distancia, aquello era mero folclore infantil, un balbuceo inocuo de entretenimiento. Esa mirada paternalista y prejuiciosa fue precisamente la clave de seguridad del sistema. Lo que el amo no podía concebir como inteligencia se convertía en el envoltorio perfecto para transmitir instrucciones de escape, coordenadas fluviales y horarios de relevo de las guardias.
+          </estrategia>
 
-          <blockquote cite="https://example.com/tecnologias-del-secreto">
-            <p>
+          <referente fuente="cuaderno-de-campo" fecha="1763">
+            <cita-texto>
               «El front-end era la fábula de animales; el back-end era la ruta de evasión hacia los palenques y las cumbres cimarronas.»
-            </p>
-            <cite>— Cuaderno de campo: Oralidades y criptografía de la diáspora</cite>
-          </blockquote>
+            </cita-texto>
+            <cita-origen>— Cuaderno de campo: Oralidades y criptografía de la diáspora</cita-origen>
+          </referente>
 
-          <p>
+          <topologia red="anansi">
             La telaraña de Anansi no funcionaba como trampa, sino como diagrama topológico: una cartografía viviente trazada con palabras donde cada giro del relato correspondía a un punto de inflexión en el terreno.
-          </p>
+          </topologia>
 
           <!-- Figura interactiva: La red de transmisión -->
-          <figure class="interactive-figure web-figure" aria-label="Diagrama de red de transmisión oral">
-            <figcaption class="figure-caption">
+          <figura-interactiva class="web-figure" aria-label="Diagrama de red de transmisión oral">
+            <rotulo-figura>
               <strong>FIGURA 1.1:</strong> Topología de la red de Anansi — Nodos cardinales de navegación nocturna codificados en el relato.
-            </figcaption>
-            <section class="web-diagram" aria-hidden="true">
-              <span class="web-center">ANANSI</span>
-              <span class="node n1">RUTA</span>
-              <span class="node n2">NOCHE</span>
-              <span class="node n3">RÍO</span>
-              <span class="node n4">ESPERA</span>
-            </section>
-          </figure>
+            </rotulo-figura>
+            <diagrama-red aria-hidden="true">
+              <nodo-central>ANANSI</nodo-central>
+              <nodo-red class="n1">RUTA</nodo-red>
+              <nodo-red class="n2">NOCHE</nodo-red>
+              <nodo-red class="n3">RÍO</nodo-red>
+              <nodo-red class="n4">ESPERA</nodo-red>
+            </diagrama-red>
+          </figura-interactiva>
 
           <!-- Capa oculta / decodificador del ensayo -->
-          <aside class="cipher-note" aria-label="Capa de descifrado interactivo">
-            <header class="cipher-header">
-              <p class="eyebrow">CAPA OCULTA / PASA EL CURSOR O TOCA PARA DECIFRAR</p>
-            </header>
-            <p class="cipher-text">El prejuicio del opresor fue el escondite más seguro para la información.</p>
-            <output class="decoded">[ DESCIFRADO: Mirar más allá de la superficie aparente es la primera forma de escuchar la libertad. ]</output>
-          </aside>
-        </section>
-      </section>
+          <nota-cifrada aria-label="Capa de descifrado interactivo">
+            <encabezado-cifrado>CAPA OCULTA / PASA EL CURSOR O TOCA PARA DECIFRAR</encabezado-cifrado>
+            <texto-cifrado>El prejuicio del opresor fue el escondite más seguro para la información.</texto-cifrado>
+            <texto-descifrado>[ DESCIFRADO: Mirar más allá de la superficie aparente es la primera forma de escuchar la libertad. ]</texto-descifrado>
+          </nota-cifrada>
+        </tecnologia>
+      </modulo>
 
       <!-- ====================================================================
            II. CRIPTOGRAFÍA TEXTIL: LOS PAÑUELOS ANGISAS
            ==================================================================== -->
-      <section class="chapter" id="criptografia-textil" aria-labelledby="titulo-capitulo-2">
-        <header class="chapter-header">
-          <p class="chapter-index"><dfn>SECCIÓN II</dfn> / 03</p>
-          <p class="eyebrow">SEGUNDA TECNOLOGÍA · EL CUERPO Y EL TEJIDO</p>
-          <h2 id="titulo-capitulo-2">Los pañuelos angisa:<br><em>criptografía textil</em></h2>
-        </header>
+      <modulo nombre="criptografia-textil" id="criptografia-textil">
+        <cabecera-capitulo>
+          <indice-capitulo><dfn>SECCIÓN II</dfn> / 03</indice-capitulo>
+          <categoria-tecnologia>SEGUNDA TECNOLOGÍA · EL CUERPO Y EL TEJIDO</categoria-tecnologia>
+          <titulo-capitulo>Los pañuelos angisa:<destaque-titulo>criptografía textil</destaque-titulo></titulo-capitulo>
+        </cabecera-capitulo>
 
-        <section class="chapter-body">
-          <p>
-            Cuando la palabra hablada era castigada con la violencia inmediata, las mujeres afrodescendientes en Surinam y las Antillas crearon una tecnología silenciosa y portátil: la manipulación del <strong>angisa</strong>, el pañuelo almidonado de cabeza.
-          </p>
-          <p>
+        <tecnologia tipo="criptografia-textil" objeto="angisa" region="surinam-antillas">
+          <contexto-historico>
+            Cuando la palabra hablada era castigada con la violencia inmediata, las mujeres afrodescendientes en Surinam y las Antillas crearon una tecnología silenciosa y portátil: la manipulación del angisa, el pañuelo almidonado de cabeza.
+          </contexto-historico>
+          <gramatica-textil>
             Doblar y desdoblar la tela era doblar y desdoblar el lenguaje. Cada ángulo, cada doblez pronunciado, cada punta orientada hacia el hombro izquierdo o la coronilla constituía un carácter tipográfico en una gramática textil que los amos jamás pudieron descifrar.
-          </p>
+          </gramatica-textil>
 
           <!-- Estudio de los tres pliegues angisas -->
-          <section class="folds-study" aria-label="Estudio semiótico de los tres pliegues">
+          <estudio-pliegues aria-label="Estudio semiótico de los tres pliegues">
             
-            <pliegue tipo="secreto" accion="ocultar" class="fold-card fold-secret">
-              <header class="fold-card-header">
-                <p class="fold-code">PLIEGUE / 01 · ESTEGANOGRAMA</p>
-                <h3>El Secreto</h3>
-              </header>
-              <p class="fold-description">
+            <pliegue nombre="el-secreto" tipo="esteganograma" accion="doblar-interior" class="fold-secret">
+              <cabecera-pliegue>
+                <codigo-pliegue>PLIEGUE / 01 · ESTEGANOGRAMA</codigo-pliegue>
+                <nombre-pliegue>El Secreto</nombre-pliegue>
+              </cabecera-pliegue>
+              <descripcion-pliegue>
                 El mensaje vive guardado en el doblez interior. La tela almidonada resguarda una cavidad invisible para los ojos ajenos: la clave solo se entrega a quien sabe buscarla.
-              </p>
-              <aside class="fold-interaction">
-                <p class="concealed">«La ruta del norte permanece despejada. Encontrémonos tras el ocaso.»</p>
-                <span class="fold-hint">PASA EL CURSOR O TOCA PARA REVELAR</span>
-              </aside>
+              </descripcion-pliegue>
+              <interaccion-pliegue>
+                <mensaje-oculto>«La ruta del norte permanece despejada. Encontrémonos tras el ocaso.»</mensaje-oculto>
+                <pista-pliegue>PASA EL CURSOR O TOCA PARA REVELAR</pista-pliegue>
+              </interaccion-pliegue>
             </pliegue>
 
-            <pliegue tipo="alerta" estado="vigilancia" class="fold-card fold-alert">
-              <header class="fold-card-header">
-                <p class="fold-code">PLIEGUE / 02 · SEÑAL TEMPRANA</p>
-                <h3>La Alerta</h3>
-              </header>
-              <p class="fold-description">
+            <pliegue nombre="la-alerta" tipo="senal-temprana" estado="vigilancia" class="fold-alert">
+              <cabecera-pliegue>
+                <codigo-pliegue>PLIEGUE / 02 · SEÑAL TEMPRANA</codigo-pliegue>
+                <nombre-pliegue>La Alerta</nombre-pliegue>
+              </cabecera-pliegue>
+              <descripcion-pliegue>
                 Una de las puntas se levanta con rigidez hacia el cielo. El ritmo cotidiano se altera: anuncia peligro inminente, patrullas adicionales o sospecha de delación.
-              </p>
-              <aside class="fold-interaction">
-                <span class="alert-glyph" aria-hidden="true">▲</span>
-                <p class="fold-microtext">ESTADO: VIGILANCIA MÁXIMA</p>
-              </aside>
+              </descripcion-pliegue>
+              <interaccion-pliegue>
+                <glifo-alerta aria-hidden="true">▲</glifo-alerta>
+                <microtexto-estado>ESTADO: VIGILANCIA MÁXIMA</microtexto-estado>
+              </interaccion-pliegue>
             </pliegue>
 
-            <pliegue tipo="resistencia" postura="dignidad" class="fold-card fold-resistance">
-              <header class="fold-card-header">
-                <p class="fold-code">PLIEGUE / 03 · DECLARACIÓN POLÍTICA</p>
-                <h3>La Resistencia</h3>
-              </header>
-              <p class="fold-description">
-                Conocido como <em>«Let them talk»</em> (Que hablen lo que quieran). Un doblez ancho, firme y simétrico: un escudo de dignidad colectiva que neutraliza la mirada ajena.
-              </p>
-              <aside class="fold-interaction">
-                <span class="shield-glyph" aria-hidden="true">▣</span>
-                <p class="fold-microtext">POSTURA: DIGNIDAD INQUEBRANTABLE</p>
-              </aside>
+            <pliegue nombre="la-resistencia" tipo="declaracion-politica" postura="dignidad" class="fold-resistance">
+              <cabecera-pliegue>
+                <codigo-pliegue>PLIEGUE / 03 · DECLARACIÓN POLÍTICA</codigo-pliegue>
+                <nombre-pliegue>La Resistencia</nombre-pliegue>
+              </cabecera-pliegue>
+              <descripcion-pliegue>
+                Conocido como «Let them talk» (Que hablen lo que quieran). Un doblez ancho, firme y simétrico: un escudo de dignidad colectiva que neutraliza la mirada ajena.
+              </descripcion-pliegue>
+              <interaccion-pliegue>
+                <glifo-escudo aria-hidden="true">▣</glifo-escudo>
+                <microtexto-estado>POSTURA: DIGNIDAD INQUEBRANTABLE</microtexto-estado>
+              </interaccion-pliegue>
             </pliegue>
 
-          </section>
+          </estudio-pliegues>
 
-          <p>
+          <conclusion-textil>
             El angisa demostró que un soporte cotidiano y doméstico puede transformarse en un periódico público de resistencia clandestina sin que el régimen de vigilancia pueda prohibirlo sin desnudarse a sí mismo.
-          </p>
-        </section>
-      </section>
+          </conclusion-textil>
+        </tecnologia>
+      </modulo>
 
       <!-- ====================================================================
            III. REDES ACÚSTICAS: LAS CANCIONES EN EL RÍO
            ==================================================================== -->
-      <section class="chapter river-chapter" id="redes-acusticas" aria-labelledby="titulo-capitulo-3">
-        <header class="chapter-header">
-          <p class="chapter-index"><dfn>SECCIÓN III</dfn> / 03</p>
-          <p class="eyebrow">TERCERA TECNOLOGÍA · EL SONIDO Y LA RED FLUVIAL</p>
-          <h2 id="titulo-capitulo-3">Las canciones en el río:<br><em>redes acústicas</em></h2>
-        </header>
+      <modulo nombre="redes-acusticas" id="redes-acusticas">
+        <cabecera-capitulo>
+          <indice-capitulo><dfn>SECCIÓN III</dfn> / 03</indice-capitulo>
+          <categoria-tecnologia>TERCERA TECNOLOGÍA · EL SONIDO Y LA RED FLUVIAL</categoria-tecnologia>
+          <titulo-capitulo>Las canciones en el río:<destaque-titulo>redes acústicas</destaque-titulo></titulo-capitulo>
+        </cabecera-capitulo>
 
-        <section class="chapter-body">
-          <canto medio="agua" protocolo="llamado-y-respuesta">
-            <p>
-              En la oscuridad de los ríos navegables, los remeros y bogas esclavizados cantaban mientras hendían el agua con sus remos de madera. Los capataces consentían aquellos cánticos creyendo que mantenían el compás del esfuerzo físico y calmaban los ánimos.
-            </p>
-            <p>
-              En realidad, el agua operaba como un cable conductor de baja latencia y altísima fidelidad física. Aprovechando las leyes de propagación del sonido sobre superficies líquidas, la polifonía del <em>llamado y respuesta</em> modulaba noticias, avisaba de escapes exitosos y transmitía claves tácticas de una plantación a otra a lo largo de leguas de distancia.
-            </p>
+        <tecnologia tipo="acustica-fluvial" canal="rio" conductividad="alta">
+          <canto protocolo="llamado-y-respuesta" modulacion="frecuencia">
+            En la oscuridad de los ríos navegables, los remeros y bogas esclavizados cantaban mientras hendían el agua con sus remos de madera. Los capataces consentían aquellos cánticos creyendo que mantenían el compás del esfuerzo físico y calmaban los ánimos.
           </canto>
+          <mecanica-acustica>
+            En realidad, el agua operaba como un cable conductor de baja latencia y altísima fidelidad física. Aprovechando las leyes de propagación del sonido sobre superficies líquidas, la polifonía del llamado y respuesta modulaba noticias, avisaba de escapes exitosos y transmitía claves tácticas de una plantación a otra a lo largo de leguas de distancia.
+          </mecanica-acustica>
 
           <!-- Lienzo visual de las ondas del río -->
-          <figure class="interactive-figure river-figure" aria-label="Visualización de la oscilación acústica sobre el agua">
-            <figcaption class="figure-caption">
+          <figura-interactiva class="river-figure" aria-label="Visualización de la oscilación acústica sobre el agua">
+            <rotulo-figura>
               <strong>FIGURA 3.1:</strong> Modulación de frecuencia sonora — Representación gráfica de la señal acústica propagándose por el caudal del río.
-            </figcaption>
+            </rotulo-figura>
             <canvas id="riverCanvas" aria-label="Simulación de ondas de agua y sonido"></canvas>
-          </figure>
+          </figura-interactiva>
 
-          <p>
+          <resonancia-ancestral>
             El canto fluvial enlazaba el dolor del presente con la memoria de los ancestros. Era a la vez protocolo de comunicación de datos, archivo oral y escudo espiritual contra el aislamiento.
-          </p>
+          </resonancia-ancestral>
 
           <!-- Transmisión de voz y QR de cierre -->
-          <aside class="transmission-box" aria-label="Cierre sonoro y código de transmisión">
-            <figure class="qr-figure">
+          <caja-transmision aria-label="Cierre sonoro y código de transmisión">
+            <envoltura-qr>
               <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fexample.com%2Ftecnologias-del-secreto%3Faudio%3Dvoz-del-rio" alt="Código QR para acceder a la transmisión de voz del cierre del ensayo" />
               <button type="button" id="voiceButton" class="qr-overlay" aria-label="Escuchar la conclusión narrada del ensayo"></button>
-            </figure>
-            <section class="transmission-info">
-              <p class="eyebrow">TRANSMISIÓN DE CIERRE / VOZ DEL RÍO</p>
-              <p>Escanea el código con tu dispositivo móvil o pulsa el botón para activar el sintetizador sonoro y escuchar la conclusión del ensayo.</p>
+            </envoltura-qr>
+            <info-transmision>
+              <etiqueta-transmision>TRANSMISIÓN DE CIERRE / VOZ DEL RÍO</etiqueta-transmision>
+              <instruccion-transmision>Escanea el código con tu dispositivo móvil o pulsa el botón para activar el sintetizador sonoro y escuchar la conclusión del ensayo.</instruccion-transmision>
               <button type="button" class="text-button" id="voiceButtonText">
                 ▶ ESCUCHAR CONCLUSIÓN DEL ENSAYO
               </button>
-            </section>
-          </aside>
-        </section>
-      </section>
+            </info-transmision>
+          </caja-transmision>
+        </tecnologia>
+      </modulo>
 
       <!-- ====================================================================
            EPÍLOGO: EL INGENIO DE LO INVISIBLE
            ==================================================================== -->
-      <section class="essay-conclusion" id="epilogo" aria-labelledby="titulo-epilogo">
-        <header class="conclusion-header">
-          <p class="eyebrow">EPÍLOGO Y CONCLUSIÓN</p>
-          <h2 id="titulo-epilogo">El ingenio de<br><em>lo invisible</em></h2>
-        </header>
+      <modulo nombre="epilogo" id="epilogo">
+        <cabecera-capitulo>
+          <categoria-tecnologia>EPÍLOGO Y CONCLUSIÓN</categoria-tecnologia>
+          <titulo-capitulo>El ingenio de<destaque-titulo>lo invisible</destaque-titulo></titulo-capitulo>
+        </cabecera-capitulo>
 
-        <section class="conclusion-prose">
-          <p>
+        <conclusion-ensayo>
+          <parrafo-conclusion>
             Este ensayo es la colcha del ir y venir, del divagar, de cuestionar y repensar la técnica. Es la unión de tres procesos y tres momentos: la trenzada del aprender y el hacer, de las manos y de la mente, del instinto, la emoción y la preocupación comunitaria.
-          </p>
+          </parrafo-conclusion>
           
-          <blockquote class="closing-quote">
-            <p>
-              «La tecnología ha existido siempre en el ingenio de las personas para organizarse, resistir y ser libres con lo que tienen a la mano.»
-            </p>
-          </blockquote>
+          <cita-cierre>
+            «La tecnología ha existido siempre en el ingenio de las personas para organizarse, resistir y ser libres con lo que tienen a la mano.»
+          </cita-cierre>
 
-          <p>
+          <parrafo-cierre>
             Reconocer estas tecnologías ancestrales nos permite entender que el código nunca ha sido neutro ni puramente técnico: es siempre una costura entre cuerpos, un tejido de relaciones y una herramienta viva para desdoblar la libertad.
-          </p>
-        </section>
-      </section>
+          </parrafo-cierre>
+        </conclusion-ensayo>
+      </modulo>
 
-    </article>
-  </main>
+    </ensayo>
+  </cuerpo-manuscrito>
 
-  <footer class="colophon">
-    <section class="colophon-item">
-      <small>TECNOLOGÍAS DEL SECRETO · ENSAYO EN CÓDIGO</small>
-    </section>
-    <section class="colophon-item">
-      <small>INVESTIGACIÓN, CÓDIGO Y NARRATIVA SOBRE RESISTENCIA HISTÓRICA</small>
-    </section>
-    <section class="colophon-item">
-      <small><time datetime="2026">2026</time> · FIN DE TRANSMISIÓN</small>
-    </section>
-  </footer>
+  <colofon-ensayo>
+    <item-colofon>TECNOLOGÍAS DEL SECRETO · ENSAYO EN CÓDIGO</item-colofon>
+    <item-colofon>INVESTIGACIÓN, CÓDIGO Y NARRATIVA SOBRE RESISTENCIA HISTÓRICA</item-colofon>
+    <item-colofon><time datetime="2026">2026</time> · FIN DE TRANSMISIÓN</item-colofon>
+  </colofon-ensayo>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
