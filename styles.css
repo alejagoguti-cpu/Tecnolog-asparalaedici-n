@@ -122,12 +122,14 @@ body {
 }
 
 /* ==========================================================================
-   CUERPO DEL MANUSCRITO EDITORIAL
+   CUERPO DEL MANUSCRITO EDITORIAL & TRAYECTORIA (START -> GOAL)
    ========================================================================== */
 ensayo {
   max-width: var(--measure-prose);
   margin: 0 auto;
   position: relative;
+  padding-left: clamp(1.5rem, 4vw, 3.5rem);
+  border-left: 1px dashed rgba(245, 158, 11, 0.3);
 }
 
 saludo {
@@ -149,6 +151,36 @@ cierre {
   margin-bottom: 5.5rem;
   padding-bottom: 3.5rem;
   position: relative;
+}
+
+/* Nodos luminosos de ruta editorial (inspirados en diagrama START -> GOAL) */
+origen::before,
+historias-anansi::before,
+panuelos-angisa::before,
+canciones-rio::before,
+cierre::before {
+  position: absolute;
+  left: calc(-1 * clamp(1.5rem, 4vw, 3.5rem) - 7px);
+  top: 3.8rem;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  border: 2px solid var(--chroma-amber);
+  box-shadow: 0 0 14px var(--glow-amber), 0 0 24px rgba(245, 158, 11, 0.4);
+  content: "";
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+origen:hover::before,
+historias-anansi:hover::before,
+panuelos-angisa:hover::before,
+canciones-rio:hover::before,
+cierre:hover::before {
+  background: var(--chroma-amber);
+  transform: scale(1.35);
+  box-shadow: 0 0 22px var(--chroma-amber), 0 0 35px rgba(245, 158, 11, 0.7);
 }
 
 origen::after,
@@ -392,6 +424,8 @@ despedida {
 
   ensayo {
     max-width: 100%;
+    padding-left: 0 !important;
+    border-left: none !important;
   }
 
   origen,
@@ -403,11 +437,16 @@ despedida {
     page-break-inside: avoid;
   }
 
+  origen::before,
+  historias-anansi::before,
+  panuelos-angisa::before,
+  canciones-rio::before,
+  cierre::before,
   origen::after,
   historias-anansi::after,
   panuelos-angisa::after,
   canciones-rio::after {
-    display: none;
+    display: none !important;
   }
 
   saludo,
