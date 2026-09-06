@@ -17,15 +17,15 @@
 
   <cabecera-ensayo>
     <navegacion-manuscrito aria-label="Navegación del manuscrito">
-      <enlace-inicio href="#inicio" aria-label="Volver al inicio del ensayo">TS<dfn title="Tecnologías del Secreto">·</dfn>01</enlace-inicio>
+      <enlace-inicio href="#inicio" aria-label="Volver al inicio del ensayo">TS<separador-sigla title="Tecnologías del Secreto">·</separador-sigla>01</enlace-inicio>
     </navegacion-manuscrito>
     <estado-canal>
       <faro-activo aria-hidden="true"></faro-activo>
-      <canal-etiqueta>CANAL SEGURO / <time datetime="1763">1763</time>—PRESENTE</canal-etiqueta>
+      <canal-etiqueta>CANAL SEGURO / <registro-tiempo fecha="1763">1763</registro-tiempo>—PRESENTE</canal-etiqueta>
     </estado-canal>
-    <button type="button" class="sound-button" id="soundToggle" aria-pressed="false">
-      ATMÓSFERA SONORA: <strong>OFF</strong>
-    </button>
+    <disparador-sonoro role="button" tabindex="0" class="sound-button" id="soundToggle" aria-pressed="false" aria-label="Activar o desactivar atmósfera sonora">
+      ATMÓSFERA SONORA: <estado-sonido>OFF</estado-sonido>
+    </disparador-sonoro>
   </cabecera-ensayo>
 
   <cuerpo-manuscrito>
@@ -35,7 +35,7 @@
            PRÓLOGO: EL CÓDIGO COMO COSTURA Y LENGUAJE RELACIONAL
            ==================================================================== -->
       <modulo nombre="prologo" id="prologo">
-        <subtitulo-archivo><time datetime="2026">ARCHIVO 01</time> · ENSAYO EN CÓDIGO Y POÉTICA DIGITAL</subtitulo-archivo>
+        <subtitulo-archivo><registro-tiempo fecha="2026">ARCHIVO 01</registro-tiempo> · ENSAYO EN CÓDIGO Y POÉTICA DIGITAL</subtitulo-archivo>
         <numero-archivo aria-hidden="true">01</numero-archivo>
         <titulo-principal>Tecnologías<destaque-titulo>del secreto</destaque-titulo></titulo-principal>
 
@@ -58,12 +58,14 @@
 
         <!-- Poética del código fuente / Bloque conceptual de estilos -->
         <partitura-codigo aria-label="Declaración conceptual de la trama del ensayo">
-          <pre><code><selector>.trama-de-la-resistencia</selector> {
-  <propiedad>materia</propiedad>: <valor>voz, tela, agua</valor>;
-  <propiedad>front-end</propiedad>: <valor>fábula inocente, vestuario doméstico, canto de faena</valor>;
-  <propiedad>back-end</propiedad>: <valor>mapa de fuga, señal de peligro, protocolo de libertad</valor>;
-  <propiedad>cifrado</propiedad>: <valor>el prejuicio del opresor</valor>;
-}</code></pre>
+          <bloque-sintaxis>
+            <linea-sintaxis><selector>.trama-de-la-resistencia</selector> {</linea-sintaxis>
+            <linea-sintaxis>  <propiedad>materia</propiedad>: <valor>voz, tela, agua</valor>;</linea-sintaxis>
+            <linea-sintaxis>  <propiedad>front-end</propiedad>: <valor>fábula inocente, vestuario doméstico, canto de faena</valor>;</linea-sintaxis>
+            <linea-sintaxis>  <propiedad>back-end</propiedad>: <valor>mapa de fuga, señal de peligro, protocolo de libertad</valor>;</linea-sintaxis>
+            <linea-sintaxis>  <propiedad>cifrado</propiedad>: <valor>el prejuicio del opresor</valor>;</linea-sintaxis>
+            <linea-sintaxis>}</linea-sintaxis>
+          </bloque-sintaxis>
         </partitura-codigo>
 
         <navegacion-lectura aria-label="Comenzar lectura">
@@ -79,7 +81,7 @@
            ==================================================================== -->
       <modulo nombre="esteganografia-oral" id="esteganografia-oral">
         <cabecera-capitulo>
-          <indice-capitulo><dfn>SECCIÓN I</dfn> / 03</indice-capitulo>
+          <indice-capitulo><clave-indice>SECCIÓN I</clave-indice> / 03</indice-capitulo>
           <categoria-tecnologia>PRIMERA TECNOLOGÍA · LA PALABRA CIFRADA</categoria-tecnologia>
           <titulo-capitulo>El mito de Anansi:<destaque-titulo>esteganografía oral</destaque-titulo></titulo-capitulo>
         </cabecera-capitulo>
@@ -106,7 +108,7 @@
           <!-- Figura interactiva: La red de transmisión -->
           <figura-interactiva class="web-figure" aria-label="Diagrama de red de transmisión oral">
             <rotulo-figura>
-              <strong>FIGURA 1.1:</strong> Topología de la red de Anansi — Nodos cardinales de navegación nocturna codificados en el relato.
+              <resalte-figura>FIGURA 1.1:</resalte-figura> Topología de la red de Anansi — Nodos cardinales de navegación nocturna codificados en el relato.
             </rotulo-figura>
             <diagrama-red aria-hidden="true">
               <nodo-central>ANANSI</nodo-central>
@@ -131,7 +133,7 @@
            ==================================================================== -->
       <modulo nombre="criptografia-textil" id="criptografia-textil">
         <cabecera-capitulo>
-          <indice-capitulo><dfn>SECCIÓN II</dfn> / 03</indice-capitulo>
+          <indice-capitulo><clave-indice>SECCIÓN II</clave-indice> / 03</indice-capitulo>
           <categoria-tecnologia>SEGUNDA TECNOLOGÍA · EL CUERPO Y EL TEJIDO</categoria-tecnologia>
           <titulo-capitulo>Los pañuelos angisa:<destaque-titulo>criptografía textil</destaque-titulo></titulo-capitulo>
         </cabecera-capitulo>
@@ -202,7 +204,7 @@
            ==================================================================== -->
       <modulo nombre="redes-acusticas" id="redes-acusticas">
         <cabecera-capitulo>
-          <indice-capitulo><dfn>SECCIÓN III</dfn> / 03</indice-capitulo>
+          <indice-capitulo><clave-indice>SECCIÓN III</clave-indice> / 03</indice-capitulo>
           <categoria-tecnologia>TERCERA TECNOLOGÍA · EL SONIDO Y LA RED FLUVIAL</categoria-tecnologia>
           <titulo-capitulo>Las canciones en el río:<destaque-titulo>redes acústicas</destaque-titulo></titulo-capitulo>
         </cabecera-capitulo>
@@ -218,9 +220,9 @@
           <!-- Lienzo visual de las ondas del río -->
           <figura-interactiva class="river-figure" aria-label="Visualización de la oscilación acústica sobre el agua">
             <rotulo-figura>
-              <strong>FIGURA 3.1:</strong> Modulación de frecuencia sonora — Representación gráfica de la señal acústica propagándose por el caudal del río.
+              <resalte-figura>FIGURA 3.1:</resalte-figura> Modulación de frecuencia sonora — Representación gráfica de la señal acústica propagándose por el caudal del río.
             </rotulo-figura>
-            <canvas id="riverCanvas" aria-label="Simulación de ondas de agua y sonido"></canvas>
+            <lienzo-fluvial id="riverCanvas" aria-label="Simulación de ondas de agua y sonido"></lienzo-fluvial>
           </figura-interactiva>
 
           <resonancia-ancestral>
@@ -230,15 +232,15 @@
           <!-- Transmisión de voz y QR de cierre -->
           <caja-transmision aria-label="Cierre sonoro y código de transmisión">
             <envoltura-qr>
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fexample.com%2Ftecnologias-del-secreto%3Faudio%3Dvoz-del-rio" alt="Código QR para acceder a la transmisión de voz del cierre del ensayo" />
-              <button type="button" id="voiceButton" class="qr-overlay" aria-label="Escuchar la conclusión narrada del ensayo"></button>
+              <matriz-qr role="img" aria-label="Código QR para acceder a la transmisión de voz del cierre del ensayo"></matriz-qr>
+              <disparador-cierre id="voiceButton" class="qr-overlay" role="button" tabindex="0" aria-label="Escuchar la conclusión narrada del ensayo"></disparador-cierre>
             </envoltura-qr>
             <info-transmision>
               <etiqueta-transmision>TRANSMISIÓN DE CIERRE / VOZ DEL RÍO</etiqueta-transmision>
               <instruccion-transmision>Escanea el código con tu dispositivo móvil o pulsa el botón para activar el sintetizador sonoro y escuchar la conclusión del ensayo.</instruccion-transmision>
-              <button type="button" class="text-button" id="voiceButtonText">
+              <disparador-oral class="text-button" id="voiceButtonText" role="button" tabindex="0">
                 ▶ ESCUCHAR CONCLUSIÓN DEL ENSAYO
-              </button>
+              </disparador-oral>
             </info-transmision>
           </caja-transmision>
         </tecnologia>
@@ -274,7 +276,7 @@
   <colofon-ensayo>
     <item-colofon>TECNOLOGÍAS DEL SECRETO · ENSAYO EN CÓDIGO</item-colofon>
     <item-colofon>INVESTIGACIÓN, CÓDIGO Y NARRATIVA SOBRE RESISTENCIA HISTÓRICA</item-colofon>
-    <item-colofon><time datetime="2026">2026</time> · FIN DE TRANSMISIÓN</item-colofon>
+    <item-colofon><registro-tiempo fecha="2026">2026</registro-tiempo> · FIN DE TRANSMISIÓN</item-colofon>
   </colofon-ensayo>
 
   <script src="script.js"></script>

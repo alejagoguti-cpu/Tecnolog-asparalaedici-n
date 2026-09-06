@@ -41,6 +41,8 @@ sentimiento,
 concepto,
 afirmacion,
 partitura-codigo,
+bloque-sintaxis,
+linea-sintaxis,
 navegacion-lectura,
 cabecera-capitulo,
 indice-capitulo,
@@ -75,9 +77,11 @@ microtexto-estado,
 conclusion-textil,
 canto,
 mecanica-acustica,
+lienzo-fluvial,
 resonancia-ancestral,
 caja-transmision,
 envoltura-qr,
+matriz-qr,
 info-transmision,
 etiqueta-transmision,
 instruccion-transmision,
@@ -92,8 +96,16 @@ item-colofon {
 
 destaque-titulo,
 enlace-inicio,
+separador-sigla,
+registro-tiempo,
 faro-activo,
 canal-etiqueta,
+disparador-sonoro,
+disparador-oral,
+disparador-cierre,
+estado-sonido,
+clave-indice,
+resalte-figura,
 selector,
 propiedad,
 valor,
@@ -188,7 +200,7 @@ enlace-inicio {
   cursor: pointer;
 }
 
-enlace-inicio dfn {
+separador-sigla {
   color: var(--paper);
   font-style: normal;
 }
@@ -209,7 +221,9 @@ faro-activo {
 }
 
 .sound-button,
-.text-button {
+.text-button,
+disparador-sonoro,
+disparador-oral {
   border: 1px solid var(--line);
   background: rgba(231, 223, 207, 0.04);
   color: var(--paper);
@@ -220,16 +234,19 @@ faro-activo {
   cursor: pointer;
   border-radius: 2px;
   transition: all 0.3s ease;
+  user-select: none;
 }
 
 .sound-button:hover,
-.text-button:hover {
+.text-button:hover,
+disparador-sonoro:hover,
+disparador-oral:hover {
   border-color: var(--acid);
   background: rgba(215, 255, 56, 0.08);
   color: var(--acid);
 }
 
-.sound-button strong {
+estado-sonido {
   color: var(--acid);
   font-weight: 600;
 }
@@ -353,11 +370,16 @@ partitura-codigo {
   max-width: var(--measure-prose);
 }
 
-partitura-codigo pre {
+bloque-sintaxis {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 12.5px;
   line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+linea-sintaxis {
+  display: block;
 }
 
 selector {
@@ -420,7 +442,7 @@ indice-capitulo {
   margin: 0 0 0.8rem;
 }
 
-indice-capitulo dfn {
+clave-indice {
   font-style: normal;
   font-weight: 500;
 }
@@ -506,8 +528,9 @@ rotulo-figura {
   line-height: 1.6;
 }
 
-rotulo-figura strong {
+resalte-figura {
   color: var(--acid);
+  font-weight: 600;
 }
 
 /* Diagrama de red de Anansi */
@@ -748,13 +771,22 @@ glifo-escudo {
 /* --------------------------------------------------------------------------
    CAPÍTULO DEL RÍO Y REDES ACÚSTICAS
    -------------------------------------------------------------------------- */
-#riverCanvas {
+#riverCanvas,
+lienzo-fluvial {
   width: 100%;
   height: 260px;
   display: block;
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(16, 21, 23, 0.8), rgba(18, 40, 42, 0.4));
   border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+lienzo-fluvial canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* Transmisión de voz y QR */
@@ -780,13 +812,19 @@ envoltura-qr {
   border-radius: 2px;
 }
 
-envoltura-qr img {
+envoltura-qr img,
+matriz-qr {
   display: block;
   width: 100%;
   height: 100%;
+  background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fexample.com%2Ftecnologias-del-secreto%3Faudio%3Dvoz-del-rio");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.qr-overlay {
+.qr-overlay,
+disparador-cierre {
   position: absolute;
   inset: 0;
   opacity: 0;

@@ -13,14 +13,20 @@ if (glow) {
 }
 
 // 2. Simulación de ondas acústicas en el lienzo del río
-const canvas = document.querySelector('#riverCanvas');
-if (canvas) {
+const riverContainer = document.querySelector('#riverCanvas');
+if (riverContainer) {
+  let canvas = riverContainer.tagName.toLowerCase() === 'canvas' ? riverContainer : riverContainer.querySelector('canvas');
+  if (!canvas) {
+    canvas = document.createElement('canvas');
+    riverContainer.appendChild(canvas);
+  }
+
   const ctx = canvas.getContext('2d');
   let ripple = 0;
   let soundActive = false;
 
   function drawRiver() {
-    const r = canvas.getBoundingClientRect();
+    const r = riverContainer.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
     
     // Ajuste dinámico de resolución de pantalla
@@ -67,7 +73,7 @@ if (canvas) {
   function toggleAudio() {
     soundActive = !soundActive;
     soundToggle.setAttribute('aria-pressed', soundActive.toString());
-    const label = soundToggle.querySelector('strong') || soundToggle.querySelector('span');
+    const label = soundToggle.querySelector('estado-sonido') || soundToggle.querySelector('strong') || soundToggle.querySelector('span');
     if (label) {
       label.textContent = soundActive ? 'ON' : 'OFF';
     }
@@ -110,6 +116,12 @@ if (canvas) {
 
   if (soundToggle) {
     soundToggle.addEventListener('click', toggleAudio);
+    soundToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleAudio();
+      }
+    });
   }
 }
 
@@ -135,6 +147,17 @@ function speakClosing() {
 const voiceBtn1 = document.querySelector('#voiceButton');
 const voiceBtn2 = document.querySelector('#voiceButtonText');
 
-if (voiceBtn1) voiceBtn1.addEventListener('click', speakClosing);
-if (voiceBtn2) voiceBtn2.addEventListener('click', speakClosing);
+function bindVoiceButton(btn) {
+  if (!btn) return;
+  btn.addEventListener('click', speakClosing);
+  btn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      speakClosing();
+    }
+  });
+}
+
+bindVoiceButton(voiceBtn1);
+bindVoiceButton(voiceBtn2);
 
