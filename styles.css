@@ -1,24 +1,38 @@
 /* ==========================================================================
    TECNOLOGÍAS DEL SECRETO — ENSAYO EN CÓDIGO
-   Poética del código y diseño editorial para impresión continua
+   Diseño editorial cromático, ondas luminosas y poética del código
+   Inspirado en la estética de ondas de luz cromáticas, aura y fluidez
    ========================================================================== */
 
 :root {
-  --ink: #101517;
-  --ink-soft: #161d20;
-  --ink-deep: #0a0d0e;
-  --paper: #e7dfcf;
-  --paper-dim: rgba(231, 223, 207, 0.82);
-  --paper-faint: rgba(231, 223, 207, 0.45);
-  --acid: #d7ff38;
-  --red: #b8332c;
-  --mist: #91a7a4;
-  --line: rgba(231, 223, 207, 0.16);
-  --line-light: rgba(231, 223, 207, 0.28);
+  --bg-deep: #07080b;
+  --bg-surface: rgba(18, 20, 28, 0.65);
+  --bg-surface-hover: rgba(26, 30, 42, 0.85);
+  
+  --ink: #07080b;
+  --paper: #f0ede6;
+  --paper-dim: rgba(240, 237, 230, 0.82);
+  --paper-faint: rgba(240, 237, 230, 0.45);
+  
+  /* Paleta cromática luminosa inspirada en la onda de sonido */
+  --chroma-blue: #3b82f6;
+  --chroma-indigo: #6366f1;
+  --chroma-purple: #a855f7;
+  --chroma-magenta: #ec4899;
+  --chroma-orange: #f97316;
+  --chroma-amber: #f59e0b;
+  --chroma-lime: #a3e635;
+  
+  --glow-blue: rgba(59, 130, 246, 0.4);
+  --glow-magenta: rgba(236, 72, 153, 0.4);
+  --glow-amber: rgba(245, 158, 11, 0.45);
+  
+  --line-subtle: rgba(240, 237, 230, 0.12);
+  --line-glow: linear-gradient(90deg, rgba(59,130,246,0.6), rgba(236,72,153,0.6), rgba(245,158,11,0.6));
   
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-mono: "DM Mono", "Courier New", monospace;
-  --measure-prose: 68ch;
+  --measure-prose: 70ch;
 }
 
 /* ==========================================================================
@@ -73,7 +87,7 @@ clave {
 }
 
 /* ==========================================================================
-   RESET Y ATMÓSFERA TIPOGRÁFICA
+   RESET Y ATMÓSFERA LUMÍNICA
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -82,38 +96,49 @@ clave {
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  background-color: var(--bg-deep);
 }
 
 body {
   margin: 0;
-  background-color: var(--ink);
+  background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 45%, rgba(236, 72, 153, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
+  background-attachment: fixed;
   color: var(--paper);
   font-family: var(--font-serif);
-  font-size: 1.15rem;
-  line-height: 1.85;
-  padding: 4rem 1.5rem 8rem;
+  font-size: 1.18rem;
+  line-height: 1.9;
+  padding: 5rem 1.5rem 10rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background-color: var(--acid);
-  color: var(--ink);
+  background-color: var(--chroma-amber);
+  color: var(--bg-deep);
 }
 
 /* ==========================================================================
-   CUERPO DEL MANUSCRITO
+   CUERPO DEL MANUSCRITO EDITORIAL
    ========================================================================== */
 ensayo {
   max-width: var(--measure-prose);
   margin: 0 auto;
+  position: relative;
 }
 
 saludo {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-style: italic;
-  color: var(--acid);
-  margin-bottom: 3.5rem;
+  font-weight: 400;
+  background: linear-gradient(135deg, #ffffff 30%, var(--chroma-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4rem;
+  letter-spacing: -0.02em;
 }
 
 origen,
@@ -121,22 +146,38 @@ historias-anansi,
 panuelos-angisa,
 canciones-rio,
 cierre {
-  margin-bottom: 5rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid var(--line);
+  margin-bottom: 5.5rem;
+  padding-bottom: 3.5rem;
+  position: relative;
 }
 
-cierre {
-  border-bottom: none;
+origen::after,
+historias-anansi::after,
+panuelos-angisa::after,
+canciones-rio::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(59, 130, 246, 0.4) 20%, 
+    rgba(236, 72, 153, 0.5) 50%, 
+    rgba(245, 158, 11, 0.4) 80%, 
+    transparent 100%);
 }
 
 titulo {
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.75rem, 3.8vw, 2.4rem);
   font-weight: 600;
-  line-height: 1.2;
-  color: var(--paper);
-  margin: 3rem 0 2rem;
-  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 3.5rem 0 2rem;
+  letter-spacing: -0.025em;
+  position: relative;
+  display: inline-block;
 }
 
 pensamiento,
@@ -164,80 +205,115 @@ esencia,
 proceso,
 sentido,
 libertad {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.85rem;
   color: var(--paper-dim);
 }
 
+/* ==========================================================================
+   ÉNFASIS CONCEPTUAL Y RESPLANDOR INTERACTIVO
+   ========================================================================== */
 clave {
-  color: var(--acid);
-  border-bottom: 1px dashed var(--acid);
-  padding: 0 3px;
+  color: #ffffff;
+  font-weight: 500;
+  position: relative;
+  padding: 0 4px;
+  border-bottom: 1px dashed var(--chroma-amber);
   cursor: help;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 clave:hover {
-  background: var(--acid);
-  color: var(--ink);
+  color: var(--bg-deep);
+  background: linear-gradient(135deg, var(--chroma-amber), #ffd166);
+  border-bottom-color: transparent;
+  border-radius: 2px;
+  box-shadow: 0 0 20px var(--glow-amber), 0 0 35px rgba(245, 158, 11, 0.3);
 }
 
 /* ==========================================================================
    PLIEGUES DE LAS ANGISAS: SECRETO, ALERTA Y RESISTENCIA
+   Inspirados en tarjetas translúcidas con auras cromáticas
    ========================================================================== */
 secreto,
 alerta,
 resistencia {
-  margin: 1.5rem 0;
-  padding: 1.5rem 1.8rem;
-  border-radius: 4px;
+  margin: 2rem 0;
+  padding: 1.6rem 2rem;
+  border-radius: 8px;
   font-family: var(--font-mono);
   font-size: 0.95rem;
-  line-height: 1.7;
-  transition: all 0.4s ease;
+  line-height: 1.75;
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* 1. El Secreto: Halo Azul/Índigo con desenfoque que se aclara al interactuar */
 secreto {
-  background: rgba(231, 223, 207, 0.03);
-  border: 1px solid var(--line);
-  color: var(--paper-faint);
-  filter: blur(1.5px);
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: rgba(240, 237, 230, 0.4);
+  filter: blur(1.8px);
   cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
 }
 
 secreto:hover {
   filter: blur(0);
-  color: var(--paper);
-  border-color: var(--acid);
-  background: rgba(215, 255, 56, 0.05);
+  color: #ffffff;
+  border-color: var(--chroma-blue);
+  background: rgba(30, 58, 138, 0.25);
+  box-shadow: 0 0 30px var(--glow-blue), 0 8px 32px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
 }
 
+/* 2. La Alerta: Halo Magenta/Ámbar con ligera inclinación cromática */
 alerta {
-  background: rgba(184, 51, 44, 0.08);
-  border: 1px solid rgba(184, 51, 44, 0.35);
-  border-left: 4px solid var(--red);
-  color: var(--paper);
-  transform: rotate(-0.5deg);
+  background: rgba(40, 15, 25, 0.6);
+  border: 1px solid rgba(236, 72, 153, 0.35);
+  border-left: 4px solid var(--chroma-magenta);
+  color: #fdf2f8;
+  transform: rotate(-0.6deg);
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.15), 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
+alerta:hover {
+  transform: rotate(0deg) translateY(-2px);
+  border-color: var(--chroma-magenta);
+  box-shadow: 0 0 35px var(--glow-magenta), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* 3. La Resistencia: Obsidian profundo con aura ámbar dorada */
 resistencia {
-  background: rgba(16, 21, 23, 0.95);
-  border: 1px solid var(--line-light);
-  color: var(--paper);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  background: rgba(12, 14, 20, 0.92);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-left: 4px solid var(--chroma-amber);
+  color: #fefce8;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.1);
+}
+
+resistencia:hover {
+  transform: translateY(-2px);
+  border-color: var(--chroma-amber);
+  box-shadow: 0 0 35px var(--glow-amber), 0 15px 35px rgba(0, 0, 0, 0.7);
 }
 
 /* ==========================================================================
-   RÍO VISUAL Y REGISTRO SONORO
+   RÍO CROMÁTICO Y EXPERIENCIA SONORA
    ========================================================================== */
 rio {
   width: 100%;
-  height: 140px;
-  margin: 2rem 0 1.5rem;
-  border-radius: 4px;
-  background: linear-gradient(180deg, rgba(16, 21, 23, 0.8), rgba(18, 40, 42, 0.4));
-  border: 1px solid var(--line);
+  height: 220px;
+  margin: 3rem 0 2rem;
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 50%, rgba(20, 24, 38, 0.8), rgba(7, 8, 11, 0.95));
+  border: 1px solid rgba(240, 237, 230, 0.15);
   position: relative;
   overflow: hidden;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(59, 130, 246, 0.08);
 }
 
 rio canvas {
@@ -249,54 +325,65 @@ rio canvas {
 voz {
   display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-  padding: 1rem 1.5rem;
-  background: rgba(231, 223, 207, 0.04);
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  gap: 1.8rem;
+  margin: 2rem 0;
+  padding: 1.2rem 1.8rem;
+  background: rgba(18, 20, 28, 0.75);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
 }
 
 voz:hover {
-  border-color: var(--acid);
-  background: rgba(215, 255, 56, 0.06);
+  border-color: var(--chroma-amber);
+  background: rgba(30, 32, 45, 0.9);
+  box-shadow: 0 0 35px var(--glow-amber), 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
 }
 
 qr {
-  width: 80px;
-  height: 80px;
+  width: 76px;
+  height: 76px;
   flex: none;
-  background-color: var(--paper);
+  background-color: #ffffff;
   background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fexample.com%2Ftecnologias-del-secreto%3Faudio%3Dvoz-del-rio");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 2px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 escuchar {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  color: var(--acid);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  background: linear-gradient(135deg, #ffffff 20%, var(--chroma-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 despedida {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-style: italic;
-  color: var(--paper);
-  margin-top: 3.5rem;
+  background: linear-gradient(135deg, #ffffff 40%, var(--chroma-magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 4rem;
 }
 
 /* ==========================================================================
-   COMPORTAMIENTO EDITORIAL PARA IMPRESIÓN CONTINUA
+   OPTIMIZACIÓN PARA IMPRESIÓN CONTINUA EN PAPEL (BLANCO Y NEGRO PURO)
    ========================================================================== */
 @media print {
   body {
     background: #ffffff !important;
+    background-image: none !important;
     color: #111111 !important;
     font-size: 11pt;
     line-height: 1.6;
@@ -316,11 +403,26 @@ despedida {
     page-break-inside: avoid;
   }
 
-  titulo,
+  origen::after,
+  historias-anansi::after,
+  panuelos-angisa::after,
+  canciones-rio::after {
+    display: none;
+  }
+
   saludo,
+  titulo,
+  escuchar,
+  despedida {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    background: none !important;
+  }
+
   clave {
     color: #000000 !important;
     background: none !important;
+    border-bottom: 1px dashed #333333 !important;
   }
 
   secreto,
