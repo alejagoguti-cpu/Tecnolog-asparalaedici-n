@@ -2,8 +2,8 @@
  * TECNOLOGÍAS DEL SECRETO — INTERACTIVIDAD DEL ENSAYO
  */
 
-// 1. Simulación de ondas en el río
-const riverContainer = document.querySelector('#riverCanvas');
+// 1. Ondas del río
+const riverContainer = document.querySelector('#rio') || document.querySelector('#riverCanvas');
 if (riverContainer) {
   let canvas = riverContainer.tagName.toLowerCase() === 'canvas' ? riverContainer : riverContainer.querySelector('canvas');
   if (!canvas) {
@@ -72,7 +72,7 @@ function speakClosing() {
   window.speechSynthesis.speak(utterance);
 }
 
-const voiceTrigger = document.querySelector('#voiceTrigger');
+const voiceTrigger = document.querySelector('#voz') || document.querySelector('#voiceTrigger');
 if (voiceTrigger) {
   voiceTrigger.addEventListener('click', speakClosing);
   voiceTrigger.addEventListener('keydown', (e) => {
@@ -82,4 +82,5 @@ if (voiceTrigger) {
     }
   });
 }
+
 
