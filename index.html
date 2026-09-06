@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tecnologías del secreto — una lectura interactiva sobre resistencia y libertad." />
+  <title>Tecnologías del secreto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ACOTACIÓN: niebla inicial, como si la página guardara algo antes de hablar. -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <header class="masthead">
+    <a class="sigil" href="#inicio" aria-label="Volver al inicio">TS<span>·</span>01</a>
+    <p class="status"><i></i> CANAL SEGURO / 1763—HOY</p>
+    <button class="sound-button" id="soundToggle" aria-pressed="false">SONIDO: <span>OFF</span></button>
+  </header>
+
+  <main>
+    <!-- ACOTACIÓN: Entrada y postura — la definición de tecnología se abre despacio. -->
+    <section class="hero" id="inicio">
+      <p class="eyebrow reveal">ARCHIVO 01 · UNA LECTURA INTERACTIVA</p>
+      <div class="hero-number" aria-hidden="true">01</div>
+      <h1 class="split-title">Tecnologías<br><em>del secreto</em></h1>
+      <div class="hero-copy reveal">
+        <p>Buenos días, Liliana.</p>
+        <p>La tecnología no es únicamente una pantalla. Es cualquier sistema que una comunidad inventa para resolver un problema de <mark>supervivencia y libertad</mark>.</p>
+      </div>
+      <a class="scroll-invite" href="#anansi"><span></span> DESCIENDE PARA LEER</a>
+    </section>
+
+    <!-- ACOTACIÓN: mensajes ocultos dentro de la estructura, como los relatos de Anansi. -->
+    <section class="chapter anansi" id="anansi">
+      <p class="chapter-index">I / 03</p>
+      <div class="chapter-grid">
+        <div>
+          <p class="eyebrow">PRIMERA TECNOLOGÍA</p>
+          <h2>El mito de<br><em>Anansi</em></h2>
+        </div>
+        <div class="chapter-text">
+          <p>Por las noches, las personas esclavizadas se reunían a contar historias de una araña astuta que engañaba a un tigre poderoso.</p>
+          <p>Para los capataces eran fábulas infantiles. Para quienes sabían leer entre líneas, eran <strong>rutas, planes y advertencias.</strong></p>
+        </div>
+      </div>
+      <div class="web-diagram" aria-label="Diagrama decorativo de una telaraña">
+        <span class="web-center">A</span>
+        <span class="node n1">RUTA</span><span class="node n2">NOCHE</span><span class="node n3">RÍO</span><span class="node n4">ESPERA</span>
+      </div>
+      <article class="cipher-note reveal">
+        <p class="eyebrow">CAPA OCULTA / PASA EL CURSOR</p>
+        <p class="cipher-text">El prejuicio del opresor fue el mejor escondite para la información.</p>
+        <p class="decoded">[ DESCIFRADO: mirar más allá de la superficie también es una forma de escuchar. ]</p>
+      </article>
+    </section>
+
+    <!-- ACOTACIÓN: Los tres pliegues angisa se vuelven choques visuales durante el scroll. -->
+    <section class="chapter angisas" id="angisas">
+      <p class="chapter-index">II / 03</p>
+      <div class="chapter-grid intro">
+        <div><p class="eyebrow">SEGUNDA TECNOLOGÍA</p><h2>Los pañuelos<br><em>angisa</em></h2></div>
+        <div class="chapter-text"><p>Cuando no podían hablar, las mujeres convirtieron la tela en lenguaje. Cada doblez podía avisar, proteger o pedir que otras voces siguieran hablando.</p></div>
+      </div>
+      <div class="folds">
+        <article class="fold secret">
+          <p class="fold-code">PLIEGUE / 01</p><h3>El secreto</h3>
+          <p class="concealed">El mensaje vive dentro del pliegue. Acércate: algunas palabras solo existen cuando alguien decide buscarlas.</p>
+          <span class="fold-hint">HOVER PARA REVELAR</span>
+        </article>
+        <article class="fold alert">
+          <p class="fold-code">PLIEGUE / 02</p><h3>La alerta</h3>
+          <p>Una punta se levanta. El ritmo cambia. Hay algo que debe saberse antes de que sea tarde.</p>
+          <span class="alert-symbol">▲</span>
+        </article>
+        <article class="fold resistance">
+          <p class="fold-code">PLIEGUE / 03</p><h3>La resistencia</h3>
+          <p>Déjalos hablar. Un doblez ancho, firme: un escudo frente a la mirada ajena.</p>
+          <span class="shield">▣</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ACOTACIÓN: El río como cable de datos; la onda responde al cursor y al sonido. -->
+    <section class="river" id="rio">
+      <p class="chapter-index">III / 03</p>
+      <div class="river-copy">
+        <p class="eyebrow">TERCERA TECNOLOGÍA</p>
+        <h2>Las canciones<br>en el <em>río</em></h2>
+        <p>De noche, los remeros cantaban. Los guardias oían trabajo; el agua transmitía información de una plantación a otra y conectaba a quienes resistían con sus ancestros.</p>
+      </div>
+      <canvas id="riverCanvas" aria-label="Ondas animadas que evocan el río"></canvas>
+      <div class="transmission">
+        <div class="qr-wrap">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fexample.com%2Ftecnologias-del-secreto%3Faudio%3Dvoz-del-rio" alt="Código QR para abrir la transmisión de voz" />
+          <button id="voiceButton" class="qr-overlay" aria-label="Activar el cierre narrado"></button>
+        </div>
+        <div><p class="eyebrow">TRANSMISIÓN / VOZ DEL RÍO</p><p>Escanea el código o tócala para activar el cierre narrado.</p><button class="text-button" id="voiceButtonText">▶ ESCUCHAR CIERRE</button></div>
+      </div>
+      <p class="closing">La tecnología ha existido siempre en el ingenio de las personas para organizarse, resistir y ser libres con lo que tienen a la mano.</p>
+    </section>
+  </main>
+  <footer><span>TECNOLOGÍAS DEL SECRETO</span><span>FIN DE TRANSMISIÓN / 03</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
