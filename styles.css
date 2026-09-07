@@ -32,7 +32,7 @@
 }
 
 /* ==========================================================================
-   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS (100% CONCEPTUALES / SEMÁNTICOS)
+   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS (100% SEMÁNTICOS Y LIMPIOS)
    ========================================================================== */
 fondo-luz,
 malla-cuadricula,
@@ -45,62 +45,30 @@ campo-apertura,
 onda-pulso,
 texto-saludo,
 linea-guia,
-modulo-artefacto,
-modulo-comunidad,
-modulo-vigilancia,
-modulo-memoria,
-modulo-intencion,
-modulo-anansi,
-modulo-capas,
-modulo-angisas,
-modulo-rio,
-modulo-reflexion,
-encabezado-modulo,
-numero-modulo,
-titulo-modulo,
-escenario-diagrama,
-nodo-revelador,
-ancla-luz,
+modulo-01,
+modulo-02,
+modulo-03,
+modulo-04,
+modulo-05,
+modulo-06,
+modulo-07,
+modulo-08,
+modulo-09,
+modulo-10,
+encabezado,
+numero,
+titulo,
+escenario,
+nodo,
+boton,
 icono,
 etiqueta,
-frase-revelada,
-pensamiento,
-percepcion,
-comprension,
-sistema,
-transformacion,
-atencion,
-vigilancia,
-estrategia,
-recursos,
-definicion,
-intencion,
-cuento,
-camuflaje,
-secreto,
-participacion,
-lenguaje,
-pliegue-visual,
-pliegue-secreto,
-pliegue-alerta,
-pliegue-resistencia,
-diseno-transformador,
-rio-sonido,
-medio,
-experiencia-audio,
-eco-digital,
-pensamiento-final,
-construccion,
-mirada,
-relacion,
-proceso,
-proposito,
-libertad,
-reproductor-voz,
+contenido,
+texto,
+reproductor,
 codigo-qr,
-info-voz,
-texto-voz,
-revelacion-libertad,
+info-audio,
+texto-audio,
 despedida {
   display: block;
 }
@@ -257,7 +225,7 @@ linea-guia {
 }
 
 /* ==========================================================================
-   ESTRUCTURA DE LOS MÓDULOS
+   ESTRUCTURA DE LOS 10 MÓDULOS
    ========================================================================== */
 ensayo {
   width: 100%;
@@ -266,23 +234,23 @@ ensayo {
   z-index: 5;
 }
 
-modulo-artefacto,
-modulo-comunidad,
-modulo-vigilancia,
-modulo-memoria,
-modulo-intencion,
-modulo-anansi,
-modulo-capas,
-modulo-angisas,
-modulo-rio,
-modulo-reflexion {
+modulo-01,
+modulo-02,
+modulo-03,
+modulo-04,
+modulo-05,
+modulo-06,
+modulo-07,
+modulo-08,
+modulo-09,
+modulo-10 {
   min-height: 75vh;
   padding: 4.5rem 4vw 6.5rem;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-encabezado-modulo {
+encabezado {
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -291,7 +259,7 @@ encabezado-modulo {
   padding-bottom: 0.8rem;
 }
 
-numero-modulo {
+numero {
   font-family: var(--font-mono);
   font-size: 1.6rem;
   font-weight: 700;
@@ -299,15 +267,15 @@ numero-modulo {
   text-shadow: 0 0 20px var(--theme-origen);
 }
 
-modulo-vigilancia numero-modulo { color: #f43f5e; text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
-modulo-memoria numero-modulo { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
-modulo-anansi numero-modulo,
-modulo-capas numero-modulo { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
-modulo-angisas numero-modulo { color: var(--theme-angisa); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
-modulo-rio numero-modulo { color: var(--theme-rio); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
-modulo-reflexion numero-modulo { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+modulo-03 numero { color: #f43f5e; text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
+modulo-04 numero { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+modulo-06 numero,
+modulo-07 numero { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
+modulo-08 numero { color: var(--theme-angisa); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
+modulo-09 numero { color: var(--theme-rio); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
+modulo-10 numero { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
 
-titulo-modulo {
+titulo {
   font-family: var(--font-mono);
   font-size: 0.95rem;
   letter-spacing: 0.18em;
@@ -316,9 +284,9 @@ titulo-modulo {
 }
 
 /* ==========================================================================
-   ESCENARIO Y NODOS REVELADORES
+   ESCENARIO Y NODOS
    ========================================================================== */
-escenario-diagrama {
+escenario {
   position: relative;
   min-height: 480px;
   width: 100%;
@@ -349,7 +317,7 @@ escenario-diagrama {
   min-height: 750px;
 }
 
-escenario-diagrama canvas {
+escenario canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -359,8 +327,8 @@ escenario-diagrama canvas {
   z-index: 1;
 }
 
-/* Nodo Revelador */
-nodo-revelador {
+/* Nodo interactivo */
+nodo {
   position: absolute;
   left: var(--posX, 50%);
   top: var(--posY, 50%);
@@ -372,13 +340,13 @@ nodo-revelador {
   transition: z-index 0.3s ease;
 }
 
-nodo-revelador:hover,
-nodo-revelador.activo,
-nodo-revelador.fijado {
+nodo:hover,
+nodo.activo,
+nodo.fijado {
   z-index: 50;
 }
 
-ancla-luz {
+boton {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
@@ -410,34 +378,34 @@ etiqueta {
   white-space: nowrap;
 }
 
-ancla-luz.alerta-luz {
+boton.boton-alerta {
   border-color: #f43f5e;
   box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
 }
 
-ancla-luz.ancla-libertad {
+boton.boton-libertad {
   border-color: var(--theme-cierre);
   box-shadow: 0 0 25px rgba(255, 184, 0, 0.4);
 }
 
-nodo-revelador:hover ancla-luz,
-nodo-revelador.activo ancla-luz,
-nodo-revelador.fijado ancla-luz {
+nodo:hover boton,
+nodo.activo boton,
+nodo.fijado boton {
   transform: scale(1.12);
   background: #ffffff;
   border-color: #ffffff;
 }
 
-nodo-revelador:hover ancla-luz etiqueta,
-nodo-revelador.activo ancla-luz etiqueta,
-nodo-revelador.fijado ancla-luz etiqueta {
+nodo:hover boton etiqueta,
+nodo.activo boton etiqueta,
+nodo.fijado boton etiqueta {
   color: var(--bg-deep);
 }
 
 /* ==========================================================================
-   FRASE REVELADA & BLOQUES CONCEPTUALES
+   CONTENIDO REVELADO & TEXTO
    ========================================================================== */
-frase-revelada {
+contenido {
   position: absolute;
   top: calc(100% + 14px);
   width: min(580px, 86vw);
@@ -455,9 +423,9 @@ frase-revelada {
   z-index: 40;
 }
 
-nodo-revelador:hover frase-revelada,
-nodo-revelador.activo frase-revelada,
-nodo-revelador.fijado frase-revelada {
+nodo:hover contenido,
+nodo.activo contenido,
+nodo.fijado contenido {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1) translateY(0);
@@ -465,96 +433,35 @@ nodo-revelador.fijado frase-revelada {
 }
 
 /* Ajustes de posición */
-nodo-revelador.nodo-pliegue frase-revelada {
+nodo.nodo-pliegue contenido {
   width: min(340px, 80vw);
 }
 
-.revelacion-libertad {
+.contenido-libertad {
   top: auto;
   bottom: calc(100% + 14px);
   transform: scale(0.94) translateY(-10px);
   width: min(780px, 88vw);
 }
 
-nodo-revelador:hover .revelacion-libertad,
-nodo-revelador.activo .revelacion-libertad,
-nodo-revelador.fijado .revelacion-libertad {
+nodo:hover .contenido-libertad,
+nodo.activo .contenido-libertad,
+nodo.fijado .contenido-libertad {
   transform: scale(1) translateY(0);
 }
 
-/* Bloques semánticos conceptuales */
-pensamiento,
-percepcion,
-comprension,
-sistema,
-transformacion,
-atencion,
-vigilancia,
-estrategia,
-recursos,
-definicion,
-intencion,
-cuento,
-camuflaje,
-secreto,
-participacion,
-lenguaje,
-pliegue-visual,
-pliegue-secreto,
-pliegue-alerta,
-pliegue-resistencia,
-diseno-transformador,
-rio-sonido,
-medio,
-experiencia-audio,
-eco-digital,
-pensamiento-final,
-construccion,
-mirada,
-relacion,
-proceso,
-proposito {
+texto {
   font-size: 1.12rem;
   line-height: 1.85;
   color: var(--paper);
   margin-bottom: 1.1rem;
 }
 
-pensamiento:last-child,
-percepcion:last-child,
-comprension:last-child,
-sistema:last-child,
-transformacion:last-child,
-atencion:last-child,
-vigilancia:last-child,
-estrategia:last-child,
-recursos:last-child,
-definicion:last-child,
-intencion:last-child,
-cuento:last-child,
-camuflaje:last-child,
-secreto:last-child,
-participacion:last-child,
-lenguaje:last-child,
-pliegue-visual:last-child,
-pliegue-secreto:last-child,
-pliegue-alerta:last-child,
-pliegue-resistencia:last-child,
-diseno-transformador:last-child,
-rio-sonido:last-child,
-medio:last-child,
-experiencia-audio:last-child,
-eco-digital:last-child,
-pensamiento-final:last-child,
-construccion:last-child,
-mirada:last-child,
-relacion:last-child,
-proceso:last-child,
-proposito:last-child {
+texto:last-child {
   margin-bottom: 0;
 }
 
-libertad {
+texto.texto-libertad {
   font-family: var(--font-serif);
   font-size: clamp(1.35rem, 3vw, 1.9rem);
   font-style: italic;
@@ -575,7 +482,7 @@ clave {
 }
 
 /* Audio y QR */
-reproductor-voz {
+reproductor {
   display: flex;
   align-items: center;
   gap: 1.4rem;
@@ -588,7 +495,7 @@ reproductor-voz {
   transition: all 0.3s ease;
 }
 
-reproductor-voz:hover {
+reproductor:hover {
   background: rgba(24, 38, 70, 1);
   box-shadow: 0 0 35px var(--glow-amber);
 }
@@ -603,7 +510,7 @@ codigo-qr {
   border-radius: 6px;
 }
 
-texto-voz {
+texto-audio {
   font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 700;
@@ -637,12 +544,12 @@ despedida {
   fondo-luz,
   malla-cuadricula,
   haz-cursor,
-  ancla-luz,
+  boton,
   canvas,
   linea-guia,
   onda-pulso,
   codigo-qr,
-  info-voz {
+  info-audio {
     display: none !important;
   }
 
@@ -659,7 +566,7 @@ despedida {
     font-size: 1.1rem !important;
   }
 
-  escenario-diagrama {
+  escenario {
     position: static !important;
     background: none !important;
     border: none !important;
@@ -667,14 +574,14 @@ despedida {
     min-height: auto !important;
   }
 
-  nodo-revelador {
+  nodo {
     position: static !important;
     transform: none !important;
     display: block !important;
     margin-bottom: 1.5rem !important;
   }
 
-  frase-revelada {
+  contenido {
     position: static !important;
     opacity: 1 !important;
     transform: none !important;
@@ -688,16 +595,16 @@ despedida {
   }
 
   saludo,
-  modulo-artefacto,
-  modulo-comunidad,
-  modulo-vigilancia,
-  modulo-memoria,
-  modulo-intencion,
-  modulo-anansi,
-  modulo-capas,
-  modulo-angisas,
-  modulo-rio,
-  modulo-reflexion {
+  modulo-01,
+  modulo-02,
+  modulo-03,
+  modulo-04,
+  modulo-05,
+  modulo-06,
+  modulo-07,
+  modulo-08,
+  modulo-09,
+  modulo-10 {
     min-height: auto !important;
     padding: 2rem 0 !important;
     border-bottom: 1px solid #ddd !important;
@@ -706,7 +613,7 @@ despedida {
 
   texto-saludo,
   despedida,
-  titulo-modulo {
+  titulo {
     color: #000000 !important;
     -webkit-text-fill-color: #000000 !important;
     background: none !important;
@@ -721,4 +628,5 @@ despedida {
     padding: 0 !important;
   }
 }
+
 

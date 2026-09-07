@@ -32,20 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCursorLight();
 
   // ==========================================================================
-  // 2. INTERACCIÓN CON LOS NODOS REVELADORES (<nodo-revelador>)
+  // 2. INTERACCIÓN CON LOS NODOS (<nodo>)
   // ==========================================================================
-  const allConceptNodes = document.querySelectorAll('nodo-revelador');
+  const allConceptNodes = document.querySelectorAll('nodo');
 
   allConceptNodes.forEach((node) => {
-    // Permitir clic para fijar o desfijar la tarjeta de texto revelado
+    // Permitir clic para fijar o desfijar la tarjeta de contenido
     node.addEventListener('click', (e) => {
       // Si el clic fue dentro de un enlace o botón de audio, no togglear el nodo
-      if (e.target.closest('reproductor-voz')) return;
+      if (e.target.closest('reproductor')) return;
       node.classList.toggle('fijado');
     });
 
     // Accesibilidad por teclado
-    const boton = node.querySelector('ancla-luz');
+    const boton = node.querySelector('boton');
     if (boton) {
       boton.setAttribute('tabindex', '0');
       boton.setAttribute('role', 'button');
@@ -93,13 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetRGB = { r: 0, g: 240, b: 255 };
 
     const sections = document.querySelectorAll(
-      'saludo, modulo-artefacto, modulo-comunidad, modulo-vigilancia, modulo-memoria, modulo-intencion, modulo-anansi, modulo-capas, modulo-angisas, modulo-rio, modulo-reflexion'
+      'saludo, modulo-01, modulo-02, modulo-03, modulo-04, modulo-05, modulo-06, modulo-07, modulo-08, modulo-09, modulo-10'
     );
 
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const secId = entry.target.getAttribute('data-section') || '00';
+          const secId = entry.target.getAttribute('data-seccion') || entry.target.getAttribute('data-section') || '00';
           if (sectionThemes[secId]) {
             targetRGB = sectionThemes[secId];
           }
