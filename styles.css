@@ -1,42 +1,38 @@
 /* ==========================================================================
-   TECNOLOGÍAS DEL SECRETO — HILO CONDUCTOR EDITORIAL & POÉTICA VISUAL
-   1. Atmósfera de Penumbra & Lienzo Cósmico (#ambientCanvas, #hiloConductorCanvas)
-   2. Hilo Conductor continuo que conecta orgánicamente todas las ideas
-   3. Tipografía editorial monumental integrada sin cajas rígidas
-   4. Pliegues cinéticos 3D, Terminal de camuflaje y Espectrograma hidro-acústico
-   5. Optimización completa para impresión en blanco y negro (@media print)
+   TECNOLOGÍAS DEL SECRETO — MANIFIESTO ENIGMÁTICO: EL TEXTO ES EL DIAGRAMA
+   Diseño de Revelación Progresiva en Penumbra:
+   - Todo comienza en oscuridad y silencio ("Todo apagado").
+   - Las frases del ensayo emergen de los nodos, redes y pliegues al explorarlas con el cursor.
+   - Unidad absoluta: El texto y el diagrama son un solo organismo interactivo.
+   - Formato editorial continuo en blanco y negro al imprimir (@media print).
    ========================================================================== */
 
 :root {
-  /* Profundidad Obsidian */
-  --bg-abyss: #020408;
-  --bg-deep: #050a14;
-  --bg-translucent: rgba(5, 10, 20, 0.75);
-  --bg-card: rgba(8, 16, 32, 0.85);
-
-  /* Espectros de Luz */
-  --c-cyan: #00f0ff;
-  --c-violet: #a855f7;
-  --c-magenta: #ff007f;
-  --c-turquesa: #00e5ff;
-  --c-amber: #ffb800;
-  --c-red: #ff2a55;
-
-  /* Auras */
-  --glow-cyan: rgba(0, 240, 255, 0.45);
-  --glow-violet: rgba(168, 85, 247, 0.45);
-  --glow-magenta: rgba(255, 0, 127, 0.45);
-  --glow-amber: rgba(255, 184, 0, 0.45);
-
-  /* Tipografías */
-  --paper-bright: #ffffff;
-  --paper-body: #edf2f7;
-  --paper-dim: rgba(237, 242, 247, 0.72);
-  --paper-faint: rgba(237, 242, 247, 0.3);
-
+  /* Paleta Obsidian & Penumbra */
+  --bg-deep: #020408;
+  --bg-translucent: rgba(6, 12, 24, 0.85);
+  --bg-card-glow: rgba(10, 18, 36, 0.95);
+  
+  /* Luces Espectrales de Revelación */
+  --theme-origen: #00f0ff;      /* Cyan de la técnica y red */
+  --theme-anansi: #a855f7;      /* Violeta criptográfico */
+  --theme-angisa: #ff007f;      /* Magenta cinético */
+  --theme-rio: #00e5ff;         /* Turquesa hidro-acústico */
+  --theme-cierre: #ffb800;      /* Ámbar de la libertad */
+  
+  --glow-cyan: rgba(0, 240, 255, 0.5);
+  --glow-violet: rgba(168, 85, 247, 0.5);
+  --glow-magenta: rgba(255, 0, 127, 0.5);
+  --glow-amber: rgba(255, 184, 0, 0.5);
+  
+  /* Tipografía */
+  --paper: #f0f5fa;
+  --paper-dim: rgba(240, 245, 250, 0.82);
+  --paper-faint: rgba(240, 245, 250, 0.35);
+  
   --font-cyber: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
-  --font-mono: "DM Mono", monospace;
+  --font-mono: "DM Mono", "Courier New", monospace;
 }
 
 /* ==========================================================================
@@ -44,7 +40,6 @@
    ========================================================================== */
 fondo-luz,
 malla-cuadricula,
-hilo-conductor,
 haz-cursor,
 hud-control,
 marca-hud,
@@ -68,15 +63,16 @@ historias-anansi,
 panuelos-angisa,
 canciones-rio,
 cierre,
-encabezado-flotante,
-numero-seccion,
-titulo-seccion,
-campo-narrativo,
-tramo-narrativo,
-nodo-origen,
-glifo-nodo,
-etiqueta-nodo,
-bloque-editorial,
+encabezado-enigma,
+numero-enigma,
+titulo-enigma,
+escenario-enigma,
+nodos-diagrama,
+nodo-revelador,
+ancla-luz,
+icono-nodo,
+etiqueta-ancla,
+frase-revelada,
 pensamiento,
 alerta-limitacion,
 titulo-alerta,
@@ -111,11 +107,6 @@ lenguaje,
 transformacion,
 pantalla,
 etiqueta-transicion,
-trilogia-pliegues,
-pliegue-item,
-encabezado-pliegue,
-numero-pliegue,
-nombre-pliegue,
 secreto,
 alerta,
 resistencia,
@@ -146,7 +137,7 @@ clave {
 }
 
 /* ==========================================================================
-   RESET & ATMÓSFERA
+   RESET & ATMÓSFERA ENIGMÁTICA (TODO APAGADO)
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -155,7 +146,7 @@ clave {
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
-  background-color: var(--bg-abyss);
+  background-color: var(--bg-deep);
 }
 
 body {
@@ -163,11 +154,11 @@ body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  background-color: var(--bg-abyss);
-  color: var(--paper-body);
+  background-color: var(--bg-deep);
+  color: var(--paper);
   font-family: var(--font-cyber);
-  font-size: 1.18rem;
-  line-height: 1.85;
+  font-size: 1.15rem;
+  line-height: 1.8;
   overflow-x: hidden;
   position: relative;
   text-rendering: optimizeLegibility;
@@ -175,39 +166,41 @@ body {
   cursor: crosshair;
 }
 
-/* Malla ambiental */
+/* Malla de Rastreo Latente */
 malla-cuadricula {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
   z-index: 1;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
   background-size: 48px 48px, 96px 96px, 96px 96px;
   opacity: 0.7;
 }
 
-/* Haz lumínico cursor */
+/* Haz de luz de seguimiento del cursor (Linterna de descodificación) */
 haz-cursor {
   position: fixed;
   width: 420px;
   height: 420px;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 3;
+  z-index: 2;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.09) 0%, rgba(168, 85, 247, 0.04) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.09) 0%, rgba(168, 85, 247, 0.04) 40%, transparent 70%);
   transition: opacity 0.3s ease;
   mix-blend-mode: screen;
 }
 
 fondo-luz {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
@@ -221,40 +214,22 @@ fondo-luz canvas {
   display: block;
 }
 
-/* Hilo Conductor Global (Spine Canvas) */
-hilo-conductor {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 2;
-}
-
-hilo-conductor canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* ==========================================================================
-   HUD DE NAVEGACIÓN & CONTADOR DE SECRETOS
-   ========================================================================== */
+/* HUD Global de Revelación */
 hud-control {
   position: fixed;
   top: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 99;
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1.5rem;
   padding: 8px 24px;
-  background: rgba(4, 8, 18, 0.88);
+  background: rgba(4, 8, 16, 0.88);
   border: 1px solid rgba(0, 240, 255, 0.35);
-  border-radius: 40px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 240, 255, 0.25);
+  border-radius: 30px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.2);
   white-space: nowrap;
 }
 
@@ -263,9 +238,9 @@ marca-hud {
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   letter-spacing: 0.16em;
-  color: var(--c-cyan);
+  color: var(--theme-origen);
   font-weight: 700;
 }
 
@@ -273,8 +248,8 @@ pulso-hud {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--c-cyan);
-  box-shadow: 0 0 10px var(--c-cyan);
+  background: var(--theme-origen);
+  box-shadow: 0 0 10px var(--theme-origen);
   animation: pulsoLive 2s infinite ease-in-out;
 }
 
@@ -291,84 +266,15 @@ indicador-secretos {
 }
 
 /* ==========================================================================
-   ESTRUCTURA EDITORIAL Y FLUJO NARRATIVO
-   ========================================================================== */
-ensayo {
-  width: 100%;
-  position: relative;
-  z-index: 10;
-}
-
-saludo,
-origen,
-historias-anansi,
-panuelos-angisa,
-canciones-rio,
-cierre {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  padding: 8rem 6vw 10rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Encabezados Flotantes de Sección */
-encabezado-flotante {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  max-width: 960px;
-  margin: 0 auto 4rem;
-  padding-bottom: 1.2rem;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
-}
-
-numero-seccion {
-  font-family: var(--font-mono);
-  font-size: 2.2rem;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--c-cyan);
-  text-shadow: 0 0 25px var(--c-cyan);
-}
-
-titulo-seccion {
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
-  letter-spacing: 0.22em;
-  color: var(--paper-bright);
-  text-transform: uppercase;
-}
-
-/* Campos Narrativos (Lienzo vivo con canvas y trama de lectura fluida) */
-campo-narrativo {
-  position: relative;
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-}
-
-campo-narrativo canvas {
-  position: absolute;
-  inset: -40px;
-  width: calc(100% + 80px);
-  height: calc(100% + 80px);
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.45;
-}
-
-/* ==========================================================================
-   00. APERTURA
+   00. SECCIÓN APERTURA (HERO DESTACADO)
    ========================================================================== */
 saludo {
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 95vh;
   text-align: center;
+  padding: 6rem 4vw;
 }
 
 campo-apertura {
@@ -387,7 +293,7 @@ emisor-central {
   gap: 0.4rem;
   padding: 12px 28px;
   background: rgba(0, 240, 255, 0.06);
-  border: 1.5px solid var(--c-cyan);
+  border: 1.5px solid var(--theme-origen);
   border-radius: 40px;
   box-shadow: 0 0 35px var(--glow-cyan);
   backdrop-filter: blur(12px);
@@ -406,7 +312,7 @@ marca-frecuencia {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: var(--c-cyan);
+  color: var(--theme-origen);
 }
 
 etiqueta-protocolo {
@@ -421,7 +327,7 @@ texto-saludo {
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 0.95;
-  background: linear-gradient(135deg, #ffffff 15%, var(--c-cyan) 60%, var(--c-violet) 100%);
+  background: linear-gradient(135deg, #ffffff 15%, var(--theme-origen) 60%, var(--theme-anansi) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 50px rgba(0, 240, 255, 0.4));
@@ -429,7 +335,7 @@ texto-saludo {
 
 subtitulo-enigma {
   font-family: var(--font-mono);
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   color: var(--paper-dim);
   max-width: 680px;
   margin: 1rem auto 0;
@@ -449,13 +355,13 @@ guia-hilo {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.25em;
-  color: var(--c-cyan);
+  color: var(--theme-origen);
 }
 
 linea-guia {
   width: 2px;
   height: 48px;
-  background: linear-gradient(to bottom, var(--c-cyan), transparent);
+  background: linear-gradient(to bottom, var(--theme-origen), transparent);
   animation: guiaGlow 2s infinite ease-in-out;
 }
 
@@ -465,115 +371,227 @@ linea-guia {
 }
 
 /* ==========================================================================
-   TRAMOS NARRATIVOS (EL TEJIDO EDITORIAL)
+   ESTRUCTURA DE LOS ESCENARIOS ENIGMÁTICOS
    ========================================================================== */
-tramo-narrativo {
+ensayo {
+  width: 100%;
+  max-width: 100vw;
   position: relative;
+  z-index: 5;
+}
+
+origen,
+historias-anansi,
+panuelos-angisa,
+canciones-rio,
+cierre {
+  min-height: 95vh;
+  padding: 6rem 4vw 8rem;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+encabezado-enigma {
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  padding: 2.2rem 2.8rem;
-  background: linear-gradient(145deg, rgba(8, 16, 32, 0.85) 0%, rgba(4, 8, 18, 0.92) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 3px solid var(--c-cyan);
-  border-radius: 0 18px 18px 0;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(16px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-tramo-narrativo:hover,
-tramo-narrativo.activo {
-  border-color: rgba(255, 255, 255, 0.2);
-  border-left-color: #ffffff;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px var(--glow-cyan);
-  transform: translateX(6px);
-}
-
-/* Nodos Origen (Balizas de navegación) */
-nodo-origen {
-  display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  width: fit-content;
-  padding: 4px 14px;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  border-radius: 20px;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  padding-bottom: 1rem;
 }
 
-glifo-nodo {
-  font-size: 0.9rem;
-  line-height: 1;
-  color: var(--c-cyan);
-}
-
-etiqueta-nodo {
+numero-enigma {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.15em;
-  color: #ffffff;
+  font-size: 1.8rem;
   font-weight: 700;
+  color: var(--theme-origen);
+  text-shadow: 0 0 20px var(--theme-origen);
 }
 
-/* Modificadores cromáticos de tramos */
-nodo-origen.nodo-alerta {
-  background: rgba(255, 42, 85, 0.12);
-  border-color: var(--c-red);
-}
-nodo-origen.nodo-alerta glifo-nodo { color: var(--c-red); }
-
-nodo-origen.nodo-peligro {
-  background: rgba(244, 63, 94, 0.12);
-  border-color: #f43f5e;
-}
-nodo-origen.nodo-peligro glifo-nodo { color: #f43f5e; }
-
-nodo-origen.nodo-violeta {
-  background: rgba(168, 85, 247, 0.12);
-  border-color: var(--c-violet);
-}
-nodo-origen.nodo-violeta glifo-nodo { color: var(--c-violet); }
-
-nodo-origen.nodo-magenta {
-  background: rgba(255, 0, 127, 0.12);
-  border-color: var(--c-magenta);
-}
-nodo-origen.nodo-magenta glifo-nodo { color: var(--c-magenta); }
-
-nodo-origen.nodo-turquesa {
-  background: rgba(0, 229, 255, 0.12);
-  border-color: var(--c-turquesa);
-}
-nodo-origen.nodo-turquesa glifo-nodo { color: var(--c-turquesa); }
-
-nodo-origen.nodo-ambar,
-nodo-origen.nodo-solar {
-  background: rgba(255, 184, 0, 0.12);
-  border-color: var(--c-amber);
-}
-nodo-origen.nodo-ambar glifo-nodo,
-nodo-origen.nodo-solar glifo-nodo { color: var(--c-amber); }
-
-/* Tramo Alerta Roja */
-tramo-narrativo.tramo-alerta-roja {
-  border-left-color: var(--c-red);
-  background: linear-gradient(145deg, rgba(30, 8, 16, 0.9) 0%, rgba(12, 4, 8, 0.95) 100%);
-}
-
-tramo-narrativo.tramo-alerta-roja:hover {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 42, 85, 0.45);
+titulo-enigma {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  color: var(--paper-dim);
+  text-transform: uppercase;
 }
 
 /* ==========================================================================
-   TIPOGRAFÍA Y CONTENIDO EDITORIAL
+   EL DIAGRAMA COMO CONTENEDOR VIVO DE TEXTO
    ========================================================================== */
-bloque-editorial {
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
+escenario-enigma {
+  position: relative;
+  min-height: 750px;
+  width: 100%;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 50%, rgba(8, 16, 32, 0.75) 0%, rgba(2, 4, 8, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), inset 0 0 60px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
 }
 
+escenario-enigma canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+nodos-diagrama {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Nodo Revelador en el Diagrama */
+nodo-revelador {
+  position: absolute;
+  left: var(--posX, 50%);
+  top: var(--posY, 50%);
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 15;
+  transition: z-index 0.3s ease;
+}
+
+nodo-revelador:hover,
+nodo-revelador.activo,
+nodo-revelador.fijado {
+  z-index: 50;
+}
+
+/* Ancla de Luz (Icono / Nodo latente que pulsa en penumbra) */
+ancla-luz {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 10px 20px;
+  background: rgba(8, 16, 32, 0.9);
+  border: 1.5px solid var(--theme-origen);
+  border-radius: 30px;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+
+icono-nodo {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+etiqueta-ancla {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+ancla-luz.alerta-nucleo {
+  border-color: #ef4444;
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.45);
+  animation: pulseAlerta 2s infinite ease-in-out;
+}
+
+ancla-luz.peligro-nucleo {
+  border-color: #f43f5e;
+  box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
+}
+
+ancla-luz.violeta-nucleo {
+  border-color: var(--theme-anansi);
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+ancla-luz.magenta-nucleo {
+  border-color: var(--theme-angisa);
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.4);
+}
+
+ancla-luz.ambar-nucleo {
+  border-color: var(--theme-cierre);
+  box-shadow: 0 0 25px rgba(255, 184, 0, 0.4);
+}
+
+@keyframes pulseAlerta {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(239, 68, 68, 0.3); }
+  50% { transform: scale(1.08); box-shadow: 0 0 45px rgba(239, 68, 68, 0.7); }
+}
+
+nodo-revelador:hover ancla-luz,
+nodo-revelador.activo ancla-luz,
+nodo-revelador.fijado ancla-luz {
+  transform: scale(1.15);
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+nodo-revelador:hover ancla-luz etiqueta-ancla,
+nodo-revelador.activo ancla-luz etiqueta-ancla,
+nodo-revelador.fijado ancla-luz etiqueta-ancla {
+  color: var(--bg-deep);
+}
+
+/* ==========================================================================
+   FRASE REVELADA: EL TEXTO NACE DE LA PENUMBRA AL EXPLORAR
+   ========================================================================== */
+frase-revelada {
+  position: absolute;
+  top: calc(100% + 14px);
+  width: min(580px, 86vw);
+  background: var(--bg-card-glow);
+  border: 1px solid var(--theme-origen);
+  border-radius: 16px;
+  padding: 2rem 2.4rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 45px rgba(0, 240, 255, 0.35);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.92) translateY(12px);
+  filter: blur(8px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+  z-index: 40;
+}
+
+nodo-revelador:hover frase-revelada,
+nodo-revelador.activo frase-revelada,
+nodo-revelador.fijado frase-revelada {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* Ajustes de posición para evitar desbordamiento en bordes */
+nodo-revelador.nodo-comunidad frase-revelada,
+nodo-revelador.nodo-segunda-capa frase-revelada,
+nodo-revelador.nodo-pliegue-3 frase-revelada,
+nodo-revelador.nodo-rio-audio frase-revelada {
+  right: 0;
+  left: auto;
+}
+
+nodo-revelador.nodo-artefacto frase-revelada,
+nodo-revelador.nodo-terminal-sintaxis frase-revelada,
+nodo-revelador.nodo-pliegue-1 frase-revelada,
+nodo-revelador.nodo-rio-intro frase-revelada {
+  left: 0;
+  right: auto;
+}
+
+/* ==========================================================================
+   TIPOGRAFÍAS Y BLOQUES TEXTUALES EN LAS FRASES REVELADAS
+   ========================================================================== */
 pensamiento,
 definicion,
 vigilancia,
@@ -601,9 +619,40 @@ esencia,
 proceso,
 sentido,
 libertad {
-  font-size: 1.22rem;
-  line-height: 1.9;
-  color: var(--paper-body);
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: var(--paper);
+  margin-bottom: 1.2rem;
+}
+
+pensamiento:last-child,
+definicion:last-child,
+vigilancia:last-child,
+memoria:last-child,
+relato:last-child,
+camuflaje:last-child,
+mensaje:last-child,
+capas:last-child,
+silencio:last-child,
+lenguaje:last-child,
+transformacion:last-child,
+pantalla:last-child,
+secreto:last-child,
+alerta:last-child,
+resistencia:last-child,
+logica:last-child,
+diseno:last-child,
+sonido:last-child,
+medio:last-child,
+experiencia:last-child,
+eco:last-child,
+construccion:last-child,
+mirada:last-child,
+esencia:last-child,
+proceso:last-child,
+sentido:last-child,
+libertad:last-child {
+  margin-bottom: 0;
 }
 
 clave {
@@ -618,97 +667,89 @@ clave {
 
 /* Alerta de Error Cognitivo */
 alerta-limitacion {
-  border-left: 4px solid var(--c-red);
-  background: rgba(255, 42, 85, 0.08);
-  padding: 1.4rem 1.8rem;
-  border-radius: 0 10px 10px 0;
+  border-left: 4px solid #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 0 8px 8px 0;
+  padding: 1.2rem 1.6rem;
 }
 
 titulo-alerta {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: #fca5a5;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 mensaje-alerta {
   font-family: var(--font-mono);
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
   color: #fee2e2;
+  line-height: 1.6;
 }
 
 /* Constelación de Recursos */
 constelacion-recursos {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-bottom: 1.2rem;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
 }
 
 recurso-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 6px 14px;
-  background: rgba(0, 240, 255, 0.08);
+  gap: 0.4rem;
+  padding: 5px 12px;
+  background: rgba(0, 240, 255, 0.1);
   border: 1px solid rgba(0, 240, 255, 0.3);
-  border-radius: 20px;
+  border-radius: 16px;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   color: #ffffff;
 }
 
 glifo-recurso {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 intencion {
   font-family: var(--font-mono);
-  font-size: 1.02rem;
+  font-size: 0.95rem;
   color: var(--paper-dim);
-  border-top: 1px dashed rgba(255, 255, 255, 0.12);
-  padding-top: 1.2rem;
-  line-height: 1.7;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  padding-top: 1rem;
+  margin-top: 1rem;
 }
 
-/* ==========================================================================
-   02. ANANSI & TERMINAL CRIPTOGRÁFICO
-   ========================================================================== */
-tramo-narrativo.tramo-anansi-mito,
-tramo-narrativo.tramo-anansi-codigo,
-tramo-narrativo.tramo-anansi-capas {
-  border-left-color: var(--c-violet);
-}
-
+/* Terminal de Código */
 terminal-codigo {
   background: #09040e;
   border: 1px solid rgba(168, 85, 247, 0.4);
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.75);
+  margin-bottom: 1.2rem;
 }
 
 barra-superior-terminal {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 14px;
-  background: rgba(24, 10, 42, 0.95);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+  padding: 6px 12px;
+  background: rgba(20, 8, 34, 0.95);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 puntos-control {
   display: flex;
-  gap: 6px;
+  gap: 5px;
 }
 
 punto {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
 
@@ -718,253 +759,133 @@ punto {
 
 titulo-archivo {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
   color: var(--paper-dim);
 }
 
 contenido-terminal {
   display: flex;
-  padding: 1.2rem;
+  padding: 1rem;
 }
 
 lineas-numeracion {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding-right: 1rem;
-  border-right: 2px solid var(--c-magenta);
+  gap: 0.4rem;
+  padding-right: 0.8rem;
+  border-right: 2px solid #ff007f;
   font-family: var(--font-mono);
-  font-size: 0.92rem;
-  color: var(--c-magenta);
+  font-size: 0.9rem;
+  color: #ff007f;
 }
 
 codigo-fuente {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding-left: 1rem;
+  gap: 0.4rem;
+  padding-left: 0.8rem;
   font-family: var(--font-mono);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
-sintaxis-kw { color: var(--c-magenta); font-weight: 700; }
-sintaxis-fn { color: var(--c-cyan); font-weight: 600; }
-sintaxis-str { color: var(--c-amber); }
-sintaxis-cond { color: var(--c-violet); }
+sintaxis-kw { color: #ff007f; font-weight: 700; }
+sintaxis-fn { color: #00f0ff; font-weight: 600; }
+sintaxis-str { color: #ffb800; }
+sintaxis-cond { color: #a855f7; }
 
-/* ==========================================================================
-   03. ANGISAS & TRILOGÍA DE PLIEGUES CINÉTICOS
-   ========================================================================== */
-tramo-narrativo.tramo-angisa-intro,
-tramo-narrativo.tramo-angisa-reflexion {
-  border-left-color: var(--c-magenta);
-}
-
+/* Transición Angisa */
 etiqueta-transicion {
   position: absolute;
   top: 18px;
   right: 24px;
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--c-cyan);
-  text-shadow: 0 0 25px rgba(0, 240, 255, 0.75);
+  color: #00f0ff;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
   pointer-events: none;
   z-index: 5;
 }
 
-/* Grilla de Pliegues Cinéticos */
-trilogia-pliegues {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  perspective: 1000px;
-}
-
-pliegue-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem 1.8rem;
-  background: linear-gradient(145deg, rgba(14, 20, 36, 0.9) 0%, rgba(6, 10, 20, 0.95) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  transform-style: preserve-3d;
-}
-
-pliegue-item:hover {
-  transform: translateY(-8px) rotateX(4deg);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-encabezado-pliegue {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.6rem;
-}
-
-numero-pliegue {
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
-  font-weight: 800;
-}
-
-nombre-pliegue {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  letter-spacing: 0.16em;
-  font-weight: 700;
-}
-
-/* Identidades cromáticas de los 3 pliegues */
-pliegue-item.pliegue-secreto {
-  border-top: 3px solid var(--c-cyan);
-}
-pliegue-item.pliegue-secreto numero-pliegue,
-pliegue-item.pliegue-secreto nombre-pliegue {
-  color: var(--c-cyan);
-}
-pliegue-item.pliegue-secreto:hover {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px var(--glow-cyan);
-}
-
-pliegue-item.pliegue-alerta {
-  border-top: 3px solid var(--c-magenta);
-}
-pliegue-item.pliegue-alerta numero-pliegue,
-pliegue-item.pliegue-alerta nombre-pliegue {
-  color: var(--c-magenta);
-}
-pliegue-item.pliegue-alerta:hover {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px var(--glow-magenta);
-}
-
-pliegue-item.pliegue-resistencia {
-  border-top: 3px solid var(--c-amber);
-}
-pliegue-item.pliegue-resistencia numero-pliegue,
-pliegue-item.pliegue-resistencia nombre-pliegue {
-  color: var(--c-amber);
-}
-pliegue-item.pliegue-resistencia:hover {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px var(--glow-amber);
-}
-
-/* ==========================================================================
-   04. CANCIONES EN EL RÍO & AUDIO EN VIVO
-   ========================================================================== */
-tramo-narrativo.tramo-rio-intro,
-tramo-narrativo.tramo-rio-audio {
-  border-left-color: var(--c-turquesa);
-}
-
+/* Audio y QR */
 voz {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
-  padding: 1.2rem 1.8rem;
-  background: rgba(10, 22, 44, 0.95);
-  border: 1.5px solid var(--c-amber);
-  border-radius: 12px;
+  gap: 1.4rem;
+  padding: 1rem 1.6rem;
+  background: rgba(14, 24, 46, 0.95);
+  border: 1px solid rgba(255, 184, 0, 0.5);
+  border-radius: 10px;
+  margin: 1.2rem 0;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--glow-amber);
   transition: all 0.3s ease;
-  margin: 1.5rem 0;
 }
 
 voz:hover {
-  background: rgba(18, 36, 70, 1);
-  transform: scale(1.02);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 35px var(--glow-amber);
+  background: rgba(24, 38, 70, 1);
+  box-shadow: 0 0 35px var(--glow-amber);
 }
 
 qr {
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   flex: none;
   background-color: #ffffff;
-  background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=280x280&format=svg&data=https%3A%2F%2Fgithub.com%2Falejagoguti-cpu%2FTecnolog-asparalaedici-n");
+  background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fgithub.com%2Falejagoguti-cpu%2FTecnolog-asparalaedici-n");
   background-size: contain;
-  border-radius: 8px;
-}
-
-contenedor-voz {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+  border-radius: 6px;
 }
 
 escuchar {
   font-family: var(--font-mono);
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--c-amber);
-  letter-spacing: 0.08em;
+  color: #ffb800;
 }
 
 subtexto-audio {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--c-turquesa);
-  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  color: #00e5ff;
 }
 
-/* ==========================================================================
-   05. CIERRE & LIBERTAD MONUMENTAL
-   ========================================================================== */
-tramo-narrativo.tramo-cierre-reflexion {
-  border-left-color: var(--c-amber);
+/* Cierre & Libertad */
+revelacion-libertad {
+  width: min(800px, 90vw);
+  text-align: center;
 }
 
 titulo {
   font-family: var(--font-mono);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: var(--c-amber);
+  color: #ffb800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 0.8rem;
-}
-
-tramo-narrativo.tramo-cierre-libertad {
-  border-left-color: var(--c-amber);
-  background: linear-gradient(145deg, rgba(28, 18, 6, 0.9) 0%, rgba(10, 6, 2, 0.95) 100%);
-  text-align: center;
-  padding: 4rem 3rem;
-}
-
-editorial-monumental {
-  align-items: center;
+  margin-bottom: 0.6rem;
 }
 
 libertad {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
   font-style: italic;
   line-height: 1.5;
   color: #fffbeb;
-  text-shadow: 0 0 35px rgba(255, 184, 0, 0.6);
-  max-width: 840px;
-  margin: 0 auto;
+  text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
 }
 
 despedida {
-  font-size: clamp(3rem, 7vw, 5rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 20%, var(--c-amber) 70%, var(--c-magenta) 100%);
+  background: linear-gradient(135deg, #ffffff 20%, var(--theme-cierre) 70%, #ff007f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 2.5rem;
-  filter: drop-shadow(0 0 40px rgba(255, 184, 0, 0.6));
+  margin-top: 2rem;
+  filter: drop-shadow(0 0 30px rgba(255, 184, 0, 0.5));
 }
 
 /* ==========================================================================
-   OPTIMIZACIÓN DE IMPRESIÓN EDITORIAL (@media print)
+   OPTIMIZACIÓN DE IMPRESIÓN CONTINUA (@media print)
+   Al imprimir, todo se revela automáticamente en orden y legible
    ========================================================================== */
 @media print {
   body {
@@ -978,15 +899,47 @@ despedida {
 
   fondo-luz,
   malla-cuadricula,
-  hilo-conductor,
   haz-cursor,
   hud-control,
+  ancla-luz,
   canvas,
   flecha-descenso,
   etiqueta-transicion,
   qr,
   subtexto-audio {
     display: none !important;
+  }
+
+  escenario-enigma {
+    position: static !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    min-height: auto !important;
+  }
+
+  nodos-diagrama {
+    position: static !important;
+  }
+
+  nodo-revelador {
+    position: static !important;
+    transform: none !important;
+    display: block !important;
+    margin-bottom: 2rem !important;
+  }
+
+  frase-revelada {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    width: 100% !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    color: #111111 !important;
   }
 
   saludo,
@@ -997,96 +950,13 @@ despedida {
   cierre {
     min-height: auto !important;
     padding: 2rem 0 !important;
-    border-bottom: 1px solid #ccc !important;
+    border-bottom: 1px solid #ddd !important;
     page-break-inside: avoid;
   }
 
-  encabezado-flotante {
-    margin-bottom: 1.5rem !important;
-    border-bottom: 1px solid #000000 !important;
-  }
-
-  numero-seccion,
-  titulo-seccion {
-    color: #000000 !important;
-    text-shadow: none !important;
-  }
-
-  campo-narrativo {
-    gap: 1.5rem !important;
-  }
-
-  tramo-narrativo {
-    background: none !important;
-    border: none !important;
-    border-left: 2px solid #333333 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0.8rem 1.2rem !important;
-    transform: none !important;
-  }
-
-  nodo-origen {
-    background: none !important;
-    border: 1px solid #666666 !important;
-  }
-
-  glifo-nodo,
-  etiqueta-nodo {
-    color: #000000 !important;
-  }
-
-  trilogia-pliegues {
-    display: block !important;
-  }
-
-  pliegue-item {
-    background: none !important;
-    border: 1px solid #cccccc !important;
-    box-shadow: none !important;
-    margin-bottom: 1rem !important;
-    transform: none !important;
-  }
-
-  numero-pliegue,
-  nombre-pliegue {
-    color: #000000 !important;
-  }
-
-  pensamiento,
-  definicion,
-  vigilancia,
-  memoria,
-  relato,
-  camuflaje,
-  mensaje,
-  capas,
-  silencio,
-  lenguaje,
-  transformacion,
-  pantalla,
-  secreto,
-  alerta,
-  resistencia,
-  logica,
-  diseno,
-  sonido,
-  medio,
-  experiencia,
-  eco,
-  construccion,
-  mirada,
-  esencia,
-  proceso,
-  sentido,
-  libertad {
-    color: #111111 !important;
-    font-size: 10.5pt !important;
-    line-height: 1.6 !important;
-  }
-
   texto-saludo,
-  despedida {
+  despedida,
+  titulo-enigma {
     color: #000000 !important;
     -webkit-text-fill-color: #000000 !important;
     background: none !important;
@@ -1095,9 +965,9 @@ despedida {
 
   clave {
     color: #000000 !important;
-    background: none !important;
     border: none !important;
-    border-bottom: 1px dashed #333333 !important;
+    border-bottom: 1px dashed #333 !important;
+    background: none !important;
     padding: 0 !important;
   }
 }
