@@ -1,18 +1,16 @@
 /**
  * ==========================================================================
  * TECNOLOGÍAS PARA LA EDICIÓN — ALEJANDRA GÓMEZ GUTIÉRREZ
- * Lógica interactiva y poética de scroll profundo con red conceptual viva
+ * 10 Animaciones Procedurales Únicas (Olas, Red, Flujo, Matriz, Telaraña, etc.)
  * ==========================================================================
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   let scrollY = window.scrollY;
-  let scrollVelocity = 0;
   let lastScrollY = window.scrollY;
 
   window.addEventListener('scroll', () => {
     scrollY = window.scrollY;
-    scrollVelocity = scrollY - lastScrollY;
     lastScrollY = scrollY;
   }, { passive: true });
 
@@ -175,10 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 4. MOTOR DE REDES CONCEPTUALES POÉTICAS CON PARALAJE DE SCROLL
+  // 4. MOTOR DE LAS 10 ANIMACIONES DISTINTAS Y REDES CONCEPTUALES
   // ==========================================================================
 
-  function initConceptNetwork(canvas, themeColor, proceduralType = 'default') {
+  function initDistinctAnimation(canvas, themeColor, animType) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
@@ -204,7 +202,18 @@ document.addEventListener('DOMContentLoaded', () => {
       localMouseY = -1000;
     });
 
-    // Crear nodos con offsets de profundidad para scroll parallax
+    // Partículas auxiliares para tipos específicos
+    const particles = Array.from({ length: 28 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.0015,
+      vy: (Math.random() - 0.5) * 0.0015,
+      size: Math.random() * 2.5 + 1,
+      char: ['⚿', '⟐', '✦', '⎈', '≋', '⎔', '∿', '0', '1'][Math.floor(Math.random() * 9)],
+      phase: Math.random() * Math.PI * 2
+    }));
+
+    // Nodos de palabras del texto
     const nodes = conceptList.map((word, i) => {
       const angle = (i / conceptList.length) * Math.PI * 2;
       const radiusDist = 0.30 + (i % 3) * 0.06;
@@ -214,20 +223,19 @@ document.addEventListener('DOMContentLoaded', () => {
         yRatio: 0.5 + Math.sin(angle) * radiusDist,
         baseXRatio: 0.5 + Math.cos(angle) * radiusDist,
         baseYRatio: 0.5 + Math.sin(angle) * radiusDist,
-        depth: 0.4 + (i % 4) * 0.25, // Profundidad para paralaje
+        depth: 0.4 + (i % 4) * 0.25,
         phase: i * 1.3,
         highlight: false
       };
     });
 
-    function drawNetwork() {
+    function draw() {
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       const w = rect.width;
       const h = rect.height;
 
-      // Calcular paralaje según posición respecto al viewport
-      const viewportCenterOffset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      const viewportOffset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
 
       if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
         canvas.width = Math.floor(w * dpr);
@@ -236,49 +244,126 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       ctx.clearRect(0, 0, w, h);
-      time += 0.014;
+      time += 0.016;
 
       const cx = w * 0.5;
-      const cy = h * 0.5 - viewportCenterOffset * 35; // Desplazamiento central sutil
+      const cy = h * 0.5 - viewportOffset * 30;
 
-      // --- CAPA PROCEDURAL BASE POR TIPO ---
-      if (proceduralType === 'scanning') {
-        for (let r = 70; r <= 260; r += 45) {
+      // ======================================================================
+      // 10 ANIMACIONES TOTALMENTE DIFERENTES:
+      // ======================================================================
+
+      if (animType === 'scanning') {
+        // 01. ESCANEO CONCÉNTRICO PULSANTE
+        for (let r = 70; r <= 280; r += 45) {
           ctx.beginPath();
-          ctx.arc(cx, cy, r + Math.sin(time * 1.4 + r) * 5, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${0.05 + 0.05 * Math.sin(time + r)})`;
-          ctx.lineWidth = 1;
-          ctx.setLineDash([4, 10]);
+          ctx.arc(cx, cy, r + Math.sin(time * 1.5 + r) * 6, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(0, 240, 255, ${0.07 + 0.06 * Math.sin(time + r)})`;
+          ctx.lineWidth = 1.2;
+          ctx.setLineDash([4, 12]);
           ctx.stroke();
         }
         ctx.setLineDash([]);
-      } else if (proceduralType === 'radar') {
+
+      } else if (animType === 'network') {
+        // 02. RED VIVA DINÁMICA DE MALLA INTERCONECTADA
+        particles.forEach((p, idx) => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0.05) p.x = 0.95; if (p.x > 0.95) p.x = 0.05;
+          if (p.y < 0.05) p.y = 0.95; if (p.y > 0.95) p.y = 0.05;
+          const px = p.x * w;
+          const py = p.y * h;
+
+          ctx.beginPath();
+          ctx.arc(px, py, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 229, 255, 0.7)';
+          ctx.fill();
+
+          for (let j = idx + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(px - p2.x * w, py - p2.y * h);
+            if (dist < 140) {
+              ctx.beginPath();
+              ctx.moveTo(px, py);
+              ctx.lineTo(p2.x * w, p2.y * h);
+              ctx.strokeStyle = `rgba(0, 229, 255, ${(1 - dist / 140) * 0.25})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        });
+
+      } else if (animType === 'radar') {
+        // 03. RADAR DE BARRIDO DE VIGILANCIA COLONIAL
         const radius = Math.min(w, h) * 0.46;
         for (let r = 1; r <= 3; r++) {
           ctx.beginPath();
           ctx.arc(cx, cy, (radius / 3) * r, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(244, 63, 94, 0.12)';
+          ctx.strokeStyle = 'rgba(244, 63, 94, 0.16)';
           ctx.stroke();
         }
         ctx.save();
         ctx.beginPath();
         ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, radius, time * 1.3, time * 1.3 + 0.45);
+        ctx.arc(cx, cy, radius, time * 1.6, time * 1.6 + 0.5);
         ctx.closePath();
-        const sweepGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, radius);
-        sweepGrad.addColorStop(0, 'rgba(244, 63, 94, 0.22)');
-        sweepGrad.addColorStop(1, 'rgba(244, 63, 94, 0.0)');
-        ctx.fillStyle = sweepGrad;
+        const sweep = ctx.createRadialGradient(cx, cy, 10, cx, cy, radius);
+        sweep.addColorStop(0, 'rgba(244, 63, 94, 0.28)');
+        sweep.addColorStop(1, 'rgba(244, 63, 94, 0.0)');
+        ctx.fillStyle = sweep;
         ctx.fill();
         ctx.restore();
-      } else if (proceduralType === 'web') {
+
+      } else if (animType === 'stardust') {
+        // 04. CONSTELACIÓN ESTELAR DE POLVO Y MEMORIA DORADA
+        particles.forEach((p) => {
+          const px = p.x * w;
+          const py = p.y * h;
+          const alpha = 0.25 + 0.65 * Math.sin(time * 2 + p.phase);
+          ctx.beginPath();
+          ctx.arc(px, py, p.size * 1.2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 184, 0, ${alpha})`;
+          ctx.shadowColor = '#ffb800';
+          ctx.shadowBlur = 10;
+          ctx.fill();
+        });
+        ctx.shadowBlur = 0;
+
+      } else if (animType === 'gridflow') {
+        // 05. MATRIZ DE CUADRÍCULA DIGITAL Y FLUJO VECTORIAL
+        const step = 45;
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.09)';
+        ctx.lineWidth = 1;
+        for (let x = 0; x <= w; x += step) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, h);
+          ctx.stroke();
+        }
+        for (let y = 0; y <= h; y += step) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+        }
+        // Pulsos que viajan por las líneas
+        for (let i = 1; i <= 4; i++) {
+          const sz = i * 50 + Math.sin(time * 1.6 + i) * 8;
+          ctx.beginPath();
+          ctx.rect(cx - sz / 2, cy - sz / 2, sz, sz);
+          ctx.strokeStyle = `rgba(0, 240, 255, ${0.12 + 0.1 * Math.sin(time + i)})`;
+          ctx.stroke();
+        }
+
+      } else if (animType === 'spiderweb') {
+        // 06. TELARAÑA FRACTAL EN ESPIRAL DE ANANSI
         const spokes = 12;
-        const rings = 6;
-        const maxR = Math.min(w, h) * 0.52;
-        ctx.strokeStyle = 'rgba(168, 85, 247, 0.16)';
+        const rings = 7;
+        const maxR = Math.min(w, h) * 0.54;
+        ctx.strokeStyle = 'rgba(168, 85, 247, 0.2)';
         ctx.lineWidth = 1.1;
         for (let i = 0; i < spokes; i++) {
-          const ang = (i * 2 * Math.PI) / spokes;
+          const ang = (i * 2 * Math.PI) / spokes + Math.sin(time * 0.25) * 0.04;
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(cx + Math.cos(ang) * maxR, cy + Math.sin(ang) * maxR);
@@ -288,55 +373,108 @@ document.addEventListener('DOMContentLoaded', () => {
           const ringR = (maxR / rings) * r;
           ctx.beginPath();
           for (let i = 0; i <= spokes; i++) {
-            const ang = (i * 2 * Math.PI) / spokes;
-            const x = cx + Math.cos(ang) * ringR;
-            const y = cy + Math.sin(ang) * ringR;
+            const ang = (i * 2 * Math.PI) / spokes + Math.sin(time * 0.25) * 0.04;
+            const wobble = Math.sin(time * 2 + r + i) * 4;
+            const x = cx + Math.cos(ang) * (ringR + wobble);
+            const y = cy + Math.sin(ang) * (ringR + wobble);
             if (i === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
           }
+          ctx.strokeStyle = `rgba(168, 85, 247, ${0.14 + (r / rings) * 0.3})`;
           ctx.stroke();
         }
-      } else if (proceduralType === 'river') {
+
+      } else if (animType === 'glyphs') {
+        // 07. GLIFOS Y SÍMBOLOS CIFRADOS EN CASCADA FLOTANTE
+        ctx.font = '14px monospace';
+        particles.forEach((p) => {
+          p.y -= 0.001;
+          if (p.y < 0) p.y = 1;
+          ctx.fillStyle = `rgba(192, 132, 252, ${0.3 + 0.4 * Math.sin(time * 2 + p.phase)})`;
+          ctx.fillText(p.char, p.x * w, p.y * h);
+        });
+
+      } else if (animType === 'textile') {
+        // 08. RAYOS TEXTILES DE ANGISAS Y HILOS EN ABANICO
+        const numRays = 52;
+        const maxRadius = Math.min(w, h) * 0.78;
+        for (let i = 0; i < numRays; i++) {
+          const fraction = i / (numRays - 1);
+          const angle = Math.PI * 0.12 + fraction * Math.PI * 0.76;
+          const wave = Math.sin(time * 1.5 + i * 0.2) * 0.03;
+          const finalAngle = angle + wave;
+          const rayLen = maxRadius * (0.65 + Math.sin(time * 2 + i * 0.25) * 0.15);
+          const ex = cx + Math.cos(finalAngle) * rayLen;
+          const ey = cy + Math.sin(finalAngle) * rayLen;
+
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(ex, ey);
+          const alpha = 0.12 + Math.sin(time + i) * 0.1;
+          ctx.strokeStyle = i % 2 === 0 ? `rgba(0, 240, 255, ${alpha})` : `rgba(255, 0, 127, ${alpha})`;
+          ctx.lineWidth = 1.1;
+          ctx.stroke();
+        }
+
+      } else if (animType === 'riverwaves') {
+        // 09. OLAS FLUVIALES Y ONDAS ARMÓNICAS DEL RÍO
+        const streamGrad = ctx.createLinearGradient(0, 0, w, 0);
+        streamGrad.addColorStop(0.0, '#00e5ff');
+        streamGrad.addColorStop(0.5, '#38bdf8');
+        streamGrad.addColorStop(1.0, '#ffb800');
+
         for (let layer = 0; layer < 3; layer++) {
           ctx.beginPath();
-          for (let x = 0; x <= w; x += 5) {
+          for (let x = 0; x <= w; x += 4) {
             const normX = x / w;
-            const y = cy + Math.sin(normX * 9 + time * 1.8 + layer * 2) * (h * 0.09) * Math.sin(normX * Math.PI);
+            const env = Math.sin(normX * Math.PI);
+            const w1 = Math.sin(normX * 8 + time * 2.2 + layer * 1.5) * (h * 0.11);
+            const w2 = Math.cos(normX * 14 - time * 1.4 + layer) * (h * 0.04);
+            const y = cy + (w1 + w2) * env;
             if (x === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
           }
-          ctx.strokeStyle = layer === 0 ? 'rgba(0, 229, 255, 0.22)' : 'rgba(168, 85, 247, 0.16)';
-          ctx.lineWidth = 1.6;
+          ctx.strokeStyle = layer === 0 ? streamGrad : `rgba(168, 85, 247, ${0.4 - layer * 0.12})`;
+          ctx.lineWidth = 2.4 - layer * 0.5;
           ctx.stroke();
         }
-      } else if (proceduralType === 'solar') {
-        const numRays = 36;
-        for (let i = 0; i < numRays; i++) {
-          const ang = (i * 2 * Math.PI) / numRays + time * 0.08;
-          const len = 110 + Math.sin(time * 2 + i) * 30;
+
+      } else if (animType === 'solar') {
+        // 10. CONSTELACIÓN SOLAR Y HACES DE LIBERTAD
+        const numSolarRays = 42;
+        const solarGlow = ctx.createRadialGradient(cx, cy, 10, cx, cy, w * 0.45);
+        solarGlow.addColorStop(0, 'rgba(255, 184, 0, 0.22)');
+        solarGlow.addColorStop(0.6, 'rgba(255, 0, 127, 0.08)');
+        solarGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = solarGlow;
+        ctx.fillRect(0, 0, w, h);
+
+        for (let i = 0; i < numSolarRays; i++) {
+          const ang = (i * 2 * Math.PI) / numSolarRays + time * 0.1;
+          const len = 110 + Math.sin(time * 2.5 + i * 0.5) * 35;
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(cx + Math.cos(ang) * len, cy + Math.sin(ang) * len);
-          ctx.strokeStyle = 'rgba(255, 184, 0, 0.14)';
-          ctx.lineWidth = 1.1;
+          ctx.strokeStyle = `rgba(255, 184, 0, ${0.12 + Math.sin(time + i) * 0.08})`;
+          ctx.lineWidth = 1.2;
           ctx.stroke();
         }
       }
 
-      // --- DIBUJAR LÍNEAS DE CONEXIÓN ENTRE ELEMENTOS ---
+      // ======================================================================
+      // RED CONCEPTUAL POÉTICA DE PALABRAS DEL TEXTO CON PARALAJE
+      // ======================================================================
       nodes.forEach((n, i) => {
-        // Deriva flotante con paralaje de scroll
-        const parallaxY = viewportCenterOffset * (n.depth * 45);
+        const parallaxY = viewportOffset * (n.depth * 45);
         const curXRatio = n.baseXRatio + Math.sin(time + n.phase) * 0.035;
         const curYRatio = n.baseYRatio + Math.cos(time + n.phase * 0.8) * 0.035;
         const px = curXRatio * w;
         const py = curYRatio * h - parallaxY;
 
-        // Atracción suave al cursor
         const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
         n.highlight = distMouse < 150;
 
-        // Conexión al centro orbital
+        // Conexión con el centro
         ctx.beginPath();
         ctx.moveTo(cx, cy);
         ctx.lineTo(px, py);
@@ -344,10 +482,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.lineWidth = n.highlight ? 1.6 : 0.8;
         ctx.stroke();
 
-        // Conectar con nodos vecinos
+        // Conexión entre nodos vecinos
         for (let j = i + 1; j < nodes.length; j++) {
           const n2 = nodes[j];
-          const parallaxY2 = viewportCenterOffset * (n2.depth * 45);
+          const parallaxY2 = viewportOffset * (n2.depth * 45);
           const px2 = (n2.baseXRatio + Math.sin(time + n2.phase) * 0.035) * w;
           const py2 = (n2.baseYRatio + Math.cos(time + n2.phase * 0.8) * 0.035) * h - parallaxY2;
           const dist = Math.hypot(px - px2, py - py2);
@@ -364,13 +502,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // --- DIBUJAR ETIQUETAS DE CONCEPTOS DEL TEXTO ---
+      // Dibujar píldoras de conceptos
       ctx.font = '500 12.5px "DM Mono", monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       nodes.forEach((n) => {
-        const parallaxY = viewportCenterOffset * (n.depth * 45);
+        const parallaxY = viewportOffset * (n.depth * 45);
         const curXRatio = n.baseXRatio + Math.sin(time + n.phase) * 0.035;
         const curYRatio = n.baseYRatio + Math.cos(time + n.phase * 0.8) * 0.035;
         const px = curXRatio * w;
@@ -398,22 +536,24 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillText(n.text, px, py + 1);
       });
 
-      requestAnimationFrame(drawNetwork);
+      requestAnimationFrame(draw);
     }
-    drawNetwork();
+    draw();
   }
 
-  // Inicializar los 10 lienzos con sus colores y temáticas
-  initConceptNetwork(document.getElementById('canvasModulo01'), 'rgb(0, 240, 255)', 'scanning');
-  initConceptNetwork(document.getElementById('canvasModulo02'), 'rgb(0, 229, 255)', 'default');
-  initConceptNetwork(document.getElementById('canvasModulo03'), 'rgb(244, 63, 94)', 'radar');
-  initConceptNetwork(document.getElementById('canvasModulo04'), 'rgb(255, 184, 0)', 'default');
-  initConceptNetwork(document.getElementById('canvasModulo05'), 'rgb(0, 240, 255)', 'default');
-  initConceptNetwork(document.getElementById('anansiWebCanvas'), 'rgb(168, 85, 247)', 'web');
-  initConceptNetwork(document.getElementById('canvasModulo07'), 'rgb(192, 132, 252)', 'default');
-  initConceptNetwork(document.getElementById('rayosCanvas'), 'rgb(255, 0, 127)', 'default');
-  initConceptNetwork(document.getElementById('rioCanvas'), 'rgb(0, 229, 255)', 'river');
-  initConceptNetwork(document.getElementById('cierreCanvas'), 'rgb(255, 184, 0)', 'solar');
+  // ==========================================================================
+  // INICIALIZACIÓN DE LOS 10 MÓDULOS CON SUS 10 ANIMACIONES ESPECÍFICAS
+  // ==========================================================================
+  initDistinctAnimation(document.getElementById('canvasModulo01'), 'rgb(0, 240, 255)', 'scanning');
+  initDistinctAnimation(document.getElementById('canvasModulo02'), 'rgb(0, 229, 255)', 'network');
+  initDistinctAnimation(document.getElementById('canvasModulo03'), 'rgb(244, 63, 94)', 'radar');
+  initDistinctAnimation(document.getElementById('canvasModulo04'), 'rgb(255, 184, 0)', 'stardust');
+  initDistinctAnimation(document.getElementById('canvasModulo05'), 'rgb(0, 240, 255)', 'gridflow');
+  initDistinctAnimation(document.getElementById('anansiWebCanvas'), 'rgb(168, 85, 247)', 'spiderweb');
+  initDistinctAnimation(document.getElementById('canvasModulo07'), 'rgb(192, 132, 252)', 'glyphs');
+  initDistinctAnimation(document.getElementById('rayosCanvas'), 'rgb(255, 0, 127)', 'textile');
+  initDistinctAnimation(document.getElementById('rioCanvas'), 'rgb(0, 229, 255)', 'riverwaves');
+  initDistinctAnimation(document.getElementById('cierreCanvas'), 'rgb(255, 184, 0)', 'solar');
 
   // ==========================================================================
   // 5. SÍNTESIS DE VOZ Y TRANSMISIÓN DE AUDIO (#voz)
