@@ -275,6 +275,118 @@ ensayo::before {
 }
 
 /* ==========================================================================
+   00. SALUDO APAGADO / ILUMINACIÓN INTERACTIVA AL HOVER
+   ========================================================================== */
+saludo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  margin-bottom: 6vh;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+campo-apertura {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 5rem;
+  border-radius: 28px;
+  background: rgba(3, 8, 20, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Estado apagado por defecto */
+texto-saludo {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6.5vw, 4.8rem);
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.16);
+  text-shadow: none;
+  filter: blur(2px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 2;
+}
+
+linea-guia {
+  width: 40px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-top: 1.5rem;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+onda-pulso {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 240, 255, 0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+/* Iluminación espectacular al pasar el cursor */
+campo-apertura:hover {
+  background: radial-gradient(circle at 50% 50%, rgba(8, 24, 52, 0.95) 0%, rgba(2, 6, 16, 0.98) 100%);
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 60px rgba(0, 240, 255, 0.35);
+  transform: translateY(-4px) scale(1.02);
+}
+
+campo-apertura:hover texto-saludo {
+  color: #ffffff;
+  filter: blur(0);
+  background: linear-gradient(135deg, #ffffff 20%, #00f0ff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px rgba(0, 240, 255, 0.8);
+  transform: scale(1.05);
+}
+
+campo-apertura:hover linea-guia {
+  width: 120px;
+  background: linear-gradient(to right, transparent, #00f0ff, transparent);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+}
+
+campo-apertura:hover onda-pulso {
+  border-color: rgba(0, 240, 255, 0.6);
+  transform: translate(-50%, -50%) scale(2.8);
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
+  animation: ondaExpansiva 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes ondaExpansiva {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
    COMPOSICIONES ASIMÉTRICAS DE LOS 10 MÓDULOS
    ========================================================================== */
 pensamiento,
