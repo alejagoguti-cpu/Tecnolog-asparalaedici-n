@@ -1,7 +1,13 @@
 /**
  * TECNOLOGÍAS DEL SECRETO — MOTOR VISUAL DRAMÁTICO & ENSAYO EN CÓDIGO
- * Experiencia Poética: Hologramas de Artefactos, Red 3D Comunitaria, Portal Surinam,
- * Espectro Hidro-Acústico Fluido y Física de Pliegues Cinéticos
+ * Arquitectura Widescreen (100vw):
+ * 1. Lienzo Ambiental Adaptativo Multicromático (#ambientCanvas)
+ * 2. Globo 3D de Partículas de Red Comunitaria (#comunidadCanvas - Ref. 5)
+ * 3. Telaraña Geométrica Cuántica de Anansi (#anansiWebCanvas)
+ * 4. Semiesfera de Rayos de Fibra Óptica (#rayosCanvas - Ref. 4 "um estado de transição")
+ * 5. Espectrograma Cuántico Fluvial Hidro-Acústico (#rio)
+ * 6. HUD de Navegación Lateral y Física 3D de Pliegues Cinéticos
+ * 7. Síntesis de Voz Neural en Tiempo Real (#voz)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetRGB = { r: 0, g: 240, b: 255 };
 
     const sections = document.querySelectorAll('saludo, origen, historias-anansi, panuelos-angisa, canciones-rio, cierre');
+    const navItems = document.querySelectorAll('nav-lateral item-nav');
+
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -39,11 +47,31 @@ document.addEventListener('DOMContentLoaded', () => {
           if (sectionThemes[secId]) {
             targetRGB = sectionThemes[secId];
           }
+
+          // Actualizar indicador en HUD lateral
+          navItems.forEach((item) => {
+            if (item.getAttribute('data-target') === entry.target.id) {
+              item.classList.add('activo');
+            } else {
+              item.classList.remove('activo');
+            }
+          });
         }
       });
     }, { root: null, rootMargin: '-20% 0px -40% 0px', threshold: 0.2 });
 
     sections.forEach((sec) => sectionObserver.observe(sec));
+
+    // Smooth scroll en HUD lateral
+    navItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        const targetId = item.getAttribute('data-target');
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
 
     window.addEventListener('scroll', () => {
       scrollY = window.scrollY;
@@ -76,18 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight || 1;
       const scrollProgress = Math.min(1, Math.max(0, scrollY / docHeight));
 
-      const orb1X = w * (0.3 + Math.sin(time * 0.35) * 0.12);
-      const orb1Y = h * (0.3 + Math.cos(time * 0.28) * 0.1 - scrollProgress * 0.15);
-      const grad1 = ctx.createRadialGradient(orb1X, orb1Y, 20, orb1X, orb1Y, w * 0.5);
-      grad1.addColorStop(0, `rgba(${Math.round(currentRGB.r)}, ${Math.round(currentRGB.g)}, ${Math.round(currentRGB.b)}, 0.14)`);
+      const orb1X = w * (0.25 + Math.sin(time * 0.3) * 0.1);
+      const orb1Y = h * (0.3 + Math.cos(time * 0.25) * 0.1 - scrollProgress * 0.15);
+      const grad1 = ctx.createRadialGradient(orb1X, orb1Y, 30, orb1X, orb1Y, w * 0.55);
+      grad1.addColorStop(0, `rgba(${Math.round(currentRGB.r)}, ${Math.round(currentRGB.g)}, ${Math.round(currentRGB.b)}, 0.16)`);
       grad1.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = grad1;
       ctx.fillRect(0, 0, w, h);
 
-      const orb2X = w * (0.75 - Math.sin(time * 0.4) * 0.1);
-      const orb2Y = h * (0.6 + Math.sin(time * 0.45) * 0.12);
-      const grad2 = ctx.createRadialGradient(orb2X, orb2Y, 30, orb2X, orb2Y, w * 0.45);
-      grad2.addColorStop(0, `rgba(${Math.round(255 - currentRGB.r * 0.3)}, ${Math.round(currentRGB.g * 0.5)}, ${Math.round(255 - currentRGB.b * 0.2)}, 0.09)`);
+      const orb2X = w * (0.8 - Math.sin(time * 0.35) * 0.12);
+      const orb2Y = h * (0.65 + Math.sin(time * 0.4) * 0.1);
+      const grad2 = ctx.createRadialGradient(orb2X, orb2Y, 40, orb2X, orb2Y, w * 0.48);
+      grad2.addColorStop(0, `rgba(${Math.round(255 - currentRGB.r * 0.2)}, ${Math.round(currentRGB.g * 0.4)}, ${Math.round(255 - currentRGB.b * 0.1)}, 0.1)`);
       grad2.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = grad2;
       ctx.fillRect(0, 0, w, h);
@@ -99,26 +127,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 2. RED 3D COMUNITARIA EN CANVAS (<red-comunidad-3d>)
+  // 2. GLOBO 3D DE PARTÍCULAS - RED COMUNITARIA (<red-comunidad-3d> - Ref. 5)
   // ==========================================================================
   const comCanvas = document.getElementById('comunidadCanvas');
   if (comCanvas) {
     const cctx = comCanvas.getContext('2d');
-    let rotAngle = 0;
-    const numNodes = 22;
-    const nodes3D = [];
+    let rotY = 0;
+    let rotX = 0.2;
+    const numParticles = 240;
+    const sphereParticles = [];
 
-    for (let i = 0; i < numNodes; i++) {
-      const phi = Math.acos(-1 + (2 * i) / numNodes);
-      const theta = Math.sqrt(numNodes * Math.PI) * phi;
-      nodes3D.push({
+    // Distribución esférica de Fibonacci
+    for (let i = 0; i < numParticles; i++) {
+      const phi = Math.acos(-1 + (2 * i) / numParticles);
+      const theta = Math.sqrt(numParticles * Math.PI) * phi;
+      sphereParticles.push({
         x: Math.cos(theta) * Math.sin(phi),
         y: Math.sin(theta) * Math.sin(phi),
-        z: Math.cos(phi)
+        z: Math.cos(phi),
+        size: Math.random() * 1.8 + 1.2,
+        brightness: Math.random() * 0.5 + 0.5
       });
     }
 
-    function draw3DNetwork() {
+    function draw3DSphere() {
       const rect = comCanvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       const w = rect.width;
@@ -131,71 +163,82 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       cctx.clearRect(0, 0, w, h);
-      rotAngle += 0.014;
+      rotY += 0.008;
 
       const radius = Math.min(w, h) * 0.38;
       const centerX = w / 2;
       const centerY = h / 2;
-      const projectedNodes = [];
+      const projected = [];
 
-      nodes3D.forEach((n) => {
-        const cosY = Math.cos(rotAngle);
-        const sinY = Math.sin(rotAngle);
-        const x1 = n.x * cosY - n.z * sinY;
-        const z1 = n.z * cosY + n.x * sinY;
+      sphereParticles.forEach((p) => {
+        // Rotación en Y
+        const cosY = Math.cos(rotY);
+        const sinY = Math.sin(rotY);
+        const x1 = p.x * cosY - p.z * sinY;
+        const z1 = p.z * cosY + p.x * sinY;
 
-        const cosX = Math.cos(rotAngle * 0.5);
-        const sinX = Math.sin(rotAngle * 0.5);
-        const y2 = n.y * cosX - z1 * sinX;
-        const z2 = z1 * cosX + n.y * sinX;
+        // Rotación en X
+        const cosX = Math.cos(rotX);
+        const sinX = Math.sin(rotX);
+        const y2 = p.y * cosX - z1 * sinX;
+        const z2 = z1 * cosX + p.y * sinX;
 
-        const perspective = 320 / (320 + z2 * radius);
-        projectedNodes.push({
-          px: centerX + x1 * radius * perspective,
-          py: centerY + y2 * radius * perspective,
+        const fov = 300;
+        const scale = fov / (fov + z2 * radius);
+        projected.push({
+          px: centerX + x1 * radius * scale,
+          py: centerY + y2 * radius * scale,
           depth: z2,
-          scale: perspective
+          scale: scale,
+          size: p.size * scale,
+          alpha: Math.max(0.15, (z2 + 1) * 0.45 * p.brightness)
         });
       });
 
-      // Filamentos de conexión entre nodos cercanos
+      // Ordenar por profundidad (Z-buffering)
+      projected.sort((a, b) => a.depth - b.depth);
+
+      // Filamentos de conexión en nodos frontales
       cctx.beginPath();
-      for (let i = 0; i < projectedNodes.length; i++) {
-        for (let j = i + 1; j < projectedNodes.length; j++) {
-          const dx = projectedNodes[i].px - projectedNodes[j].px;
-          const dy = projectedNodes[i].py - projectedNodes[j].py;
+      for (let i = 0; i < projected.length; i++) {
+        if (projected[i].depth < -0.2) continue;
+        for (let j = i + 1; j < projected.length; j++) {
+          if (projected[j].depth < -0.2) continue;
+          const dx = projected[i].px - projected[j].px;
+          const dy = projected[i].py - projected[j].py;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < radius * 0.85) {
-            const alpha = Math.max(0, 1 - dist / (radius * 0.85)) * 0.4;
-            cctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
-            cctx.lineWidth = 1.1;
-            cctx.moveTo(projectedNodes[i].px, projectedNodes[i].py);
-            cctx.lineTo(projectedNodes[j].px, projectedNodes[j].py);
+          if (dist < 42) {
+            const filamentAlpha = (1 - dist / 42) * 0.28 * projected[i].alpha;
+            cctx.strokeStyle = `rgba(0, 240, 255, ${filamentAlpha})`;
+            cctx.lineWidth = 0.8;
+            cctx.moveTo(projected[i].px, projected[i].py);
+            cctx.lineTo(projected[j].px, projected[j].py);
           }
         }
       }
       cctx.stroke();
 
-      // Nodos luminosos
-      projectedNodes.forEach((pn) => {
-        const nodeRadius = Math.max(2, 3.8 * pn.scale);
+      // Partículas luminosas
+      projected.forEach((p) => {
         cctx.save();
         cctx.beginPath();
-        cctx.arc(pn.px, pn.py, nodeRadius, 0, Math.PI * 2);
-        cctx.fillStyle = pn.depth > 0 ? '#00f0ff' : '#ffffff';
-        cctx.shadowColor = '#00f0ff';
-        cctx.shadowBlur = 10;
+        cctx.arc(p.px, p.py, Math.max(1, p.size), 0, Math.PI * 2);
+        cctx.fillStyle = p.depth > 0.2 ? '#ffffff' : `rgba(0, 240, 255, ${p.alpha})`;
+        if (p.depth > 0) {
+          cctx.shadowColor = '#00f0ff';
+          cctx.shadowBlur = 10 * p.scale;
+        }
         cctx.fill();
         cctx.restore();
       });
 
-      requestAnimationFrame(draw3DNetwork);
+      requestAnimationFrame(draw3DSphere);
     }
-    draw3DNetwork();
+    draw3DSphere();
   }
 
   // ==========================================================================
-  // 3. TELARAÑA CRIPTOGRÁFICA DE ANANSI (<visor-anansi>)
+  // 3. TELARAÑA GEOMÉTRICA DE ANANSI (<visor-anansi>)
   // ==========================================================================
   const webCanvas = document.getElementById('anansiWebCanvas');
   if (webCanvas) {
@@ -215,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       wctx.clearRect(0, 0, w, h);
-      webTime += 0.015;
+      webTime += 0.014;
 
       const centerX = w / 2;
       const centerY = h / 2;
@@ -273,7 +316,98 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 4. ESPECTRO HIDRO-ACÚSTICO FLUVIAL INTERACTIVO (RÍO CUÁNTICO)
+  // 4. SEMIESFERA DE RAYOS DE FIBRA ÓPTICA (<semiesfera-rayos> - Ref. 4)
+  // ==========================================================================
+  const rayosCanvas = document.getElementById('rayosCanvas');
+  if (rayosCanvas) {
+    const rctx = rayosCanvas.getContext('2d');
+    let rayTime = 0;
+    const numRays = 72;
+
+    function drawFiberRays() {
+      const rect = rayosCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width;
+      const h = rect.height;
+
+      if (rayosCanvas.width !== Math.floor(w * dpr) || rayosCanvas.height !== Math.floor(h * dpr)) {
+        rayosCanvas.width = Math.floor(w * dpr);
+        rayosCanvas.height = Math.floor(h * dpr);
+        rctx.scale(dpr, dpr);
+      }
+
+      rctx.clearRect(0, 0, w, h);
+      rayTime += 0.018;
+
+      const originX = w * 0.52;
+      const originY = h * 0.5;
+      const maxRadius = Math.min(w, h) * 0.44;
+
+      // Dibujar rayos que emergen en abanico semicircular hacia la izquierda
+      for (let i = 0; i < numRays; i++) {
+        const angleFraction = i / (numRays - 1);
+        const baseAngle = Math.PI * 0.5 + angleFraction * Math.PI; // Semicírculo izquierdo
+        const wave = Math.sin(rayTime * 1.5 + i * 0.15) * 0.04;
+        const angle = baseAngle + wave;
+
+        const rayLength = maxRadius * (0.8 + Math.sin(rayTime * 2 + i * 0.3) * 0.18);
+        const endX = originX + Math.cos(angle) * rayLength;
+        const endY = originY + Math.sin(angle) * rayLength;
+
+        // Línea de fibra óptica
+        rctx.save();
+        rctx.beginPath();
+        rctx.moveTo(originX, originY);
+        rctx.lineTo(endX, endY);
+        const rayAlpha = 0.2 + Math.sin(rayTime + i) * 0.15;
+        rctx.strokeStyle = `rgba(0, 240, 255, ${rayAlpha})`;
+        rctx.lineWidth = 1.2;
+        rctx.stroke();
+        rctx.restore();
+
+        // Puntos de luz a lo largo del rayo
+        const dotSteps = 4;
+        for (let d = 1; d <= dotSteps; d++) {
+          const dotT = (d / dotSteps) * ((rayTime * 0.3 + i * 0.05) % 1);
+          const dotX = originX + Math.cos(angle) * (rayLength * dotT);
+          const dotY = originY + Math.sin(angle) * (rayLength * dotT);
+
+          rctx.save();
+          rctx.beginPath();
+          rctx.arc(dotX, dotY, 1.4, 0, Math.PI * 2);
+          rctx.fillStyle = 'rgba(0, 240, 255, 0.7)';
+          rctx.fill();
+          rctx.restore();
+        }
+
+        // Nodo luminoso en la punta del rayo
+        rctx.save();
+        rctx.beginPath();
+        rctx.arc(endX, endY, 2.8, 0, Math.PI * 2);
+        rctx.fillStyle = i % 2 === 0 ? '#00f0ff' : '#ffffff';
+        rctx.shadowColor = '#00f0ff';
+        rctx.shadowBlur = 10;
+        rctx.fill();
+        rctx.restore();
+      }
+
+      // Eje central de emisión
+      rctx.save();
+      rctx.beginPath();
+      rctx.arc(originX, originY, 6, 0, Math.PI * 2);
+      rctx.fillStyle = '#ffffff';
+      rctx.shadowColor = '#00f0ff';
+      rctx.shadowBlur = 20;
+      rctx.fill();
+      rctx.restore();
+
+      requestAnimationFrame(drawFiberRays);
+    }
+    drawFiberRays();
+  }
+
+  // ==========================================================================
+  // 5. ESPECTRO HIDRO-ACÚSTICO FLUVIAL INTERACTIVO (#rio)
   // ==========================================================================
   const riverContainer = document.querySelector('#rio');
   if (riverContainer) {
@@ -402,9 +536,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 5. FÍSICA 3D EN TARJETAS DE ARTEFACTOS Y PLIEGUES KINÉTICOS
+  // 6. FÍSICA 3D EN TARJETAS DE ARTEFACTOS Y PLIEGUES KINÉTICOS
   // ==========================================================================
-  const interactiveCards = document.querySelectorAll('secreto, alerta, resistencia, artefacto');
+  const interactiveCards = document.querySelectorAll('secreto, alerta, resistencia, nodo-orbital, terminal-codigo');
   interactiveCards.forEach((card) => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -412,8 +546,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotX = ((y - centerY) / centerY) * -8;
-      const rotY = ((x - centerX) / centerX) * 8;
+      const rotX = ((y - centerY) / centerY) * -6;
+      const rotY = ((x - centerX) / centerX) * 6;
 
       card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
     });
@@ -424,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // 6. SÍNTESIS DE VOZ Y TRANSMISIÓN DE AUDIO (CIERRE DEL ENSAYO)
+  // 7. SÍNTESIS DE VOZ Y TRANSMISIÓN DE AUDIO (CIERRE DEL ENSAYO)
   // ==========================================================================
   const closingNarrative =
     'Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología. La tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos. Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres. Muchas gracias.';
@@ -455,6 +589,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
 
 
 
