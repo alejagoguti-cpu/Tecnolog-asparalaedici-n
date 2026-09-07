@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
  * TECNOLOGÍAS PARA LA EDICIÓN — ALEJANDRA GÓMEZ GUTIÉRREZ
- * Motor Generativo de Vanguardia: 10 Experiencias Visuales Espectaculares
+ * Motor Generativo de Vanguardia — Ultra Optimizado a 60/120 FPS
  * ==========================================================================
  */
 
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   function updateCursorLight() {
-    curX += (mouseX - curX) * 0.12;
-    curY += (mouseY - curY) * 0.12;
+    curX += (mouseX - curX) * 0.15;
+    curY += (mouseY - curY) * 0.15;
     if (cursorGlow) {
       cursorGlow.style.left = `${curX}px`;
       cursorGlow.style.top = `${curY}px`;
@@ -83,19 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const ctx = canvas.getContext('2d');
     let time = 0;
+    let cw = window.innerWidth;
+    let ch = window.innerHeight;
 
     const sectionThemes = {
-      '00': { r: 0, g: 240, b: 255 },    // Apertura: Cyan
-      '01': { r: 0, g: 240, b: 255 },    // 01 Pensamiento: Artefacto (Cyan)
-      '02': { r: 0, g: 229, b: 255 },    // 02 Revelación: Comunidad (Turquesa)
-      '03': { r: 244, g: 63, b: 94 },    // 03 Observación: Vigilancia (Rojo carmesí)
-      '04': { r: 255, g: 184, b: 0 },    // 04 Memoria: Recursos (Ámbar)
-      '05': { r: 0, g: 240, b: 255 },    // 05 Intención: Traducción digital (Cyan)
-      '06': { r: 168, g: 85, b: 247 },   // 06 Comprensión: Anansi (Violeta)
-      '07': { r: 192, g: 132, b: 252 },  // 07 Reflexión: Capas ocultas (Púrpura)
-      '08': { r: 255, g: 0, b: 127 },    // 08 Lenguaje: Angisas (Magenta)
-      '09': { r: 0, g: 229, b: 255 },    // 09 Experiencia: Río (Turquesa fluvial)
-      '10': { r: 255, g: 184, b: 0 }     // 10 Construcción: Libertad (Dorado solar)
+      '00': { r: 0, g: 240, b: 255 },
+      '01': { r: 0, g: 240, b: 255 },
+      '02': { r: 0, g: 229, b: 255 },
+      '03': { r: 244, g: 63, b: 94 },
+      '04': { r: 255, g: 184, b: 0 },
+      '05': { r: 0, g: 240, b: 255 },
+      '06': { r: 168, g: 85, b: 247 },
+      '07': { r: 192, g: 132, b: 252 },
+      '08': { r: 255, g: 0, b: 127 },
+      '09': { r: 0, g: 229, b: 255 },
+      '10': { r: 255, g: 184, b: 0 }
     };
 
     let currentRGB = { r: 0, g: 240, b: 255 };
@@ -117,61 +119,56 @@ document.addEventListener('DOMContentLoaded', () => {
           entry.target.classList.remove('en-foco');
         }
       });
-    }, { root: null, rootMargin: '-15% 0px -25% 0px', threshold: 0.1 });
+    }, { root: null, rootMargin: '-10% 0px -20% 0px', threshold: 0.1 });
 
     allSections.forEach((sec) => sectionObserver.observe(sec));
 
     function resizeAmbient() {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = Math.floor(window.innerWidth * dpr);
-      canvas.height = Math.floor(window.innerHeight * dpr);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      cw = window.innerWidth;
+      ch = window.innerHeight;
+      canvas.width = Math.floor(cw * dpr);
+      canvas.height = Math.floor(ch * dpr);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
     }
     window.addEventListener('resize', resizeAmbient);
     resizeAmbient();
 
     function drawAmbient() {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, cw, ch);
 
-      if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
-        resizeAmbient();
-      }
+      currentRGB.r += (targetRGB.r - currentRGB.r) * 0.04;
+      currentRGB.g += (targetRGB.g - currentRGB.g) * 0.04;
+      currentRGB.b += (targetRGB.b - currentRGB.b) * 0.04;
 
-      ctx.clearRect(0, 0, w, h);
-
-      currentRGB.r += (targetRGB.r - currentRGB.r) * 0.035;
-      currentRGB.g += (targetRGB.g - currentRGB.g) * 0.035;
-      currentRGB.b += (targetRGB.b - currentRGB.b) * 0.035;
-
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight || 1;
+      const docHeight = document.documentElement.scrollHeight - ch || 1;
       const scrollProgress = Math.min(1, Math.max(0, scrollY / docHeight));
 
-      const orb1X = w * (0.28 + Math.sin(time * 0.25) * 0.12);
-      const orb1Y = h * (0.35 + Math.cos(time * 0.2) * 0.12 - scrollProgress * 0.2);
-      const grad1 = ctx.createRadialGradient(orb1X, orb1Y, 40, orb1X, orb1Y, w * 0.65);
-      grad1.addColorStop(0, `rgba(${Math.round(currentRGB.r)}, ${Math.round(currentRGB.g)}, ${Math.round(currentRGB.b)}, 0.14)`);
+      const orb1X = cw * (0.28 + Math.sin(time * 0.25) * 0.1);
+      const orb1Y = ch * (0.35 + Math.cos(time * 0.2) * 0.1 - scrollProgress * 0.15);
+      const grad1 = ctx.createRadialGradient(orb1X, orb1Y, 30, orb1X, orb1Y, cw * 0.6);
+      grad1.addColorStop(0, `rgba(${Math.round(currentRGB.r)}, ${Math.round(currentRGB.g)}, ${Math.round(currentRGB.b)}, 0.12)`);
       grad1.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = grad1;
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillRect(0, 0, cw, ch);
 
-      const orb2X = w * (0.75 - Math.sin(time * 0.3) * 0.15);
-      const orb2Y = h * (0.65 + Math.sin(time * 0.35) * 0.12);
-      const grad2 = ctx.createRadialGradient(orb2X, orb2Y, 50, orb2X, orb2Y, w * 0.55);
-      grad2.addColorStop(0, `rgba(${Math.round(255 - currentRGB.r * 0.2)}, ${Math.round(currentRGB.g * 0.4)}, ${Math.round(255 - currentRGB.b * 0.1)}, 0.08)`);
+      const orb2X = cw * (0.75 - Math.sin(time * 0.3) * 0.12);
+      const orb2Y = ch * (0.65 + Math.sin(time * 0.35) * 0.1);
+      const grad2 = ctx.createRadialGradient(orb2X, orb2Y, 40, orb2X, orb2Y, cw * 0.5);
+      grad2.addColorStop(0, `rgba(${Math.round(255 - currentRGB.r * 0.2)}, ${Math.round(currentRGB.g * 0.4)}, ${Math.round(255 - currentRGB.b * 0.1)}, 0.06)`);
       grad2.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = grad2;
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillRect(0, 0, cw, ch);
 
-      time += 0.012;
+      time += 0.015;
       requestAnimationFrame(drawAmbient);
     }
     drawAmbient();
   }
 
   // ==========================================================================
-  // 4. MOTOR DE LAS 10 EXPERIENCIAS VISUALES ESPECTACULARES
+  // 4. MOTOR DE LAS 10 EXPERIENCIAS GENERATIVAS FLUIDAS (60/120 FPS)
   // ==========================================================================
 
   function initSpectacularAnimation(canvas, themeColor, animType) {
@@ -188,69 +185,92 @@ document.addEventListener('DOMContentLoaded', () => {
     let time = 0;
     let localMouseX = -1000;
     let localMouseY = -1000;
+    let isVisible = false;
+    let animationFrameId = null;
+
+    let cw = 800;
+    let ch = 500;
+    let rectTop = 0;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      cw = rect.width || 800;
+      ch = rect.height || 500;
+      rectTop = rect.top + window.scrollY;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.floor(cw * dpr);
+      canvas.height = Math.floor(ch * dpr);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // INTERSECTION OBSERVER: Pausa cuando está fuera de pantalla (¡CERO LAG!)
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          resize();
+          if (!animationFrameId) {
+            draw();
+          }
+        } else {
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
+        }
+      });
+    }, { root: null, rootMargin: '100px 0px 100px 0px', threshold: 0.01 });
+
+    visibilityObserver.observe(canvas.parentElement || canvas);
 
     canvas.parentElement.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
       localMouseX = e.clientX - rect.left;
       localMouseY = e.clientY - rect.top;
-    });
+    }, { passive: true });
 
     canvas.parentElement.addEventListener('mouseleave', () => {
       localMouseX = -1000;
       localMouseY = -1000;
-    });
+    }, { passive: true });
 
-    // Ondas de clic interactivas
-    let ripples = [];
-    canvas.parentElement.addEventListener('click', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      ripples.push({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-        r: 5,
-        maxR: 280,
-        alpha: 1
-      });
-    });
-
-    // Partículas generativas avanzadas
-    const particleCount = 45;
+    // Partículas generativas
+    const particleCount = 28;
     const particles = Array.from({ length: particleCount }, (_, i) => ({
       x: Math.random(),
       y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.002,
-      vy: (Math.random() - 0.5) * 0.002,
-      size: Math.random() * 3 + 1,
-      char: ['⚿', '⟐', '✦', '⎈', '≋', '⎔', '∿', '0', '1', '§', '◊'][i % 11],
+      vx: (Math.random() - 0.5) * 0.0012,
+      vy: (Math.random() - 0.5) * 0.0012,
+      size: Math.random() * 2.2 + 1,
+      char: ['⚿', '⟐', '✦', '⎈', '≋', '⎔', '∿', '0', '1'][i % 9],
       phase: Math.random() * Math.PI * 2,
-      radius: Math.random() * 180 + 40,
+      radius: Math.random() * 160 + 40,
       angle: Math.random() * Math.PI * 2,
-      speed: Math.random() * 0.02 + 0.005
+      speed: Math.random() * 0.015 + 0.005
     }));
 
-    // Nodos de palabras del texto con masa y resorte
+    // Nodos de palabras del texto
     const nodes = conceptList.map((word, i) => {
       const angle = (i / conceptList.length) * Math.PI * 2;
       const radiusDist = 0.32 + (i % 3) * 0.08;
       return {
         text: word,
-        x: 0,
-        y: 0,
         baseXRatio: 0.5 + Math.cos(angle) * radiusDist,
         baseYRatio: 0.5 + Math.sin(angle) * radiusDist,
-        vx: 0,
-        vy: 0,
         depth: 0.4 + (i % 4) * 0.25,
         phase: i * 1.3,
         highlight: false
       };
     });
 
-    // Geometría 3D de artefacto para Módulo 01 (Dodecaedro / Hipercubo)
+    // Geometría 3D de artefacto para Módulo 01
     const vertices3D = [
       [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
       [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1],
-      [0, -1.6, 0], [0, 1.6, 0], [-1.6, 0, 0], [1.6, 0, 0]
+      [0, -1.5, 0], [0, 1.5, 0], [-1.5, 0, 0], [1.5, 0, 0]
     ];
     const edges3D = [
       [0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7],
@@ -258,49 +278,37 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function draw() {
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      const w = rect.width;
-      const h = rect.height;
-
-      const viewportOffset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
-
-      if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
-        canvas.width = Math.floor(w * dpr);
-        canvas.height = Math.floor(h * dpr);
-        ctx.scale(dpr, dpr);
+      if (!isVisible) {
+        animationFrameId = null;
+        return;
       }
 
-      ctx.clearRect(0, 0, w, h);
-      time += 0.018;
+      ctx.clearRect(0, 0, cw, ch);
+      time += 0.016;
 
-      const cx = w * 0.5;
-      const cy = h * 0.5 - viewportOffset * 25;
+      const viewportOffset = (rectTop - scrollY + ch / 2 - window.innerHeight / 2) / window.innerHeight;
+      const cx = cw * 0.5;
+      const cy = ch * 0.5 - viewportOffset * 20;
 
       // ======================================================================
-      // RENDERIZADO DE LAS 10 ESCENAS GENERATIVAS DE ALTO IMPACTO:
+      // 10 ANIMACIONES VECTORIALES OPTIMIZADAS:
       // ======================================================================
 
       if (animType === 'artefacto3d') {
-        // 01. ARTEFACTO 3D KINÉTICO FLOTANTE + SONAR ÓRBITAL
-        ctx.save();
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
-        ctx.lineWidth = 1.4;
+        // 01. ARTEFACTO 3D KINÉTICO FLOTANTE
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
+        ctx.lineWidth = 1.2;
 
-        // Sonar de fondo
-        for (let r = 80; r <= 320; r += 50) {
+        for (let r = 80; r <= 280; r += 55) {
           ctx.beginPath();
-          ctx.arc(cx, cy, r + Math.sin(time * 1.8 + r) * 8, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${0.06 + 0.06 * Math.sin(time + r)})`;
-          ctx.setLineDash([4, 12]);
+          ctx.arc(cx, cy, r + Math.sin(time * 1.5 + r) * 6, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(0, 240, 255, ${0.06 + 0.05 * Math.sin(time + r)})`;
           ctx.stroke();
         }
-        ctx.setLineDash([]);
 
-        // Rotación 3D del artefacto
-        const scale3D = Math.min(w, h) * 0.16;
-        const rotX = time * 0.6 + localMouseY * 0.001;
-        const rotY = time * 0.9 + localMouseX * 0.001;
+        const scale3D = Math.min(cw, ch) * 0.16;
+        const rotX = time * 0.5;
+        const rotY = time * 0.8;
 
         const proj = vertices3D.map(([vx, vy, vz]) => {
           let x1 = vx * Math.cos(rotY) - vz * Math.sin(rotY);
@@ -309,153 +317,116 @@ document.addEventListener('DOMContentLoaded', () => {
           let z2 = vy * Math.sin(rotX) + z1 * Math.cos(rotX);
           const fov = 3.2;
           const p = fov / (fov + z2);
-          return { x: cx + x1 * scale3D * p, y: cy + y2 * scale3D * p, p };
+          return { x: cx + x1 * scale3D * p, y: cy + y2 * scale3D * p };
         });
 
+        ctx.beginPath();
         edges3D.forEach(([i, j]) => {
-          ctx.beginPath();
           ctx.moveTo(proj[i].x, proj[i].y);
           ctx.lineTo(proj[j].x, proj[j].y);
-          ctx.strokeStyle = 'rgba(0, 240, 255, 0.55)';
-          ctx.shadowColor = '#00f0ff';
-          ctx.shadowBlur = 12;
-          ctx.stroke();
         });
-        ctx.shadowBlur = 0;
-        ctx.restore();
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.65)';
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
 
       } else if (animType === 'redneuronal') {
-        // 02. RED TOPOLÓGICA CON RESORTES ELÁSTICOS Y PARTÍCULAS VIVAS
-        ctx.save();
+        // 02. RED TOPOLÓGICA CON RESORTES ELÁSTICOS
         particles.forEach((p, idx) => {
           p.x += p.vx; p.y += p.vy;
           if (p.x < 0.05) p.x = 0.95; if (p.x > 0.95) p.x = 0.05;
           if (p.y < 0.05) p.y = 0.95; if (p.y > 0.95) p.y = 0.05;
-          const px = p.x * w;
-          const py = p.y * h;
+          const px = p.x * cw;
+          const py = p.y * ch;
 
           ctx.beginPath();
-          ctx.arc(px, py, p.size * 1.3, 0, Math.PI * 2);
+          ctx.arc(px, py, p.size, 0, Math.PI * 2);
           ctx.fillStyle = 'rgba(0, 229, 255, 0.85)';
-          ctx.shadowColor = '#00e5ff';
-          ctx.shadowBlur = 8;
           ctx.fill();
 
           for (let j = idx + 1; j < particles.length; j++) {
             const p2 = particles[j];
-            const dist = Math.hypot(px - p2.x * w, py - p2.y * h);
-            if (dist < 160) {
+            const dist = Math.hypot(px - p2.x * cw, py - p2.y * ch);
+            if (dist < 140) {
               ctx.beginPath();
               ctx.moveTo(px, py);
-              ctx.lineTo(p2.x * w, p2.y * h);
-              ctx.strokeStyle = `rgba(0, 229, 255, ${(1 - dist / 160) * 0.4})`;
-              ctx.lineWidth = 1.2;
+              ctx.lineTo(p2.x * cw, p2.y * ch);
+              ctx.strokeStyle = `rgba(0, 229, 255, ${(1 - dist / 140) * 0.35})`;
+              ctx.lineWidth = 1;
               ctx.stroke();
             }
           }
         });
-        ctx.shadowBlur = 0;
-        ctx.restore();
 
       } else if (animType === 'lasersearch') {
-        // 03. RADAR DE BARRIDO Y LÁSER VOLUMÉTRICO DE VIGILANCIA
-        ctx.save();
-        const radius = Math.min(w, h) * 0.52;
-        for (let r = 1; r <= 4; r++) {
+        // 03. RADAR Y CONO LÁSER DE VIGILANCIA
+        const radius = Math.min(cw, ch) * 0.5;
+        for (let r = 1; r <= 3; r++) {
           ctx.beginPath();
-          ctx.arc(cx, cy, (radius / 4) * r, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(244, 63, 94, 0.2)';
-          ctx.lineWidth = 1.2;
+          ctx.arc(cx, cy, (radius / 3) * r, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(244, 63, 94, 0.16)';
+          ctx.lineWidth = 1;
           ctx.stroke();
         }
 
-        // Cono de haz de luz rojo volumétrico
-        const angle = time * 1.8;
+        const angle = time * 1.5;
         ctx.beginPath();
         ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, radius, angle, angle + 0.6);
+        ctx.arc(cx, cy, radius, angle, angle + 0.5);
         ctx.closePath();
-        const laserGrad = ctx.createRadialGradient(cx, cy, 15, cx, cy, radius);
-        laserGrad.addColorStop(0, 'rgba(244, 63, 94, 0.5)');
-        laserGrad.addColorStop(0.7, 'rgba(244, 63, 94, 0.15)');
+        const laserGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, radius);
+        laserGrad.addColorStop(0, 'rgba(244, 63, 94, 0.35)');
         laserGrad.addColorStop(1, 'rgba(244, 63, 94, 0.0)');
         ctx.fillStyle = laserGrad;
         ctx.fill();
 
-        // Línea de rayo central
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.lineTo(cx + Math.cos(angle + 0.3) * radius, cy + Math.sin(angle + 0.3) * radius);
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
-        ctx.shadowColor = '#f43f5e';
-        ctx.shadowBlur = 18;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-        ctx.restore();
-
       } else if (animType === 'nebulamemoria') {
-        // 04. VÓRTICE CÓSMICO DE POLVO ESTELAR Y MEMORIA DORADA
-        ctx.save();
+        // 04. VÓRTICE DE POLVO ESTELAR Y MEMORIA DORADA
         particles.forEach((p) => {
           p.angle += p.speed;
           const px = cx + Math.cos(p.angle) * p.radius;
           const py = cy + Math.sin(p.angle) * (p.radius * 0.6);
-          const alpha = 0.3 + 0.7 * Math.sin(time * 2.5 + p.phase);
+          const alpha = 0.3 + 0.6 * Math.sin(time * 2 + p.phase);
 
           ctx.beginPath();
-          ctx.arc(px, py, p.size * 1.4, 0, Math.PI * 2);
+          ctx.arc(px, py, p.size, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255, 184, 0, ${alpha})`;
-          ctx.shadowColor = '#ffb800';
-          ctx.shadowBlur = 14;
           ctx.fill();
         });
-        ctx.shadowBlur = 0;
-        ctx.restore();
 
       } else if (animType === 'matrixflow') {
-        // 05. FLUJO DIGITAL VECTORIAL Y PULSOS DE CUADRÍCULA
-        ctx.save();
+        // 05. FLUJO DIGITAL VECTORIAL Y MATRIZ
         const step = 50;
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.1)';
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
         ctx.lineWidth = 1;
-        for (let x = 0; x <= w; x += step) {
-          ctx.beginPath();
-          ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        for (let x = 0; x <= cw; x += step) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, ch); ctx.stroke();
         }
-        for (let y = 0; y <= h; y += step) {
-          ctx.beginPath();
-          ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+        for (let y = 0; y <= ch; y += step) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(cw, y); ctx.stroke();
         }
 
-        // Ondas de cuadrícula digital viajando
-        for (let i = 1; i <= 5; i++) {
-          const sz = (i * 65 + time * 60) % (Math.min(w, h) * 0.9);
+        for (let i = 1; i <= 4; i++) {
+          const sz = (i * 65 + time * 50) % (Math.min(cw, ch) * 0.85);
           ctx.beginPath();
           ctx.rect(cx - sz / 2, cy - sz / 2, sz, sz);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${0.35 * (1 - sz / (Math.min(w, h) * 0.9))})`;
-          ctx.lineWidth = 1.6;
-          ctx.shadowColor = '#00f0ff';
-          ctx.shadowBlur = 10;
+          ctx.strokeStyle = `rgba(0, 240, 255, ${0.28 * (1 - sz / (Math.min(cw, ch) * 0.85))})`;
+          ctx.lineWidth = 1.4;
           ctx.stroke();
         }
-        ctx.shadowBlur = 0;
-        ctx.restore();
 
       } else if (animType === 'anansi3dweb') {
-        // 06. TELARAÑA FRACTAL EN ESPIRAL CON VIBRACIÓN DE SEDA
-        ctx.save();
-        const spokes = 14;
-        const rings = 8;
-        const maxR = Math.min(w, h) * 0.58;
+        // 06. TELARAÑA FRACTAL DE ANANSI
+        const spokes = 12;
+        const rings = 7;
+        const maxR = Math.min(cw, ch) * 0.54;
 
+        ctx.strokeStyle = 'rgba(168, 85, 247, 0.25)';
+        ctx.lineWidth = 1.1;
         for (let i = 0; i < spokes; i++) {
-          const ang = (i * 2 * Math.PI) / spokes + Math.sin(time * 0.3) * 0.05;
+          const ang = (i * 2 * Math.PI) / spokes;
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(cx + Math.cos(ang) * maxR, cy + Math.sin(ang) * maxR);
-          ctx.strokeStyle = 'rgba(168, 85, 247, 0.35)';
-          ctx.lineWidth = 1.3;
           ctx.stroke();
         }
 
@@ -463,224 +434,177 @@ document.addEventListener('DOMContentLoaded', () => {
           const ringR = (maxR / rings) * r;
           ctx.beginPath();
           for (let i = 0; i <= spokes; i++) {
-            const ang = (i * 2 * Math.PI) / spokes + Math.sin(time * 0.3) * 0.05;
-            const vib = Math.sin(time * 3 + r * 1.5 + i) * 6;
+            const ang = (i * 2 * Math.PI) / spokes;
+            const vib = Math.sin(time * 2.5 + r + i) * 4;
             const x = cx + Math.cos(ang) * (ringR + vib);
             const y = cy + Math.sin(ang) * (ringR + vib);
             if (i === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
           }
-          ctx.strokeStyle = `rgba(168, 85, 247, ${0.2 + (r / rings) * 0.4})`;
-          ctx.lineWidth = 1.5;
-          ctx.shadowColor = '#d946ef';
-          ctx.shadowBlur = 12;
+          ctx.strokeStyle = `rgba(168, 85, 247, ${0.15 + (r / rings) * 0.3})`;
           ctx.stroke();
         }
-        ctx.shadowBlur = 0;
-        ctx.restore();
 
       } else if (animType === 'steganoglass') {
-        // 07. LENTE ESTEGANOGRÁFICA MAGNÉTICA Y GLIFOS FLOTANTES
-        ctx.save();
-        ctx.font = '600 16px "DM Mono", monospace';
+        // 07. LENTE ESTEGANOGRÁFICA Y GLIFOS
+        ctx.font = '600 15px "DM Mono", monospace';
         particles.forEach((p) => {
-          p.y -= 0.0012;
+          p.y -= 0.001;
           if (p.y < 0) p.y = 1;
-          const px = p.x * w;
-          const py = p.y * h;
+          const px = p.x * cw;
+          const py = p.y * ch;
           const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-          const isDecoded = distMouse < 160;
+          const isDecoded = distMouse < 140;
 
-          if (isDecoded) {
-            ctx.fillStyle = 'rgba(0, 240, 255, 0.95)';
-            ctx.shadowColor = '#00f0ff';
-            ctx.shadowBlur = 16;
-            ctx.fillText(p.char, px, py);
-          } else {
-            ctx.fillStyle = `rgba(192, 132, 252, ${0.25 + 0.3 * Math.sin(time * 2 + p.phase)})`;
-            ctx.shadowBlur = 0;
-            ctx.fillText(p.char, px, py);
-          }
+          ctx.fillStyle = isDecoded ? 'rgba(0, 240, 255, 0.95)' : `rgba(192, 132, 252, ${0.25 + 0.25 * Math.sin(time * 2 + p.phase)})`;
+          ctx.fillText(p.char, px, py);
         });
-        ctx.shadowBlur = 0;
-        ctx.restore();
 
       } else if (animType === 'textileorigami') {
-        // 08. HACES TEXTILES EN ABANICO Y TELAR CINÉTICO
-        ctx.save();
-        const numRays = 64;
-        const maxRadius = Math.min(w, h) * 0.85;
+        // 08. RAYOS TEXTILES DE ANGISAS
+        const numRays = 48;
+        const maxRadius = Math.min(cw, ch) * 0.8;
         for (let i = 0; i < numRays; i++) {
           const fraction = i / (numRays - 1);
-          const angle = Math.PI * 0.1 + fraction * Math.PI * 0.8;
-          const wave = Math.sin(time * 2 + i * 0.25) * 0.04;
+          const angle = Math.PI * 0.12 + fraction * Math.PI * 0.76;
+          const wave = Math.sin(time * 1.6 + i * 0.2) * 0.03;
           const finalAngle = angle + wave;
-          const rayLen = maxRadius * (0.65 + Math.sin(time * 2.5 + i * 0.3) * 0.2);
+          const rayLen = maxRadius * (0.65 + Math.sin(time * 2 + i * 0.25) * 0.18);
           const ex = cx + Math.cos(finalAngle) * rayLen;
           const ey = cy + Math.sin(finalAngle) * rayLen;
 
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(ex, ey);
-          const alpha = 0.18 + Math.sin(time * 1.5 + i) * 0.14;
+          const alpha = 0.14 + Math.sin(time + i) * 0.1;
           ctx.strokeStyle = i % 2 === 0 ? `rgba(0, 240, 255, ${alpha})` : `rgba(255, 0, 127, ${alpha})`;
-          ctx.lineWidth = 1.3;
+          ctx.lineWidth = 1.2;
           ctx.stroke();
         }
-        ctx.restore();
 
       } else if (animType === 'liquidriver') {
-        // 09. SIMULACIÓN DE OLAS FLUVIALES LÍQUIDAS Y PATRONES ACÚSTICOS
-        ctx.save();
-        const streamGrad = ctx.createLinearGradient(0, 0, w, 0);
+        // 09. OLAS FLUVIALES LÍQUIDAS
+        const streamGrad = ctx.createLinearGradient(0, 0, cw, 0);
         streamGrad.addColorStop(0.0, '#00e5ff');
-        streamGrad.addColorStop(0.4, '#38bdf8');
-        streamGrad.addColorStop(0.8, '#a855f7');
+        streamGrad.addColorStop(0.5, '#38bdf8');
         streamGrad.addColorStop(1.0, '#ffb800');
 
-        for (let layer = 0; layer < 4; layer++) {
+        for (let layer = 0; layer < 3; layer++) {
           ctx.beginPath();
-          for (let x = 0; x <= w; x += 4) {
-            const normX = x / w;
+          for (let x = 0; x <= cw; x += 6) {
+            const normX = x / cw;
             const env = Math.sin(normX * Math.PI);
-            const w1 = Math.sin(normX * 8 + time * 2.5 + layer * 1.4) * (h * 0.12);
-            const w2 = Math.cos(normX * 16 - time * 1.8 + layer) * (h * 0.05);
+            const w1 = Math.sin(normX * 8 + time * 2.2 + layer * 1.5) * (ch * 0.1);
+            const w2 = Math.cos(normX * 14 - time * 1.5 + layer) * (ch * 0.04);
             const y = cy + (w1 + w2) * env;
             if (x === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
           }
-          ctx.strokeStyle = layer === 0 ? streamGrad : `rgba(0, 229, 255, ${0.45 - layer * 0.1})`;
-          ctx.lineWidth = 2.6 - layer * 0.5;
-          ctx.shadowColor = 'rgba(0, 229, 255, 0.6)';
-          ctx.shadowBlur = layer === 0 ? 16 : 0;
+          ctx.strokeStyle = layer === 0 ? streamGrad : `rgba(0, 229, 255, ${0.35 - layer * 0.1})`;
+          ctx.lineWidth = 2.2 - layer * 0.5;
           ctx.stroke();
         }
-        ctx.shadowBlur = 0;
-        ctx.restore();
 
       } else if (animType === 'supernovasolar') {
-        // 10. CORONA SOLAR VOLUMÉTRICA Y HACES DE LIBERTAD
-        ctx.save();
-        const solarGlow = ctx.createRadialGradient(cx, cy, 10, cx, cy, w * 0.55);
-        solarGlow.addColorStop(0, 'rgba(255, 184, 0, 0.35)');
-        solarGlow.addColorStop(0.4, 'rgba(255, 0, 127, 0.12)');
+        // 10. CORONA SOLAR Y HACES DE LIBERTAD
+        const solarGlow = ctx.createRadialGradient(cx, cy, 10, cx, cy, cw * 0.5);
+        solarGlow.addColorStop(0, 'rgba(255, 184, 0, 0.28)');
+        solarGlow.addColorStop(0.5, 'rgba(255, 0, 127, 0.08)');
         solarGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
         ctx.fillStyle = solarGlow;
-        ctx.fillRect(0, 0, w, h);
+        ctx.fillRect(0, 0, cw, ch);
 
-        const numRays = 54;
+        const numRays = 42;
         for (let i = 0; i < numRays; i++) {
-          const ang = (i * 2 * Math.PI) / numRays + time * 0.12;
-          const len = 140 + Math.sin(time * 3 + i * 0.6) * 45;
+          const ang = (i * 2 * Math.PI) / numRays + time * 0.1;
+          const len = 120 + Math.sin(time * 2.5 + i * 0.5) * 35;
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(cx + Math.cos(ang) * len, cy + Math.sin(ang) * len);
-          ctx.strokeStyle = `rgba(255, 184, 0, ${0.18 + Math.sin(time * 2 + i) * 0.12})`;
-          ctx.lineWidth = 1.4;
-          ctx.shadowColor = '#ffb800';
-          ctx.shadowBlur = 12;
+          ctx.strokeStyle = `rgba(255, 184, 0, ${0.15 + Math.sin(time * 2 + i) * 0.1})`;
+          ctx.lineWidth = 1.3;
           ctx.stroke();
         }
-        ctx.shadowBlur = 0;
-        ctx.restore();
       }
 
       // ======================================================================
-      // ONDAS DE CLIC INTERACTIVAS (RIPPLES)
-      // ======================================================================
-      ripples.forEach((rp, idx) => {
-        rp.r += 4.5;
-        rp.alpha *= 0.96;
-        ctx.beginPath();
-        ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-        ctx.strokeStyle = themeColor.replace('rgb', 'rgba').replace(')', `, ${rp.alpha * 0.7})`);
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      });
-      ripples = ripples.filter(rp => rp.alpha > 0.05);
-
-      // ======================================================================
-      // RED CONCEPTUAL POÉTICA DE PALABRAS DEL TEXTO
+      // RED CONCEPTUAL POÉTICA DE PALABRAS DEL TEXTO (OPTIMIZADA)
       // ======================================================================
       nodes.forEach((n, i) => {
-        const parallaxY = viewportOffset * (n.depth * 45);
-        const targetXRatio = n.baseXRatio + Math.sin(time + n.phase) * 0.04;
-        const targetYRatio = n.baseYRatio + Math.cos(time + n.phase * 0.8) * 0.04;
-        const targetPx = targetXRatio * w;
-        const targetPy = targetYRatio * h - parallaxY;
+        const parallaxY = viewportOffset * (n.depth * 35);
+        const targetXRatio = n.baseXRatio + Math.sin(time + n.phase) * 0.035;
+        const targetYRatio = n.baseYRatio + Math.cos(time + n.phase * 0.8) * 0.035;
+        const px = targetXRatio * cw;
+        const py = targetYRatio * ch - parallaxY;
 
-        // Atracción al cursor
-        const distMouse = Math.hypot(targetPx - localMouseX, targetPy - localMouseY);
-        n.highlight = distMouse < 160;
+        const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+        n.highlight = distMouse < 140;
 
         ctx.beginPath();
         ctx.moveTo(cx, cy);
-        ctx.lineTo(targetPx, targetPy);
-        ctx.strokeStyle = n.highlight ? themeColor : 'rgba(255, 255, 255, 0.08)';
-        ctx.lineWidth = n.highlight ? 1.8 : 0.9;
+        ctx.lineTo(px, py);
+        ctx.strokeStyle = n.highlight ? themeColor : 'rgba(255, 255, 255, 0.06)';
+        ctx.lineWidth = n.highlight ? 1.6 : 0.8;
         ctx.stroke();
 
-        // Conectar con nodos vecinos
         for (let j = i + 1; j < nodes.length; j++) {
           const n2 = nodes[j];
-          const parallaxY2 = viewportOffset * (n2.depth * 45);
-          const px2 = (n2.baseXRatio + Math.sin(time + n2.phase) * 0.04) * w;
-          const py2 = (n2.baseYRatio + Math.cos(time + n2.phase * 0.8) * 0.04) * h - parallaxY2;
-          const dist = Math.hypot(targetPx - px2, targetPy - py2);
+          const parallaxY2 = viewportOffset * (n2.depth * 35);
+          const px2 = (n2.baseXRatio + Math.sin(time + n2.phase) * 0.035) * cw;
+          const py2 = (n2.baseYRatio + Math.cos(time + n2.phase * 0.8) * 0.035) * ch - parallaxY2;
+          const dist = Math.hypot(px - px2, py - py2);
 
-          if (dist < 260) {
+          if (dist < 220) {
             ctx.beginPath();
-            ctx.moveTo(targetPx, targetPy);
+            ctx.moveTo(px, py);
             ctx.lineTo(px2, py2);
-            const alpha = (1 - dist / 260) * (n.highlight || n2.highlight ? 0.6 : 0.16);
+            const alpha = (1 - dist / 220) * (n.highlight || n2.highlight ? 0.5 : 0.12);
             ctx.strokeStyle = themeColor.replace('rgb', 'rgba').replace(')', `, ${alpha})`);
-            ctx.lineWidth = 1.1;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
       });
 
       // Dibujar píldoras de conceptos
-      ctx.font = '600 13px "DM Mono", monospace';
+      ctx.font = '600 12.5px "DM Mono", monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       nodes.forEach((n) => {
-        const parallaxY = viewportOffset * (n.depth * 45);
-        const curXRatio = n.baseXRatio + Math.sin(time + n.phase) * 0.04;
-        const curYRatio = n.baseYRatio + Math.cos(time + n.phase * 0.8) * 0.04;
-        const px = curXRatio * w;
-        const py = curYRatio * h - parallaxY;
+        const parallaxY = viewportOffset * (n.depth * 35);
+        const curXRatio = n.baseXRatio + Math.sin(time + n.phase) * 0.035;
+        const curYRatio = n.baseYRatio + Math.cos(time + n.phase * 0.8) * 0.035;
+        const px = curXRatio * cw;
+        const py = curYRatio * ch - parallaxY;
 
         const textMetrics = ctx.measureText(n.text);
-        const padX = 14;
-        const padY = 7;
+        const padX = 12;
+        const padY = 5;
         const boxW = textMetrics.width + padX * 2;
-        const boxH = 26;
+        const boxH = 24;
 
-        ctx.save();
         ctx.beginPath();
-        ctx.roundRect(px - boxW / 2, py - boxH / 2, boxW, boxH, 13);
-        ctx.fillStyle = n.highlight ? 'rgba(255, 255, 255, 0.98)' : 'rgba(4, 10, 22, 0.92)';
-        ctx.strokeStyle = n.highlight ? '#ffffff' : themeColor;
-        ctx.lineWidth = n.highlight ? 2.0 : 1.2;
-        ctx.shadowColor = themeColor;
-        ctx.shadowBlur = n.highlight ? 22 : 8;
+        ctx.roundRect(px - boxW / 2, py - boxH / 2, boxW, boxH, 12);
+        ctx.fillStyle = n.highlight ? 'rgba(255, 255, 255, 0.96)' : 'rgba(4, 10, 22, 0.9)';
         ctx.fill();
+
+        ctx.strokeStyle = n.highlight ? '#ffffff' : themeColor;
+        ctx.lineWidth = n.highlight ? 1.8 : 1.1;
         ctx.stroke();
-        ctx.restore();
 
         ctx.fillStyle = n.highlight ? '#010306' : '#f0f6fc';
         ctx.fillText(n.text, px, py + 1);
       });
 
-      requestAnimationFrame(draw);
+      animationFrameId = requestAnimationFrame(draw);
     }
+
     draw();
   }
 
   // ==========================================================================
-  // INICIALIZACIÓN DE LAS 10 EXPERIENCIAS GENERATIVAS DIFERENTES
+  // INICIALIZACIÓN DE LAS 10 EXPERIENCIAS GENERATIVAS
   // ==========================================================================
   initSpectacularAnimation(document.getElementById('canvasModulo01'), 'rgb(0, 240, 255)', 'artefacto3d');
   initSpectacularAnimation(document.getElementById('canvasModulo02'), 'rgb(0, 229, 255)', 'redneuronal');

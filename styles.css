@@ -1,6 +1,6 @@
 /* ==========================================================================
    TECNOLOGÍAS PARA LA EDICIÓN — ALEJANDRA GÓMEZ GUTIÉRREZ
-   Diseño Editorial Asimétrico y Cinematográfico (Anti-Template / Vanguardia)
+   Diseño Editorial Asimétrico y Cinematográfico — Optimizado a 60 FPS
    ========================================================================== */
 
 :root {
@@ -17,11 +17,11 @@
   --theme-cierre: #ffb800;      /* Ámbar Solar */
   --theme-alerta: #f43f5e;      /* Rojo Carmesí */
   
-  --glow-cyan: rgba(0, 240, 255, 0.6);
-  --glow-violet: rgba(168, 85, 247, 0.6);
-  --glow-magenta: rgba(255, 0, 127, 0.6);
-  --glow-amber: rgba(255, 184, 0, 0.6);
-  --glow-red: rgba(244, 63, 94, 0.6);
+  --glow-cyan: rgba(0, 240, 255, 0.5);
+  --glow-violet: rgba(168, 85, 247, 0.5);
+  --glow-magenta: rgba(255, 0, 127, 0.5);
+  --glow-amber: rgba(255, 184, 0, 0.5);
+  --glow-red: rgba(244, 63, 94, 0.5);
   
   /* Tipografía */
   --paper: #f8fafc;
@@ -80,7 +80,7 @@ clave {
 }
 
 /* ==========================================================================
-   RESET & ATMÓSFERA GENERAL
+   RESET & ATMÓSFERA GENERAL (GPU ACCELERATED)
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -100,7 +100,7 @@ body {
   background-color: var(--bg-deep);
   color: var(--paper);
   font-family: var(--font-cyber);
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   line-height: 1.95;
   overflow-x: hidden;
   position: relative;
@@ -108,26 +108,27 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Barra superior fija ultra refinada */
+/* Barra superior fija */
 barra-superior {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 16px 5vw;
+  padding: 14px 5vw;
   background: rgba(1, 3, 6, 0.88);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transform: translateZ(0);
 }
 
 titulo-autora {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
-  letter-spacing: 0.18em;
+  font-size: 0.88rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--paper-dim);
   font-weight: 500;
@@ -143,25 +144,26 @@ malla-cuadricula {
   pointer-events: none;
   z-index: 1;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
   background-size: 80px 80px, 160px 160px, 160px 160px;
-  opacity: 0.8;
+  opacity: 0.7;
+  transform: translateZ(0);
 }
 
 /* Haz de luz de seguimiento del cursor */
 haz-cursor {
   position: fixed;
-  width: 550px;
-  height: 550px;
+  width: 480px;
+  height: 480px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 2;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.09) 0%, rgba(168, 85, 247, 0.04) 40%, transparent 70%);
-  transition: opacity 0.4s ease;
+  transform: translate(-50%, -50%) translateZ(0);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, rgba(168, 85, 247, 0.03) 40%, transparent 70%);
   mix-blend-mode: screen;
+  will-change: left, top;
 }
 
 fondo-luz {
@@ -173,6 +175,7 @@ fondo-luz {
   pointer-events: none;
   z-index: 0;
   opacity: 0.95;
+  transform: translateZ(0);
 }
 
 fondo-luz canvas {
@@ -182,15 +185,15 @@ fondo-luz canvas {
 }
 
 /* ==========================================================================
-   00. SALUDO DE APERTURA (HERO CINEMATOGRÁFICO)
+   00. SALUDO DE APERTURA
    ========================================================================== */
 saludo {
-  min-height: 100vh;
+  min-height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 14rem 4vw 10rem;
+  padding: 12rem 4vw 8rem;
   position: relative;
 }
 
@@ -199,24 +202,24 @@ campo-apertura {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3.5rem;
-  max-width: 950px;
+  gap: 3rem;
+  max-width: 900px;
 }
 
 texto-saludo {
-  font-size: clamp(4.5rem, 13vw, 10.5rem);
+  font-size: clamp(4.5rem, 12vw, 9.5rem);
   font-weight: 800;
-  letter-spacing: -0.06em;
-  line-height: 0.9;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
   background: linear-gradient(135deg, #ffffff 15%, var(--theme-origen) 60%, var(--theme-anansi) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 70px rgba(0, 240, 255, 0.5));
+  filter: drop-shadow(0 0 50px rgba(0, 240, 255, 0.4));
 }
 
 linea-guia {
   width: 2px;
-  height: 80px;
+  height: 70px;
   background: linear-gradient(to bottom, var(--theme-origen), transparent);
   animation: guiaGlow 2.5s infinite ease-in-out;
 }
@@ -231,11 +234,11 @@ linea-guia {
    ========================================================================== */
 ensayo {
   width: 100%;
-  max-width: 1140px;
+  max-width: 1120px;
   margin: 0 auto;
   position: relative;
   z-index: 5;
-  padding: 0 2rem 20rem;
+  padding: 0 2rem 16rem;
 }
 
 /* Hilo conductor luminoso */
@@ -247,11 +250,11 @@ ensayo::before {
   width: 1.5px;
   height: 100%;
   background: linear-gradient(to bottom, 
-    rgba(0, 240, 255, 0.5) 0%, 
-    rgba(168, 85, 247, 0.5) 35%, 
-    rgba(255, 0, 127, 0.5) 65%, 
-    rgba(255, 184, 0, 0.6) 100%);
-  opacity: 0.3;
+    rgba(0, 240, 255, 0.4) 0%, 
+    rgba(168, 85, 247, 0.4) 35%, 
+    rgba(255, 0, 127, 0.4) 65%, 
+    rgba(255, 184, 0, 0.5) 100%);
+  opacity: 0.25;
   pointer-events: none;
   z-index: 0;
 }
@@ -263,7 +266,7 @@ ensayo::before {
 }
 
 /* ==========================================================================
-   COMPOSICIONES ASIMÉTRICAS DE LOS 10 MÓDULOS (VARIACIÓN TOTAL)
+   COMPOSICIONES ASIMÉTRICAS DE LOS 10 MÓDULOS
    ========================================================================== */
 pensamiento,
 revelacion,
@@ -275,16 +278,17 @@ reflexion,
 lenguaje,
 experiencia,
 construccion {
-  min-height: 115vh;
-  margin-bottom: 15vh;
-  padding-top: 8vh;
+  min-height: 105vh;
+  margin-bottom: 12vh;
+  padding-top: 6vh;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0.65;
-  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 0.75;
+  transform: translateY(20px);
+  contain: layout style;
 }
 
 .en-foco {
@@ -320,70 +324,70 @@ construccion {
 encabezado {
   display: inline-flex;
   align-items: center;
-  gap: 1.6rem;
-  margin-bottom: 2rem;
-  padding: 0.9rem 1.6rem;
-  border-radius: 16px;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 14px;
   border-bottom: 1.5px dashed rgba(255, 255, 255, 0.2);
   cursor: pointer;
   user-select: none;
-  background: rgba(6, 12, 26, 0.7);
-  backdrop-filter: blur(16px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(6, 12, 26, 0.65);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   z-index: 15;
 }
 
 encabezado:hover {
-  background: rgba(14, 26, 52, 0.95);
-  box-shadow: 0 8px 35px rgba(0, 240, 255, 0.25);
-  transform: translateX(6px);
+  background: rgba(14, 26, 52, 0.92);
+  box-shadow: 0 6px 25px rgba(0, 240, 255, 0.2);
+  transform: translateX(4px);
 }
 
 numero {
   font-family: var(--font-mono);
-  font-size: 2.1rem;
+  font-size: 1.9rem;
   font-weight: 800;
   color: var(--theme-origen);
-  text-shadow: 0 0 30px var(--theme-origen);
-  padding: 4px 14px;
-  border-radius: 10px;
-  background: rgba(0, 240, 255, 0.12);
-  border: 1.5px solid rgba(0, 240, 255, 0.5);
+  text-shadow: 0 0 20px var(--theme-origen);
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1.5px solid rgba(0, 240, 255, 0.45);
   transition: all 0.3s ease;
 }
 
 encabezado:hover numero {
-  transform: scale(1.12);
+  transform: scale(1.08);
   background: var(--theme-origen);
   color: #010306;
-  box-shadow: 0 0 35px var(--glow-cyan);
+  box-shadow: 0 0 25px var(--glow-cyan);
 }
 
-observacion numero { color: #f43f5e; border-color: rgba(244, 63, 94, 0.6); background: rgba(244, 63, 94, 0.14); text-shadow: 0 0 30px rgba(244, 63, 94, 0.9); }
-observacion encabezado:hover numero { background: #f43f5e; color: #fff; box-shadow: 0 0 35px var(--glow-red); }
+observacion numero { color: #f43f5e; border-color: rgba(244, 63, 94, 0.55); background: rgba(244, 63, 94, 0.12); text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
+observacion encabezado:hover numero { background: #f43f5e; color: #fff; box-shadow: 0 0 25px var(--glow-red); }
 
-memoria numero { color: var(--theme-cierre); border-color: rgba(255, 184, 0, 0.6); background: rgba(255, 184, 0, 0.14); text-shadow: 0 0 30px rgba(255, 184, 0, 0.9); }
-memoria encabezado:hover numero { background: var(--theme-cierre); color: #010306; box-shadow: 0 0 35px var(--glow-amber); }
+memoria numero { color: var(--theme-cierre); border-color: rgba(255, 184, 0, 0.55); background: rgba(255, 184, 0, 0.12); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+memoria encabezado:hover numero { background: var(--theme-cierre); color: #010306; box-shadow: 0 0 25px var(--glow-amber); }
 
 comprension numero,
-reflexion numero { color: var(--theme-anansi); border-color: rgba(168, 85, 247, 0.6); background: rgba(168, 85, 247, 0.14); text-shadow: 0 0 30px rgba(168, 85, 247, 0.9); }
+reflexion numero { color: var(--theme-anansi); border-color: rgba(168, 85, 247, 0.55); background: rgba(168, 85, 247, 0.12); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
 comprension encabezado:hover numero,
-reflexion encabezado:hover numero { background: var(--theme-anansi); color: #fff; box-shadow: 0 0 35px var(--glow-violet); }
+reflexion encabezado:hover numero { background: var(--theme-anansi); color: #fff; box-shadow: 0 0 25px var(--glow-violet); }
 
-lenguaje numero { color: var(--theme-angisa); border-color: rgba(255, 0, 127, 0.6); background: rgba(255, 0, 127, 0.14); text-shadow: 0 0 30px rgba(255, 0, 127, 0.9); }
-lenguaje encabezado:hover numero { background: var(--theme-angisa); color: #fff; box-shadow: 0 0 35px var(--glow-magenta); }
+lenguaje numero { color: var(--theme-angisa); border-color: rgba(255, 0, 127, 0.55); background: rgba(255, 0, 127, 0.12); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
+lenguaje encabezado:hover numero { background: var(--theme-angisa); color: #fff; box-shadow: 0 0 25px var(--glow-magenta); }
 
-experiencia numero { color: var(--theme-rio); border-color: rgba(0, 229, 255, 0.6); background: rgba(0, 229, 255, 0.14); text-shadow: 0 0 30px rgba(0, 229, 255, 0.9); }
-experiencia encabezado:hover numero { background: var(--theme-rio); color: #010306; box-shadow: 0 0 35px var(--glow-cyan); }
+experiencia numero { color: var(--theme-rio); border-color: rgba(0, 229, 255, 0.55); background: rgba(0, 229, 255, 0.12); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
+experiencia encabezado:hover numero { background: var(--theme-rio); color: #010306; box-shadow: 0 0 25px var(--glow-cyan); }
 
-construccion numero { color: var(--theme-cierre); border-color: rgba(255, 184, 0, 0.6); background: rgba(255, 184, 0, 0.14); text-shadow: 0 0 30px rgba(255, 184, 0, 0.9); }
-construccion encabezado:hover numero { background: var(--theme-cierre); color: #010306; box-shadow: 0 0 35px var(--glow-amber); }
+construccion numero { color: var(--theme-cierre); border-color: rgba(255, 184, 0, 0.55); background: rgba(255, 184, 0, 0.12); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+construccion encabezado:hover numero { background: var(--theme-cierre); color: #010306; box-shadow: 0 0 25px var(--glow-amber); }
 
 titulo {
   font-family: var(--font-mono);
-  font-size: 1.15rem;
-  letter-spacing: 0.18em;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
   color: var(--paper-dim);
   text-transform: uppercase;
   font-weight: 600;
@@ -391,71 +395,58 @@ titulo {
 
 indicador-despliegue {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   color: var(--paper-faint);
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 encabezado:hover indicador-despliegue {
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* ==========================================================================
-   ESCENARIO Y LIENZOS GENERATIVOS VANGUARDISTAS
+   ESCENARIO Y LIENZOS GENERATIVOS
    ========================================================================== */
 escenario {
   position: relative;
-  min-height: 560px;
+  min-height: 520px;
   width: 100%;
-  border-radius: 28px;
-  background: radial-gradient(circle at 50% 50%, rgba(12, 24, 48, 0.8) 0%, rgba(1, 3, 6, 0.97) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), inset 0 0 90px rgba(0, 0, 0, 0.65);
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 50%, rgba(10, 20, 42, 0.75) 0%, rgba(1, 3, 6, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem 3.5rem;
-  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+  padding: 3.5rem 3rem;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  contain: paint;
 }
 
-pensamiento.en-foco escenario { border-color: rgba(0, 240, 255, 0.35); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.18); }
-revelacion.en-foco escenario { border-color: rgba(0, 229, 255, 0.35); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 229, 255, 0.18); }
-observacion.en-foco escenario { border-color: rgba(244, 63, 94, 0.4); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(244, 63, 94, 0.22); }
-memoria.en-foco escenario { border-color: rgba(255, 184, 0, 0.38); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 184, 0, 0.2); }
-intencion.en-foco escenario { border-color: rgba(0, 240, 255, 0.35); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.18); }
+pensamiento.en-foco escenario { border-color: rgba(0, 240, 255, 0.3); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 240, 255, 0.14); }
+revelacion.en-foco escenario { border-color: rgba(0, 229, 255, 0.3); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 229, 255, 0.14); }
+observacion.en-foco escenario { border-color: rgba(244, 63, 94, 0.35); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(244, 63, 94, 0.18); }
+memoria.en-foco escenario { border-color: rgba(255, 184, 0, 0.32); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 184, 0, 0.16); }
+intencion.en-foco escenario { border-color: rgba(0, 240, 255, 0.3); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 240, 255, 0.14); }
 comprension.en-foco escenario,
-reflexion.en-foco escenario { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(168, 85, 247, 0.22); }
-lenguaje.en-foco escenario { border-color: rgba(255, 0, 127, 0.4); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 0, 127, 0.22); }
-experiencia.en-foco escenario { border-color: rgba(0, 229, 255, 0.4); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 229, 255, 0.22); }
-construccion.en-foco escenario { border-color: rgba(255, 184, 0, 0.45); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 184, 0, 0.3); }
+reflexion.en-foco escenario { border-color: rgba(168, 85, 247, 0.35); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(168, 85, 247, 0.18); }
+lenguaje.en-foco escenario { border-color: rgba(255, 0, 127, 0.35); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 0, 127, 0.18); }
+experiencia.en-foco escenario { border-color: rgba(0, 229, 255, 0.35); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 229, 255, 0.18); }
+construccion.en-foco escenario { border-color: rgba(255, 184, 0, 0.4); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 184, 0, 0.25); }
 
-.diagrama-compacto {
-  min-height: 520px;
-}
-
-.diagrama-anansi {
-  min-height: 600px;
-}
-
-.diagrama-angisa {
-  min-height: 760px;
-}
-
-.diagrama-rio {
-  min-height: 640px;
-}
-
-.diagrama-cierre {
-  min-height: 860px;
-}
+.diagrama-compacto { min-height: 480px; }
+.diagrama-anansi { min-height: 560px; }
+.diagrama-angisa { min-height: 700px; }
+.diagrama-rio { min-height: 580px; }
+.diagrama-cierre { min-height: 800px; }
 
 escenario canvas {
   position: absolute;
@@ -475,16 +466,16 @@ contenido {
   position: relative;
   z-index: 10;
   background: var(--bg-card-glow);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 22px;
-  padding: 2.8rem 3.4rem;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(0, 240, 255, 0.15);
-  backdrop-filter: blur(28px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  max-width: 900px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  padding: 2.6rem 3rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(14px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 860px;
+  transform: translateZ(0);
 }
 
-/* Asimetrías en las tarjetas */
 pensamiento contenido,
 observacion contenido,
 intencion contenido,
@@ -507,9 +498,9 @@ construccion contenido {
 }
 
 .seccion-oculta contenido {
-  opacity: 0.1;
-  transform: scale(0.95) translateY(16px);
-  filter: blur(10px);
+  opacity: 0.15;
+  transform: scale(0.96) translateY(12px);
+  filter: blur(6px);
   pointer-events: none;
 }
 
@@ -520,22 +511,22 @@ construccion contenido {
   pointer-events: auto;
 }
 
-pensamiento contenido { border-color: rgba(0, 240, 255, 0.4); }
-revelacion contenido { border-color: rgba(0, 229, 255, 0.4); }
-observacion contenido { border-color: rgba(244, 63, 94, 0.5); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(244, 63, 94, 0.25); }
-memoria contenido { border-color: rgba(255, 184, 0, 0.4); }
-intencion contenido { border-color: rgba(0, 240, 255, 0.4); }
+pensamiento contenido { border-color: rgba(0, 240, 255, 0.35); }
+revelacion contenido { border-color: rgba(0, 229, 255, 0.35); }
+observacion contenido { border-color: rgba(244, 63, 94, 0.45); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(244, 63, 94, 0.2); }
+memoria contenido { border-color: rgba(255, 184, 0, 0.35); }
+intencion contenido { border-color: rgba(0, 240, 255, 0.35); }
 comprension contenido,
-reflexion contenido { border-color: rgba(168, 85, 247, 0.45); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(168, 85, 247, 0.25); }
-lenguaje contenido { border-color: rgba(255, 0, 127, 0.45); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(255, 0, 127, 0.25); }
-experiencia contenido { border-color: rgba(0, 229, 255, 0.45); }
-construccion contenido { border-color: rgba(255, 184, 0, 0.5); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 184, 0, 0.35); }
+reflexion contenido { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(168, 85, 247, 0.2); }
+lenguaje contenido { border-color: rgba(255, 0, 127, 0.4); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 0, 127, 0.2); }
+experiencia contenido { border-color: rgba(0, 229, 255, 0.4); }
+construccion contenido { border-color: rgba(255, 184, 0, 0.45); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 184, 0, 0.28); }
 
 texto {
-  font-size: 1.2rem;
-  line-height: 1.95;
+  font-size: 1.18rem;
+  line-height: 1.92;
   color: var(--paper);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
 }
 
 texto:last-child {
@@ -545,16 +536,16 @@ texto:last-child {
 clave {
   color: #ffffff;
   font-weight: 600;
-  padding: 3px 10px;
-  background: rgba(0, 240, 255, 0.15);
+  padding: 2px 8px;
+  background: rgba(0, 240, 255, 0.14);
   border-bottom: 1.5px solid var(--theme-origen);
   border-radius: 4px;
   transition: all 0.3s ease;
 }
 
 clave:hover {
-  background: rgba(0, 240, 255, 0.28);
-  box-shadow: 0 0 25px var(--glow-cyan);
+  background: rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 20px var(--glow-cyan);
 }
 
 /* ==========================================================================
@@ -562,59 +553,59 @@ clave:hover {
    ========================================================================== */
 pliegues-contenedor {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin: 2.4rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.4rem;
+  margin: 2.2rem 0;
 }
 
 pliegue-item {
-  padding: 1.8rem 2rem;
-  border-radius: 16px;
-  background: rgba(14, 26, 52, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.6rem 1.8rem;
+  border-radius: 14px;
+  background: rgba(14, 26, 52, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
 pliegue-etiqueta {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   color: #ffffff;
 }
 
 pliegue-item[tipo="secreto"] {
-  border-left: 4px solid var(--theme-anansi);
+  border-left: 3.5px solid var(--theme-anansi);
   filter: blur(1.5px);
 }
 pliegue-item[tipo="secreto"]:hover {
   filter: blur(0);
-  background: rgba(168, 85, 247, 0.22);
-  box-shadow: 0 0 35px var(--glow-violet);
-  transform: translateY(-4px);
+  background: rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 30px var(--glow-violet);
+  transform: translateY(-3px);
 }
 
 pliegue-item[tipo="alerta"] {
-  border-left: 4px solid var(--theme-alerta);
-  transform: rotate(-0.8deg);
+  border-left: 3.5px solid var(--theme-alerta);
+  transform: rotate(-0.6deg);
 }
 pliegue-item[tipo="alerta"]:hover {
-  transform: rotate(0) scale(1.03) translateY(-4px);
-  background: rgba(244, 63, 94, 0.22);
-  box-shadow: 0 0 35px var(--glow-red);
+  transform: rotate(0) scale(1.02) translateY(-3px);
+  background: rgba(244, 63, 94, 0.2);
+  box-shadow: 0 0 30px var(--glow-red);
 }
 
 pliegue-item[tipo="resistencia"] {
-  border-left: 4px solid var(--theme-angisa);
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+  border-left: 3.5px solid var(--theme-angisa);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7);
 }
 pliegue-item[tipo="resistencia"]:hover {
-  background: rgba(255, 0, 127, 0.22);
-  box-shadow: 0 0 35px var(--glow-magenta), inset 0 0 25px rgba(0, 0, 0, 0.5);
-  transform: translateY(-4px);
+  background: rgba(255, 0, 127, 0.2);
+  box-shadow: 0 0 30px var(--glow-magenta), inset 0 0 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
 }
 
 /* ==========================================================================
@@ -623,27 +614,27 @@ pliegue-item[tipo="resistencia"]:hover {
 reproductor {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 1.4rem 2rem;
-  background: rgba(14, 26, 52, 0.96);
+  gap: 1.8rem;
+  padding: 1.2rem 1.8rem;
+  background: rgba(14, 26, 52, 0.95);
   border: 1.5px solid var(--theme-cierre);
-  border-radius: 16px;
-  margin: 2rem 0;
+  border-radius: 14px;
+  margin: 1.8rem 0;
   cursor: pointer;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 184, 0, 0.25);
-  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 184, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 reproductor:hover,
 reproductor.reproduciendo {
   background: rgba(26, 42, 80, 1);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 45px var(--glow-amber);
-  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 35px var(--glow-amber);
+  transform: translateY(-2px);
 }
 
 codigo-qr {
-  width: 72px;
-  height: 72px;
+  width: 66px;
+  height: 66px;
   flex: none;
   background-color: #ffffff;
   background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fgithub.com%2Falejagoguti-cpu%2FTecnolog-asparalaedici-n");
@@ -653,10 +644,10 @@ codigo-qr {
 
 texto-audio {
   font-family: var(--font-mono);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #ffb800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
 /* ==========================================================================
@@ -664,27 +655,27 @@ texto-audio {
    ========================================================================== */
 texto.texto-libertad {
   font-family: var(--font-serif);
-  font-size: clamp(1.45rem, 3.4vw, 2.15rem);
+  font-size: clamp(1.4rem, 3.2vw, 2.05rem);
   font-style: italic;
-  line-height: 1.7;
+  line-height: 1.65;
   color: #fffbeb;
-  text-shadow: 0 0 35px rgba(255, 184, 0, 0.55);
+  text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
   text-align: center;
-  margin: 2.8rem 0 1.8rem;
-  padding: 2rem 1.4rem;
-  border-top: 1px solid rgba(255, 184, 0, 0.35);
-  border-bottom: 1px solid rgba(255, 184, 0, 0.35);
+  margin: 2.5rem 0 1.5rem;
+  padding: 1.8rem 1.2rem;
+  border-top: 1px solid rgba(255, 184, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 184, 0, 0.3);
 }
 
 despedida {
-  font-size: clamp(2.8rem, 7.5vw, 4.6rem);
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
   font-weight: 800;
   text-align: center;
   background: linear-gradient(135deg, #ffffff 20%, var(--theme-cierre) 70%, #ff007f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 2.4rem;
-  filter: drop-shadow(0 0 40px rgba(255, 184, 0, 0.6));
+  margin-top: 2.2rem;
+  filter: drop-shadow(0 0 35px rgba(255, 184, 0, 0.55));
 }
 
 /* ==========================================================================
