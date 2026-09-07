@@ -1,24 +1,20 @@
 /* ==========================================================================
-   TECNOLOGÍAS DEL SECRETO — MANIFIESTO ENIGMÁTICO: EL TEXTO ES EL DIAGRAMA
-   Diseño de Revelación Progresiva en Penumbra:
-   - Todo comienza en oscuridad y silencio ("Todo apagado").
-   - Las frases del ensayo emergen de los nodos, redes y pliegues al explorarlas con el cursor.
-   - Unidad absoluta: El texto y el diagrama son un solo organismo interactivo.
-   - Formato editorial continuo en blanco y negro al imprimir (@media print).
+   TECNOLOGÍAS DEL SECRETO — ENSAYO INTERACTIVO
+   Diseño de revelación progresiva y formato editorial continuo
    ========================================================================== */
 
 :root {
-  /* Paleta Obsidian & Penumbra */
+  /* Paleta Obsidian */
   --bg-deep: #020408;
   --bg-translucent: rgba(6, 12, 24, 0.85);
   --bg-card-glow: rgba(10, 18, 36, 0.95);
   
-  /* Luces Espectrales de Revelación */
-  --theme-origen: #00f0ff;      /* Cyan de la técnica y red */
-  --theme-anansi: #a855f7;      /* Violeta criptográfico */
-  --theme-angisa: #ff007f;      /* Magenta cinético */
-  --theme-rio: #00e5ff;         /* Turquesa hidro-acústico */
-  --theme-cierre: #ffb800;      /* Ámbar de la libertad */
+  /* Luces Espectrales */
+  --theme-origen: #00f0ff;      /* Cyan */
+  --theme-anansi: #a855f7;      /* Violeta */
+  --theme-angisa: #ff007f;      /* Magenta */
+  --theme-rio: #00e5ff;         /* Turquesa */
+  --theme-cierre: #ffb800;      /* Ámbar */
   
   --glow-cyan: rgba(0, 240, 255, 0.5);
   --glow-violet: rgba(168, 85, 247, 0.5);
@@ -41,113 +37,47 @@
 fondo-luz,
 malla-cuadricula,
 haz-cursor,
-hud-control,
-marca-hud,
-pulso-hud,
-indicador-secretos,
 ensayo,
 saludo,
 campo-apertura,
 onda-pulso,
-emisor-central,
-marca-frecuencia,
-etiqueta-protocolo,
-composicion-hero,
 texto-saludo,
-subtitulo-enigma,
-flecha-descenso,
-guia-hilo,
 linea-guia,
 modulo-artefacto,
-modulo-ruptura,
 modulo-comunidad,
 modulo-vigilancia,
-modulo-constelacion,
+modulo-memoria,
+modulo-intencion,
 modulo-anansi,
 modulo-capas,
 modulo-angisas,
 modulo-rio,
-modulo-sintesis,
-encabezado-enigma,
-numero-enigma,
-titulo-enigma,
-escenario-enigma,
-nodos-diagrama,
-nodo-revelador,
-ancla-luz,
-icono-nodo,
-etiqueta-ancla,
-frase-revelada,
-pensamiento,
-alerta-limitacion,
-titulo-alerta,
-mensaje-alerta,
-definicion,
-vigilancia,
-memoria,
-constelacion-recursos,
-recurso-item,
-glifo-recurso,
-intencion,
-relato,
-camuflaje,
-terminal-codigo,
-barra-superior-terminal,
-puntos-control,
-punto,
-titulo-archivo,
-contenido-terminal,
-lineas-numeracion,
-num,
-codigo-fuente,
-linea-sintaxis,
-sintaxis-kw,
-sintaxis-fn,
-sintaxis-str,
-sintaxis-cond,
-mensaje,
-capas,
-silencio,
-lenguaje,
-transformacion,
-pantalla,
-etiqueta-transicion,
-secreto,
-alerta,
-resistencia,
-logica,
-diseno,
-sonido,
-medio,
-experiencia,
-voz,
-qr,
-contenedor-voz,
-escuchar,
-subtexto-audio,
-eco,
-ancla-onda,
-punto-onda,
-etiqueta-onda,
-revelacion-libertad-armonica,
-nodos-onda-armonica,
-titulo,
-construccion,
-mirada,
-esencia,
-proceso,
-sentido,
-libertad,
+modulo-reflexion,
+encabezado-modulo,
+numero-modulo,
+titulo-modulo,
+escenario-diagrama,
+nodo-concepto,
+nodo-boton,
+icono,
+etiqueta,
+texto-revelado,
+parrafo,
+reproductor-voz,
+codigo-qr,
+info-voz,
+texto-voz,
+revelacion-libertad,
 despedida {
   display: block;
 }
 
-clave {
+resaltado {
   display: inline;
 }
 
 /* ==========================================================================
-   RESET & ATMÓSFERA ENIGMÁTICA (TODO APAGADO)
+   RESET & ATMÓSFERA GENERAL
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -176,7 +106,7 @@ body {
   cursor: crosshair;
 }
 
-/* Malla de Rastreo Latente */
+/* Malla de Fondo */
 malla-cuadricula {
   position: fixed;
   top: 0;
@@ -193,7 +123,7 @@ malla-cuadricula {
   opacity: 0.7;
 }
 
-/* Haz de luz de seguimiento del cursor (Linterna de descodificación) */
+/* Haz de luz de seguimiento del cursor */
 haz-cursor {
   position: fixed;
   width: 420px;
@@ -224,62 +154,11 @@ fondo-luz canvas {
   display: block;
 }
 
-/* HUD Global de Revelación */
-hud-control {
-  position: fixed;
-  top: 1.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 99;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 8px 24px;
-  background: rgba(4, 8, 16, 0.88);
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  border-radius: 30px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.2);
-  white-space: nowrap;
-}
-
-marca-hud {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
-  color: var(--theme-origen);
-  font-weight: 700;
-}
-
-pulso-hud {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--theme-origen);
-  box-shadow: 0 0 10px var(--theme-origen);
-  animation: pulsoLive 2s infinite ease-in-out;
-}
-
-@keyframes pulsoLive {
-  0%, 100% { transform: scale(0.9); opacity: 0.6; }
-  50% { transform: scale(1.3); opacity: 1; }
-}
-
-indicador-secretos {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  color: var(--paper-dim);
-}
-
 /* ==========================================================================
-   00. SECCIÓN APERTURA (HERO DESTACADO)
+   00. SALUDO DE APERTURA
    ========================================================================== */
 saludo {
-  min-height: 90vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,42 +175,6 @@ campo-apertura {
   max-width: 860px;
 }
 
-emisor-central {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 12px 28px;
-  background: rgba(0, 240, 255, 0.06);
-  border: 1.5px solid var(--theme-origen);
-  border-radius: 40px;
-  box-shadow: 0 0 35px var(--glow-cyan);
-  backdrop-filter: blur(12px);
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-emisor-central:hover {
-  transform: scale(1.06);
-  background: rgba(0, 240, 255, 0.15);
-  box-shadow: 0 0 55px var(--glow-cyan);
-}
-
-marca-frecuencia {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: var(--theme-origen);
-}
-
-etiqueta-protocolo {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  color: var(--paper-dim);
-}
-
 texto-saludo {
   font-size: clamp(4rem, 11vw, 8.5rem);
   font-weight: 800;
@@ -341,31 +184,6 @@ texto-saludo {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 50px rgba(0, 240, 255, 0.4));
-}
-
-subtitulo-enigma {
-  font-family: var(--font-mono);
-  font-size: 1.08rem;
-  color: var(--paper-dim);
-  max-width: 680px;
-  margin: 1rem auto 0;
-  line-height: 1.7;
-}
-
-flecha-descenso {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 2rem;
-  opacity: 0.75;
-}
-
-guia-hilo {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.25em;
-  color: var(--theme-origen);
 }
 
 linea-guia {
@@ -381,7 +199,7 @@ linea-guia {
 }
 
 /* ==========================================================================
-   ESTRUCTURA DE LOS ESCENARIOS ENIGMÁTICOS
+   ESTRUCTURA DE LOS MÓDULOS
    ========================================================================== */
 ensayo {
   width: 100%;
@@ -391,61 +209,60 @@ ensayo {
 }
 
 modulo-artefacto,
-modulo-ruptura,
 modulo-comunidad,
 modulo-vigilancia,
-modulo-constelacion,
+modulo-memoria,
+modulo-intencion,
 modulo-anansi,
 modulo-capas,
 modulo-angisas,
 modulo-rio,
-modulo-sintesis {
-  min-height: 80vh;
-  padding: 5rem 4vw 7rem;
+modulo-reflexion {
+  min-height: 75vh;
+  padding: 4.5rem 4vw 6.5rem;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-encabezado-enigma {
+encabezado-modulo {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.2rem;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
-  padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
 }
 
-numero-enigma {
+numero-modulo {
   font-family: var(--font-mono);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--theme-origen);
   text-shadow: 0 0 20px var(--theme-origen);
 }
 
-modulo-ruptura numero-enigma { color: #ef4444; text-shadow: 0 0 20px rgba(239, 68, 68, 0.8); }
-modulo-vigilancia numero-enigma { color: #f43f5e; text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
-modulo-constelacion numero-enigma { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
-modulo-anansi numero-enigma { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
-modulo-capas numero-enigma { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
-modulo-angisas numero-enigma { color: var(--theme-angisa); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
-modulo-rio numero-enigma { color: var(--theme-rio); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
-modulo-sintesis numero-enigma { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+modulo-vigilancia numero-modulo { color: #f43f5e; text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
+modulo-memoria numero-modulo { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+modulo-anansi numero-modulo,
+modulo-capas numero-modulo { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
+modulo-angisas numero-modulo { color: var(--theme-angisa); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
+modulo-rio numero-modulo { color: var(--theme-rio); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
+modulo-reflexion numero-modulo { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
 
-titulo-enigma {
+titulo-modulo {
   font-family: var(--font-mono);
   font-size: 0.95rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   color: var(--paper-dim);
   text-transform: uppercase;
 }
 
 /* ==========================================================================
-   EL DIAGRAMA COMO CONTENEDOR VIVO DE TEXTO
+   ESCENARIO Y NODOS CONCEPTUALES
    ========================================================================== */
-escenario-enigma {
+escenario-diagrama {
   position: relative;
-  min-height: 520px;
+  min-height: 480px;
   width: 100%;
   border-radius: 24px;
   background: radial-gradient(circle at 50% 50%, rgba(8, 16, 32, 0.75) 0%, rgba(2, 4, 8, 0.95) 100%);
@@ -454,24 +271,27 @@ escenario-enigma {
   overflow: hidden;
 }
 
-/* Clases de dimensionamiento modular respirable */
 .diagrama-compacto {
-  min-height: 440px;
+  min-height: 420px;
 }
 
-.diagrama-anansi-modulo {
-  min-height: 600px;
-}
-
-.diagrama-angisa-modulo {
-  min-height: 600px;
-}
-
-.diagrama-rio-modulo {
+.diagrama-anansi {
   min-height: 520px;
 }
 
-escenario-enigma canvas {
+.diagrama-angisa {
+  min-height: 600px;
+}
+
+.diagrama-rio {
+  min-height: 500px;
+}
+
+.diagrama-cierre {
+  min-height: 750px;
+}
+
+escenario-diagrama canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -481,20 +301,12 @@ escenario-enigma canvas {
   z-index: 1;
 }
 
-nodos-diagrama {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-}
-
-/* Nodo Revelador en el Diagrama */
-nodo-revelador {
+/* Nodo Conceptual */
+nodo-concepto {
   position: absolute;
   left: var(--posX, 50%);
   top: var(--posY, 50%);
   transform: translate(-50%, -50%);
-  pointer-events: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -502,19 +314,18 @@ nodo-revelador {
   transition: z-index 0.3s ease;
 }
 
-nodo-revelador:hover,
-nodo-revelador.activo,
-nodo-revelador.fijado {
+nodo-concepto:hover,
+nodo-concepto.activo,
+nodo-concepto.fijado {
   z-index: 50;
 }
 
-/* Ancla de Luz (Icono / Nodo latente que pulsa en penumbra) */
-ancla-luz {
+nodo-boton {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
   padding: 10px 20px;
-  background: rgba(8, 16, 32, 0.9);
+  background: rgba(8, 16, 32, 0.92);
   border: 1.5px solid var(--theme-origen);
   border-radius: 30px;
   box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
@@ -524,18 +335,15 @@ ancla-luz {
   backdrop-filter: blur(10px);
 }
 
-icono-nodo {
+icono {
   font-size: 1.15rem;
   line-height: 1;
   font-family: var(--font-mono);
   font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   color: inherit;
 }
 
-etiqueta-ancla {
+etiqueta {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.14em;
@@ -544,342 +352,130 @@ etiqueta-ancla {
   white-space: nowrap;
 }
 
-ancla-luz.cyan-nucleo {
-  border-color: var(--theme-origen);
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
-}
-
-ancla-luz.alerta-nucleo {
-  border-color: #ef4444;
-  box-shadow: 0 0 30px rgba(239, 68, 68, 0.45);
-  animation: pulseAlerta 2s infinite ease-in-out;
-}
-
-ancla-luz.peligro-nucleo {
+nodo-boton.nodo-alerta {
   border-color: #f43f5e;
   box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
 }
 
-ancla-luz.violeta-nucleo {
-  border-color: var(--theme-anansi);
-  box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
-}
-
-ancla-luz.magenta-nucleo {
-  border-color: var(--theme-angisa);
-  box-shadow: 0 0 25px rgba(255, 0, 127, 0.4);
-}
-
-ancla-luz.ambar-nucleo {
+nodo-boton.nodo-libertad {
   border-color: var(--theme-cierre);
   box-shadow: 0 0 25px rgba(255, 184, 0, 0.4);
 }
 
-@keyframes pulseAlerta {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(239, 68, 68, 0.3); }
-  50% { transform: scale(1.08); box-shadow: 0 0 45px rgba(239, 68, 68, 0.7); }
-}
-
-nodo-revelador:hover ancla-luz,
-nodo-revelador.activo ancla-luz,
-nodo-revelador.fijado ancla-luz {
-  transform: scale(1.15);
+nodo-concepto:hover nodo-boton,
+nodo-concepto.activo nodo-boton,
+nodo-concepto.fijado nodo-boton {
+  transform: scale(1.12);
   background: #ffffff;
   border-color: #ffffff;
 }
 
-nodo-revelador:hover ancla-luz etiqueta-ancla,
-nodo-revelador.activo ancla-luz etiqueta-ancla,
-nodo-revelador.fijado ancla-luz etiqueta-ancla {
+nodo-concepto:hover nodo-boton etiqueta,
+nodo-concepto.activo nodo-boton etiqueta,
+nodo-concepto.fijado nodo-boton etiqueta {
   color: var(--bg-deep);
 }
 
 /* ==========================================================================
-   FRASE REVELADA: EL TEXTO NACE DE LA PENUMBRA AL EXPLORAR
+   TEXTO REVELADO
    ========================================================================== */
-frase-revelada {
+texto-revelado {
   position: absolute;
   top: calc(100% + 14px);
   width: min(580px, 86vw);
   background: var(--bg-card-glow);
   border: 1px solid var(--theme-origen);
   border-radius: 16px;
-  padding: 2rem 2.4rem;
+  padding: 1.8rem 2.2rem;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 45px rgba(0, 240, 255, 0.35);
   backdrop-filter: blur(20px);
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.92) translateY(12px);
+  transform: scale(0.94) translateY(10px);
   filter: blur(8px);
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
   z-index: 40;
 }
 
-nodo-revelador:hover frase-revelada,
-nodo-revelador.activo frase-revelada,
-nodo-revelador.fijado frase-revelada {
+nodo-concepto:hover texto-revelado,
+nodo-concepto.activo texto-revelado,
+nodo-concepto.fijado texto-revelado {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1) translateY(0);
   filter: blur(0);
 }
 
-/* Ajustes de posición para evitar desbordamiento en bordes */
-nodo-revelador.nodo-comunidad frase-revelada,
-nodo-revelador.nodo-segunda-capa frase-revelada,
-nodo-revelador.nodo-pliegue-3 frase-revelada,
-nodo-revelador.nodo-rio-audio frase-revelada {
-  right: 0;
-  left: auto;
+/* Ajustes de posición */
+nodo-concepto.nodo-pliegue texto-revelado {
+  width: min(340px, 80vw);
 }
 
-nodo-revelador.nodo-artefacto frase-revelada,
-nodo-revelador.nodo-terminal-sintaxis frase-revelada,
-nodo-revelador.nodo-pliegue-1 frase-revelada,
-nodo-revelador.nodo-rio-intro frase-revelada {
-  left: 0;
-  right: auto;
+.revelacion-libertad {
+  top: auto;
+  bottom: calc(100% + 14px);
+  transform: scale(0.94) translateY(-10px);
+  width: min(780px, 88vw);
 }
 
-/* ==========================================================================
-   TIPOGRAFÍAS Y BLOQUES TEXTUALES EN LAS FRASES REVELADAS
-   ========================================================================== */
-pensamiento,
-definicion,
-vigilancia,
-memoria,
-relato,
-camuflaje,
-mensaje,
-capas,
-silencio,
-lenguaje,
-transformacion,
-pantalla,
-secreto,
-alerta,
-resistencia,
-logica,
-diseno,
-sonido,
-medio,
-experiencia,
-eco,
-construccion,
-mirada,
-esencia,
-proceso,
-sentido,
-libertad {
-  font-size: 1.15rem;
+nodo-concepto:hover .revelacion-libertad,
+nodo-concepto.activo .revelacion-libertad,
+nodo-concepto.fijado .revelacion-libertad {
+  transform: scale(1) translateY(0);
+}
+
+parrafo {
+  font-size: 1.12rem;
   line-height: 1.85;
   color: var(--paper);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.1rem;
 }
 
-pensamiento:last-child,
-definicion:last-child,
-vigilancia:last-child,
-memoria:last-child,
-relato:last-child,
-camuflaje:last-child,
-mensaje:last-child,
-capas:last-child,
-silencio:last-child,
-lenguaje:last-child,
-transformacion:last-child,
-pantalla:last-child,
-secreto:last-child,
-alerta:last-child,
-resistencia:last-child,
-logica:last-child,
-diseno:last-child,
-sonido:last-child,
-medio:last-child,
-experiencia:last-child,
-eco:last-child,
-construccion:last-child,
-mirada:last-child,
-esencia:last-child,
-proceso:last-child,
-sentido:last-child,
-libertad:last-child {
+parrafo:last-child {
   margin-bottom: 0;
 }
 
-clave {
+parrafo.parrafo-libertad {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: #fffbeb;
+  text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
+  text-align: center;
+}
+
+resaltado {
   color: #ffffff;
   font-weight: 600;
-  font-family: var(--font-mono);
-  padding: 2px 8px;
+  padding: 2px 6px;
   background: rgba(0, 240, 255, 0.12);
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  border-radius: 4px;
-}
-
-/* Alerta de Error Cognitivo */
-alerta-limitacion {
-  border-left: 4px solid #ef4444;
-  background: rgba(239, 68, 68, 0.1);
-  border-radius: 0 8px 8px 0;
-  padding: 1.2rem 1.6rem;
-}
-
-titulo-alerta {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #fca5a5;
-  margin-bottom: 0.3rem;
-}
-
-mensaje-alerta {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  color: #fee2e2;
-  line-height: 1.6;
-}
-
-/* Constelación de Recursos */
-constelacion-recursos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-}
-
-recurso-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 5px 12px;
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  border-radius: 16px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: #ffffff;
-}
-
-glifo-recurso {
-  font-size: 0.95rem;
-}
-
-intencion {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  color: var(--paper-dim);
-  border-top: 1px dashed rgba(255, 255, 255, 0.15);
-  padding-top: 1rem;
-  margin-top: 1rem;
-}
-
-/* Terminal de Código */
-terminal-codigo {
-  background: #09040e;
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 1.2rem;
-}
-
-barra-superior-terminal {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 12px;
-  background: rgba(20, 8, 34, 0.95);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
-}
-
-puntos-control {
-  display: flex;
-  gap: 5px;
-}
-
-punto {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.rojo { background: #ff5f56; }
-.amarillo { background: #ffbd2e; }
-.verde { background: #27c93f; }
-
-titulo-archivo {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--paper-dim);
-}
-
-contenido-terminal {
-  display: flex;
-  padding: 1rem;
-}
-
-lineas-numeracion {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding-right: 0.8rem;
-  border-right: 2px solid #ff007f;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: #ff007f;
-}
-
-codigo-fuente {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding-left: 0.8rem;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-}
-
-sintaxis-kw { color: #ff007f; font-weight: 700; }
-sintaxis-fn { color: #00f0ff; font-weight: 600; }
-sintaxis-str { color: #ffb800; }
-sintaxis-cond { color: #a855f7; }
-
-/* Transición Angisa */
-etiqueta-transicion {
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #00f0ff;
-  text-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
-  pointer-events: none;
-  z-index: 5;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 3px;
 }
 
 /* Audio y QR */
-voz {
+reproductor-voz {
   display: flex;
   align-items: center;
   gap: 1.4rem;
-  padding: 1rem 1.6rem;
+  padding: 0.9rem 1.4rem;
   background: rgba(14, 24, 46, 0.95);
   border: 1px solid rgba(255, 184, 0, 0.5);
   border-radius: 10px;
-  margin: 1.2rem 0;
+  margin: 1rem 0;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-voz:hover {
+reproductor-voz:hover {
   background: rgba(24, 38, 70, 1);
   box-shadow: 0 0 35px var(--glow-amber);
 }
 
-qr {
-  width: 65px;
-  height: 65px;
+codigo-qr {
+  width: 60px;
+  height: 60px;
   flex: none;
   background-color: #ffffff;
   background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fgithub.com%2Falejagoguti-cpu%2FTecnolog-asparalaedici-n");
@@ -887,162 +483,26 @@ qr {
   border-radius: 6px;
 }
 
-escuchar {
+texto-voz {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #ffb800;
-}
-
-subtexto-audio {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: #00e5ff;
-}
-
-/* ==========================================================================
-   05. SÍNTESIS // DIAGRAMA DE ONDA ARMÓNICA (EXACTO A LA REFERENCIA)
-   ========================================================================== */
-.diagrama-cierre-armonico {
-  min-height: 580px;
-  background: radial-gradient(circle at 50% 50%, rgba(10, 14, 28, 0.95) 0%, rgba(2, 4, 8, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), inset 0 0 50px rgba(0, 0, 0, 0.7);
-}
-
-.nodos-onda-armonica {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-/* Ancla de Onda (Punto blanco luminoso + Etiqueta de color) */
-ancla-onda {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  pointer-events: auto;
-  user-select: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-ancla-onda.etiqueta-arriba {
-  flex-direction: column-reverse;
-}
-
-punto-onda {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 0 10px #ffffff, 0 0 22px rgba(255, 255, 255, 0.7);
-  transition: all 0.35s ease;
-}
-
-punto-onda.punto-solar {
-  box-shadow: 0 0 12px #ffffff, 0 0 25px #facc15, 0 0 45px rgba(250, 204, 21, 0.5);
-}
-
-etiqueta-onda {
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 12px currentColor;
-}
-
-/* Colores de los nodos en la onda */
-.nodo-onda-rio etiqueta-onda { color: #38bdf8; }
-.nodo-onda-memoria etiqueta-onda { color: #818cf8; }
-.nodo-onda-secreto etiqueta-onda { color: #c084fc; }
-.nodo-onda-sonido etiqueta-onda { color: #f472b6; }
-.nodo-onda-resistencia etiqueta-onda { color: #fb923c; }
-.nodo-onda-libertad etiqueta-onda { color: #facc15; }
-
-/* Hover e interacción en nodos de onda */
-nodo-revelador.nodo-onda:hover punto-onda,
-nodo-revelador.nodo-onda.activo punto-onda,
-nodo-revelador.nodo-onda.fijado punto-onda {
-  transform: scale(1.6);
-  box-shadow: 0 0 15px #ffffff, 0 0 35px currentColor;
-}
-
-nodo-revelador.nodo-onda:hover etiqueta-onda,
-nodo-revelador.nodo-onda.activo etiqueta-onda,
-nodo-revelador.nodo-onda.fijado etiqueta-onda {
-  filter: brightness(1.3);
-  text-shadow: 0 0 20px currentColor;
-}
-
-/* Ajustes de tarjeta revelada en la onda armónica */
-nodo-revelador.nodo-onda frase-revelada {
-  top: auto;
-  bottom: calc(100% + 18px);
-  transform: scale(0.92) translateY(-12px);
-}
-
-nodo-revelador.nodo-onda.nodo-onda-rio frase-revelada,
-nodo-revelador.nodo-onda.nodo-onda-resistencia frase-revelada {
-  top: calc(100% + 18px);
-  bottom: auto;
-  transform: scale(0.92) translateY(12px);
-}
-
-nodo-revelador.nodo-onda:hover frase-revelada,
-nodo-revelador.nodo-onda.activo frase-revelada,
-nodo-revelador.nodo-onda.fijado frase-revelada {
-  transform: scale(1) translateY(0);
-}
-
-.revelacion-libertad-armonica {
-  width: min(720px, 88vw);
-  right: 0;
-  left: auto;
-}
-
-/* Cierre & Libertad */
-revelacion-libertad {
-  width: min(800px, 90vw);
-  text-align: center;
-}
-
-titulo {
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #ffb800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-
-libertad {
-  font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-  font-style: italic;
-  line-height: 1.5;
-  color: #fffbeb;
-  text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
 }
 
 despedida {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.5rem);
   font-weight: 800;
+  text-align: center;
   background: linear-gradient(135deg, #ffffff 20%, var(--theme-cierre) 70%, #ff007f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 2rem;
+  margin-top: 1.8rem;
   filter: drop-shadow(0 0 30px rgba(255, 184, 0, 0.5));
 }
 
 /* ==========================================================================
    OPTIMIZACIÓN DE IMPRESIÓN CONTINUA (@media print)
-   Al imprimir, todo se revela automáticamente en orden y legible
    ========================================================================== */
 @media print {
   body {
@@ -1057,18 +517,16 @@ despedida {
   fondo-luz,
   malla-cuadricula,
   haz-cursor,
-  hud-control,
-  ancla-luz,
-  ancla-onda,
+  nodo-boton,
   canvas,
-  flecha-descenso,
-  etiqueta-transicion,
-  qr,
-  subtexto-audio {
+  linea-guia,
+  onda-pulso,
+  codigo-qr,
+  info-voz {
     display: none !important;
   }
 
-  escenario-enigma {
+  escenario-diagrama {
     position: static !important;
     background: none !important;
     border: none !important;
@@ -1076,18 +534,14 @@ despedida {
     min-height: auto !important;
   }
 
-  nodos-diagrama {
-    position: static !important;
-  }
-
-  nodo-revelador {
+  nodo-concepto {
     position: static !important;
     transform: none !important;
     display: block !important;
-    margin-bottom: 2rem !important;
+    margin-bottom: 1.5rem !important;
   }
 
-  frase-revelada {
+  texto-revelado {
     position: static !important;
     opacity: 1 !important;
     transform: none !important;
@@ -1102,15 +556,15 @@ despedida {
 
   saludo,
   modulo-artefacto,
-  modulo-ruptura,
   modulo-comunidad,
   modulo-vigilancia,
-  modulo-constelacion,
+  modulo-memoria,
+  modulo-intencion,
   modulo-anansi,
   modulo-capas,
   modulo-angisas,
   modulo-rio,
-  modulo-sintesis {
+  modulo-reflexion {
     min-height: auto !important;
     padding: 2rem 0 !important;
     border-bottom: 1px solid #ddd !important;
@@ -1119,14 +573,14 @@ despedida {
 
   texto-saludo,
   despedida,
-  titulo-enigma {
+  titulo-modulo {
     color: #000000 !important;
     -webkit-text-fill-color: #000000 !important;
     background: none !important;
     filter: none !important;
   }
 
-  clave {
+  resaltado {
     color: #000000 !important;
     border: none !important;
     border-bottom: 1px dashed #333 !important;
