@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TECNOLOGÍAS DEL SECRETO — ENSAYO INTERACTIVO
+   TECNOLOGÍAS PARA LA EDICIÓN — ALEJANDRA GÓMEZ GUTIÉRREZ
    Diseño de revelación progresiva y formato editorial continuo
    ========================================================================== */
 
@@ -32,11 +32,13 @@
 }
 
 /* ==========================================================================
-   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS (100% SEMÁNTICOS)
+   DECLARACIÓN DE ELEMENTOS PERSONALIZADOS (100% CONCEPTUALES / SEMÁNTICOS)
    ========================================================================== */
 fondo-luz,
 malla-cuadricula,
 haz-cursor,
+barra-superior,
+titulo-autora,
 ensayo,
 saludo,
 campo-apertura,
@@ -57,12 +59,43 @@ encabezado-modulo,
 numero-modulo,
 titulo-modulo,
 escenario-diagrama,
-nodo-concepto,
-nodo-boton,
+nodo-revelador,
+ancla-luz,
 icono,
 etiqueta,
-texto-revelado,
-parrafo,
+frase-revelada,
+pensamiento,
+percepcion,
+comprension,
+sistema,
+transformacion,
+atencion,
+vigilancia,
+estrategia,
+recursos,
+definicion,
+intencion,
+cuento,
+camuflaje,
+secreto,
+participacion,
+lenguaje,
+pliegue-visual,
+pliegue-secreto,
+pliegue-alerta,
+pliegue-resistencia,
+diseno-transformador,
+rio-sonido,
+medio,
+experiencia-audio,
+eco-digital,
+pensamiento-final,
+construccion,
+mirada,
+relacion,
+proceso,
+proposito,
+libertad,
 reproductor-voz,
 codigo-qr,
 info-voz,
@@ -72,7 +105,7 @@ despedida {
   display: block;
 }
 
-resaltado {
+clave {
   display: inline;
 }
 
@@ -104,6 +137,31 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   cursor: crosshair;
+}
+
+/* Barra superior fija con el nombre de la autora */
+barra-superior {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px 4vw;
+  background: rgba(2, 4, 8, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+titulo-autora {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  font-weight: 500;
 }
 
 /* Malla de Fondo */
@@ -163,7 +221,7 @@ saludo {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 4vw;
+  padding: 8rem 4vw 6rem;
 }
 
 campo-apertura {
@@ -258,7 +316,7 @@ titulo-modulo {
 }
 
 /* ==========================================================================
-   ESCENARIO Y NODOS CONCEPTUALES
+   ESCENARIO Y NODOS REVELADORES
    ========================================================================== */
 escenario-diagrama {
   position: relative;
@@ -301,8 +359,8 @@ escenario-diagrama canvas {
   z-index: 1;
 }
 
-/* Nodo Conceptual */
-nodo-concepto {
+/* Nodo Revelador */
+nodo-revelador {
   position: absolute;
   left: var(--posX, 50%);
   top: var(--posY, 50%);
@@ -314,13 +372,13 @@ nodo-concepto {
   transition: z-index 0.3s ease;
 }
 
-nodo-concepto:hover,
-nodo-concepto.activo,
-nodo-concepto.fijado {
+nodo-revelador:hover,
+nodo-revelador.activo,
+nodo-revelador.fijado {
   z-index: 50;
 }
 
-nodo-boton {
+ancla-luz {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
@@ -352,34 +410,34 @@ etiqueta {
   white-space: nowrap;
 }
 
-nodo-boton.nodo-alerta {
+ancla-luz.alerta-luz {
   border-color: #f43f5e;
   box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
 }
 
-nodo-boton.nodo-libertad {
+ancla-luz.ancla-libertad {
   border-color: var(--theme-cierre);
   box-shadow: 0 0 25px rgba(255, 184, 0, 0.4);
 }
 
-nodo-concepto:hover nodo-boton,
-nodo-concepto.activo nodo-boton,
-nodo-concepto.fijado nodo-boton {
+nodo-revelador:hover ancla-luz,
+nodo-revelador.activo ancla-luz,
+nodo-revelador.fijado ancla-luz {
   transform: scale(1.12);
   background: #ffffff;
   border-color: #ffffff;
 }
 
-nodo-concepto:hover nodo-boton etiqueta,
-nodo-concepto.activo nodo-boton etiqueta,
-nodo-concepto.fijado nodo-boton etiqueta {
+nodo-revelador:hover ancla-luz etiqueta,
+nodo-revelador.activo ancla-luz etiqueta,
+nodo-revelador.fijado ancla-luz etiqueta {
   color: var(--bg-deep);
 }
 
 /* ==========================================================================
-   TEXTO REVELADO
+   FRASE REVELADA & BLOQUES CONCEPTUALES
    ========================================================================== */
-texto-revelado {
+frase-revelada {
   position: absolute;
   top: calc(100% + 14px);
   width: min(580px, 86vw);
@@ -397,9 +455,9 @@ texto-revelado {
   z-index: 40;
 }
 
-nodo-concepto:hover texto-revelado,
-nodo-concepto.activo texto-revelado,
-nodo-concepto.fijado texto-revelado {
+nodo-revelador:hover frase-revelada,
+nodo-revelador.activo frase-revelada,
+nodo-revelador.fijado frase-revelada {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1) translateY(0);
@@ -407,7 +465,7 @@ nodo-concepto.fijado texto-revelado {
 }
 
 /* Ajustes de posición */
-nodo-concepto.nodo-pliegue texto-revelado {
+nodo-revelador.nodo-pliegue frase-revelada {
   width: min(340px, 80vw);
 }
 
@@ -418,24 +476,85 @@ nodo-concepto.nodo-pliegue texto-revelado {
   width: min(780px, 88vw);
 }
 
-nodo-concepto:hover .revelacion-libertad,
-nodo-concepto.activo .revelacion-libertad,
-nodo-concepto.fijado .revelacion-libertad {
+nodo-revelador:hover .revelacion-libertad,
+nodo-revelador.activo .revelacion-libertad,
+nodo-revelador.fijado .revelacion-libertad {
   transform: scale(1) translateY(0);
 }
 
-parrafo {
+/* Bloques semánticos conceptuales */
+pensamiento,
+percepcion,
+comprension,
+sistema,
+transformacion,
+atencion,
+vigilancia,
+estrategia,
+recursos,
+definicion,
+intencion,
+cuento,
+camuflaje,
+secreto,
+participacion,
+lenguaje,
+pliegue-visual,
+pliegue-secreto,
+pliegue-alerta,
+pliegue-resistencia,
+diseno-transformador,
+rio-sonido,
+medio,
+experiencia-audio,
+eco-digital,
+pensamiento-final,
+construccion,
+mirada,
+relacion,
+proceso,
+proposito {
   font-size: 1.12rem;
   line-height: 1.85;
   color: var(--paper);
   margin-bottom: 1.1rem;
 }
 
-parrafo:last-child {
+pensamiento:last-child,
+percepcion:last-child,
+comprension:last-child,
+sistema:last-child,
+transformacion:last-child,
+atencion:last-child,
+vigilancia:last-child,
+estrategia:last-child,
+recursos:last-child,
+definicion:last-child,
+intencion:last-child,
+cuento:last-child,
+camuflaje:last-child,
+secreto:last-child,
+participacion:last-child,
+lenguaje:last-child,
+pliegue-visual:last-child,
+pliegue-secreto:last-child,
+pliegue-alerta:last-child,
+pliegue-resistencia:last-child,
+diseno-transformador:last-child,
+rio-sonido:last-child,
+medio:last-child,
+experiencia-audio:last-child,
+eco-digital:last-child,
+pensamiento-final:last-child,
+construccion:last-child,
+mirada:last-child,
+relacion:last-child,
+proceso:last-child,
+proposito:last-child {
   margin-bottom: 0;
 }
 
-parrafo.parrafo-libertad {
+libertad {
   font-family: var(--font-serif);
   font-size: clamp(1.35rem, 3vw, 1.9rem);
   font-style: italic;
@@ -443,9 +562,10 @@ parrafo.parrafo-libertad {
   color: #fffbeb;
   text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
   text-align: center;
+  margin-bottom: 1.1rem;
 }
 
-resaltado {
+clave {
   color: #ffffff;
   font-weight: 600;
   padding: 2px 6px;
@@ -517,13 +637,26 @@ despedida {
   fondo-luz,
   malla-cuadricula,
   haz-cursor,
-  nodo-boton,
+  ancla-luz,
   canvas,
   linea-guia,
   onda-pulso,
   codigo-qr,
   info-voz {
     display: none !important;
+  }
+
+  barra-superior {
+    position: static !important;
+    background: none !important;
+    border: none !important;
+    padding: 1rem 0 !important;
+  }
+
+  titulo-autora {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
   }
 
   escenario-diagrama {
@@ -534,14 +667,14 @@ despedida {
     min-height: auto !important;
   }
 
-  nodo-concepto {
+  nodo-revelador {
     position: static !important;
     transform: none !important;
     display: block !important;
     margin-bottom: 1.5rem !important;
   }
 
-  texto-revelado {
+  frase-revelada {
     position: static !important;
     opacity: 1 !important;
     transform: none !important;
@@ -580,7 +713,7 @@ despedida {
     filter: none !important;
   }
 
-  resaltado {
+  clave {
     color: #000000 !important;
     border: none !important;
     border-bottom: 1px dashed #333 !important;
@@ -588,3 +721,4 @@ despedida {
     padding: 0 !important;
   }
 }
+

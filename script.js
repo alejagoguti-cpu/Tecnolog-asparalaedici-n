@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCursorLight();
 
   // ==========================================================================
-  // 2. INTERACCIÓN CON LOS NODOS CONCEPTUALES (<nodo-concepto>)
+  // 2. INTERACCIÓN CON LOS NODOS REVELADORES (<nodo-revelador>)
   // ==========================================================================
-  const allConceptNodes = document.querySelectorAll('nodo-concepto');
+  const allConceptNodes = document.querySelectorAll('nodo-revelador');
 
   allConceptNodes.forEach((node) => {
     // Permitir clic para fijar o desfijar la tarjeta de texto revelado
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Accesibilidad por teclado
-    const boton = node.querySelector('nodo-boton');
+    const boton = node.querySelector('ancla-luz');
     if (boton) {
       boton.setAttribute('tabindex', '0');
       boton.setAttribute('role', 'button');
