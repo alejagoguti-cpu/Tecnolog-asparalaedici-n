@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCursorLight();
 
   // ==========================================================================
-  // 2. DISPARADOR DE REVELACIÓN POR NÚMERO / ENCABEZADO
+  // 2. DISPARADOR DE REVELACIÓN PROGRESIVA EN 2 PASOS (APAGADO -> RED -> TEXTO)
   // ==========================================================================
   const sectionContainers = document.querySelectorAll(
     'pensamiento, revelacion, observacion, memoria, intencion, comprension, reflexion, lenguaje, experiencia, construccion'
@@ -47,25 +47,46 @@ document.addEventListener('DOMContentLoaded', () => {
   sectionContainers.forEach((sec) => {
     const header = sec.querySelector('encabezado');
     const badge = sec.querySelector('indicador-despliegue');
+    let state = 0; // 0: Apagado, 1: Red Revelada, 2: Texto Revelado
+
+    function applyState(s) {
+      state = s % 3;
+      sec.classList.remove('estado-apagado', 'estado-red', 'estado-texto', 'seccion-activa', 'seccion-oculta');
+
+      if (state === 0) {
+        sec.classList.add('estado-apagado');
+        if (badge) {
+          badge.textContent = 'REVELAR RED';
+          badge.setAttribute('data-fase', '0');
+        }
+      } else if (state === 1) {
+        sec.classList.add('estado-red');
+        if (badge) {
+          badge.textContent = 'REVELAR TEXTO';
+          badge.setAttribute('data-fase', '1');
+        }
+      } else if (state === 2) {
+        sec.classList.add('estado-texto');
+        if (badge) {
+          badge.textContent = 'OCULTAR';
+          badge.setAttribute('data-fase', '2');
+        }
+      }
+    }
+
+    // Inicializar estado apagado
+    applyState(0);
 
     if (header) {
-      header.addEventListener('click', () => {
-        const isHidden = sec.classList.contains('seccion-oculta');
-        if (isHidden) {
-          sec.classList.remove('seccion-oculta');
-          sec.classList.add('seccion-activa');
-          if (badge) badge.textContent = 'ACTIVO';
-        } else {
-          sec.classList.add('seccion-oculta');
-          sec.classList.remove('seccion-activa');
-          if (badge) badge.textContent = 'REVELAR';
-        }
+      header.addEventListener('click', (e) => {
+        e.stopPropagation();
+        applyState(state + 1);
       });
 
       header.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          header.click();
+          applyState(state + 1);
         }
       });
     }

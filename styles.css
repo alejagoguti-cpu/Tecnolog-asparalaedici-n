@@ -405,19 +405,57 @@ titulo {
 indicador-despliegue {
   font-family: var(--font-mono);
   font-size: 0.72rem;
+  font-weight: 700;
   letter-spacing: 0.14em;
-  color: var(--paper-faint);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
+  text-transform: uppercase;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  user-select: none;
+}
+
+.estado-apagado indicador-despliegue {
+  color: var(--paper-dim);
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 encabezado:hover indicador-despliegue {
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(0, 240, 255, 0.6);
+  background: rgba(0, 240, 255, 0.18);
+  box-shadow: 0 0 15px var(--glow-cyan);
+}
+
+.estado-red indicador-despliegue {
+  color: #010306;
+  background: #00f0ff;
+  border: 1px solid #00f0ff;
+  box-shadow: 0 0 20px var(--glow-cyan);
+}
+
+observacion.estado-red indicador-despliegue { background: #f43f5e; border-color: #f43f5e; color: #fff; box-shadow: 0 0 20px var(--glow-red); }
+memoria.estado-red indicador-despliegue,
+construccion.estado-red indicador-despliegue { background: #ffb800; border-color: #ffb800; color: #010306; box-shadow: 0 0 20px var(--glow-amber); }
+comprension.estado-red indicador-despliegue,
+reflexion.estado-red indicador-despliegue { background: #a855f7; border-color: #a855f7; color: #fff; box-shadow: 0 0 20px var(--glow-violet); }
+lenguaje.estado-red indicador-despliegue { background: #ff007f; border-color: #ff007f; color: #fff; box-shadow: 0 0 20px var(--glow-magenta); }
+experiencia.estado-red indicador-despliegue { background: #00e5ff; border-color: #00e5ff; color: #010306; box-shadow: 0 0 20px var(--glow-cyan); }
+
+.estado-texto indicador-despliegue {
+  color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.estado-texto encabezado:hover indicador-despliegue {
+  color: #fda4af;
+  border-color: #f43f5e;
+  background: rgba(244, 63, 94, 0.18);
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
 }
 
 /* ==========================================================================
@@ -429,27 +467,16 @@ escenario {
   width: 100%;
   border-radius: 24px;
   background: radial-gradient(circle at 50% 50%, rgba(10, 20, 42, 0.85) 0%, rgba(1, 3, 6, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 3.5rem 3rem;
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   contain: paint;
 }
-
-pensamiento.en-foco escenario { border-color: rgba(0, 240, 255, 0.4); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.2); }
-revelacion.en-foco escenario { border-color: rgba(0, 229, 255, 0.4); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 229, 255, 0.2); }
-observacion.en-foco escenario { border-color: rgba(244, 63, 94, 0.45); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(244, 63, 94, 0.25); }
-memoria.en-foco escenario { border-color: rgba(255, 184, 0, 0.42); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 184, 0, 0.22); }
-intencion.en-foco escenario { border-color: rgba(0, 240, 255, 0.4); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.2); }
-comprension.en-foco escenario,
-reflexion.en-foco escenario { border-color: rgba(168, 85, 247, 0.45); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(168, 85, 247, 0.25); }
-lenguaje.en-foco escenario { border-color: rgba(255, 0, 127, 0.45); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 0, 127, 0.25); }
-experiencia.en-foco escenario { border-color: rgba(0, 229, 255, 0.45); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 229, 255, 0.25); }
-construccion.en-foco escenario { border-color: rgba(255, 184, 0, 0.5); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 184, 0, 0.3); }
 
 .diagrama-compacto { min-height: 540px; }
 .diagrama-anansi { min-height: 620px; }
@@ -466,7 +493,45 @@ escenario canvas {
   display: block;
   z-index: 1;
   pointer-events: auto;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
 }
+
+/* Escenario y Canvas segun Estado */
+.estado-apagado escenario {
+  border-color: rgba(255, 255, 255, 0.06);
+  background: radial-gradient(circle at 50% 50%, rgba(4, 8, 16, 0.95) 0%, rgba(1, 2, 4, 1) 100%);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.95);
+}
+
+.estado-apagado escenario canvas {
+  opacity: 0.08;
+  filter: grayscale(1) brightness(0.3);
+  pointer-events: none;
+}
+
+.estado-red escenario canvas {
+  opacity: 1;
+  filter: none;
+  pointer-events: auto;
+}
+
+.estado-texto escenario canvas {
+  opacity: 0.85;
+  filter: none;
+  pointer-events: auto;
+}
+
+/* Glow en estado Red y Texto */
+pensamiento.estado-red escenario, pensamiento.estado-texto escenario { border-color: rgba(0, 240, 255, 0.45); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 45px rgba(0, 240, 255, 0.25); }
+revelacion.estado-red escenario, revelacion.estado-texto escenario { border-color: rgba(0, 229, 255, 0.45); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 45px rgba(0, 229, 255, 0.25); }
+observacion.estado-red escenario, observacion.estado-texto escenario { border-color: rgba(244, 63, 94, 0.5); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 45px rgba(244, 63, 94, 0.28); }
+memoria.estado-red escenario, memoria.estado-texto escenario { border-color: rgba(255, 184, 0, 0.45); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 45px rgba(255, 184, 0, 0.25); }
+intencion.estado-red escenario, intencion.estado-texto escenario { border-color: rgba(0, 240, 255, 0.45); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 45px rgba(0, 240, 255, 0.25); }
+comprension.estado-red escenario, comprension.estado-texto escenario,
+reflexion.estado-red escenario, reflexion.estado-texto escenario { border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 45px rgba(168, 85, 247, 0.28); }
+lenguaje.estado-red escenario, lenguaje.estado-texto escenario { border-color: rgba(255, 0, 127, 0.5); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 45px rgba(255, 0, 127, 0.28); }
+experiencia.estado-red escenario, experiencia.estado-texto escenario { border-color: rgba(0, 229, 255, 0.5); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 45px rgba(0, 229, 255, 0.28); }
+construccion.estado-red escenario, construccion.estado-texto escenario { border-color: rgba(255, 184, 0, 0.55); box-shadow: 0 30px 90px rgba(0,0,0,0.95), 0 0 55px rgba(255, 184, 0, 0.32); }
 
 /* ==========================================================================
    CONTENIDO REVELADO EDITORIAL
@@ -481,7 +546,7 @@ contenido {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   max-width: 860px;
   transform: translateZ(0);
 }
@@ -507,18 +572,22 @@ construccion contenido {
   margin: 0 auto;
 }
 
-.seccion-oculta contenido {
-  opacity: 0.15;
-  transform: scale(0.96) translateY(12px);
-  filter: blur(6px);
+/* Visibilidad de Contenido segun Estado */
+.estado-apagado contenido,
+.estado-red contenido {
+  opacity: 0;
+  transform: scale(0.92) translateY(24px);
+  filter: blur(14px);
   pointer-events: none;
+  visibility: hidden;
 }
 
-.seccion-activa contenido {
+.estado-texto contenido {
   opacity: 1;
   transform: scale(1) translateY(0);
   filter: blur(0);
   pointer-events: auto;
+  visibility: visible;
 }
 
 pensamiento contenido { border-color: rgba(0, 240, 255, 0.35); }
