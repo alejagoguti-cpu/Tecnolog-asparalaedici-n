@@ -70,6 +70,12 @@ pliegue-cabecera,
 pliegue-icono,
 pliegue-etiqueta,
 pliegue-estado,
+bloque-dual,
+columna-reflexion,
+etiqueta-dual,
+manifiesto-central,
+declaracion-libertad,
+linea-solar,
 reproductor,
 codigo-qr,
 info-audio,
@@ -728,31 +734,144 @@ texto-audio {
 }
 
 /* ==========================================================================
-   LIBERTAD Y DESPEDIDA (MÓDULO 10)
+   REFLEXIÓN FINAL, MANIFIESTO Y LIBERTAD (MÓDULO 10)
    ========================================================================== */
+contenido.contenido-cierre {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 3.2rem 3.5rem;
+  border-color: rgba(255, 184, 0, 0.45);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 184, 0, 0.2);
+}
+
+texto.intro-cierre {
+  font-size: 1.25rem;
+  line-height: 1.85;
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+bloque-dual {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+columna-reflexion {
+  display: flex;
+  flex-direction: column;
+  padding: 1.8rem 1.6rem;
+  border-radius: 16px;
+  background: rgba(8, 16, 36, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+columna-reflexion[tipo="antes"] {
+  border-left: 4px solid var(--theme-origen);
+}
+columna-reflexion[tipo="antes"]:hover {
+  transform: translateY(-4px);
+  background: rgba(10, 24, 48, 0.95);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 30px var(--glow-cyan);
+}
+
+columna-reflexion[tipo="ahora"] {
+  border-left: 4px solid var(--theme-cierre);
+}
+columna-reflexion[tipo="ahora"]:hover {
+  transform: translateY(-4px);
+  background: rgba(36, 26, 10, 0.95);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 30px var(--glow-amber);
+}
+
+etiqueta-dual {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+columna-reflexion[tipo="antes"] etiqueta-dual { color: var(--theme-origen); }
+columna-reflexion[tipo="ahora"] etiqueta-dual { color: var(--theme-cierre); }
+
+columna-reflexion texto {
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: rgba(248, 250, 252, 0.9);
+  margin-bottom: 0;
+}
+
+manifiesto-central {
+  margin: 2.4rem 0;
+  padding: 2rem 2.4rem;
+  border-radius: 18px;
+  background: radial-gradient(circle at 50% 50%, rgba(36, 24, 6, 0.92) 0%, rgba(12, 8, 2, 0.96) 100%);
+  border: 1.8px solid var(--theme-cierre);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 184, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+manifiesto-central:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 55px rgba(255, 184, 0, 0.4);
+  transform: scale(1.01);
+}
+
+texto.tesis-principal {
+  font-size: 1.25rem;
+  line-height: 1.85;
+  color: #fffbeb;
+  font-weight: 600;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+declaracion-libertad {
+  margin: 3.5rem 0 2rem;
+  position: relative;
+}
+
+linea-solar {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--theme-cierre), #ff007f, transparent);
+  margin: 1.5rem 0;
+  box-shadow: 0 0 15px rgba(255, 184, 0, 0.6);
+}
+
 texto.texto-libertad {
   font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 3.2vw, 2.05rem);
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
   font-style: italic;
-  line-height: 1.65;
+  line-height: 1.68;
   color: #fffbeb;
-  text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
+  text-shadow: 0 0 35px rgba(255, 184, 0, 0.6);
   text-align: center;
-  margin: 2.5rem 0 1.5rem;
-  padding: 1.8rem 1.2rem;
-  border-top: 1px solid rgba(255, 184, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 184, 0, 0.3);
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem;
 }
 
 despedida {
-  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
   font-weight: 800;
   text-align: center;
-  background: linear-gradient(135deg, #ffffff 20%, var(--theme-cierre) 70%, #ff007f 100%);
+  background: linear-gradient(135deg, #ffffff 15%, var(--theme-cierre) 65%, #ff007f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 2.2rem;
-  filter: drop-shadow(0 0 35px rgba(255, 184, 0, 0.55));
+  margin-top: 2.5rem;
+  filter: drop-shadow(0 0 40px rgba(255, 184, 0, 0.65));
 }
 
 /* ==========================================================================

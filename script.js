@@ -1244,79 +1244,102 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
       // ======================================================================
-      // 10. LIBERTAD: SUPERNOVA SOLAR CORONAL Y RAYOS DE LIBERTAD
+      // 10. LIBERTAD: SUPERNOVA SOLAR MONUMENTAL & ASTROLABIO CELESTE
       // ======================================================================
       } else if (animType === 'solar') {
-        // Corona y Resplandor Solar
-        const solarGlow = ctx.createRadialGradient(cx, cy, 15, cx, cy, cw * 0.48);
-        solarGlow.addColorStop(0, 'rgba(255, 220, 100, 0.95)');
-        solarGlow.addColorStop(0.2, 'rgba(255, 184, 0, 0.55)');
-        solarGlow.addColorStop(0.5, 'rgba(255, 0, 127, 0.15)');
+        // Corona y Resplandor Solar de Pantalla Completa
+        const solarGlow = ctx.createRadialGradient(cx, cy, 20, cx, cy, Math.max(cw, ch) * 0.55);
+        solarGlow.addColorStop(0, 'rgba(255, 240, 150, 0.85)');
+        solarGlow.addColorStop(0.18, 'rgba(255, 184, 0, 0.45)');
+        solarGlow.addColorStop(0.45, 'rgba(255, 0, 127, 0.12)');
+        solarGlow.addColorStop(0.85, 'rgba(168, 85, 247, 0.04)');
         solarGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
         ctx.fillStyle = solarGlow;
         ctx.fillRect(0, 0, cw, ch);
 
-        // Chispas / Fuego Solar Ascendiendo
+        // 3 Anillos Sagrados de Astrolabio Solar
+        for (let ring = 1; ring <= 3; ring++) {
+          const rRadius = Math.min(cw, ch) * (0.28 + ring * 0.14);
+          ctx.beginPath();
+          ctx.arc(cx, cy, rRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(255, 184, 0, ${0.12 + ring * 0.06})`;
+          ctx.lineWidth = 1.4;
+          ctx.stroke();
+
+          // Marcadores angulares en los anillos
+          for (let a = 0; a < 8; a++) {
+            const mAng = (a * Math.PI) / 4 + time * (ring % 2 === 0 ? 0.05 : -0.05);
+            const mx = cx + Math.cos(mAng) * rRadius;
+            const my = cy + Math.sin(mAng) * rRadius;
+            ctx.beginPath();
+            ctx.arc(mx, my, 2.5, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 220, 100, 0.75)';
+            ctx.fill();
+          }
+        }
+
+        // Chispas y Fuego Solar Ascendente (Enjambre de Libertad)
         risingEmbers.forEach((ember) => {
           ember.y -= ember.vy;
-          ember.x += ember.vx + Math.sin(time * 3 + ember.y * 0.05) * 0.6;
+          ember.x += ember.vx + Math.sin(time * 2.5 + ember.y * 0.03) * 0.8;
           if (ember.y < -ch * 0.5) {
-            ember.y = ch * 0.3;
-            ember.x = (Math.random() - 0.5) * 300;
+            ember.y = ch * 0.45;
+            ember.x = (Math.random() - 0.5) * (cw * 0.8);
           }
           ctx.beginPath();
           ctx.arc(cx + ember.x, cy + ember.y, ember.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 200, 50, ${ember.alpha})`;
+          ctx.fillStyle = `rgba(255, 215, 60, ${ember.alpha * 0.85})`;
           ctx.fill();
         });
 
-        // 36 Rayos Volumétricos de Libertad (Godrays)
-        solarFlares.forEach((flare) => {
-          const len = flare.baseLen + Math.sin(time * flare.freq + flare.phase) * 45;
-          const ang = flare.angle + time * 0.08;
+        // 48 Haces Volumétricos de Libertad (Godrays Radiantes)
+        const numGodrays = 48;
+        for (let i = 0; i < numGodrays; i++) {
+          const ang = (i * 2 * Math.PI) / numGodrays + time * 0.06;
+          const rayLen = Math.min(cw, ch) * (0.48 + Math.sin(time * 2.2 + i * 0.4) * 0.15);
           ctx.beginPath();
           ctx.moveTo(cx, cy);
-          ctx.lineTo(cx + Math.cos(ang) * len, cy + Math.sin(ang) * len);
-          ctx.strokeStyle = `rgba(255, 184, 0, ${0.22 + Math.sin(time * 2 + flare.phase) * 0.12})`;
-          ctx.lineWidth = 1.6;
+          ctx.lineTo(cx + Math.cos(ang) * rayLen, cy + Math.sin(ang) * rayLen);
+          ctx.strokeStyle = `rgba(255, 184, 0, ${0.14 + Math.sin(time * 1.8 + i) * 0.08})`;
+          ctx.lineWidth = i % 4 === 0 ? 2.2 : 1.2;
           ctx.stroke();
-        });
+        }
 
-        // Bucles Magnéticos Coronales (Prominencias Solares)
-        for (let loop = 0; loop < 5; loop++) {
-          const loopAng = time * 0.2 + (loop * Math.PI * 2) / 5;
-          const lx1 = cx + Math.cos(loopAng - 0.2) * 75;
-          const ly1 = cy + Math.sin(loopAng - 0.2) * 75;
-          const lx2 = cx + Math.cos(loopAng + 0.2) * 75;
-          const ly2 = cy + Math.sin(loopAng + 0.2) * 75;
-          const topX = cx + Math.cos(loopAng) * 140;
-          const topY = cy + Math.sin(loopAng) * 140;
+        // Prominencias y Arcos Magnéticos Coronales
+        for (let loop = 0; loop < 6; loop++) {
+          const loopAng = time * 0.15 + (loop * Math.PI * 2) / 6;
+          const lx1 = cx + Math.cos(loopAng - 0.25) * 85;
+          const ly1 = cy + Math.sin(loopAng - 0.25) * 85;
+          const lx2 = cx + Math.cos(loopAng + 0.25) * 85;
+          const ly2 = cy + Math.sin(loopAng + 0.25) * 85;
+          const topX = cx + Math.cos(loopAng) * 165;
+          const topY = cy + Math.sin(loopAng) * 165;
 
           ctx.beginPath();
           ctx.moveTo(lx1, ly1);
           ctx.quadraticCurveTo(topX, topY, lx2, ly2);
-          ctx.strokeStyle = 'rgba(255, 80, 0, 0.45)';
-          ctx.lineWidth = 2;
+          ctx.strokeStyle = 'rgba(255, 90, 0, 0.45)';
+          ctx.lineWidth = 2.2;
           ctx.stroke();
         }
 
-        // Nodos Anclados en los Haces Solares
+        // Nodos Satélites de la Libertad en Órbita Amplia
         conceptList.forEach((word, i) => {
           const ang = (i * 2 * Math.PI) / conceptList.length + time * 0.08;
-          const rayLen = 175 + Math.sin(time * 2.5 + i) * 25;
-          const px = cx + Math.cos(ang) * rayLen;
-          const py = cy + Math.sin(ang) * (rayLen * 0.75);
+          const orbitR = Math.min(cw, ch) * 0.42 + Math.sin(time * 2 + i) * 20;
+          const px = cx + Math.cos(ang) * orbitR;
+          const py = cy + Math.sin(ang) * (orbitR * 0.78);
 
-          // Rayo de plasma hacia el nodo
+          // Rayo de Plasma hacia el Sol
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(px, py);
           ctx.strokeStyle = 'rgba(255, 184, 0, 0.45)';
-          ctx.lineWidth = 1.6;
+          ctx.lineWidth = 1.5;
           ctx.stroke();
 
           const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#ffb800', 'SOLAR FREEDOM');
+          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#ffb800', 'LIBERTAD // SOLAR');
         });
       }
 
