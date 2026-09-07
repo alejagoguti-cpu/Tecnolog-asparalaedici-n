@@ -66,7 +66,10 @@ contenido,
 texto,
 pliegues-contenedor,
 pliegue-item,
+pliegue-cabecera,
+pliegue-icono,
 pliegue-etiqueta,
+pliegue-estado,
 reproductor,
 codigo-qr,
 info-audio,
@@ -550,63 +553,136 @@ clave:hover {
 }
 
 /* ==========================================================================
-   PLIEGUES EN EL MÓDULO 08 (ANGISAS)
+   PLIEGUES EN EL MÓDULO 08 (ANGISAS - TRÍPTICO EDITORIAL INTERACTIVO)
    ========================================================================== */
 pliegues-contenedor {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.6rem;
   margin: 2.2rem 0;
+  width: 100%;
 }
 
 pliegue-item {
-  padding: 1.6rem 1.8rem;
-  border-radius: 14px;
-  background: rgba(14, 26, 52, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.8rem 1.6rem;
+  border-radius: 16px;
+  background: rgba(8, 16, 36, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+pliegue-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+pliegue-icono {
+  font-size: 1.1rem;
+  color: var(--theme-angisa);
+  text-shadow: 0 0 12px var(--theme-angisa);
 }
 
 pliegue-etiqueta {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 0.8rem;
   color: #ffffff;
+  flex: 1;
 }
 
+pliegue-estado {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--paper-dim);
+}
+
+pliegue-item texto {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(248, 250, 252, 0.9);
+  margin-bottom: 0;
+}
+
+/* Pliegue 01: El Secreto */
 pliegue-item[tipo="secreto"] {
-  border-left: 3.5px solid var(--theme-anansi);
-  filter: blur(1.5px);
+  border-left: 4px solid var(--theme-anansi);
+}
+pliegue-item[tipo="secreto"] pliegue-icono {
+  color: var(--theme-anansi);
+  text-shadow: 0 0 12px var(--theme-anansi);
+}
+pliegue-item[tipo="secreto"] pliegue-estado {
+  color: #d8b4fe;
+  border-color: rgba(168, 85, 247, 0.4);
+  background: rgba(168, 85, 247, 0.12);
 }
 pliegue-item[tipo="secreto"]:hover {
-  filter: blur(0);
-  background: rgba(168, 85, 247, 0.2);
-  box-shadow: 0 0 30px var(--glow-violet);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  background: rgba(18, 12, 40, 0.95);
+  border-color: var(--theme-anansi);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 30px var(--glow-violet);
 }
 
+/* Pliegue 02: La Alerta */
 pliegue-item[tipo="alerta"] {
-  border-left: 3.5px solid var(--theme-alerta);
-  transform: rotate(-0.6deg);
+  border-left: 4px solid var(--theme-alerta);
+}
+pliegue-item[tipo="alerta"] pliegue-icono {
+  color: var(--theme-alerta);
+  text-shadow: 0 0 12px var(--theme-alerta);
+}
+pliegue-item[tipo="alerta"] pliegue-estado {
+  color: #fda4af;
+  border-color: rgba(244, 63, 94, 0.4);
+  background: rgba(244, 63, 94, 0.12);
 }
 pliegue-item[tipo="alerta"]:hover {
-  transform: rotate(0) scale(1.02) translateY(-3px);
-  background: rgba(244, 63, 94, 0.2);
-  box-shadow: 0 0 30px var(--glow-red);
+  transform: translateY(-4px);
+  background: rgba(36, 10, 20, 0.95);
+  border-color: var(--theme-alerta);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 30px var(--glow-red);
 }
 
+/* Pliegue 03: La Resistencia */
 pliegue-item[tipo="resistencia"] {
-  border-left: 3.5px solid var(--theme-angisa);
-  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7);
+  border-left: 4px solid var(--theme-angisa);
+}
+pliegue-item[tipo="resistencia"] pliegue-icono {
+  color: var(--theme-angisa);
+  text-shadow: 0 0 12px var(--theme-angisa);
+}
+pliegue-item[tipo="resistencia"] pliegue-estado {
+  color: #f472b6;
+  border-color: rgba(255, 0, 127, 0.4);
+  background: rgba(255, 0, 127, 0.12);
 }
 pliegue-item[tipo="resistencia"]:hover {
-  background: rgba(255, 0, 127, 0.2);
-  box-shadow: 0 0 30px var(--glow-magenta), inset 0 0 20px rgba(0, 0, 0, 0.4);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  background: rgba(38, 8, 30, 0.95);
+  border-color: var(--theme-angisa);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 30px var(--glow-magenta);
 }
 
 /* ==========================================================================

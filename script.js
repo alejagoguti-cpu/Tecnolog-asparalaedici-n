@@ -1059,62 +1059,113 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
       // ======================================================================
-      // 08. LENGUAJE: TELAR DE CINTAS DE SEDA 3D Y PLIEGUES ANGISAS
+      // 08. LENGUAJE: PAÑUELO ANGISA — SIMULADOR KINÉTICO DE PLIEGUES EN 3D
       // ======================================================================
       } else if (animType === 'textile') {
-        const numRays = 48;
-        const maxRadius = Math.min(cw, ch) * 0.72;
+        const clothScale = Math.min(cw, ch) * 0.28;
+        const rotY = Math.sin(time * 0.8) * 0.25 + (localMouseX !== -1000 ? (localMouseX - cx) * 0.001 : 0);
+        const rotX = Math.cos(time * 0.6) * 0.18 + (localMouseY !== -1000 ? (localMouseY - cy) * 0.001 : 0);
 
-        // Haces de Rayos en Abanico de Tela
-        for (let i = 0; i < numRays; i++) {
-          const fraction = i / (numRays - 1);
-          const angle = Math.PI * 0.12 + fraction * Math.PI * 0.76;
-          const wave = Math.sin(time * 2.2 + i * 0.3) * 0.045;
-          const finalAngle = angle + wave;
-          const rayLen = maxRadius * (0.65 + Math.sin(time * 2.5 + i * 0.35) * 0.18);
-          const ex = cx + Math.cos(finalAngle) * rayLen;
-          const ey = cy + Math.sin(finalAngle) * rayLen;
-
+        // Vórtice de Hilos y Fibras Textiles Flotantes
+        for (let i = 0; i < 18; i++) {
+          const tAngle = time * 0.7 + (i / 18) * Math.PI * 2;
+          const tRadius = 140 + Math.sin(time * 2 + i) * 50;
+          const fx = cx + Math.cos(tAngle) * tRadius;
+          const fy = cy + Math.sin(tAngle) * (tRadius * 0.6);
           ctx.beginPath();
-          ctx.moveTo(cx, cy);
-          ctx.lineTo(ex, ey);
-          ctx.strokeStyle = i % 2 === 0 ? 'rgba(0, 240, 255, 0.22)' : 'rgba(255, 0, 127, 0.25)';
-          ctx.lineWidth = i % 3 === 0 ? 1.8 : 1.0;
-          ctx.stroke();
+          ctx.arc(fx, fy, 2, 0, Math.PI * 2);
+          ctx.fillStyle = i % 2 === 0 ? 'rgba(255, 0, 127, 0.65)' : 'rgba(0, 240, 255, 0.65)';
+          ctx.fill();
         }
 
-        // Cintas de Seda Ondulantes (Efecto Moiré)
-        textileRibbons.forEach((ribbon, rIdx) => {
+        // Modelo 3D del Pañuelo (8 Vértices Facetados de Tela)
+        const clothVertices = [
+          { x: 0, y: 0, z: Math.sin(time * 3) * 0.4 },                           // 0: Centro
+          { x: 0, y: -1.6, z: Math.sin(time * 2.5) * 0.5 },                      // 1: Punta Norte
+          { x: 1.4, y: -1.0, z: Math.cos(time * 2.2) * 0.4 },                    // 2: Nororiente
+          { x: 1.8, y: 0, z: Math.sin(time * 2.8) * 0.6 },                       // 3: Punta Oriente
+          { x: 1.4, y: 1.0, z: Math.cos(time * 2.5) * 0.4 },                     // 4: Suroriente
+          { x: 0, y: 1.6, z: Math.sin(time * 2.1) * 0.5 },                       // 5: Punta Sur
+          { x: -1.4, y: 1.0, z: Math.cos(time * 2.7) * 0.4 },                    // 6: Suroccidente
+          { x: -1.8, y: 0, z: Math.sin(time * 2.4) * 0.6 },                      // 7: Punta Occidente
+          { x: -1.4, y: -1.0, z: Math.cos(time * 2.3) * 0.4 }                    // 8: Noroccidente
+        ];
+
+        // Proyección de la Geometría de Tela 3D
+        const projCloth = clothVertices.map((v) => {
+          let x1 = v.x * Math.cos(rotY) - v.z * Math.sin(rotY);
+          let z1 = v.x * Math.sin(rotY) + v.z * Math.cos(rotY);
+          let y2 = v.y * Math.cos(rotX) - z1 * Math.sin(rotX);
+          let z2 = v.y * Math.sin(rotX) + z1 * Math.cos(rotX);
+          const fov = 3.8;
+          const p = fov / (fov + z2);
+          return {
+            x: cx + x1 * clothScale * p,
+            y: cy + y2 * clothScale * p,
+            z: z2,
+            p: p
+          };
+        });
+
+        // Triángulos de Pliegues Textiles (Facets)
+        const clothFacets = [
+          [0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 5],
+          [0, 5, 6], [0, 6, 7], [0, 7, 8], [0, 8, 1]
+        ];
+
+        // Dibujar Facetas de Tela con Sombreado de Seda
+        clothFacets.forEach(([a, b, c], fIdx) => {
           ctx.beginPath();
-          for (let x = 0; x <= cw; x += 10) {
-            const normX = x / cw;
-            const y = cy + Math.sin(normX * 6 + time * ribbon.speed + ribbon.offset) * 35;
-            if (x === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
+          ctx.moveTo(projCloth[a].x, projCloth[a].y);
+          ctx.lineTo(projCloth[b].x, projCloth[b].y);
+          ctx.lineTo(projCloth[c].x, projCloth[c].y);
+          ctx.closePath();
+
+          const grad = ctx.createLinearGradient(projCloth[a].x, projCloth[a].y, projCloth[b].x, projCloth[b].y);
+          if (fIdx % 2 === 0) {
+            grad.addColorStop(0, 'rgba(255, 0, 127, 0.28)');
+            grad.addColorStop(1, 'rgba(168, 85, 247, 0.12)');
+          } else {
+            grad.addColorStop(0, 'rgba(0, 240, 255, 0.22)');
+            grad.addColorStop(1, 'rgba(255, 0, 127, 0.1)');
           }
-          ctx.strokeStyle = ribbon.color;
-          ctx.lineWidth = 3.5;
+          ctx.fillStyle = grad;
+          ctx.fill();
+
+          ctx.strokeStyle = fIdx % 2 === 0 ? 'rgba(255, 0, 127, 0.55)' : 'rgba(0, 240, 255, 0.45)';
+          ctx.lineWidth = 1.3;
           ctx.stroke();
         });
 
-        // Nodos Anclados a las Puntas del Abanico Textil
-        conceptList.forEach((word, i) => {
-          const fraction = (i + 0.5) / conceptList.length;
-          const angle = Math.PI * 0.16 + fraction * Math.PI * 0.68;
-          const rayLen = maxRadius * 0.82;
-          const px = cx + Math.cos(angle) * rayLen;
-          const py = cy + Math.sin(angle) * rayLen;
+        // Costuras de Hilos Dorados (Líneas de Bordado Angisa)
+        ctx.beginPath();
+        for (let i = 1; i <= 8; i++) {
+          const next = i === 8 ? 1 : i + 1;
+          ctx.moveTo(projCloth[i].x, projCloth[i].y);
+          ctx.lineTo(projCloth[next].x, projCloth[next].y);
+        }
+        ctx.strokeStyle = 'rgba(255, 215, 0, 0.55)';
+        ctx.setLineDash([4, 4]);
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.setLineDash([]);
 
-          // Hilo conector
+        // Nodos Anclados a las Puntas y Pliegues del Pañuelo
+        const nodeMapIndices = [1, 3, 5, 7, 2, 6];
+        conceptList.forEach((word, i) => {
+          const vIdx = nodeMapIndices[i % nodeMapIndices.length];
+          const p = projCloth[vIdx];
+
+          // Alfiler / Hilo de anclaje de tela
           ctx.beginPath();
-          ctx.moveTo(cx, cy);
-          ctx.lineTo(px, py);
-          ctx.strokeStyle = 'rgba(255, 0, 127, 0.45)';
-          ctx.lineWidth = 1.4;
+          ctx.moveTo(projCloth[0].x, projCloth[0].y);
+          ctx.lineTo(p.x, p.y);
+          ctx.strokeStyle = 'rgba(255, 0, 127, 0.35)';
+          ctx.lineWidth = 1.2;
           ctx.stroke();
 
-          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#ff007f', 'ANGISA WEAVE');
+          const distMouse = Math.hypot(p.x - localMouseX, p.y - localMouseY);
+          drawNodeBadge(p.x, p.y, word, distMouse < 90, Math.min(1.15, Math.max(0.85, p.p * 0.95)), 1, '#ff007f', 'ANGISA 3D FOLD');
         });
 
       // ======================================================================
