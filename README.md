@@ -1,6 +1,7 @@
 # Tecnologías para la edición
 
 **Autora:** Alejandra Gómez Gutiérrez  
+**Institución:** Pontificia Universidad Javeriana  
 **Materia:** Tecnologías para la edición  
 **Docente:** Liliana (Lili)  
 **Proyecto:** Ensayo Editorial Interactivo y Manuscrito Digital  
@@ -101,4 +102,4 @@ Cada sección cuenta con su propio escenario interactivo (`<escenario>`), nodo i
 ---
 
 **Tecnologías para la edición — Alejandra Gómez Gutiérrez**  
-*Universidad Jorge Tadeo Lozano / Entrega Editorial*
+*Pontificia Universidad Javeriana / Entrega Editorial*
