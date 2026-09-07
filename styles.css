@@ -1,32 +1,32 @@
 /* ==========================================================================
    TECNOLOGÍAS PARA LA EDICIÓN — ALEJANDRA GÓMEZ GUTIÉRREZ
-   Diseño Editorial Inmersivo de Scroll Profundo y Red Conceptual Poética
+   Diseño Editorial Asimétrico y Cinematográfico (Anti-Template / Vanguardia)
    ========================================================================== */
 
 :root {
   /* Paleta Obsidian */
   --bg-deep: #010306;
-  --bg-translucent: rgba(4, 8, 18, 0.88);
-  --bg-card-glow: rgba(8, 14, 28, 0.92);
+  --bg-translucent: rgba(3, 7, 16, 0.88);
+  --bg-card-glow: rgba(6, 12, 26, 0.94);
   
-  /* Luces Espectrales */
-  --theme-origen: #00f0ff;      /* Cyan */
-  --theme-anansi: #a855f7;      /* Violeta */
-  --theme-angisa: #ff007f;      /* Magenta */
-  --theme-rio: #00e5ff;         /* Turquesa */
-  --theme-cierre: #ffb800;      /* Ámbar / Dorado */
-  --theme-alerta: #f43f5e;      /* Rojo alerta */
+  /* Luces Espectrales Vivas */
+  --theme-origen: #00f0ff;      /* Cyan Eléctrico */
+  --theme-anansi: #a855f7;      /* Violeta Cósmico */
+  --theme-angisa: #ff007f;      /* Magenta Neón */
+  --theme-rio: #00e5ff;         /* Turquesa Fluvial */
+  --theme-cierre: #ffb800;      /* Ámbar Solar */
+  --theme-alerta: #f43f5e;      /* Rojo Carmesí */
   
-  --glow-cyan: rgba(0, 240, 255, 0.45);
-  --glow-violet: rgba(168, 85, 247, 0.45);
-  --glow-magenta: rgba(255, 0, 127, 0.45);
-  --glow-amber: rgba(255, 184, 0, 0.45);
-  --glow-red: rgba(244, 63, 94, 0.45);
+  --glow-cyan: rgba(0, 240, 255, 0.6);
+  --glow-violet: rgba(168, 85, 247, 0.6);
+  --glow-magenta: rgba(255, 0, 127, 0.6);
+  --glow-amber: rgba(255, 184, 0, 0.6);
+  --glow-red: rgba(244, 63, 94, 0.6);
   
   /* Tipografía */
-  --paper: #f4f8fc;
-  --paper-dim: rgba(244, 248, 252, 0.88);
-  --paper-faint: rgba(244, 248, 252, 0.45);
+  --paper: #f8fafc;
+  --paper-dim: rgba(248, 250, 252, 0.9);
+  --paper-faint: rgba(248, 250, 252, 0.45);
   
   --font-cyber: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
@@ -41,7 +41,6 @@ malla-cuadricula,
 haz-cursor,
 barra-superior,
 titulo-autora,
-hilo-narrativo,
 ensayo,
 saludo,
 campo-apertura,
@@ -101,7 +100,7 @@ body {
   background-color: var(--bg-deep);
   color: var(--paper);
   font-family: var(--font-cyber);
-  font-size: 1.18rem;
+  font-size: 1.2rem;
   line-height: 1.95;
   overflow-x: hidden;
   position: relative;
@@ -109,15 +108,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Barra superior fija con difuminado editorial */
+/* Barra superior fija ultra refinada */
 barra-superior {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 16px 5vw;
-  background: rgba(1, 3, 6, 0.85);
-  backdrop-filter: blur(16px);
+  background: rgba(1, 3, 6, 0.88);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 100;
   display: flex;
@@ -127,14 +126,14 @@ barra-superior {
 
 titulo-autora {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
-  letter-spacing: 0.16em;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--paper-dim);
   font-weight: 500;
 }
 
-/* Malla de Fondo sutil */
+/* Malla de Fondo */
 malla-cuadricula {
   position: fixed;
   top: 0;
@@ -144,23 +143,23 @@ malla-cuadricula {
   pointer-events: none;
   z-index: 1;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
     linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-  background-size: 64px 64px, 128px 128px, 128px 128px;
-  opacity: 0.7;
+  background-size: 80px 80px, 160px 160px, 160px 160px;
+  opacity: 0.8;
 }
 
 /* Haz de luz de seguimiento del cursor */
 haz-cursor {
   position: fixed;
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 2;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.07) 0%, rgba(168, 85, 247, 0.03) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.09) 0%, rgba(168, 85, 247, 0.04) 40%, transparent 70%);
   transition: opacity 0.4s ease;
   mix-blend-mode: screen;
 }
@@ -183,7 +182,7 @@ fondo-luz canvas {
 }
 
 /* ==========================================================================
-   00. SALUDO DE APERTURA (MOMENTO HERO INMERSIVO)
+   00. SALUDO DE APERTURA (HERO CINEMATOGRÁFICO)
    ========================================================================== */
 saludo {
   min-height: 100vh;
@@ -191,7 +190,7 @@ saludo {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 12rem 4vw 10rem;
+  padding: 14rem 4vw 10rem;
   position: relative;
 }
 
@@ -200,71 +199,71 @@ campo-apertura {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  max-width: 900px;
+  gap: 3.5rem;
+  max-width: 950px;
 }
 
 texto-saludo {
-  font-size: clamp(4.5rem, 12vw, 9.5rem);
+  font-size: clamp(4.5rem, 13vw, 10.5rem);
   font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 0.92;
-  background: linear-gradient(135deg, #ffffff 20%, var(--theme-origen) 65%, var(--theme-anansi) 100%);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  background: linear-gradient(135deg, #ffffff 15%, var(--theme-origen) 60%, var(--theme-anansi) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 60px rgba(0, 240, 255, 0.45));
+  filter: drop-shadow(0 0 70px rgba(0, 240, 255, 0.5));
 }
 
 linea-guia {
   width: 2px;
-  height: 72px;
+  height: 80px;
   background: linear-gradient(to bottom, var(--theme-origen), transparent);
   animation: guiaGlow 2.5s infinite ease-in-out;
 }
 
 @keyframes guiaGlow {
-  0%, 100% { transform: scaleY(0.4); opacity: 0.25; }
+  0%, 100% { transform: scaleY(0.4); opacity: 0.2; }
   50% { transform: scaleY(1); opacity: 1; }
 }
 
 /* ==========================================================================
-   HILO NARRATIVO Y CONTENEDOR PRINCIPAL
+   HILO NARRATIVO Y CONTENEDOR PRINCIPAL ASIMÉTRICO
    ========================================================================== */
 ensayo {
   width: 100%;
-  max-width: 1060px;
+  max-width: 1140px;
   margin: 0 auto;
   position: relative;
   z-index: 5;
-  padding: 0 1.5rem 16rem;
+  padding: 0 2rem 20rem;
 }
 
-/* Hilo conductor luminoso a lo largo del scroll */
+/* Hilo conductor luminoso */
 ensayo::before {
   content: "";
   position: absolute;
   top: 0;
-  left: calc(1.5rem + 32px);
-  width: 1px;
+  left: 3.5rem;
+  width: 1.5px;
   height: 100%;
   background: linear-gradient(to bottom, 
-    rgba(0, 240, 255, 0.4) 0%, 
-    rgba(168, 85, 247, 0.4) 35%, 
-    rgba(255, 0, 127, 0.4) 65%, 
-    rgba(255, 184, 0, 0.5) 100%);
-  opacity: 0.25;
+    rgba(0, 240, 255, 0.5) 0%, 
+    rgba(168, 85, 247, 0.5) 35%, 
+    rgba(255, 0, 127, 0.5) 65%, 
+    rgba(255, 184, 0, 0.6) 100%);
+  opacity: 0.3;
   pointer-events: none;
   z-index: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   ensayo::before {
     display: none;
   }
 }
 
 /* ==========================================================================
-   ESPACIADO POÉTICO DE LOS 10 MÓDULOS
+   COMPOSICIONES ASIMÉTRICAS DE LOS 10 MÓDULOS (VARIACIÓN TOTAL)
    ========================================================================== */
 pensamiento,
 revelacion,
@@ -276,120 +275,118 @@ reflexion,
 lenguaje,
 experiencia,
 construccion {
-  min-height: 110vh;
-  margin-bottom: 12vh;
-  padding-top: 6vh;
+  min-height: 115vh;
+  margin-bottom: 15vh;
+  padding-top: 8vh;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.65;
+  transform: translateY(30px);
 }
 
-/* Efecto de entrada poética en el scroll */
+.en-foco {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Variación 1: Asimetría a la izquierda */
 pensamiento,
-revelacion,
 observacion,
-memoria,
 intencion,
-comprension,
 reflexion,
-lenguaje,
-experiencia,
-construccion {
-  opacity: 0.7;
-  transform: translateY(20px);
+experiencia {
+  align-items: flex-start;
 }
 
-pensamiento.en-foco,
-revelacion.en-foco,
-observacion.en-foco,
-memoria.en-foco,
-intencion.en-foco,
-comprension.en-foco,
-reflexion.en-foco,
-lenguaje.en-foco,
-experiencia.en-foco,
-construccion.en-foco {
-  opacity: 1;
-  transform: translateY(0);
+/* Variación 2: Asimetría a la derecha */
+revelacion,
+memoria,
+comprension,
+lenguaje {
+  align-items: flex-end;
+}
+
+/* Variación 3: Monumental Centrado (Cierre) */
+construccion {
+  align-items: center;
 }
 
 /* ==========================================================================
-   ENCABEZADO EDITORIAL
+   ENCABEZADO EDITORIAL INTERACTIVO
    ========================================================================== */
 encabezado {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 1.6rem;
-  margin-bottom: 2.2rem;
-  padding: 1rem 1.4rem;
-  border-radius: 14px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+  margin-bottom: 2rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 16px;
+  border-bottom: 1.5px dashed rgba(255, 255, 255, 0.2);
   cursor: pointer;
   user-select: none;
-  background: rgba(6, 12, 24, 0.6);
-  backdrop-filter: blur(12px);
+  background: rgba(6, 12, 26, 0.7);
+  backdrop-filter: blur(16px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  z-index: 10;
+  z-index: 15;
 }
 
 encabezado:hover {
-  background: rgba(14, 24, 46, 0.95);
-  border-bottom-color: var(--theme-origen);
-  box-shadow: 0 6px 30px rgba(0, 240, 255, 0.2);
+  background: rgba(14, 26, 52, 0.95);
+  box-shadow: 0 8px 35px rgba(0, 240, 255, 0.25);
   transform: translateX(6px);
 }
 
 numero {
   font-family: var(--font-mono);
-  font-size: 1.9rem;
+  font-size: 2.1rem;
   font-weight: 800;
   color: var(--theme-origen);
-  text-shadow: 0 0 25px var(--theme-origen);
+  text-shadow: 0 0 30px var(--theme-origen);
   padding: 4px 14px;
   border-radius: 10px;
-  background: rgba(0, 240, 255, 0.1);
-  border: 1.5px solid rgba(0, 240, 255, 0.45);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1.5px solid rgba(0, 240, 255, 0.5);
   transition: all 0.3s ease;
 }
 
 encabezado:hover numero {
-  transform: scale(1.1);
+  transform: scale(1.12);
   background: var(--theme-origen);
   color: #010306;
-  box-shadow: 0 0 30px var(--glow-cyan);
+  box-shadow: 0 0 35px var(--glow-cyan);
 }
 
-observacion numero { color: #f43f5e; border-color: rgba(244, 63, 94, 0.55); background: rgba(244, 63, 94, 0.12); text-shadow: 0 0 25px rgba(244, 63, 94, 0.85); }
-observacion encabezado:hover numero { background: #f43f5e; color: #fff; box-shadow: 0 0 30px var(--glow-red); }
+observacion numero { color: #f43f5e; border-color: rgba(244, 63, 94, 0.6); background: rgba(244, 63, 94, 0.14); text-shadow: 0 0 30px rgba(244, 63, 94, 0.9); }
+observacion encabezado:hover numero { background: #f43f5e; color: #fff; box-shadow: 0 0 35px var(--glow-red); }
 
-memoria numero { color: var(--theme-cierre); border-color: rgba(255, 184, 0, 0.55); background: rgba(255, 184, 0, 0.12); text-shadow: 0 0 25px rgba(255, 184, 0, 0.85); }
-memoria encabezado:hover numero { background: var(--theme-cierre); color: #010306; box-shadow: 0 0 30px var(--glow-amber); }
+memoria numero { color: var(--theme-cierre); border-color: rgba(255, 184, 0, 0.6); background: rgba(255, 184, 0, 0.14); text-shadow: 0 0 30px rgba(255, 184, 0, 0.9); }
+memoria encabezado:hover numero { background: var(--theme-cierre); color: #010306; box-shadow: 0 0 35px var(--glow-amber); }
 
 comprension numero,
-reflexion numero { color: var(--theme-anansi); border-color: rgba(168, 85, 247, 0.55); background: rgba(168, 85, 247, 0.12); text-shadow: 0 0 25px rgba(168, 85, 247, 0.85); }
+reflexion numero { color: var(--theme-anansi); border-color: rgba(168, 85, 247, 0.6); background: rgba(168, 85, 247, 0.14); text-shadow: 0 0 30px rgba(168, 85, 247, 0.9); }
 comprension encabezado:hover numero,
-reflexion encabezado:hover numero { background: var(--theme-anansi); color: #fff; box-shadow: 0 0 30px var(--glow-violet); }
+reflexion encabezado:hover numero { background: var(--theme-anansi); color: #fff; box-shadow: 0 0 35px var(--glow-violet); }
 
-lenguaje numero { color: var(--theme-angisa); border-color: rgba(255, 0, 127, 0.55); background: rgba(255, 0, 127, 0.12); text-shadow: 0 0 25px rgba(255, 0, 127, 0.85); }
-lenguaje encabezado:hover numero { background: var(--theme-angisa); color: #fff; box-shadow: 0 0 30px var(--glow-magenta); }
+lenguaje numero { color: var(--theme-angisa); border-color: rgba(255, 0, 127, 0.6); background: rgba(255, 0, 127, 0.14); text-shadow: 0 0 30px rgba(255, 0, 127, 0.9); }
+lenguaje encabezado:hover numero { background: var(--theme-angisa); color: #fff; box-shadow: 0 0 35px var(--glow-magenta); }
 
-experiencia numero { color: var(--theme-rio); border-color: rgba(0, 229, 255, 0.55); background: rgba(0, 229, 255, 0.12); text-shadow: 0 0 25px rgba(0, 229, 255, 0.85); }
-experiencia encabezado:hover numero { background: var(--theme-rio); color: #010306; box-shadow: 0 0 30px var(--glow-cyan); }
+experiencia numero { color: var(--theme-rio); border-color: rgba(0, 229, 255, 0.6); background: rgba(0, 229, 255, 0.14); text-shadow: 0 0 30px rgba(0, 229, 255, 0.9); }
+experiencia encabezado:hover numero { background: var(--theme-rio); color: #010306; box-shadow: 0 0 35px var(--glow-cyan); }
 
-construccion numero { color: var(--theme-cierre); border-color: rgba(255, 184, 0, 0.55); background: rgba(255, 184, 0, 0.12); text-shadow: 0 0 25px rgba(255, 184, 0, 0.85); }
-construccion encabezado:hover numero { background: var(--theme-cierre); color: #010306; box-shadow: 0 0 30px var(--glow-amber); }
+construccion numero { color: var(--theme-cierre); border-color: rgba(255, 184, 0, 0.6); background: rgba(255, 184, 0, 0.14); text-shadow: 0 0 30px rgba(255, 184, 0, 0.9); }
+construccion encabezado:hover numero { background: var(--theme-cierre); color: #010306; box-shadow: 0 0 35px var(--glow-amber); }
 
 titulo {
   font-family: var(--font-mono);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   letter-spacing: 0.18em;
   color: var(--paper-dim);
   text-transform: uppercase;
   font-weight: 600;
-  flex: 1;
 }
 
 indicador-despliegue {
@@ -406,58 +403,58 @@ indicador-despliegue {
 
 encabezado:hover indicador-despliegue {
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* ==========================================================================
-   ESCENARIO Y RED CONCEPTUAL (CANVAS POÉTICO CON ELEMENTOS DEL TEXTO)
+   ESCENARIO Y LIENZOS GENERATIVOS VANGUARDISTAS
    ========================================================================== */
 escenario {
   position: relative;
-  min-height: 520px;
+  min-height: 560px;
   width: 100%;
-  border-radius: 24px;
-  background: radial-gradient(circle at 50% 50%, rgba(10, 20, 42, 0.75) 0%, rgba(1, 3, 6, 0.96) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), inset 0 0 80px rgba(0, 0, 0, 0.6);
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 50%, rgba(12, 24, 48, 0.8) 0%, rgba(1, 3, 6, 0.97) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), inset 0 0 90px rgba(0, 0, 0, 0.65);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3.5rem 3rem;
+  padding: 4rem 3.5rem;
   transition: border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
-pensamiento.en-foco escenario { border-color: rgba(0, 240, 255, 0.28); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 240, 255, 0.12); }
-revelacion.en-foco escenario { border-color: rgba(0, 229, 255, 0.28); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 229, 255, 0.12); }
-observacion.en-foco escenario { border-color: rgba(244, 63, 94, 0.32); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(244, 63, 94, 0.15); }
-memoria.en-foco escenario { border-color: rgba(255, 184, 0, 0.3); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 184, 0, 0.15); }
-intencion.en-foco escenario { border-color: rgba(0, 240, 255, 0.28); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 240, 255, 0.12); }
+pensamiento.en-foco escenario { border-color: rgba(0, 240, 255, 0.35); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.18); }
+revelacion.en-foco escenario { border-color: rgba(0, 229, 255, 0.35); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 229, 255, 0.18); }
+observacion.en-foco escenario { border-color: rgba(244, 63, 94, 0.4); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(244, 63, 94, 0.22); }
+memoria.en-foco escenario { border-color: rgba(255, 184, 0, 0.38); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 184, 0, 0.2); }
+intencion.en-foco escenario { border-color: rgba(0, 240, 255, 0.35); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.18); }
 comprension.en-foco escenario,
-reflexion.en-foco escenario { border-color: rgba(168, 85, 247, 0.32); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(168, 85, 247, 0.15); }
-lenguaje.en-foco escenario { border-color: rgba(255, 0, 127, 0.32); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 0, 127, 0.15); }
-experiencia.en-foco escenario { border-color: rgba(0, 229, 255, 0.32); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 229, 255, 0.15); }
-construccion.en-foco escenario { border-color: rgba(255, 184, 0, 0.35); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 184, 0, 0.2); }
+reflexion.en-foco escenario { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(168, 85, 247, 0.22); }
+lenguaje.en-foco escenario { border-color: rgba(255, 0, 127, 0.4); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 0, 127, 0.22); }
+experiencia.en-foco escenario { border-color: rgba(0, 229, 255, 0.4); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 229, 255, 0.22); }
+construccion.en-foco escenario { border-color: rgba(255, 184, 0, 0.45); box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 184, 0, 0.3); }
 
 .diagrama-compacto {
-  min-height: 480px;
+  min-height: 520px;
 }
 
 .diagrama-anansi {
-  min-height: 560px;
-}
-
-.diagrama-angisa {
-  min-height: 720px;
-}
-
-.diagrama-rio {
   min-height: 600px;
 }
 
+.diagrama-angisa {
+  min-height: 760px;
+}
+
+.diagrama-rio {
+  min-height: 640px;
+}
+
 .diagrama-cierre {
-  min-height: 820px;
+  min-height: 860px;
 }
 
 escenario canvas {
@@ -472,26 +469,47 @@ escenario canvas {
 }
 
 /* ==========================================================================
-   CONTENIDO REVELADO DEL MENSAJE (TARJETA FLOTANTE VIDRIO ESMERILADO)
-   ========================================================================= */
+   CONTENIDO REVELADO EDITORIAL
+   ========================================================================== */
 contenido {
   position: relative;
   z-index: 10;
   background: var(--bg-card-glow);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 20px;
-  padding: 2.6rem 3.2rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 240, 255, 0.12);
-  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  padding: 2.8rem 3.4rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(0, 240, 255, 0.15);
+  backdrop-filter: blur(28px);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  max-width: 860px;
+  max-width: 900px;
+}
+
+/* Asimetrías en las tarjetas */
+pensamiento contenido,
+observacion contenido,
+intencion contenido,
+reflexion contenido,
+experiencia contenido {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+revelacion contenido,
+memoria contenido,
+comprension contenido,
+lenguaje contenido {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+construccion contenido {
   margin: 0 auto;
 }
 
 .seccion-oculta contenido {
-  opacity: 0.12;
-  transform: scale(0.95) translateY(12px);
-  filter: blur(8px);
+  opacity: 0.1;
+  transform: scale(0.95) translateY(16px);
+  filter: blur(10px);
   pointer-events: none;
 }
 
@@ -502,22 +520,22 @@ contenido {
   pointer-events: auto;
 }
 
-pensamiento contenido { border-color: rgba(0, 240, 255, 0.35); }
-revelacion contenido { border-color: rgba(0, 229, 255, 0.35); }
-observacion contenido { border-color: rgba(244, 63, 94, 0.45); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(244, 63, 94, 0.22); }
-memoria contenido { border-color: rgba(255, 184, 0, 0.35); }
-intencion contenido { border-color: rgba(0, 240, 255, 0.35); }
+pensamiento contenido { border-color: rgba(0, 240, 255, 0.4); }
+revelacion contenido { border-color: rgba(0, 229, 255, 0.4); }
+observacion contenido { border-color: rgba(244, 63, 94, 0.5); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(244, 63, 94, 0.25); }
+memoria contenido { border-color: rgba(255, 184, 0, 0.4); }
+intencion contenido { border-color: rgba(0, 240, 255, 0.4); }
 comprension contenido,
-reflexion contenido { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(168, 85, 247, 0.22); }
-lenguaje contenido { border-color: rgba(255, 0, 127, 0.4); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 0, 127, 0.22); }
-experiencia contenido { border-color: rgba(0, 229, 255, 0.4); }
-construccion contenido { border-color: rgba(255, 184, 0, 0.45); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 184, 0, 0.3); }
+reflexion contenido { border-color: rgba(168, 85, 247, 0.45); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(168, 85, 247, 0.25); }
+lenguaje contenido { border-color: rgba(255, 0, 127, 0.45); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(255, 0, 127, 0.25); }
+experiencia contenido { border-color: rgba(0, 229, 255, 0.45); }
+construccion contenido { border-color: rgba(255, 184, 0, 0.5); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 184, 0, 0.35); }
 
 texto {
-  font-size: 1.18rem;
+  font-size: 1.2rem;
   line-height: 1.95;
   color: var(--paper);
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
 }
 
 texto:last-child {
@@ -528,15 +546,15 @@ clave {
   color: #ffffff;
   font-weight: 600;
   padding: 3px 10px;
-  background: rgba(0, 240, 255, 0.14);
+  background: rgba(0, 240, 255, 0.15);
   border-bottom: 1.5px solid var(--theme-origen);
   border-radius: 4px;
   transition: all 0.3s ease;
 }
 
 clave:hover {
-  background: rgba(0, 240, 255, 0.25);
-  box-shadow: 0 0 20px var(--glow-cyan);
+  background: rgba(0, 240, 255, 0.28);
+  box-shadow: 0 0 25px var(--glow-cyan);
 }
 
 /* ==========================================================================
@@ -544,59 +562,59 @@ clave:hover {
    ========================================================================== */
 pliegues-contenedor {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.4rem;
-  margin: 2.2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin: 2.4rem 0;
 }
 
 pliegue-item {
-  padding: 1.6rem 1.8rem;
-  border-radius: 14px;
-  background: rgba(14, 24, 46, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.8rem 2rem;
+  border-radius: 16px;
+  background: rgba(14, 26, 52, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
 pliegue-etiqueta {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 1rem;
   color: #ffffff;
 }
 
 pliegue-item[tipo="secreto"] {
-  border-left: 3.5px solid var(--theme-anansi);
+  border-left: 4px solid var(--theme-anansi);
   filter: blur(1.5px);
 }
 pliegue-item[tipo="secreto"]:hover {
   filter: blur(0);
-  background: rgba(168, 85, 247, 0.18);
-  box-shadow: 0 0 30px var(--glow-violet);
-  transform: translateY(-2px);
+  background: rgba(168, 85, 247, 0.22);
+  box-shadow: 0 0 35px var(--glow-violet);
+  transform: translateY(-4px);
 }
 
 pliegue-item[tipo="alerta"] {
-  border-left: 3.5px solid var(--theme-alerta);
-  transform: rotate(-0.6deg);
+  border-left: 4px solid var(--theme-alerta);
+  transform: rotate(-0.8deg);
 }
 pliegue-item[tipo="alerta"]:hover {
-  transform: rotate(0) scale(1.02) translateY(-2px);
-  background: rgba(244, 63, 94, 0.18);
-  box-shadow: 0 0 30px var(--glow-red);
+  transform: rotate(0) scale(1.03) translateY(-4px);
+  background: rgba(244, 63, 94, 0.22);
+  box-shadow: 0 0 35px var(--glow-red);
 }
 
 pliegue-item[tipo="resistencia"] {
-  border-left: 3.5px solid var(--theme-angisa);
-  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7);
+  border-left: 4px solid var(--theme-angisa);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
 }
 pliegue-item[tipo="resistencia"]:hover {
-  background: rgba(255, 0, 127, 0.18);
-  box-shadow: 0 0 30px var(--glow-magenta), inset 0 0 20px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px);
+  background: rgba(255, 0, 127, 0.22);
+  box-shadow: 0 0 35px var(--glow-magenta), inset 0 0 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
 }
 
 /* ==========================================================================
@@ -605,27 +623,27 @@ pliegue-item[tipo="resistencia"]:hover {
 reproductor {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
-  padding: 1.3rem 1.8rem;
-  background: rgba(14, 24, 46, 0.95);
+  gap: 2rem;
+  padding: 1.4rem 2rem;
+  background: rgba(14, 26, 52, 0.96);
   border: 1.5px solid var(--theme-cierre);
-  border-radius: 14px;
-  margin: 1.8rem 0;
+  border-radius: 16px;
+  margin: 2rem 0;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 184, 0, 0.2);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 184, 0, 0.25);
   transition: all 0.35s ease;
 }
 
 reproductor:hover,
 reproductor.reproduciendo {
-  background: rgba(24, 38, 70, 1);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 40px var(--glow-amber);
+  background: rgba(26, 42, 80, 1);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 45px var(--glow-amber);
   transform: translateY(-3px);
 }
 
 codigo-qr {
-  width: 68px;
-  height: 68px;
+  width: 72px;
+  height: 72px;
   flex: none;
   background-color: #ffffff;
   background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fgithub.com%2Falejagoguti-cpu%2FTecnolog-asparalaedici-n");
@@ -635,10 +653,10 @@ codigo-qr {
 
 texto-audio {
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #ffb800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 /* ==========================================================================
@@ -646,27 +664,27 @@ texto-audio {
    ========================================================================== */
 texto.texto-libertad {
   font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 3.2vw, 2.05rem);
+  font-size: clamp(1.45rem, 3.4vw, 2.15rem);
   font-style: italic;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #fffbeb;
-  text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
+  text-shadow: 0 0 35px rgba(255, 184, 0, 0.55);
   text-align: center;
-  margin: 2.5rem 0 1.5rem;
-  padding: 1.8rem 1.2rem;
-  border-top: 1px solid rgba(255, 184, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 184, 0, 0.3);
+  margin: 2.8rem 0 1.8rem;
+  padding: 2rem 1.4rem;
+  border-top: 1px solid rgba(255, 184, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 184, 0, 0.35);
 }
 
 despedida {
-  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  font-size: clamp(2.8rem, 7.5vw, 4.6rem);
   font-weight: 800;
   text-align: center;
   background: linear-gradient(135deg, #ffffff 20%, var(--theme-cierre) 70%, #ff007f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 2.2rem;
-  filter: drop-shadow(0 0 35px rgba(255, 184, 0, 0.55));
+  margin-top: 2.4rem;
+  filter: drop-shadow(0 0 40px rgba(255, 184, 0, 0.6));
 }
 
 /* ==========================================================================
