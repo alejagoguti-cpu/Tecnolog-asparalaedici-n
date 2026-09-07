@@ -548,13 +548,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 8. DIAGRAMA 5: CONSTELACIÓN SOLAR DE LA LIBERTAD (#cierreCanvas)
+  // 8. DIAGRAMA 5: FLUJO ONDULATORIO ARMÓNICO (#cierreCanvas - Exacto a la referencia)
   // ==========================================================================
   const cierreCanvas = document.getElementById('cierreCanvas');
   if (cierreCanvas) {
     const ctx = cierreCanvas.getContext('2d');
     let time = 0;
-    const numSolarRays = 48;
 
     function drawCierre() {
       const rect = cierreCanvas.getBoundingClientRect();
@@ -569,47 +568,117 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       ctx.clearRect(0, 0, w, h);
-      time += 0.012;
+      time += 0.018;
 
-      const centerX = w * 0.5;
-      const centerY = h * 0.25;
-      const bottomY = h * 0.80;
+      const midY = h * 0.52;
 
-      const solarGlow = ctx.createRadialGradient(centerX, centerY, 10, centerX, centerY, w * 0.4);
-      solarGlow.addColorStop(0, 'rgba(255, 184, 0, 0.22)');
-      solarGlow.addColorStop(0.6, 'rgba(255, 0, 127, 0.08)');
-      solarGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      ctx.fillStyle = solarGlow;
+      // 1. Difusiones ambientales radiales de fondo (Azul, Magenta, Dorado)
+      const glow1 = ctx.createRadialGradient(w * 0.26, midY, 10, w * 0.26, midY, w * 0.35);
+      glow1.addColorStop(0, 'rgba(56, 189, 248, 0.16)');
+      glow1.addColorStop(0.6, 'rgba(129, 140, 248, 0.08)');
+      glow1.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = glow1;
       ctx.fillRect(0, 0, w, h);
 
-      for (let i = 0; i < numSolarRays; i++) {
-        const angle = (i * 2 * Math.PI) / numSolarRays + time * 0.15;
-        const length = 120 + Math.sin(time * 3 + i * 0.5) * 35;
-        const ex = centerX + Math.cos(angle) * length;
-        const ey = centerY + Math.sin(angle) * length;
+      const glow2 = ctx.createRadialGradient(w * 0.56, midY + 15, 10, w * 0.56, midY + 15, w * 0.32);
+      glow2.addColorStop(0, 'rgba(244, 114, 182, 0.16)');
+      glow2.addColorStop(0.5, 'rgba(192, 132, 252, 0.08)');
+      glow2.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = glow2;
+      ctx.fillRect(0, 0, w, h);
+
+      const glow3 = ctx.createRadialGradient(w * 0.85, midY - 15, 10, w * 0.85, midY - 15, w * 0.35);
+      glow3.addColorStop(0, 'rgba(250, 204, 21, 0.22)');
+      glow3.addColorStop(0.5, 'rgba(251, 146, 60, 0.1)');
+      glow3.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = glow3;
+      ctx.fillRect(0, 0, w, h);
+
+      // 2. Línea guía central discontinua (Eje armónico)
+      ctx.save();
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 4) {
+        const norm = x / w;
+        const gy = midY + Math.sin(norm * Math.PI * 2.2 - 0.4) * (h * 0.11);
+        if (x === 0) ctx.moveTo(x, gy);
+        else ctx.lineTo(x, gy);
+      }
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+      ctx.lineWidth = 1.2;
+      ctx.setLineDash([4, 6]);
+      ctx.stroke();
+      ctx.restore();
+
+      // 3. Gradiente cromático de la onda armónica
+      const grad1 = ctx.createLinearGradient(0, 0, w, 0);
+      grad1.addColorStop(0.0, '#38bdf8');
+      grad1.addColorStop(0.28, '#818cf8');
+      grad1.addColorStop(0.48, '#c084fc');
+      grad1.addColorStop(0.66, '#f472b6');
+      grad1.addColorStop(0.82, '#fb923c');
+      grad1.addColorStop(1.0, '#facc15');
+
+      function calculateWave1(x) {
+        const nx = x / w;
+        const breathing = Math.sin(time * 1.5 + nx * 4) * (h * 0.015);
+        const w1 = Math.sin(nx * Math.PI * 2.3 - 0.7) * (h * 0.22);
+        const w2 = Math.cos(nx * Math.PI * 3.6) * (h * 0.08);
+        return midY + w1 + w2 + breathing;
+      }
+
+      function calculateWave2(x) {
+        const nx = x / w;
+        const breathing = Math.cos(time * 1.8 + nx * 5) * (h * 0.015);
+        const w1 = Math.sin(nx * Math.PI * 2.1 + 2.4) * (h * 0.18);
+        const w2 = Math.cos(nx * Math.PI * 4.2 + 1.2) * (h * 0.06);
+        return midY + w1 + w2 + breathing;
+      }
+
+      // Dibujar Onda Secundaria
+      ctx.save();
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 3) {
+        const y = calculateWave2(x);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = grad1;
+      ctx.lineWidth = 2.2;
+      ctx.shadowColor = 'rgba(192, 132, 252, 0.6)';
+      ctx.shadowBlur = 14;
+      ctx.stroke();
+      ctx.restore();
+
+      // Dibujar Onda Principal
+      ctx.save();
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 3) {
+        const y = calculateWave1(x);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = grad1;
+      ctx.lineWidth = 3.2;
+      ctx.shadowColor = 'rgba(250, 204, 21, 0.75)';
+      ctx.shadowBlur = 18;
+      ctx.stroke();
+      ctx.restore();
+
+      // Pulsos de luz cuánticos que viajan por las ondas
+      for (let p = 0; p < 4; p++) {
+        const pulseT = ((time * 0.18 + p * 0.25) % 1);
+        const px = pulseT * w;
+        const py = calculateWave1(px);
 
         ctx.save();
         ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(ex, ey);
-        ctx.strokeStyle = `rgba(255, 184, 0, ${0.12 + Math.sin(time + i) * 0.08})`;
-        ctx.lineWidth = 1.1;
-        ctx.stroke();
+        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = '#ffffff';
+        ctx.shadowBlur = 10;
+        ctx.fill();
         ctx.restore();
       }
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(centerX, centerY);
-      ctx.lineTo(centerX, bottomY);
-      ctx.strokeStyle = 'rgba(255, 184, 0, 0.45)';
-      ctx.lineWidth = 2.0;
-      ctx.setLineDash([8, 6]);
-      ctx.lineDashOffset = -time * 25;
-      ctx.shadowColor = '#ffb800';
-      ctx.shadowBlur = 15;
-      ctx.stroke();
-      ctx.restore();
 
       requestAnimationFrame(drawCierre);
     }
