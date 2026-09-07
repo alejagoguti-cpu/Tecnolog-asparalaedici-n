@@ -32,305 +32,237 @@
     </saludo>
 
     <!-- 01. Pensamiento (La visión inicial) -->
-    <pensamiento id="sec-01" data-seccion="01">
-      <encabezado>
+    <pensamiento id="sec-01" data-seccion="01" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>01</numero>
         <titulo>La visión inicial</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-compacto">
-        <canvas id="canvasModulo01"></canvas>
-        <nodo style="--posX: 50%; --posY: 50%;">
-          <boton>
-            <icono>⎔</icono>
-            <etiqueta>El artefacto</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              Cuando en las primeras clases empezamos definiendo qué era la tecnología, yo siempre pensaba en artefactos tecnológicos, como el computador o el celular. Para mí, la tecnología estaba relacionada con objetos nuevos, digitales o con algún tipo de avance. Pero en esta clase entendí que estaba viendo la tecnología de una manera muy limitada.
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="canvasModulo01" data-conceptos='["Artefacto", "Computador", "Celular", "Digital", "Avance", "Límite"]'></canvas>
+        <contenido>
+          <texto>
+            Cuando en las primeras clases empezamos definiendo qué era la tecnología, yo siempre pensaba en artefactos tecnológicos, como el computador o el celular. Para mí, la tecnología estaba relacionada con objetos nuevos, digitales o con algún tipo de avance. Pero en esta clase entendí que estaba viendo la tecnología de una manera muy limitada.
+          </texto>
+        </contenido>
       </escenario>
     </pensamiento>
 
     <!-- 02. Revelación (Surinam y el sistema comunitario) -->
-    <revelacion id="sec-02" data-seccion="02">
-      <encabezado>
+    <revelacion id="sec-02" data-seccion="02" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>02</numero>
         <titulo>Surinam y el sistema comunitario</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-compacto">
-        <canvas id="canvasModulo02"></canvas>
-        <nodo style="--posX: 50%; --posY: 50%;">
-          <boton>
-            <icono>∿</icono>
-            <etiqueta>El sistema</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              A partir del fotoensayo sobre Surinam entendí que la tecnología también puede ser un sistema que una comunidad construye para responder a una necesidad. No necesariamente tiene que existir un objeto nuevo. Puede surgir de algo que ya existe, cuando las personas encuentran una manera diferente de utilizarlo.
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="canvasModulo02" data-conceptos='["Surinam", "Sistema", "Comunidad", "Necesidad", "Transformación", "Uso creativo"]'></canvas>
+        <contenido>
+          <texto>
+            A partir del fotoensayo sobre Surinam entendí que la tecnología también puede ser un sistema que una comunidad construye para responder a una necesidad. No necesariamente tiene que existir un objeto nuevo. Puede surgir de algo que ya existe, cuando las personas encuentran una manera diferente de utilizarlo.
+          </texto>
+        </contenido>
       </escenario>
     </revelacion>
 
     <!-- 03. Observación (La vigilancia colonial) -->
-    <observacion id="sec-03" data-seccion="03">
-      <encabezado>
+    <observacion id="sec-03" data-seccion="03" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>03</numero>
         <titulo>La vigilancia colonial</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-compacto">
-        <canvas id="canvasModulo03"></canvas>
-        <nodo style="--posX: 50%; --posY: 50%;">
-          <boton class="boton-alerta">
-            <icono>◉</icono>
-            <etiqueta>El riesgo y la vigilancia</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              Esto fue lo que más me llamó la atención del fotoensayo. Las personas esclavizadas estaban en una situación en la que incluso comunicarse podía representar un riesgo. Tenían prohibido hablar entre ellas y estaban siendo vigiladas constantemente. Entonces tuvieron que encontrar otras maneras de transmitir información sin que esa comunicación fuera evidente para quienes las vigilaban.
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="canvasModulo03" data-conceptos='["Vigilancia", "Riesgo", "Silencio", "Información", "Secreto", "Transmisión oculta"]'></canvas>
+        <contenido>
+          <texto>
+            Esto fue lo que más me llamó la atención del fotoensayo. Las personas esclavizadas estaban en una situación en la que incluso comunicarse podía representar un riesgo. Tenían prohibido hablar entre ellas y estaban siendo vigiladas constantemente. Entonces tuvieron que encontrar otras maneras de transmitir información sin que esa comunicación fuera evidente para quienes las vigilaban.
+          </texto>
+        </contenido>
       </escenario>
     </observacion>
 
     <!-- 04. Memoria (La memoria y los recursos) -->
-    <memoria id="sec-04" data-seccion="04">
-      <encabezado>
+    <memoria id="sec-04" data-seccion="04" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>04</numero>
         <titulo>La memoria y los recursos</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-compacto">
-        <canvas id="canvasModulo04"></canvas>
-        <nodo style="--posX: 50%; --posY: 50%;">
-          <boton>
-            <icono>✦</icono>
-            <etiqueta>Memoria viva</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              Utilizaron historias, telas, canciones, el agua y su propia memoria. Y para mí ahí aparece una idea diferente de tecnología: <clave>la tecnología como una respuesta creativa frente a una limitación.</clave>
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="canvasModulo04" data-conceptos='["Historias", "Telas", "Canciones", "Agua", "Memoria viva", "Respuesta creativa"]'></canvas>
+        <contenido>
+          <texto>
+            Utilizaron historias, telas, canciones, el agua y su propia memoria. Y para mí ahí aparece una idea diferente de tecnología: <clave>la tecnología como una respuesta creativa frente a una limitación.</clave>
+          </texto>
+        </contenido>
       </escenario>
     </memoria>
 
     <!-- 05. Intención (La intención en la página web) -->
-    <intencion id="sec-05" data-seccion="05">
-      <encabezado>
+    <intencion id="sec-05" data-seccion="05" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>05</numero>
         <titulo>La intención en la página web</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-compacto">
-        <canvas id="canvasModulo05"></canvas>
-        <nodo style="--posX: 50%; --posY: 50%;">
-          <boton>
-            <icono>⟐</icono>
-            <etiqueta>Traducción digital</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              Eso fue lo que quise llevar a mi página web. No quería simplemente representar las tres tecnologías del fotoensayo, sino entender qué había detrás de ellas y traducir su lógica a una experiencia digital.
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="canvasModulo05" data-conceptos='["Página web", "Traducción", "Lógica digital", "Experiencia", "Interacción", "Sentido"]'></canvas>
+        <contenido>
+          <texto>
+            Eso fue lo que quise llevar a mi página web. No quería simplemente representar las tres tecnologías del fotoensayo, sino entender qué había detrás de ellas y traducir su lógica a una experiencia digital.
+          </texto>
+        </contenido>
       </escenario>
     </intencion>
 
     <!-- 06. Comprensión (Primera tecnología // Los cuentos de Anansi) -->
-    <comprension id="sec-06" data-seccion="06">
-      <encabezado>
+    <comprension id="sec-06" data-seccion="06" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>06</numero>
         <titulo>Primera tecnología // Los cuentos de Anansi</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-anansi">
-        <canvas id="anansiWebCanvas"></canvas>
-        <nodo style="--posX: 50%; --posY: 50%;">
-          <boton>
-            <icono>⎈</icono>
-            <etiqueta>Historias camufladas</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              La primera tecnología son los cuentos de la araña Anansi. En el fotoensayo, las historias de Anansi podían parecer simples cuentos, pero para quienes conocían su significado podían contener mensajes que no eran evidentes para los demás. La historia funcionaba entonces como una forma de esconder y transmitir información al mismo tiempo.
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="anansiWebCanvas" data-conceptos='["Anansi", "Cuentos", "Camuflaje", "Significado", "Mensaje oculto", "Malla narrativa"]'></canvas>
+        <contenido>
+          <texto>
+            La primera tecnología son los cuentos de la araña Anansi. En el fotoensayo, las historias de Anansi podían parecer simples cuentos, pero para quienes conocían su significado podían contener mensajes que no eran evidentes para los demás. La historia funcionaba entonces como una forma de esconder y transmitir información al mismo tiempo.
+          </texto>
+        </contenido>
       </escenario>
     </comprension>
 
     <!-- 07. Reflexión (La segunda capa de información) -->
-    <reflexion id="sec-07" data-seccion="07">
-      <encabezado>
+    <reflexion id="sec-07" data-seccion="07" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>07</numero>
         <titulo>La segunda capa de información</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-compacto">
-        <canvas id="canvasModulo07"></canvas>
-        <nodo style="--posX: 50%; --posY: 50%;">
-          <boton>
-            <icono>⚿</icono>
-            <etiqueta>El secreto como interacción</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              Esto me hizo pensar que <clave>la información no siempre tiene que ser visible para ser efectiva.</clave> Por eso, en mi página quise trabajar con una segunda capa de información. A simple vista, la página parece un texto continuo, pero existen mensajes que permanecen ocultos y que solo aparecen cuando el usuario interactúa con ella.
-            </texto>
-            <texto>
-              Para mí, esto fue importante porque entendí que esconder información también puede ser una forma de comunicación. No todo tiene que estar expuesto inmediatamente. A veces, la persona que recibe el mensaje también tiene que participar para poder encontrarlo.
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="canvasModulo07" data-conceptos='["Segunda capa", "Participación", "Ocultamiento", "Interacción", "Efectividad", "Descubrimiento"]'></canvas>
+        <contenido>
+          <texto>
+            Esto me hizo pensar que <clave>la información no siempre tiene que ser visible para ser efectiva.</clave> Por eso, en mi página quise trabajar con una segunda capa de información. A simple vista, la página parece un texto continuo, pero existen mensajes que permanecen ocultos y que solo aparecen cuando el usuario interactúa con ella.
+          </texto>
+          <texto>
+            Para mí, esto fue importante porque entendí que esconder información también puede ser una forma de comunicación. No todo tiene que estar expuesto inmediatamente. A veces, la persona que recibe el mensaje también tiene que participar para poder encontrarlo.
+          </texto>
+        </contenido>
       </escenario>
     </reflexion>
 
     <!-- 08. Lenguaje (Segunda tecnología // Los pañuelos angisas) -->
-    <lenguaje id="sec-08" data-seccion="08">
-      <encabezado>
+    <lenguaje id="sec-08" data-seccion="08" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>08</numero>
         <titulo>Segunda tecnología // Los pañuelos angisas</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-angisa">
-        <canvas id="rayosCanvas"></canvas>
-        <nodo class="nodo-intro" style="--posX: 50%; --posY: 22%;">
-          <boton>
-            <icono>⟐</icono>
-            <etiqueta>Las angisas</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              La segunda tecnología son los pañuelos en la cabeza, las angisas. En el fotoensayo, las mujeres utilizaban diferentes formas de doblar la tela para transmitir mensajes sin necesidad de hablar. Una prenda cotidiana podía convertirse en un lenguaje. Lo que más me interesó de esta tecnología fue que <clave>el objeto no cambió, cambió la manera en que las personas lo utilizaban.</clave> Esto lo relacioné directamente con el diseño de mi página. Tomé la idea del pliegue y la convertí en diferentes comportamientos visuales durante el scroll.
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="rayosCanvas" data-conceptos='["Angisas", "Prenda cotidiana", "El Secreto", "La Alerta", "La Resistencia", "Nuevo significado"]'></canvas>
+        <contenido>
+          <texto>
+            La segunda tecnología son los pañuelos en la cabeza, las angisas. En el fotoensayo, las mujeres utilizaban diferentes formas de doblar la tela para transmitir mensajes sin necesidad de hablar. Una prenda cotidiana podía convertirse en un lenguaje. Lo que más me interesó de esta tecnología fue que <clave>el objeto no cambió, cambió la manera en que las personas lo utilizaban.</clave> Esto lo relacioné directamente con el diseño de mi página. Tomé la idea del pliegue y la convertí en diferentes comportamientos visuales durante el scroll.
+          </texto>
 
-        <!-- Los 3 Pliegues -->
-        <nodo class="nodo-pliegue" style="--posX: 22%; --posY: 68%;">
-          <boton><icono>01</icono><etiqueta>El Secreto</etiqueta></boton>
-          <contenido>
-            <texto>
-              Primero está El Secreto, donde el texto está casi oculto y aparece cuando el usuario pasa el mouse sobre él.
-            </texto>
-          </contenido>
-        </nodo>
+          <pliegues-contenedor>
+            <pliegue-item tipo="secreto">
+              <pliegue-etiqueta>01 // El Secreto</pliegue-etiqueta>
+              <texto>
+                Primero está El Secreto, donde el texto está casi oculto y aparece cuando el usuario pasa el mouse sobre él.
+              </texto>
+            </pliegue-item>
 
-        <nodo class="nodo-pliegue" style="--posX: 50%; --posY: 68%;">
-          <boton><icono>02</icono><etiqueta>La Alerta</etiqueta></boton>
-          <contenido>
-            <texto>
-              Después está La Alerta, donde el bloque se inclina y cambia a un tono rojizo para interrumpir la lectura y llamar la atención.
-            </texto>
-          </contenido>
-        </nodo>
+            <pliegue-item tipo="alerta">
+              <pliegue-etiqueta>02 // La Alerta</pliegue-etiqueta>
+              <texto>
+                Después está La Alerta, donde el bloque se inclina y cambia a un tono rojizo para interrumpir la lectura y llamar la atención.
+              </texto>
+            </pliegue-item>
 
-        <nodo class="nodo-pliegue" style="--posX: 78%; --posY: 68%;">
-          <boton><icono>03</icono><etiqueta>La Resistencia</etiqueta></boton>
-          <contenido>
-            <texto>
-              Y finalmente está La Resistencia, donde el bloque cerrado y la sombra profunda funcionan visualmente como una especie de protección. Pero más allá de copiar los dobleces de las angisas, lo que intenté conservar fue su lógica: <clave>un elemento cotidiano puede convertirse en un lenguaje cuando existe la necesidad de comunicar algo.</clave>
-            </texto>
-            <texto>
-              Y eso también me hizo cuestionar mi propia manera de diseñar. Muchas veces pensamos que para crear algo nuevo necesitamos inventar algo completamente diferente. Este ejercicio me hizo pensar que también podemos diseñar a partir de transformar lo que ya existe y darle otro significado.
-            </texto>
-          </contenido>
-        </nodo>
+            <pliegue-item tipo="resistencia">
+              <pliegue-etiqueta>03 // La Resistencia</pliegue-etiqueta>
+              <texto>
+                Y finalmente está La Resistencia, donde el bloque cerrado y la sombra profunda funcionan visualmente como una especie de protección. Pero más allá de copiar los dobleces de las angisas, lo que intenté conservar fue su lógica: <clave>un elemento cotidiano puede convertirse en un lenguaje cuando existe la necesidad de comunicar algo.</clave>
+              </texto>
+            </pliegue-item>
+          </pliegues-contenedor>
+
+          <texto>
+            Y eso también me hizo cuestionar mi propia manera de diseñar. Muchas veces pensamos que para crear algo nuevo necesitamos inventar algo completamente diferente. Este ejercicio me hizo pensar que también podemos diseñar a partir de transformar lo que ya existe y darle otro significado.
+          </texto>
+        </contenido>
       </escenario>
     </lenguaje>
 
     <!-- 09. Experiencia (Tercera tecnología // Las canciones en el río) -->
-    <experiencia id="sec-09" data-seccion="09">
-      <encabezado>
+    <experiencia id="sec-09" data-seccion="09" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>09</numero>
         <titulo>Tercera tecnología // Las canciones en el río</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-rio">
-        <canvas id="rioCanvas"></canvas>
-        <nodo style="--posX: 32%; --posY: 40%;">
-          <boton>
-            <icono>≋</icono>
-            <etiqueta>El río como medio</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              La tercera tecnología son las canciones de los remeros. En el fotoensayo, las canciones podían parecer simplemente parte del trabajo, pero también funcionaban como una manera de transmitir información y mantener conexiones. El río, además de ser un espacio de desplazamiento, se convertía en un medio por donde podía viajar el sonido. Lo que me interesó aquí fue entender que <clave>el medio también puede convertirse en parte de la tecnología.</clave>
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="rioCanvas" data-conceptos='["Canciones", "Remeros", "El Río", "Medio acústico", "Audio en voz", "QR"]'></canvas>
+        <contenido>
+          <texto>
+            La tercera tecnología son las canciones de los remeros. En el fotoensayo, las canciones podían parecer simplemente parte del trabajo, pero también funcionaban como una manera de transmitir información y mantener conexiones. El río, además de ser un espacio de desplazamiento, se convertía en un medio por donde podía viajar el sonido. Lo que me interesó aquí fue entender que <clave>el medio también puede convertirse en parte de la tecnología.</clave>
+          </texto>
 
-        <nodo style="--posX: 68%; --posY: 40%;">
-          <boton>
-            <icono>⏵</icono>
-            <etiqueta>Voz y experiencia</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              En mi página quise llevar esta idea al final de la experiencia. Por eso utilicé una animación de ondas que hace referencia al movimiento del río y un código QR que permite acceder a una pista de audio donde se escucha este cierre en mi propia voz.
-            </texto>
-            <reproductor id="voz">
-              <codigo-qr></codigo-qr>
-              <info-audio>
-                <texto-audio>Escuchar en mi propia voz</texto-audio>
-              </info-audio>
-            </reproductor>
-            <texto>
-              De alguna manera, estoy haciendo el mismo ejercicio pero con otro medio. El río se convierte en pantalla, el sonido se convierte en audio digital y la comunicación que antes viajaba entre personas ahora llega al usuario a través de una interacción.
-            </texto>
-          </contenido>
-        </nodo>
+          <texto>
+            En mi página quise llevar esta idea al final de la experiencia. Por eso utilicé una animación de ondas que hace referencia al movimiento del río y un código QR que permite acceder a una pista de audio donde se escucha este cierre en mi propia voz.
+          </texto>
+
+          <reproductor id="voz" title="Haz clic para escuchar el cierre">
+            <codigo-qr></codigo-qr>
+            <info-audio>
+              <texto-audio>Escuchar en mi propia voz</texto-audio>
+            </info-audio>
+          </reproductor>
+
+          <texto>
+            De alguna manera, estoy haciendo el mismo ejercicio pero con otro medio. El río se convierte en pantalla, el sonido se convierte en audio digital y la comunicación que antes viajaba entre personas ahora llega al usuario a través de una interacción.
+          </texto>
+        </contenido>
       </escenario>
     </experiencia>
 
     <!-- 10. Construcción (Reflexión final y despedida) -->
-    <construccion id="sec-10" data-seccion="10">
-      <encabezado>
+    <construccion id="sec-10" data-seccion="10" class="seccion-activa">
+      <encabezado role="button" tabindex="0" title="Haz clic en el número para revelar el mensaje">
         <numero>10</numero>
         <titulo>Reflexión final</titulo>
+        <indicador-despliegue>REVELAR</indicador-despliegue>
       </encabezado>
       <escenario class="diagrama-cierre">
-        <canvas id="cierreCanvas"></canvas>
-        <nodo style="--posX: 50%; --posY: 28%;">
-          <boton>
-            <icono>☼</icono>
-            <etiqueta>Reflexión final</etiqueta>
-          </boton>
-          <contenido>
-            <texto>
-              Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología.
-            </texto>
-            <texto>
-              Antes pensaba en la tecnología como algo que nosotros utilizamos. Ahora pienso que también puede ser algo que <clave>construimos cuando tenemos una necesidad y buscamos una manera de responder a ella.</clave>
-            </texto>
-            <texto>
-              El fotoensayo me hizo pensar que muchas veces llamamos tecnología únicamente a aquello que reconocemos como moderno: una pantalla, un computador, un programa. Pero al mirar estas historias, me di cuenta de que también hubo tecnología en la manera en que una comunidad utilizó una historia para ocultar un mensaje, una tela para comunicarse en silencio o una canción para mantener un vínculo.
-            </texto>
-            <texto>
-              Y creo que ahí está mi principal reflexión: <clave>la tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos.</clave>
-            </texto>
-            <texto>
-              Eso también cambió mi manera de mirar mi propia página. Al principio pensaba que simplemente estaba haciendo una traducción del fotoensayo a un formato digital. Pero durante el proceso entendí que realmente estaba intentando hacer lo mismo que hicieron esas comunidades: tomar un medio disponible y encontrar una manera diferente de utilizarlo para comunicar algo.
-            </texto>
-            <texto>
-              Por eso, para mí, esta entrega no se trata solamente de hacer una página web sobre tres tecnologías del fotoensayo. Se trata de entender que diseñar también puede ser encontrar nuevas formas de comunicar cuando las formas tradicionales no son suficientes.
-            </texto>
-          </contenido>
-        </nodo>
+        <canvas id="cierreCanvas" data-conceptos='["Relación", "Transformación", "Diseño", "Vínculo", "Resistencia", "Libertad"]'></canvas>
+        <contenido class="contenido-cierre">
+          <texto>
+            Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología.
+          </texto>
+          <texto>
+            Antes pensaba en la tecnología como algo que nosotros utilizamos. Ahora pienso que también puede ser algo que <clave>construimos cuando tenemos una necesidad y buscamos una manera de responder a ella.</clave>
+          </texto>
+          <texto>
+            El fotoensayo me hizo pensar que muchas veces llamamos tecnología únicamente a aquello que reconocemos como moderno: una pantalla, un computador, un programa. Pero al mirar estas historias, me di cuenta de que también hubo tecnología en la manera en que una comunidad utilizó una historia para ocultar un mensaje, una tela para comunicarse en silencio o una canción para mantener un vínculo.
+          </texto>
+          <texto>
+            Y creo que ahí está mi principal reflexión: <clave>la tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos.</clave>
+          </texto>
+          <texto>
+            Eso también cambió mi manera de mirar mi propia página. Al principio pensaba que simplemente estaba haciendo una traducción del fotoensayo a un formato digital. Pero durante el proceso entendí que realmente estaba intentando hacer lo mismo que hicieron esas comunidades: tomar un medio disponible y encontrar una manera diferente de utilizarlo para comunicar algo.
+          </texto>
+          <texto>
+            Por eso, para mí, esta entrega no se trata solamente de hacer una página web sobre tres tecnologías del fotoensayo. Se trata de entender que diseñar también puede ser encontrar nuevas formas de comunicar cuando las formas tradicionales no son suficientes.
+          </texto>
 
-        <nodo style="--posX: 50%; --posY: 80%;">
-          <boton class="boton-libertad">
-            <icono>⟡</icono>
-            <etiqueta>La libertad</etiqueta>
-          </boton>
-          <contenido class="contenido-libertad">
-            <texto class="texto-libertad">
-              Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres.
-            </texto>
-            <despedida>Muchas gracias.</despedida>
-          </contenido>
-        </nodo>
+          <texto class="texto-libertad">
+            Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres.
+          </texto>
+          <despedida>Muchas gracias.</despedida>
+        </contenido>
       </escenario>
     </construccion>
 
