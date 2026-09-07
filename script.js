@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
  * TECNOLOGÍAS PARA LA EDICIÓN — ALEJANDRA GÓMEZ GUTIÉRREZ
- * Motor Generativo de Vanguardia — Ultra Optimizado a 60/120 FPS
+ * Nodos Integrados Directamente DENTRO de las Redes y Geometrías en Movimiento
  * ==========================================================================
  */
 
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // 3. FONDO LUMÍNICO Y SCROLL OBSERVADOR POÉTICO (#ambientCanvas)
+  // 3. FONDO LUMÍNICO ADAPTATIVO (#ambientCanvas)
   // ==========================================================================
   const ambientContainer = document.querySelector('#ambientCanvas');
   if (ambientContainer) {
@@ -168,10 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 4. MOTOR DE LAS 10 EXPERIENCIAS GENERATIVAS FLUIDAS (60/120 FPS)
+  // 4. MOTOR GENERATIVO CON NODOS INTEGRADOS DENTRO DE LAS REDES
   // ==========================================================================
 
-  function initSpectacularAnimation(canvas, themeColor, animType) {
+  function initIntegratedAnimation(canvas, themeColor, animType) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', resize);
     resize();
 
-    // INTERSECTION OBSERVER: Pausa cuando está fuera de pantalla (¡CERO LAG!)
+    // INTERSECTION OBSERVER
     const visibilityObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         isVisible = entry.isIntersecting;
@@ -237,45 +237,71 @@ document.addEventListener('DOMContentLoaded', () => {
       localMouseY = -1000;
     }, { passive: true });
 
-    // Partículas generativas
-    const particleCount = 28;
-    const particles = Array.from({ length: particleCount }, (_, i) => ({
-      x: Math.random(),
-      y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.0012,
-      vy: (Math.random() - 0.5) * 0.0012,
-      size: Math.random() * 2.2 + 1,
-      char: ['⚿', '⟐', '✦', '⎈', '≋', '⎔', '∿', '0', '1'][i % 9],
-      phase: Math.random() * Math.PI * 2,
-      radius: Math.random() * 160 + 40,
-      angle: Math.random() * Math.PI * 2,
-      speed: Math.random() * 0.015 + 0.005
-    }));
+    // --- GEOMETRÍA 3D PARA MÓDULO 01 (OCTAEDRO ESTELAR / POLIEDRO CON NODOS EN VÉRTICES) ---
+    // 6 vértices principales corresponden a los 6 conceptos
+    const baseVertices3D = [
+      { x: 0, y: -1.4, z: 0, text: conceptList[0] || 'Artefacto' },
+      { x: 1.4, y: 0, z: 0, text: conceptList[1] || 'Computador' },
+      { x: 0, y: 0, z: 1.4, text: conceptList[2] || 'Celular' },
+      { x: -1.4, y: 0, z: 0, text: conceptList[3] || 'Digital' },
+      { x: 0, y: 0, z: -1.4, text: conceptList[4] || 'Avance' },
+      { x: 0, y: 1.4, z: 0, text: conceptList[5] || 'Límite' }
+    ];
 
-    // Nodos de palabras del texto
-    const nodes = conceptList.map((word, i) => {
+    const edgesOctahedron = [
+      [0,1],[0,2],[0,3],[0,4],
+      [5,1],[5,2],[5,3],[5,4],
+      [1,2],[2,3],[3,4],[4,1]
+    ];
+
+    // Partículas auxiliares para redes dinámicas
+    const particles = conceptList.map((word, i) => {
       const angle = (i / conceptList.length) * Math.PI * 2;
-      const radiusDist = 0.32 + (i % 3) * 0.08;
       return {
         text: word,
-        baseXRatio: 0.5 + Math.cos(angle) * radiusDist,
-        baseYRatio: 0.5 + Math.sin(angle) * radiusDist,
-        depth: 0.4 + (i % 4) * 0.25,
-        phase: i * 1.3,
-        highlight: false
+        x: Math.cos(angle) * 160,
+        y: Math.sin(angle) * 120,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        angle: angle,
+        radius: 140 + (i % 3) * 35,
+        speed: 0.012 + (i % 2) * 0.006,
+        phase: i * 1.2
       };
     });
 
-    // Geometría 3D de artefacto para Módulo 01
-    const vertices3D = [
-      [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
-      [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1],
-      [0, -1.5, 0], [0, 1.5, 0], [-1.5, 0, 0], [1.5, 0, 0]
-    ];
-    const edges3D = [
-      [0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7],
-      [8,0],[8,1],[8,4],[8,5],[9,2],[9,3],[9,6],[9,7],[10,0],[10,3],[10,4],[10,7],[11,1],[11,2],[11,5],[11,6]
-    ];
+    // Función auxiliar para dibujar pastilla/píldora sobre el nodo integrado
+    function drawNodeBadge(x, y, text, isHovered, scale = 1) {
+      ctx.save();
+      ctx.font = `600 ${Math.max(10, Math.round(12.5 * scale))}px "DM Mono", monospace`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      const metrics = ctx.measureText(text);
+      const padX = 10 * scale;
+      const padY = 5 * scale;
+      const bw = (metrics.width + padX * 2);
+      const bh = 22 * scale;
+
+      ctx.beginPath();
+      ctx.roundRect(x - bw / 2, y - bh / 2, bw, bh, 11 * scale);
+      ctx.fillStyle = isHovered ? 'rgba(255, 255, 255, 0.98)' : 'rgba(3, 8, 20, 0.92)';
+      ctx.fill();
+
+      ctx.strokeStyle = isHovered ? '#ffffff' : themeColor;
+      ctx.lineWidth = isHovered ? 2 * scale : 1.2 * scale;
+      ctx.stroke();
+
+      // Punto central luminoso
+      ctx.beginPath();
+      ctx.arc(x, y - bh / 2 - 3 * scale, 2.5 * scale, 0, Math.PI * 2);
+      ctx.fillStyle = isHovered ? '#ffffff' : themeColor;
+      ctx.fill();
+
+      ctx.fillStyle = isHovered ? '#010306' : '#f0f6fc';
+      ctx.fillText(text, x, y + 1);
+      ctx.restore();
+    }
 
     function draw() {
       if (!isVisible) {
@@ -288,114 +314,168 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const viewportOffset = (rectTop - scrollY + ch / 2 - window.innerHeight / 2) / window.innerHeight;
       const cx = cw * 0.5;
-      const cy = ch * 0.5 - viewportOffset * 20;
+      const cy = ch * 0.5 - viewportOffset * 15;
 
       // ======================================================================
-      // 10 ANIMACIONES VECTORIALES OPTIMIZADAS:
+      // 10 MODOS: NODOS INTEGRADOS DIRECTAMENTE DENTRO DE LA RED EN MOVIMIENTO
       // ======================================================================
 
       if (animType === 'artefacto3d') {
-        // 01. ARTEFACTO 3D KINÉTICO FLOTANTE
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
-        ctx.lineWidth = 1.2;
+        // 01. LOS NODOS SON LOS VÉRTICES MISMOS DEL ARTEFACTO 3D EN ROTACIÓN
+        const scale3D = Math.min(cw, ch) * 0.22;
+        const rotX = time * 0.55 + (localMouseY !== -1000 ? (localMouseY - cy) * 0.001 : 0);
+        const rotY = time * 0.75 + (localMouseX !== -1000 ? (localMouseX - cx) * 0.001 : 0);
 
-        for (let r = 80; r <= 280; r += 55) {
-          ctx.beginPath();
-          ctx.arc(cx, cy, r + Math.sin(time * 1.5 + r) * 6, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${0.06 + 0.05 * Math.sin(time + r)})`;
-          ctx.stroke();
-        }
-
-        const scale3D = Math.min(cw, ch) * 0.16;
-        const rotX = time * 0.5;
-        const rotY = time * 0.8;
-
-        const proj = vertices3D.map(([vx, vy, vz]) => {
-          let x1 = vx * Math.cos(rotY) - vz * Math.sin(rotY);
-          let z1 = vx * Math.sin(rotY) + vz * Math.cos(rotY);
-          let y2 = vy * Math.cos(rotX) - z1 * Math.sin(rotX);
-          let z2 = vy * Math.sin(rotX) + z1 * Math.cos(rotX);
-          const fov = 3.2;
+        // Proyección 3D de cada vértice
+        const projected = baseVertices3D.map((v) => {
+          let x1 = v.x * Math.cos(rotY) - v.z * Math.sin(rotY);
+          let z1 = v.x * Math.sin(rotY) + v.z * Math.cos(rotY);
+          let y2 = v.y * Math.cos(rotX) - z1 * Math.sin(rotX);
+          let z2 = v.y * Math.sin(rotX) + z1 * Math.cos(rotX);
+          const fov = 3.5;
           const p = fov / (fov + z2);
-          return { x: cx + x1 * scale3D * p, y: cy + y2 * scale3D * p };
+          return {
+            x: cx + x1 * scale3D * p,
+            y: cy + y2 * scale3D * p,
+            z: z2,
+            p: p,
+            text: v.text
+          };
         });
 
+        // Dibujar aristas de la red 3D
         ctx.beginPath();
-        edges3D.forEach(([i, j]) => {
-          ctx.moveTo(proj[i].x, proj[i].y);
-          ctx.lineTo(proj[j].x, proj[j].y);
+        edgesOctahedron.forEach(([i, j]) => {
+          ctx.moveTo(projected[i].x, projected[i].y);
+          ctx.lineTo(projected[j].x, projected[j].y);
         });
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.65)';
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
         ctx.lineWidth = 1.4;
         ctx.stroke();
 
-      } else if (animType === 'redneuronal') {
-        // 02. RED TOPOLÓGICA CON RESORTES ELÁSTICOS
-        particles.forEach((p, idx) => {
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0.05) p.x = 0.95; if (p.x > 0.95) p.x = 0.05;
-          if (p.y < 0.05) p.y = 0.95; if (p.y > 0.95) p.y = 0.05;
-          const px = p.x * cw;
-          const py = p.y * ch;
-
+        // Conectar cada vértice al centro con líneas de pulso
+        projected.forEach((p) => {
           ctx.beginPath();
-          ctx.arc(px, py, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(0, 229, 255, 0.85)';
-          ctx.fill();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(p.x, p.y);
+          ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 * p.p})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
 
-          for (let j = idx + 1; j < particles.length; j++) {
+        // Dibujar nodos de texto EXACTAMENTE en los vértices 3D
+        projected.forEach((p) => {
+          const distMouse = Math.hypot(p.x - localMouseX, p.y - localMouseY);
+          drawNodeBadge(p.x, p.y, p.text, distMouse < 100, Math.min(1.15, Math.max(0.85, p.p * 0.95)));
+        });
+
+      } else if (animType === 'redneuronal') {
+        // 02. RED COMUNITARIA: LAS PALABRAS SON LOS NODOS DE LA MALLA
+        particles.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -180 || p.x > 180) p.vx *= -1;
+          if (p.y < -120 || p.y > 120) p.vy *= -1;
+        });
+
+        // Conectar los nodos entre sí con líneas elásticas
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const p1 = particles[i];
             const p2 = particles[j];
-            const dist = Math.hypot(px - p2.x * cw, py - p2.y * ch);
-            if (dist < 140) {
+            const x1 = cx + p1.x;
+            const y1 = cy + p1.y;
+            const x2 = cx + p2.x;
+            const y2 = cy + p2.y;
+            const dist = Math.hypot(x1 - x2, y1 - y2);
+
+            if (dist < 220) {
               ctx.beginPath();
-              ctx.moveTo(px, py);
-              ctx.lineTo(p2.x * cw, p2.y * ch);
-              ctx.strokeStyle = `rgba(0, 229, 255, ${(1 - dist / 140) * 0.35})`;
-              ctx.lineWidth = 1;
+              ctx.moveTo(x1, y1);
+              ctx.lineTo(x2, y2);
+              ctx.strokeStyle = `rgba(0, 229, 255, ${(1 - dist / 220) * 0.4})`;
+              ctx.lineWidth = 1.2;
               ctx.stroke();
             }
           }
+        }
+
+        particles.forEach((p) => {
+          const px = cx + p.x;
+          const py = cy + p.y;
+          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+          drawNodeBadge(px, py, p.text, distMouse < 100);
         });
 
       } else if (animType === 'lasersearch') {
-        // 03. RADAR Y CONO LÁSER DE VIGILANCIA
-        const radius = Math.min(cw, ch) * 0.5;
+        // 03. VIGILANCIA: LOS NODOS ESTÁN SOBRE LOS ANILLOS DEL RADAR
+        const radius = Math.min(cw, ch) * 0.44;
         for (let r = 1; r <= 3; r++) {
           ctx.beginPath();
           ctx.arc(cx, cy, (radius / 3) * r, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(244, 63, 94, 0.16)';
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = 'rgba(244, 63, 94, 0.2)';
+          ctx.lineWidth = 1.1;
           ctx.stroke();
         }
 
-        const angle = time * 1.5;
+        const sweepAngle = time * 1.6;
         ctx.beginPath();
         ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, radius, angle, angle + 0.5);
+        ctx.arc(cx, cy, radius, sweepAngle, sweepAngle + 0.5);
         ctx.closePath();
         const laserGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, radius);
-        laserGrad.addColorStop(0, 'rgba(244, 63, 94, 0.35)');
+        laserGrad.addColorStop(0, 'rgba(244, 63, 94, 0.4)');
         laserGrad.addColorStop(1, 'rgba(244, 63, 94, 0.0)');
         ctx.fillStyle = laserGrad;
         ctx.fill();
 
+        particles.forEach((p, i) => {
+          const ringRadius = (radius / 3) * (1 + (i % 3));
+          const nodeAngle = (i / particles.length) * Math.PI * 2;
+          const px = cx + Math.cos(nodeAngle) * ringRadius;
+          const py = cy + Math.sin(nodeAngle) * ringRadius;
+
+          // Rayo conector desde el centro
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(px, py);
+          ctx.strokeStyle = 'rgba(244, 63, 94, 0.15)';
+          ctx.stroke();
+
+          // Iluminar si el barrido del radar pasa cerca del ángulo
+          const angleDiff = Math.abs((sweepAngle % (Math.PI * 2)) - (nodeAngle % (Math.PI * 2)));
+          const isSwept = angleDiff < 0.3 || angleDiff > (Math.PI * 2 - 0.3);
+          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+
+          drawNodeBadge(px, py, p.text, isSwept || distMouse < 100);
+        });
+
       } else if (animType === 'nebulamemoria') {
-        // 04. VÓRTICE DE POLVO ESTELAR Y MEMORIA DORADA
-        particles.forEach((p) => {
+        // 04. MEMORIA: LOS NODOS ORBITAN DENTRO DEL VÓRTICE DORADO
+        particles.forEach((p, i) => {
           p.angle += p.speed;
           const px = cx + Math.cos(p.angle) * p.radius;
-          const py = cy + Math.sin(p.angle) * (p.radius * 0.6);
-          const alpha = 0.3 + 0.6 * Math.sin(time * 2 + p.phase);
+          const py = cy + Math.sin(p.angle) * (p.radius * 0.65);
+
+          // Hilo estelar entre nodos sucesivos
+          const nextP = particles[(i + 1) % particles.length];
+          const npx = cx + Math.cos(nextP.angle) * nextP.radius;
+          const npy = cy + Math.sin(nextP.angle) * (nextP.radius * 0.65);
 
           ctx.beginPath();
-          ctx.arc(px, py, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 184, 0, ${alpha})`;
-          ctx.fill();
+          ctx.moveTo(px, py);
+          ctx.lineTo(npx, npy);
+          ctx.strokeStyle = 'rgba(255, 184, 0, 0.25)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+          drawNodeBadge(px, py, p.text, distMouse < 100);
         });
 
       } else if (animType === 'matrixflow') {
-        // 05. FLUJO DIGITAL VECTORIAL Y MATRIZ
-        const step = 50;
+        // 05. MATRIZ: LOS NODOS ESTÁN FIJADOS EN LAS INTERSECCIONES DE LA CUADRÍCULA
+        const step = 60;
         ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
         ctx.lineWidth = 1;
         for (let x = 0; x <= cw; x += step) {
@@ -405,23 +485,31 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(cw, y); ctx.stroke();
         }
 
-        for (let i = 1; i <= 4; i++) {
-          const sz = (i * 65 + time * 50) % (Math.min(cw, ch) * 0.85);
+        particles.forEach((p, i) => {
+          const col = Math.floor(i % 3) - 1;
+          const row = Math.floor(i / 3) === 0 ? -1 : 1;
+          const px = cx + col * step * 2.2 + Math.sin(time + i) * 6;
+          const py = cy + row * step * 1.5 + Math.cos(time + i) * 6;
+
+          // Cruz vectorial en la intersección
           ctx.beginPath();
-          ctx.rect(cx - sz / 2, cy - sz / 2, sz, sz);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${0.28 * (1 - sz / (Math.min(cw, ch) * 0.85))})`;
-          ctx.lineWidth = 1.4;
+          ctx.moveTo(px - 15, py); ctx.lineTo(px + 15, py);
+          ctx.moveTo(px, py - 15); ctx.lineTo(px, py + 15);
+          ctx.strokeStyle = 'rgba(0, 240, 255, 0.35)';
           ctx.stroke();
-        }
+
+          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+          drawNodeBadge(px, py, p.text, distMouse < 100);
+        });
 
       } else if (animType === 'anansi3dweb') {
-        // 06. TELARAÑA FRACTAL DE ANANSI
+        // 06. ANANSI: LOS NODOS ESTÁN TEJIDOS EN LOS ANILLOS DE LA TELARAÑA
         const spokes = 12;
-        const rings = 7;
-        const maxR = Math.min(cw, ch) * 0.54;
+        const rings = 6;
+        const maxR = Math.min(cw, ch) * 0.48;
 
         ctx.strokeStyle = 'rgba(168, 85, 247, 0.25)';
-        ctx.lineWidth = 1.1;
+        ctx.lineWidth = 1.2;
         for (let i = 0; i < spokes; i++) {
           const ang = (i * 2 * Math.PI) / spokes;
           ctx.beginPath();
@@ -445,45 +533,74 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.stroke();
         }
 
+        particles.forEach((p, i) => {
+          const ringIdx = (i % 3) + 2;
+          const spokeIdx = (i * 2) % spokes;
+          const ringR = (maxR / rings) * ringIdx;
+          const ang = (spokeIdx * 2 * Math.PI) / spokes;
+          const vib = Math.sin(time * 2.5 + ringIdx + spokeIdx) * 4;
+          const px = cx + Math.cos(ang) * (ringR + vib);
+          const py = cy + Math.sin(ang) * (ringR + vib);
+
+          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+          drawNodeBadge(px, py, p.text, distMouse < 100);
+        });
+
       } else if (animType === 'steganoglass') {
-        // 07. LENTE ESTEGANOGRÁFICA Y GLIFOS
-        ctx.font = '600 15px "DM Mono", monospace';
-        particles.forEach((p) => {
-          p.y -= 0.001;
-          if (p.y < 0) p.y = 1;
-          const px = p.x * cw;
-          const py = p.y * ch;
+        // 07. SEGUNDA CAPA: LOS NODOS EMERGEN DENTRO DE LA CORTINA DE GLIFOS
+        particles.forEach((p, i) => {
+          p.y -= 0.6;
+          if (p.y < -140) p.y = 140;
+
+          const px = cx + p.x;
+          const py = cy + p.y;
           const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
           const isDecoded = distMouse < 140;
 
-          ctx.fillStyle = isDecoded ? 'rgba(0, 240, 255, 0.95)' : `rgba(192, 132, 252, ${0.25 + 0.25 * Math.sin(time * 2 + p.phase)})`;
-          ctx.fillText(p.char, px, py);
+          // Hilo conector
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(px, py);
+          ctx.strokeStyle = isDecoded ? 'rgba(0, 240, 255, 0.4)' : 'rgba(192, 132, 252, 0.12)';
+          ctx.stroke();
+
+          drawNodeBadge(px, py, p.text, isDecoded);
         });
 
       } else if (animType === 'textileorigami') {
-        // 08. RAYOS TEXTILES DE ANGISAS
-        const numRays = 48;
-        const maxRadius = Math.min(cw, ch) * 0.8;
+        // 08. ANGISAS: LOS NODOS ESTÁN EN LOS EXTREMOS DE LOS RAYOS TEXTILES
+        const numRays = 40;
+        const maxRadius = Math.min(cw, ch) * 0.72;
+
         for (let i = 0; i < numRays; i++) {
           const fraction = i / (numRays - 1);
-          const angle = Math.PI * 0.12 + fraction * Math.PI * 0.76;
-          const wave = Math.sin(time * 1.6 + i * 0.2) * 0.03;
+          const angle = Math.PI * 0.15 + fraction * Math.PI * 0.7;
+          const wave = Math.sin(time * 1.6 + i * 0.25) * 0.03;
           const finalAngle = angle + wave;
-          const rayLen = maxRadius * (0.65 + Math.sin(time * 2 + i * 0.25) * 0.18);
+          const rayLen = maxRadius * (0.65 + Math.sin(time * 2 + i * 0.25) * 0.15);
           const ex = cx + Math.cos(finalAngle) * rayLen;
           const ey = cy + Math.sin(finalAngle) * rayLen;
 
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(ex, ey);
-          const alpha = 0.14 + Math.sin(time + i) * 0.1;
-          ctx.strokeStyle = i % 2 === 0 ? `rgba(0, 240, 255, ${alpha})` : `rgba(255, 0, 127, ${alpha})`;
-          ctx.lineWidth = 1.2;
+          ctx.strokeStyle = i % 2 === 0 ? 'rgba(0, 240, 255, 0.14)' : 'rgba(255, 0, 127, 0.14)';
           ctx.stroke();
         }
 
+        particles.forEach((p, i) => {
+          const fraction = (i + 0.5) / particles.length;
+          const angle = Math.PI * 0.18 + fraction * Math.PI * 0.64;
+          const rayLen = maxRadius * 0.78;
+          const px = cx + Math.cos(angle) * rayLen;
+          const py = cy + Math.sin(angle) * rayLen;
+
+          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+          drawNodeBadge(px, py, p.text, distMouse < 100);
+        });
+
       } else if (animType === 'liquidriver') {
-        // 09. OLAS FLUVIALES LÍQUIDAS
+        // 09. RÍO: LOS NODOS FLOTAN DIRECTAMENTE SOBRE LAS OLAS DE AGUA
         const streamGrad = ctx.createLinearGradient(0, 0, cw, 0);
         streamGrad.addColorStop(0.0, '#00e5ff');
         streamGrad.addColorStop(0.5, '#38bdf8');
@@ -500,102 +617,61 @@ document.addEventListener('DOMContentLoaded', () => {
             if (x === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
           }
-          ctx.strokeStyle = layer === 0 ? streamGrad : `rgba(0, 229, 255, ${0.35 - layer * 0.1})`;
+          ctx.strokeStyle = layer === 0 ? streamGrad : `rgba(0, 229, 255, ${0.3 - layer * 0.1})`;
           ctx.lineWidth = 2.2 - layer * 0.5;
           ctx.stroke();
         }
 
+        particles.forEach((p, i) => {
+          const normX = (i + 1) / (particles.length + 1);
+          const px = cw * normX;
+          const env = Math.sin(normX * Math.PI);
+          const w1 = Math.sin(normX * 8 + time * 2.2) * (ch * 0.1);
+          const w2 = Math.cos(normX * 14 - time * 1.5) * (ch * 0.04);
+          const py = cy + (w1 + w2) * env;
+
+          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+          drawNodeBadge(px, py, p.text, distMouse < 100);
+        });
+
       } else if (animType === 'supernovasolar') {
-        // 10. CORONA SOLAR Y HACES DE LIBERTAD
-        const solarGlow = ctx.createRadialGradient(cx, cy, 10, cx, cy, cw * 0.5);
+        // 10. LIBERTAD: LOS NODOS ESTÁN EN LOS HACES DE LA RADIACIÓN SOLAR
+        const solarGlow = ctx.createRadialGradient(cx, cy, 10, cx, cy, cw * 0.45);
         solarGlow.addColorStop(0, 'rgba(255, 184, 0, 0.28)');
-        solarGlow.addColorStop(0.5, 'rgba(255, 0, 127, 0.08)');
+        solarGlow.addColorStop(0.6, 'rgba(255, 0, 127, 0.06)');
         solarGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
         ctx.fillStyle = solarGlow;
         ctx.fillRect(0, 0, cw, ch);
 
-        const numRays = 42;
+        const numRays = 36;
         for (let i = 0; i < numRays; i++) {
           const ang = (i * 2 * Math.PI) / numRays + time * 0.1;
           const len = 120 + Math.sin(time * 2.5 + i * 0.5) * 35;
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(cx + Math.cos(ang) * len, cy + Math.sin(ang) * len);
-          ctx.strokeStyle = `rgba(255, 184, 0, ${0.15 + Math.sin(time * 2 + i) * 0.1})`;
+          ctx.strokeStyle = `rgba(255, 184, 0, ${0.16 + Math.sin(time * 2 + i) * 0.1})`;
           ctx.lineWidth = 1.3;
           ctx.stroke();
         }
+
+        particles.forEach((p, i) => {
+          const ang = (i * 2 * Math.PI) / particles.length + time * 0.1;
+          const rayLen = 140 + Math.sin(time * 2 + i) * 20;
+          const px = cx + Math.cos(ang) * rayLen;
+          const py = cy + Math.sin(ang) * (rayLen * 0.7);
+
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(px, py);
+          ctx.strokeStyle = 'rgba(255, 184, 0, 0.35)';
+          ctx.lineWidth = 1.4;
+          ctx.stroke();
+
+          const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
+          drawNodeBadge(px, py, p.text, distMouse < 100);
+        });
       }
-
-      // ======================================================================
-      // RED CONCEPTUAL POÉTICA DE PALABRAS DEL TEXTO (OPTIMIZADA)
-      // ======================================================================
-      nodes.forEach((n, i) => {
-        const parallaxY = viewportOffset * (n.depth * 35);
-        const targetXRatio = n.baseXRatio + Math.sin(time + n.phase) * 0.035;
-        const targetYRatio = n.baseYRatio + Math.cos(time + n.phase * 0.8) * 0.035;
-        const px = targetXRatio * cw;
-        const py = targetYRatio * ch - parallaxY;
-
-        const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-        n.highlight = distMouse < 140;
-
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.lineTo(px, py);
-        ctx.strokeStyle = n.highlight ? themeColor : 'rgba(255, 255, 255, 0.06)';
-        ctx.lineWidth = n.highlight ? 1.6 : 0.8;
-        ctx.stroke();
-
-        for (let j = i + 1; j < nodes.length; j++) {
-          const n2 = nodes[j];
-          const parallaxY2 = viewportOffset * (n2.depth * 35);
-          const px2 = (n2.baseXRatio + Math.sin(time + n2.phase) * 0.035) * cw;
-          const py2 = (n2.baseYRatio + Math.cos(time + n2.phase * 0.8) * 0.035) * ch - parallaxY2;
-          const dist = Math.hypot(px - px2, py - py2);
-
-          if (dist < 220) {
-            ctx.beginPath();
-            ctx.moveTo(px, py);
-            ctx.lineTo(px2, py2);
-            const alpha = (1 - dist / 220) * (n.highlight || n2.highlight ? 0.5 : 0.12);
-            ctx.strokeStyle = themeColor.replace('rgb', 'rgba').replace(')', `, ${alpha})`);
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      });
-
-      // Dibujar píldoras de conceptos
-      ctx.font = '600 12.5px "DM Mono", monospace';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-
-      nodes.forEach((n) => {
-        const parallaxY = viewportOffset * (n.depth * 35);
-        const curXRatio = n.baseXRatio + Math.sin(time + n.phase) * 0.035;
-        const curYRatio = n.baseYRatio + Math.cos(time + n.phase * 0.8) * 0.035;
-        const px = curXRatio * cw;
-        const py = curYRatio * ch - parallaxY;
-
-        const textMetrics = ctx.measureText(n.text);
-        const padX = 12;
-        const padY = 5;
-        const boxW = textMetrics.width + padX * 2;
-        const boxH = 24;
-
-        ctx.beginPath();
-        ctx.roundRect(px - boxW / 2, py - boxH / 2, boxW, boxH, 12);
-        ctx.fillStyle = n.highlight ? 'rgba(255, 255, 255, 0.96)' : 'rgba(4, 10, 22, 0.9)';
-        ctx.fill();
-
-        ctx.strokeStyle = n.highlight ? '#ffffff' : themeColor;
-        ctx.lineWidth = n.highlight ? 1.8 : 1.1;
-        ctx.stroke();
-
-        ctx.fillStyle = n.highlight ? '#010306' : '#f0f6fc';
-        ctx.fillText(n.text, px, py + 1);
-      });
 
       animationFrameId = requestAnimationFrame(draw);
     }
@@ -604,18 +680,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // INICIALIZACIÓN DE LAS 10 EXPERIENCIAS GENERATIVAS
+  // INICIALIZACIÓN DE LAS 10 EXPERIENCIAS INTEGRIVAS
   // ==========================================================================
-  initSpectacularAnimation(document.getElementById('canvasModulo01'), 'rgb(0, 240, 255)', 'artefacto3d');
-  initSpectacularAnimation(document.getElementById('canvasModulo02'), 'rgb(0, 229, 255)', 'redneuronal');
-  initSpectacularAnimation(document.getElementById('canvasModulo03'), 'rgb(244, 63, 94)', 'lasersearch');
-  initSpectacularAnimation(document.getElementById('canvasModulo04'), 'rgb(255, 184, 0)', 'nebulamemoria');
-  initSpectacularAnimation(document.getElementById('canvasModulo05'), 'rgb(0, 240, 255)', 'matrixflow');
-  initSpectacularAnimation(document.getElementById('anansiWebCanvas'), 'rgb(168, 85, 247)', 'anansi3dweb');
-  initSpectacularAnimation(document.getElementById('canvasModulo07'), 'rgb(192, 132, 252)', 'steganoglass');
-  initSpectacularAnimation(document.getElementById('rayosCanvas'), 'rgb(255, 0, 127)', 'textileorigami');
-  initSpectacularAnimation(document.getElementById('rioCanvas'), 'rgb(0, 229, 255)', 'liquidriver');
-  initSpectacularAnimation(document.getElementById('cierreCanvas'), 'rgb(255, 184, 0)', 'supernovasolar');
+  initIntegratedAnimation(document.getElementById('canvasModulo01'), 'rgb(0, 240, 255)', 'artefacto3d');
+  initIntegratedAnimation(document.getElementById('canvasModulo02'), 'rgb(0, 229, 255)', 'redneuronal');
+  initIntegratedAnimation(document.getElementById('canvasModulo03'), 'rgb(244, 63, 94)', 'lasersearch');
+  initIntegratedAnimation(document.getElementById('canvasModulo04'), 'rgb(255, 184, 0)', 'nebulamemoria');
+  initIntegratedAnimation(document.getElementById('canvasModulo05'), 'rgb(0, 240, 255)', 'matrixflow');
+  initIntegratedAnimation(document.getElementById('anansiWebCanvas'), 'rgb(168, 85, 247)', 'anansi3dweb');
+  initIntegratedAnimation(document.getElementById('canvasModulo07'), 'rgb(192, 132, 252)', 'steganoglass');
+  initIntegratedAnimation(document.getElementById('rayosCanvas'), 'rgb(255, 0, 127)', 'textileorigami');
+  initIntegratedAnimation(document.getElementById('rioCanvas'), 'rgb(0, 229, 255)', 'liquidriver');
+  initIntegratedAnimation(document.getElementById('cierreCanvas'), 'rgb(255, 184, 0)', 'supernovasolar');
 
   // ==========================================================================
   // 5. SÍNTESIS DE VOZ Y TRANSMISIÓN DE AUDIO (#voz)
