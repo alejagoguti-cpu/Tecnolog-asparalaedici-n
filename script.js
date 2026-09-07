@@ -258,6 +258,28 @@ document.addEventListener('DOMContentLoaded', () => {
       localMouseY = -1000;
     }, { passive: true });
 
+    // Soporte táctil responsivo (Mobile & Tablets)
+    canvas.parentElement.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        const rect = canvas.getBoundingClientRect();
+        localMouseX = e.touches[0].clientX - rect.left;
+        localMouseY = e.touches[0].clientY - rect.top;
+      }
+    }, { passive: true });
+
+    canvas.parentElement.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        const rect = canvas.getBoundingClientRect();
+        localMouseX = e.touches[0].clientX - rect.left;
+        localMouseY = e.touches[0].clientY - rect.top;
+      }
+    }, { passive: true });
+
+    canvas.parentElement.addEventListener('touchend', () => {
+      localMouseX = -1000;
+      localMouseY = -1000;
+    }, { passive: true });
+
     // ========================================================================
     // MODELOS Y PARTÍCULAS ESPECÍFICAS PARA CADA ANIMACIÓN
     // ========================================================================
