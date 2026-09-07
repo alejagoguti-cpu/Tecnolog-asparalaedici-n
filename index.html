@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tecnologías del secreto — Diagrama enigmático y ensayo en código</title>
+  <title>Tecnologías del secreto — Ensayo en 10 módulos diagramáticos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -21,13 +21,13 @@
   <!-- Haz de escaneo lumínico interactivo -->
   <haz-cursor id="cursorGlow"></haz-cursor>
 
-  <!-- HUD Global de Transmisión y Revelación de Secretos -->
+  <!-- HUD Global de Transmisión (10 Módulos de Descodificación) -->
   <hud-control>
     <marca-hud>
       <pulso-hud></pulso-hud>
-      [TRANSMISIÓN ENIGMÁTICA // SURINAM 05°50′N]
+      [SURINAM 05°50′N // 10 MÓDULOS]
     </marca-hud>
-    <indicador-secretos id="indicadorSecretos">PASA EL CURSOR POR LA RED PARA REVELAR EL TEXTO [0/5]</indicador-secretos>
+    <indicador-secretos id="indicadorSecretos">PASA EL CURSOR POR LA RED PARA REVELAR [0/10]</indicador-secretos>
   </hud-control>
 
   <ensayo>
@@ -39,42 +39,38 @@
       <campo-apertura>
         <onda-pulso></onda-pulso>
         <emisor-central>
-          <marca-frecuencia>✦ FRECUENCIA 00 ✦</marca-frecuencia>
-          <etiqueta-protocolo>INICIAR DESCODIFICACIÓN DEL ENSAYO</etiqueta-protocolo>
+          <marca-frecuencia>✦ PROTOCOLO 00 ✦</marca-frecuencia>
+          <etiqueta-protocolo>INICIAR DESCODIFICACIÓN DEL ENSAYO EN 10 MÓDULOS</etiqueta-protocolo>
         </emisor-central>
         <composicion-hero>
           <texto-saludo>Buenos días.</texto-saludo>
           <subtitulo-enigma>
-            El siguiente ensayo no es un texto estático visible: es una red de tecnologías clandestinas ocultas en la penumbra. Pasa el cursor por los nodos para descifrar cada capa de la historia.
+            El siguiente ensayo no es un texto estático visible: es una red de 10 módulos de tecnologías clandestinas ocultas en la penumbra. Pasa el cursor por cada módulo para descifrar la historia paso a paso.
           </subtitulo-enigma>
         </composicion-hero>
         <flecha-descenso>
-          <guia-hilo>EXPLORAR LA RED</guia-hilo>
+          <guia-hilo>EXPLORAR LOS 10 MÓDULOS</guia-hilo>
           <linea-guia></linea-guia>
         </flecha-descenso>
       </campo-apertura>
     </saludo>
 
     <!-- ==========================================================================
-         * / * /  01. ORIGEN : LA RED LATENTE Y LA DESMITIFICACIÓN DEL OBJETO  / * / *
-         * / * /  Diagrama Vivo: De los artefactos aislados a la red comunitaria  / * / *
+         * / * /  01. MÓDULO : LA VISIÓN INICIAL // EL ARTEFACTO AISLADO  / * / *
          ========================================================================== -->
-    <origen id="sec-01" data-section="01">
+    <modulo-artefacto id="sec-01" data-section="01">
       <encabezado-enigma>
         <numero-enigma>01</numero-enigma>
-        <titulo-enigma>ORIGEN // LA RESPUESTA CREATIVA FRENTE A UNA LIMITACIÓN</titulo-enigma>
+        <titulo-enigma>LA VISIÓN INICIAL // EL ARTEFACTO AISLADO</titulo-enigma>
       </encabezado-enigma>
 
-      <!-- DIAGRAMA 1: EL CAMPO DE ARTEFACTOS Y LA ALERTA DE ERROR COGNITIVO -->
-      <escenario-enigma class="diagrama-origen">
-        <canvas id="redOrigenCanvas"></canvas>
-
+      <escenario-enigma class="diagrama-compacto">
+        <canvas id="canvasModulo01"></canvas>
         <nodos-diagrama>
-          <!-- Nodo 1.1: Visión Inicial de Artefactos -->
-          <nodo-revelador class="nodo-artefacto" data-index="1" style="--posX: 22%; --posY: 28%;">
+          <nodo-revelador class="nodo-artefacto" data-index="1" style="--posX: 50%; --posY: 50%;">
             <ancla-luz>
               <icono-nodo>⎔</icono-nodo>
-              <etiqueta-ancla>COMPUTADOR / CELULAR</etiqueta-ancla>
+              <etiqueta-ancla>COMPUTADOR / CELULAR [OBJETO DIGITAL]</etiqueta-ancla>
             </ancla-luz>
             <frase-revelada>
               <pensamiento>
@@ -82,12 +78,26 @@
               </pensamiento>
             </frase-revelada>
           </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
+    </modulo-artefacto>
 
-          <!-- Nodo 1.2: El Pulso Rojo de Ruptura (Alerta) -->
-          <nodo-revelador class="nodo-alerta-roja" data-index="2" style="--posX: 50%; --posY: 42%;">
+    <!-- ==========================================================================
+         * / * /  02. MÓDULO : LA RUPTURA // ERROR COGNITIVO  / * / *
+         ========================================================================== -->
+    <modulo-ruptura id="sec-02" data-section="02">
+      <encabezado-enigma>
+        <numero-enigma>02</numero-enigma>
+        <titulo-enigma>LA RUPTURA // ERROR COGNITIVO</titulo-enigma>
+      </encabezado-enigma>
+
+      <escenario-enigma class="diagrama-compacto">
+        <canvas id="canvasModulo02"></canvas>
+        <nodos-diagrama>
+          <nodo-revelador class="nodo-alerta-roja" data-index="2" style="--posX: 50%; --posY: 50%;">
             <ancla-luz class="alerta-nucleo">
               <icono-nodo>▲</icono-nodo>
-              <etiqueta-ancla>ERROR COGNITIVO</etiqueta-ancla>
+              <etiqueta-ancla>RUPTURA // ERROR COGNITIVO</etiqueta-ancla>
             </ancla-luz>
             <frase-revelada>
               <alerta-limitacion>
@@ -98,12 +108,26 @@
               </alerta-limitacion>
             </frase-revelada>
           </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
+    </modulo-ruptura>
 
-          <!-- Nodo 1.3: Red Comunitaria de Surinam -->
-          <nodo-revelador class="nodo-comunidad" data-index="3" style="--posX: 78%; --posY: 32%;">
-            <ancla-luz>
+    <!-- ==========================================================================
+         * / * /  03. MÓDULO : SURINAM // EL SISTEMA COMUNITARIO  / * / *
+         ========================================================================== -->
+    <modulo-comunidad id="sec-03" data-section="03">
+      <encabezado-enigma>
+        <numero-enigma>03</numero-enigma>
+        <titulo-enigma>SURINAM // EL SISTEMA COMUNITARIO [05°50′N]</titulo-enigma>
+      </encabezado-enigma>
+
+      <escenario-enigma class="diagrama-compacto">
+        <canvas id="canvasModulo03"></canvas>
+        <nodos-diagrama>
+          <nodo-revelador class="nodo-comunidad" data-index="3" style="--posX: 50%; --posY: 50%;">
+            <ancla-luz class="cyan-nucleo">
               <icono-nodo>∿</icono-nodo>
-              <etiqueta-ancla>SURINAM [05°50′N]</etiqueta-ancla>
+              <etiqueta-ancla>SURINAM // SISTEMA DE RESPUESTA COLECTIVA</etiqueta-ancla>
             </ancla-luz>
             <frase-revelada>
               <definicion>
@@ -111,12 +135,26 @@
               </definicion>
             </frase-revelada>
           </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
+    </modulo-comunidad>
 
-          <!-- Nodo 1.4: Vigilancia Colonial -->
-          <nodo-revelador class="nodo-vigilancia" data-index="4" style="--posX: 30%; --posY: 75%;">
+    <!-- ==========================================================================
+         * / * /  04. MÓDULO : LA CONDICIÓN // VIGILANCIA COLONIAL  / * / *
+         ========================================================================== -->
+    <modulo-vigilancia id="sec-04" data-section="04">
+      <encabezado-enigma>
+        <numero-enigma>04</numero-enigma>
+        <titulo-enigma>LA CONDICIÓN // VIGILANCIA COLONIAL Y RIESGO</titulo-enigma>
+      </encabezado-enigma>
+
+      <escenario-enigma class="diagrama-compacto">
+        <canvas id="canvasModulo04"></canvas>
+        <nodos-diagrama>
+          <nodo-revelador class="nodo-vigilancia" data-index="4" style="--posX: 50%; --posY: 50%;">
             <ancla-luz class="peligro-nucleo">
               <icono-nodo>◉</icono-nodo>
-              <etiqueta-ancla>VIGILANCIA COLONIAL</etiqueta-ancla>
+              <etiqueta-ancla>ESTADO DE VIGILANCIA PERMANENTE</etiqueta-ancla>
             </ancla-luz>
             <frase-revelada>
               <vigilancia>
@@ -124,12 +162,26 @@
               </vigilancia>
             </frase-revelada>
           </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
+    </modulo-vigilancia>
 
-          <!-- Nodo 1.5: Constelación de Recursos y Memoria Viva -->
-          <nodo-revelador class="nodo-memoria" data-index="5" style="--posX: 70%; --posY: 78%;">
-            <ancla-luz>
+    <!-- ==========================================================================
+         * / * /  05. MÓDULO : LA CONSTELACIÓN // MEMORIA VIVA & TRASLACIÓN  / * / *
+         ========================================================================== -->
+    <modulo-constelacion id="sec-05" data-section="05">
+      <encabezado-enigma>
+        <numero-enigma>05</numero-enigma>
+        <titulo-enigma>LA CONSTELACIÓN // MEMORIA VIVA Y TRASLACIÓN DIGITAL</titulo-enigma>
+      </encabezado-enigma>
+
+      <escenario-enigma class="diagrama-compacto">
+        <canvas id="canvasModulo05"></canvas>
+        <nodos-diagrama>
+          <nodo-revelador class="nodo-memoria" data-index="5" style="--posX: 50%; --posY: 50%;">
+            <ancla-luz class="ambar-nucleo">
               <icono-nodo>✦</icono-nodo>
-              <etiqueta-ancla>MEMORIA VIVA</etiqueta-ancla>
+              <etiqueta-ancla>MEMORIA VIVA // TRASLACIÓN DIGITAL</etiqueta-ancla>
             </ancla-luz>
             <frase-revelada>
               <memoria>
@@ -149,25 +201,22 @@
           </nodo-revelador>
         </nodos-diagrama>
       </escenario-enigma>
-    </origen>
+    </modulo-constelacion>
 
     <!-- ==========================================================================
-         * / * /  02. PRIMERA TECNOLOGÍA : EL MITO DE ANANSI  / * / *
-         * / * /  Diagrama Vivo: Telaraña fractal y código de camuflaje  / * / *
+         * / * /  06. MÓDULO : TECNOLOGÍA 01 // EL MITO DE ANANSI & CAMUFLAJE  / * / *
          ========================================================================== -->
-    <historias-anansi id="sec-02" data-section="02">
+    <modulo-anansi id="sec-06" data-section="06">
       <encabezado-enigma>
-        <numero-enigma>02</numero-enigma>
+        <numero-enigma>06</numero-enigma>
         <titulo-enigma>PRIMERA TECNOLOGÍA // EL MITO DE ANANSI [CRIPTOGRAFÍA ORAL]</titulo-enigma>
       </encabezado-enigma>
 
-      <!-- DIAGRAMA 2: TELARAÑA Y TERMINAL DE CÓDIGO CRIPTOGRÁFICO INTERACTIVO -->
-      <escenario-enigma class="diagrama-anansi">
+      <escenario-enigma class="diagrama-anansi-modulo">
         <canvas id="anansiWebCanvas"></canvas>
-
         <nodos-diagrama>
           <!-- Centro de la telaraña: El Mito -->
-          <nodo-revelador class="nodo-anansi-centro" style="--posX: 50%; --posY: 22%;">
+          <nodo-revelador class="nodo-anansi-centro" data-index="6" style="--posX: 50%; --posY: 24%;">
             <ancla-luz class="violeta-nucleo">
               <icono-nodo>⎈</icono-nodo>
               <etiqueta-ancla>CUENTOS DE ANANSI</etiqueta-ancla>
@@ -178,7 +227,7 @@
           </nodo-revelador>
 
           <!-- Terminal Criptográfica interactiva -->
-          <nodo-revelador class="nodo-terminal-sintaxis" style="--posX: 25%; --posY: 58%;">
+          <nodo-revelador class="nodo-terminal-sintaxis" data-index="6" style="--posX: 50%; --posY: 68%;">
             <ancla-luz class="violeta-nucleo">
               <icono-nodo>&lt;/&gt;</icono-nodo>
               <etiqueta-ancla>CÓDIGO DE CAMUFLAJE</etiqueta-ancla>
@@ -207,9 +256,23 @@
               </camuflaje>
             </frase-revelada>
           </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
+    </modulo-anansi>
 
-          <!-- Nodo de Segunda Capa de Información -->
-          <nodo-revelador class="nodo-segunda-capa" style="--posX: 75%; --posY: 58%;">
+    <!-- ==========================================================================
+         * / * /  07. MÓDULO : LA SEGUNDA CAPA // EL SECRETO COMO PARTICIPACIÓN  / * / *
+         ========================================================================== -->
+    <modulo-capas id="sec-07" data-section="07">
+      <encabezado-enigma>
+        <numero-enigma>07</numero-enigma>
+        <titulo-enigma>LA SEGUNDA CAPA // EL SECRETO COMO PARTICIPACIÓN</titulo-enigma>
+      </encabezado-enigma>
+
+      <escenario-enigma class="diagrama-compacto">
+        <canvas id="canvasModulo07"></canvas>
+        <nodos-diagrama>
+          <nodo-revelador class="nodo-segunda-capa" data-index="7" style="--posX: 50%; --posY: 50%;">
             <ancla-luz class="violeta-nucleo">
               <icono-nodo>⚿</icono-nodo>
               <etiqueta-ancla>SEGUNDA CAPA OCULTA</etiqueta-ancla>
@@ -228,26 +291,24 @@
           </nodo-revelador>
         </nodos-diagrama>
       </escenario-enigma>
-    </historias-anansi>
+    </modulo-capas>
 
     <!-- ==========================================================================
-         * / * /  03. SEGUNDA TECNOLOGÍA : LOS PAÑUELOS ANGISA  / * / *
-         * / * /  Diagrama Vivo: Semiesfera de rayos y origami cinético  / * / *
+         * / * /  08. MÓDULO : TECNOLOGÍA 02 // LOS PAÑUELOS ANGISAS  / * / *
          ========================================================================== -->
-    <panuelos-angisa id="sec-03" data-section="03">
+    <modulo-angisas id="sec-08" data-section="08">
       <encabezado-enigma>
-        <numero-enigma>03</numero-enigma>
-        <titulo-enigma>SEGUNDA TECNOLOGÍA // LOS PAÑUELOS ANGISA [TOPOLOGÍA TEXTIL]</titulo-enigma>
+        <numero-enigma>08</numero-enigma>
+        <titulo-enigma>SEGUNDA TECNOLOGÍA // LOS PAÑUELOS ANGISAS [TOPOLOGÍA TEXTIL]</titulo-enigma>
       </encabezado-enigma>
 
-      <!-- DIAGRAMA 3: SEMIESFERA DE RAYOS Y TRÍADA DE PLIEGUES DESDOBLABLES -->
-      <escenario-enigma class="diagrama-angisa">
+      <escenario-enigma class="diagrama-angisa-modulo">
         <canvas id="rayosCanvas"></canvas>
         <etiqueta-transicion>um estado de transição</etiqueta-transicion>
 
         <nodos-diagrama>
           <!-- Origen de la tela -->
-          <nodo-revelador class="nodo-angisa-intro" style="--posX: 50%; --posY: 18%;">
+          <nodo-revelador class="nodo-angisa-intro" data-index="8" style="--posX: 50%; --posY: 18%;">
             <ancla-luz class="magenta-nucleo">
               <icono-nodo>⟐</icono-nodo>
               <etiqueta-ancla>LAS ANGISAS</etiqueta-ancla>
@@ -267,7 +328,7 @@
           </nodo-revelador>
 
           <!-- Pliegue 1: El Secreto -->
-          <nodo-revelador class="nodo-pliegue-1" style="--posX: 22%; --posY: 64%;">
+          <nodo-revelador class="nodo-pliegue-1" data-index="8" style="--posX: 22%; --posY: 64%;">
             <ancla-luz class="cyan-nucleo">
               <icono-nodo>01</icono-nodo>
               <etiqueta-ancla>PLIEGUE: EL SECRETO</etiqueta-ancla>
@@ -280,7 +341,7 @@
           </nodo-revelador>
 
           <!-- Pliegue 2: La Alerta -->
-          <nodo-revelador class="nodo-pliegue-2" style="--posX: 50%; --posY: 64%;">
+          <nodo-revelador class="nodo-pliegue-2" data-index="8" style="--posX: 50%; --posY: 64%;">
             <ancla-luz class="magenta-nucleo">
               <icono-nodo>02</icono-nodo>
               <etiqueta-ancla>PLIEGUE: LA ALERTA</etiqueta-ancla>
@@ -293,7 +354,7 @@
           </nodo-revelador>
 
           <!-- Pliegue 3: La Resistencia & Lógica -->
-          <nodo-revelador class="nodo-pliegue-3" style="--posX: 78%; --posY: 64%;">
+          <nodo-revelador class="nodo-pliegue-3" data-index="8" style="--posX: 78%; --posY: 64%;">
             <ancla-luz class="ambar-nucleo">
               <icono-nodo>03</icono-nodo>
               <etiqueta-ancla>PLIEGUE: RESISTENCIA</etiqueta-ancla>
@@ -312,25 +373,22 @@
           </nodo-revelador>
         </nodos-diagrama>
       </escenario-enigma>
-    </panuelos-angisa>
+    </modulo-angisas>
 
     <!-- ==========================================================================
-         * / * /  04. TERCERA TECNOLOGÍA : LAS CANCIONES EN EL RÍO  / * / *
-         * / * /  Diagrama Vivo: Espectro hidro-acústico y transmisión oral  / * / *
+         * / * /  09. MÓDULO : TECNOLOGÍA 03 // LAS CANCIONES EN EL RÍO  / * / *
          ========================================================================== -->
-    <canciones-rio id="sec-04" data-section="04">
+    <modulo-rio id="sec-09" data-section="09">
       <encabezado-enigma>
-        <numero-enigma>04</numero-enigma>
+        <numero-enigma>09</numero-enigma>
         <titulo-enigma>TERCERA TECNOLOGÍA // LAS CANCIONES EN EL RÍO [ACÚSTICA FLUVIAL]</titulo-enigma>
       </encabezado-enigma>
 
-      <!-- DIAGRAMA 4: ESPECTROGRAMA FLUVIAL CUÁNTICO Y TRANSMISIÓN DE AUDIO -->
-      <escenario-enigma class="diagrama-rio">
+      <escenario-enigma class="diagrama-rio-modulo">
         <canvas id="rioCanvas"></canvas>
-
         <nodos-diagrama>
-          <!-- Nodo 4.1: Canciones y Sonido Fluvial -->
-          <nodo-revelador class="nodo-rio-intro" style="--posX: 30%; --posY: 30%;">
+          <!-- Nodo 9.1: Canciones y Sonido Fluvial -->
+          <nodo-revelador class="nodo-rio-intro" data-index="9" style="--posX: 30%; --posY: 35%;">
             <ancla-luz class="cyan-nucleo">
               <icono-nodo>≋</icono-nodo>
               <etiqueta-ancla>EL RÍO COMO MEDIO</etiqueta-ancla>
@@ -346,8 +404,8 @@
             </frase-revelada>
           </nodo-revelador>
 
-          <!-- Nodo 4.2: Experiencia Digital y QR -->
-          <nodo-revelador class="nodo-rio-audio" style="--posX: 70%; --posY: 30%;">
+          <!-- Nodo 9.2: Experiencia Digital y QR -->
+          <nodo-revelador class="nodo-rio-audio" data-index="9" style="--posX: 70%; --posY: 35%;">
             <ancla-luz class="ambar-nucleo">
               <icono-nodo>⏵</icono-nodo>
               <etiqueta-ancla>VOZ & QR</etiqueta-ancla>
@@ -370,25 +428,24 @@
           </nodo-revelador>
         </nodos-diagrama>
       </escenario-enigma>
-    </canciones-rio>
+    </modulo-rio>
 
     <!-- ==========================================================================
-         * / * /  05. EPÍLOGO : SÍNTESIS // MANIFIESTO SOLAR & LIBERTAD  / * / *
-         * / * /  Diagrama de Síntesis Ondulatoria: Río, Memoria, Secreto, Sonido, Resistencia, Libertad  / * / *
+         * / * /  10. MÓDULO : SÍNTESIS // FLUJO ONDULATORIO & LIBERTAD  / * / *
          ========================================================================== -->
-    <cierre id="sec-05" data-section="05">
+    <modulo-sintesis id="sec-10" data-section="10">
       <encabezado-enigma>
-        <numero-enigma>05</numero-enigma>
-        <titulo-enigma>SÍNTESIS // FLUJO ONDULATORIO DE LA LIBERTAD</titulo-enigma>
+        <numero-enigma>10</numero-enigma>
+        <titulo-enigma>SÍNTESIS FINAL // FLUJO ONDULATORIO & LIBERTAD</titulo-enigma>
       </encabezado-enigma>
 
-      <!-- DIAGRAMA 5: FLUJO ONDULATORIO ARMÓNICO (EXACTO A LA REFERENCIA) -->
+      <!-- DIAGRAMA 10: FLUJO ONDULATORIO ARMÓNICO COMPLETO -->
       <escenario-enigma class="diagrama-cierre-armonico">
         <canvas id="cierreCanvas"></canvas>
 
         <nodos-diagrama class="nodos-onda-armonica">
-          <!-- Nodo 5.1: El río como tecnología -->
-          <nodo-revelador class="nodo-onda nodo-onda-rio" data-index="1" style="--posX: 14%; --posY: 64%;">
+          <!-- Nodo 10.1: El río como tecnología -->
+          <nodo-revelador class="nodo-onda nodo-onda-rio" data-index="10" style="--posX: 14%; --posY: 64%;">
             <ancla-onda>
               <punto-onda></punto-onda>
               <etiqueta-onda>el río como tecnología</etiqueta-onda>
@@ -400,8 +457,8 @@
             </frase-revelada>
           </nodo-revelador>
 
-          <!-- Nodo 5.2: Memoria -->
-          <nodo-revelador class="nodo-onda nodo-onda-memoria" data-index="2" style="--posX: 32%; --posY: 35%;">
+          <!-- Nodo 10.2: Memoria -->
+          <nodo-revelador class="nodo-onda nodo-onda-memoria" data-index="10" style="--posX: 32%; --posY: 35%;">
             <ancla-onda class="etiqueta-arriba">
               <etiqueta-onda>memoria</etiqueta-onda>
               <punto-onda></punto-onda>
@@ -413,8 +470,8 @@
             </frase-revelada>
           </nodo-revelador>
 
-          <!-- Nodo 5.3: Secreto -->
-          <nodo-revelador class="nodo-onda nodo-onda-secreto" data-index="3" style="--posX: 48%; --posY: 38%;">
+          <!-- Nodo 10.3: Secreto -->
+          <nodo-revelador class="nodo-onda nodo-onda-secreto" data-index="10" style="--posX: 48%; --posY: 38%;">
             <ancla-onda class="etiqueta-arriba">
               <etiqueta-onda>secreto</etiqueta-onda>
               <punto-onda></punto-onda>
@@ -426,8 +483,8 @@
             </frase-revelada>
           </nodo-revelador>
 
-          <!-- Nodo 5.4: Sonido -->
-          <nodo-revelador class="nodo-onda nodo-onda-sonido" data-index="4" style="--posX: 64%; --posY: 72%;">
+          <!-- Nodo 10.4: Sonido -->
+          <nodo-revelador class="nodo-onda nodo-onda-sonido" data-index="10" style="--posX: 64%; --posY: 72%;">
             <ancla-onda class="etiqueta-arriba">
               <etiqueta-onda>sonido</etiqueta-onda>
               <punto-onda></punto-onda>
@@ -439,8 +496,8 @@
             </frase-revelada>
           </nodo-revelador>
 
-          <!-- Nodo 5.5: Resistencia -->
-          <nodo-revelador class="nodo-onda nodo-onda-resistencia" data-index="5" style="--posX: 79%; --posY: 65%;">
+          <!-- Nodo 10.5: Resistencia -->
+          <nodo-revelador class="nodo-onda nodo-onda-resistencia" data-index="10" style="--posX: 79%; --posY: 65%;">
             <ancla-onda>
               <punto-onda></punto-onda>
               <etiqueta-onda>resistencia</etiqueta-onda>
@@ -452,8 +509,8 @@
             </frase-revelada>
           </nodo-revelador>
 
-          <!-- Nodo 5.6: Libertad & Reflexión Final -->
-          <nodo-revelador class="nodo-onda nodo-onda-libertad" data-index="6" style="--posX: 92%; --posY: 35%;">
+          <!-- Nodo 10.6: Libertad & Reflexión Final -->
+          <nodo-revelador class="nodo-onda nodo-onda-libertad" data-index="10" style="--posX: 92%; --posY: 35%;">
             <ancla-onda class="etiqueta-arriba">
               <etiqueta-onda>libertad</etiqueta-onda>
               <punto-onda class="punto-solar"></punto-onda>
@@ -489,7 +546,7 @@
           </nodo-revelador>
         </nodos-diagrama>
       </escenario-enigma>
-    </cierre>
+    </modulo-sintesis>
 
   </ensayo>
 

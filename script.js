@@ -1,16 +1,21 @@
 /**
- * TECNOLOGÍAS DEL SECRETO — MOTOR VISUAL DRAMÁTICO & ENSAYO EN CÓDIGO
- * Arquitectura Enigmática Unificada:
+ * TECNOLOGÍAS DEL SECRETO — MOTOR VISUAL INTERACTIVO EN 10 MÓDULOS
+ * Arquitectura Diagramática:
  * 1. Haz de Escaneo Lumínico Cursor (#cursorGlow)
- * 2. Contador de Secretos Descifrados en HUD (#indicadorSecretos)
- * 3. Lienzo Ambiental Adaptativo (#ambientCanvas)
- * 4. Red Neural de Origen y Ruptura (#redOrigenCanvas)
- * 5. Telaraña Fractal de Anansi (#anansiWebCanvas)
- * 6. Semiesfera de Rayos de Fibra Óptica (#rayosCanvas)
- * 7. Espectrograma Cuántico Fluvial (#rioCanvas)
- * 8. Constelación Solar & Manifiesto de Libertad (#cierreCanvas)
- * 9. Desencriptación y Bloqueo de Nodos Reveladores (Click para fijar)
- * 10. Síntesis de Voz Neural (#voz)
+ * 2. Contador Dinámico de Revelación en HUD (#indicadorSecretos)
+ * 3. Lienzo Ambiental Adaptativo (#ambientCanvas) en 10 fases cromáticas
+ * 4. Canvases de los 10 Módulos:
+ *    - Mod 01: Cuadrícula de artefactos y escaneo digital (#canvasModulo01)
+ *    - Mod 02: Ruptura cognitiva y ondas de choque rojas (#canvasModulo02)
+ *    - Mod 03: Red comunitaria de Surinam en cyan (#canvasModulo03)
+ *    - Mod 04: Radar y vigilancia colonial en rojo/carmesí (#canvasModulo04)
+ *    - Mod 05: Constelación de memoria viva y recursos (#canvasModulo05)
+ *    - Mod 06: Telaraña fractal de Anansi y criptografía (#anansiWebCanvas)
+ *    - Mod 07: Matriz de la segunda capa oculta (#canvasModulo07)
+ *    - Mod 08: Semiesfera de rayos textiles y 3 pliegues (#rayosCanvas)
+ *    - Mod 09: Espectrograma hidro-acústico del río (#rioCanvas)
+ *    - Mod 10: Flujo ondulatorio armónico y libertad (#cierreCanvas - Exacto a la referencia)
+ * 5. Síntesis de voz viva (#voz)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,18 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (indicadorHUD) {
       const count = discoveredNodes.size;
       const total = allNodes.length;
-      indicadorHUD.textContent = `PASA EL CURSOR POR LA RED PARA REVELAR EL TEXTO [${count}/${total} DESCIFRADOS]`;
+      indicadorHUD.textContent = `PASA EL CURSOR POR LA RED PARA REVELAR [${count}/${total} DESCIFRADOS]`;
       if (count === total) {
-        indicadorHUD.textContent = `⚡ [${count}/${total}] TRANSMISIÓN TOTALMENTE DESCODIFICADA // TEXTO VIVO`;
+        indicadorHUD.textContent = `✦ [${count}/${total}] TRANSMISIÓN TOTALMENTE DESCODIFICADA // TEXTO VIVO`;
         indicadorHUD.style.color = '#00f0ff';
-        indicadorHUD.style.borderColor = 'rgba(0, 240, 255, 0.6)';
-        indicadorHUD.style.boxShadow = '0 0 15px rgba(0, 240, 255, 0.4)';
       }
     }
   }
 
   allNodes.forEach((node, idx) => {
-    // Permitir clic para fijar/desfijar la revelación
+    // Permitir clic para fijar la revelación
     node.addEventListener('click', () => {
       node.classList.toggle('fijado');
       discoveredNodes.add(idx);
@@ -75,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // 3. LIENZO AMBIENTAL CROMÁTICO ADAPTATIVO (#ambientCanvas)
+  // 3. LIENZO AMBIENTAL ADAPTATIVO EN 10 FASES CROMÁTICAS (#ambientCanvas)
   // ==========================================================================
   const ambientContainer = document.querySelector('#ambientCanvas');
   if (ambientContainer) {
@@ -90,28 +93,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sectionThemes = {
       '00': { r: 0, g: 240, b: 255 },    // Cyan Apertura
-      '01': { r: 0, g: 240, b: 255 },    // Cyan Origen
-      '02': { r: 168, g: 85, b: 247 },   // Violeta Anansi
-      '03': { r: 255, g: 0, b: 127 },    // Magenta Angisa
-      '04': { r: 0, g: 229, b: 255 },    // Turquesa Río
-      '05': { r: 255, g: 184, b: 0 }     // Ámbar Cierre
+      '01': { r: 0, g: 240, b: 255 },    // Mod 01: Artefacto
+      '02': { r: 239, g: 68, b: 68 },    // Mod 02: Ruptura / Error Rojo
+      '03': { r: 0, g: 240, b: 255 },    // Mod 03: Surinam Cyan
+      '04': { r: 244, g: 63, b: 94 },    // Mod 04: Vigilancia Rosa Oscuro
+      '05': { r: 255, g: 184, b: 0 },    // Mod 05: Constelación Ámbar
+      '06': { r: 168, g: 85, b: 247 },   // Mod 06: Anansi Violeta
+      '07': { r: 192, g: 132, b: 252 },  // Mod 07: Segunda Capa Púrpura
+      '08': { r: 255, g: 0, b: 127 },    // Mod 08: Angisas Magenta
+      '09': { r: 0, g: 229, b: 255 },    // Mod 09: Río Turquesa
+      '10': { r: 250, g: 204, b: 21 }     // Mod 10: Síntesis / Libertad Solar
     };
 
     let currentRGB = { r: 0, g: 240, b: 255 };
     let targetRGB = { r: 0, g: 240, b: 255 };
 
-    const sections = document.querySelectorAll('saludo, origen, historias-anansi, panuelos-angisa, canciones-rio, cierre');
+    const sections = document.querySelectorAll(
+      'saludo, modulo-artefacto, modulo-ruptura, modulo-comunidad, modulo-vigilancia, modulo-constelacion, modulo-anansi, modulo-capas, modulo-angisas, modulo-rio, modulo-sintesis'
+    );
 
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const secId = entry.target.getAttribute('data-section') || '01';
+          const secId = entry.target.getAttribute('data-section') || '00';
           if (sectionThemes[secId]) {
             targetRGB = sectionThemes[secId];
           }
         }
       });
-    }, { root: null, rootMargin: '-20% 0px -40% 0px', threshold: 0.2 });
+    }, { root: null, rootMargin: '-20% 0px -40% 0px', threshold: 0.15 });
 
     sections.forEach((sec) => sectionObserver.observe(sec));
 
@@ -169,129 +179,209 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 4. DIAGRAMA 1: RED DE ORIGEN Y FILAMENTOS (#redOrigenCanvas)
+  // 4. CANVASES DE LOS 10 MÓDULOS DIAGRAMÁTICOS
   // ==========================================================================
-  const redOrigenCanvas = document.getElementById('redOrigenCanvas');
-  if (redOrigenCanvas) {
-    const ctx = redOrigenCanvas.getContext('2d');
-    let time = 0;
 
-    const backgroundNodes = Array.from({ length: 45 }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.0006,
-      vy: (Math.random() - 0.5) * 0.0006,
-      size: Math.random() * 2 + 1,
-      baseAlpha: Math.random() * 0.4 + 0.2
-    }));
-
-    function drawRedOrigen() {
-      const rect = redOrigenCanvas.getBoundingClientRect();
+  // --- MÓDULO 01: CUADRÍCULA DE ARTEFACTOS Y ESCANEO (#canvasModulo01) ---
+  const canvas01 = document.getElementById('canvasModulo01');
+  if (canvas01) {
+    const ctx = canvas01.getContext('2d');
+    let t = 0;
+    function draw01() {
+      const rect = canvas01.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-      const w = rect.width;
-      const h = rect.height;
-
-      if (redOrigenCanvas.width !== Math.floor(w * dpr) || redOrigenCanvas.height !== Math.floor(h * dpr)) {
-        redOrigenCanvas.width = Math.floor(w * dpr);
-        redOrigenCanvas.height = Math.floor(h * dpr);
+      const w = rect.width, h = rect.height;
+      if (canvas01.width !== Math.floor(w * dpr) || canvas01.height !== Math.floor(h * dpr)) {
+        canvas01.width = Math.floor(w * dpr);
+        canvas01.height = Math.floor(h * dpr);
         ctx.scale(dpr, dpr);
       }
-
       ctx.clearRect(0, 0, w, h);
-      time += 0.016;
+      t += 0.02;
 
-      const originNodes = [
-        { x: w * 0.22, y: h * 0.28, color: '#00f0ff', label: 'ARTEFACTO' },
-        { x: w * 0.50, y: h * 0.42, color: '#ff003c', label: 'ERROR' },
-        { x: w * 0.78, y: h * 0.32, color: '#00f0ff', label: 'SURINAM' },
-        { x: w * 0.30, y: h * 0.75, color: '#ff003c', label: 'VIGILANCIA' },
-        { x: w * 0.70, y: h * 0.78, color: '#ffb800', label: 'MEMORIA' }
-      ];
-
-      const connections = [
-        [0, 1], [1, 2], [0, 3], [3, 4], [2, 4], [1, 4]
-      ];
-
-      connections.forEach(([i, j]) => {
-        const n1 = originNodes[i];
-        const n2 = originNodes[j];
-        const isAlert = n1.color === '#ff003c' || n2.color === '#ff003c';
-
-        ctx.save();
+      const cx = w * 0.5, cy = h * 0.5;
+      for (let r = 50; r <= 180; r += 35) {
         ctx.beginPath();
-        ctx.moveTo(n1.x, n1.y);
-        ctx.lineTo(n2.x, n2.y);
-        ctx.strokeStyle = isAlert ? 'rgba(255, 0, 60, 0.35)' : 'rgba(0, 240, 255, 0.3)';
-        ctx.lineWidth = isAlert ? 1.6 : 1.2;
-        ctx.setLineDash([6, 6]);
-        ctx.lineDashOffset = -time * 20;
+        ctx.arc(cx, cy, r + Math.sin(t * 1.5 + r) * 4, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(0, 240, 255, ${0.1 + 0.15 * Math.sin(t + r)})`;
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 8]);
         ctx.stroke();
-        ctx.restore();
+      }
+      ctx.setLineDash([]);
+      requestAnimationFrame(draw01);
+    }
+    draw01();
+  }
 
-        const pulseT = ((time * 0.4 + (i + j) * 0.2) % 1);
-        const px = n1.x + (n2.x - n1.x) * pulseT;
-        const py = n1.y + (n2.y - n1.y) * pulseT;
+  // --- MÓDULO 02: RUPTURA COGNITIVA Y PULSOS ROJOS (#canvasModulo02) ---
+  const canvas02 = document.getElementById('canvasModulo02');
+  if (canvas02) {
+    const ctx = canvas02.getContext('2d');
+    let t = 0;
+    function draw02() {
+      const rect = canvas02.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width, h = rect.height;
+      if (canvas02.width !== Math.floor(w * dpr) || canvas02.height !== Math.floor(h * dpr)) {
+        canvas02.width = Math.floor(w * dpr);
+        canvas02.height = Math.floor(h * dpr);
+        ctx.scale(dpr, dpr);
+      }
+      ctx.clearRect(0, 0, w, h);
+      t += 0.025;
 
-        ctx.save();
+      const cx = w * 0.5, cy = h * 0.5;
+      for (let i = 0; i < 3; i++) {
+        const rad = ((t * 60 + i * 80) % 240);
+        const alpha = Math.max(0, 1 - rad / 240) * 0.4;
         ctx.beginPath();
-        ctx.arc(px, py, 3, 0, Math.PI * 2);
-        ctx.fillStyle = isAlert ? '#ff003c' : '#ffffff';
-        ctx.shadowColor = isAlert ? '#ff003c' : '#00f0ff';
-        ctx.shadowBlur = 10;
-        ctx.fill();
-        ctx.restore();
-      });
+        ctx.arc(cx, cy, rad, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(239, 68, 68, ${alpha})`;
+        ctx.lineWidth = 1.8;
+        ctx.shadowColor = '#ef4444';
+        ctx.shadowBlur = 12;
+        ctx.stroke();
+      }
+      ctx.shadowBlur = 0;
+      requestAnimationFrame(draw02);
+    }
+    draw02();
+  }
 
-      backgroundNodes.forEach((p, idx) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0) p.x = 1;
-        if (p.x > 1) p.x = 0;
-        if (p.y < 0) p.y = 1;
-        if (p.y > 1) p.y = 0;
+  // --- MÓDULO 03: SURINAM Y RED COMUNITARIA (#canvasModulo03) ---
+  const canvas03 = document.getElementById('canvasModulo03');
+  if (canvas03) {
+    const ctx = canvas03.getContext('2d');
+    let t = 0;
+    const pts = Array.from({ length: 24 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.001,
+      vy: (Math.random() - 0.5) * 0.001
+    }));
+    function draw03() {
+      const rect = canvas03.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width, h = rect.height;
+      if (canvas03.width !== Math.floor(w * dpr) || canvas03.height !== Math.floor(h * dpr)) {
+        canvas03.width = Math.floor(w * dpr);
+        canvas03.height = Math.floor(h * dpr);
+        ctx.scale(dpr, dpr);
+      }
+      ctx.clearRect(0, 0, w, h);
+      t += 0.015;
 
-        const px = p.x * w;
-        const py = p.y * h;
+      pts.forEach((p, idx) => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = 1; if (p.x > 1) p.x = 0;
+        if (p.y < 0) p.y = 1; if (p.y > 1) p.y = 0;
 
-        ctx.save();
+        const px = p.x * w, py = p.y * h;
         ctx.beginPath();
-        ctx.arc(px, py, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 240, 255, ${p.baseAlpha * 0.5})`;
+        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.7)';
         ctx.fill();
-        ctx.restore();
 
-        for (let j = idx + 1; j < backgroundNodes.length; j++) {
-          const p2 = backgroundNodes[j];
-          const p2x = p2.x * w;
-          const p2y = p2.y * h;
-          const dist = Math.hypot(px - p2x, py - p2y);
-          if (dist < 80) {
-            ctx.save();
+        for (let j = idx + 1; j < pts.length; j++) {
+          const p2 = pts[j];
+          const dist = Math.hypot(px - p2.x * w, py - p2.y * h);
+          if (dist < 120) {
             ctx.beginPath();
             ctx.moveTo(px, py);
-            ctx.lineTo(p2x, p2y);
-            ctx.strokeStyle = `rgba(0, 240, 255, ${(1 - dist / 80) * 0.12})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineTo(p2.x * w, p2.y * h);
+            ctx.strokeStyle = `rgba(0, 240, 255, ${(1 - dist / 120) * 0.25})`;
+            ctx.lineWidth = 1;
             ctx.stroke();
-            ctx.restore();
           }
         }
       });
-
-      originNodes.forEach((n, idx) => {
-        const pulseR = 25 + Math.sin(time * 2 + idx) * 8;
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, pulseR, 0, Math.PI * 2);
-        ctx.strokeStyle = n.color === '#ff003c' ? 'rgba(255, 0, 60, 0.4)' : 'rgba(0, 240, 255, 0.25)';
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
-        ctx.restore();
-      });
-
-      requestAnimationFrame(drawRedOrigen);
+      requestAnimationFrame(draw03);
     }
-    drawRedOrigen();
+    draw03();
+  }
+
+  // --- MÓDULO 04: RADAR DE VIGILANCIA COLONIAL (#canvasModulo04) ---
+  const canvas04 = document.getElementById('canvasModulo04');
+  if (canvas04) {
+    const ctx = canvas04.getContext('2d');
+    let angle = 0;
+    function draw04() {
+      const rect = canvas04.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width, h = rect.height;
+      if (canvas04.width !== Math.floor(w * dpr) || canvas04.height !== Math.floor(h * dpr)) {
+        canvas04.width = Math.floor(w * dpr);
+        canvas04.height = Math.floor(h * dpr);
+        ctx.scale(dpr, dpr);
+      }
+      ctx.clearRect(0, 0, w, h);
+      angle += 0.025;
+
+      const cx = w * 0.5, cy = h * 0.5;
+      const radius = Math.min(w, h) * 0.45;
+
+      for (let r = 1; r <= 3; r++) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, (radius / 3) * r, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(244, 63, 94, 0.18)';
+        ctx.stroke();
+      }
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, radius, angle, angle + 0.45);
+      ctx.closePath();
+      const sweepGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, radius);
+      sweepGrad.addColorStop(0, 'rgba(244, 63, 94, 0.35)');
+      sweepGrad.addColorStop(1, 'rgba(244, 63, 94, 0.0)');
+      ctx.fillStyle = sweepGrad;
+      ctx.fill();
+      ctx.restore();
+
+      requestAnimationFrame(draw04);
+    }
+    draw04();
+  }
+
+  // --- MÓDULO 05: CONSTELACIÓN DE MEMORIA VIVA (#canvasModulo05) ---
+  const canvas05 = document.getElementById('canvasModulo05');
+  if (canvas05) {
+    const ctx = canvas05.getContext('2d');
+    let t = 0;
+    const stars = Array.from({ length: 30 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      r: Math.random() * 2 + 1,
+      phase: Math.random() * Math.PI * 2
+    }));
+    function draw05() {
+      const rect = canvas05.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width, h = rect.height;
+      if (canvas05.width !== Math.floor(w * dpr) || canvas05.height !== Math.floor(h * dpr)) {
+        canvas05.width = Math.floor(w * dpr);
+        canvas05.height = Math.floor(h * dpr);
+        ctx.scale(dpr, dpr);
+      }
+      ctx.clearRect(0, 0, w, h);
+      t += 0.02;
+
+      stars.forEach((s) => {
+        const px = s.x * w, py = s.y * h;
+        const alpha = 0.3 + 0.5 * Math.sin(t + s.phase);
+        ctx.beginPath();
+        ctx.arc(px, py, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 184, 0, ${alpha})`;
+        ctx.shadowColor = '#ffb800';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+      });
+      ctx.shadowBlur = 0;
+      requestAnimationFrame(draw05);
+    }
+    draw05();
   }
 
   // ==========================================================================
@@ -376,6 +466,45 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(drawAnansiWeb);
     }
     drawAnansiWeb();
+  }
+
+  // --- MÓDULO 07: MATRIZ DE LA SEGUNDA CAPA OCULTA (#canvasModulo07) ---
+  const canvas07 = document.getElementById('canvasModulo07');
+  if (canvas07) {
+    const ctx = canvas07.getContext('2d');
+    let t = 0;
+    const glyphs = ['0', '1', '⚿', '⟐', '✦', '⎈', '≋'];
+    const particles = Array.from({ length: 28 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      char: glyphs[Math.floor(Math.random() * glyphs.length)],
+      speed: Math.random() * 0.001 + 0.0005,
+      alpha: Math.random() * 0.5 + 0.2
+    }));
+
+    function draw07() {
+      const rect = canvas07.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width, h = rect.height;
+      if (canvas07.width !== Math.floor(w * dpr) || canvas07.height !== Math.floor(h * dpr)) {
+        canvas07.width = Math.floor(w * dpr);
+        canvas07.height = Math.floor(h * dpr);
+        ctx.scale(dpr, dpr);
+      }
+      ctx.clearRect(0, 0, w, h);
+      t += 0.015;
+
+      ctx.font = '12px monospace';
+      particles.forEach((p) => {
+        p.y -= p.speed;
+        if (p.y < 0) p.y = 1;
+        ctx.fillStyle = `rgba(192, 132, 252, ${p.alpha * (0.6 + 0.4 * Math.sin(t * 2))})`;
+        ctx.fillText(p.char, p.x * w, p.y * h);
+      });
+
+      requestAnimationFrame(draw07);
+    }
+    draw07();
   }
 
   // ==========================================================================

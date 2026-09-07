@@ -58,11 +58,16 @@ subtitulo-enigma,
 flecha-descenso,
 guia-hilo,
 linea-guia,
-origen,
-historias-anansi,
-panuelos-angisa,
-canciones-rio,
-cierre,
+modulo-artefacto,
+modulo-ruptura,
+modulo-comunidad,
+modulo-vigilancia,
+modulo-constelacion,
+modulo-anansi,
+modulo-capas,
+modulo-angisas,
+modulo-rio,
+modulo-sintesis,
 encabezado-enigma,
 numero-enigma,
 titulo-enigma,
@@ -385,13 +390,18 @@ ensayo {
   z-index: 5;
 }
 
-origen,
-historias-anansi,
-panuelos-angisa,
-canciones-rio,
-cierre {
-  min-height: 95vh;
-  padding: 6rem 4vw 8rem;
+modulo-artefacto,
+modulo-ruptura,
+modulo-comunidad,
+modulo-vigilancia,
+modulo-constelacion,
+modulo-anansi,
+modulo-capas,
+modulo-angisas,
+modulo-rio,
+modulo-sintesis {
+  min-height: 80vh;
+  padding: 5rem 4vw 7rem;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -400,7 +410,7 @@ encabezado-enigma {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
   padding-bottom: 1rem;
 }
@@ -412,6 +422,15 @@ numero-enigma {
   color: var(--theme-origen);
   text-shadow: 0 0 20px var(--theme-origen);
 }
+
+modulo-ruptura numero-enigma { color: #ef4444; text-shadow: 0 0 20px rgba(239, 68, 68, 0.8); }
+modulo-vigilancia numero-enigma { color: #f43f5e; text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
+modulo-constelacion numero-enigma { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+modulo-anansi numero-enigma { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
+modulo-capas numero-enigma { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
+modulo-angisas numero-enigma { color: var(--theme-angisa); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
+modulo-rio numero-enigma { color: var(--theme-rio); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
+modulo-sintesis numero-enigma { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
 
 titulo-enigma {
   font-family: var(--font-mono);
@@ -426,13 +445,30 @@ titulo-enigma {
    ========================================================================== */
 escenario-enigma {
   position: relative;
-  min-height: 750px;
+  min-height: 520px;
   width: 100%;
   border-radius: 24px;
   background: radial-gradient(circle at 50% 50%, rgba(8, 16, 32, 0.75) 0%, rgba(2, 4, 8, 0.95) 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), inset 0 0 60px rgba(0, 0, 0, 0.6);
   overflow: hidden;
+}
+
+/* Clases de dimensionamiento modular respirable */
+.diagrama-compacto {
+  min-height: 440px;
+}
+
+.diagrama-anansi-modulo {
+  min-height: 600px;
+}
+
+.diagrama-angisa-modulo {
+  min-height: 600px;
+}
+
+.diagrama-rio-modulo {
+  min-height: 520px;
 }
 
 escenario-enigma canvas {
@@ -506,6 +542,11 @@ etiqueta-ancla {
   color: #ffffff;
   font-weight: 600;
   white-space: nowrap;
+}
+
+ancla-luz.cyan-nucleo {
+  border-color: var(--theme-origen);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
 }
 
 ancla-luz.alerta-nucleo {
@@ -1060,11 +1101,16 @@ despedida {
   }
 
   saludo,
-  origen,
-  historias-anansi,
-  panuelos-angisa,
-  canciones-rio,
-  cierre {
+  modulo-artefacto,
+  modulo-ruptura,
+  modulo-comunidad,
+  modulo-vigilancia,
+  modulo-constelacion,
+  modulo-anansi,
+  modulo-capas,
+  modulo-angisas,
+  modulo-rio,
+  modulo-sintesis {
     min-height: auto !important;
     padding: 2rem 0 !important;
     border-bottom: 1px solid #ddd !important;
