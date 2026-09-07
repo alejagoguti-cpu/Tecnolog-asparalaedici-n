@@ -45,16 +45,16 @@ campo-apertura,
 onda-pulso,
 texto-saludo,
 linea-guia,
-modulo-01,
-modulo-02,
-modulo-03,
-modulo-04,
-modulo-05,
-modulo-06,
-modulo-07,
-modulo-08,
-modulo-09,
-modulo-10,
+pensamiento,
+revelacion,
+observacion,
+memoria,
+intencion,
+comprension,
+reflexion,
+lenguaje,
+experiencia,
+construccion,
 encabezado,
 numero,
 titulo,
@@ -225,7 +225,7 @@ linea-guia {
 }
 
 /* ==========================================================================
-   ESTRUCTURA DE LOS 10 MÓDULOS
+   ESTRUCTURA DE LOS 10 MÓDULOS SEMÁNTICOS
    ========================================================================== */
 ensayo {
   width: 100%;
@@ -234,16 +234,16 @@ ensayo {
   z-index: 5;
 }
 
-modulo-01,
-modulo-02,
-modulo-03,
-modulo-04,
-modulo-05,
-modulo-06,
-modulo-07,
-modulo-08,
-modulo-09,
-modulo-10 {
+pensamiento,
+revelacion,
+observacion,
+memoria,
+intencion,
+comprension,
+reflexion,
+lenguaje,
+experiencia,
+construccion {
   min-height: 75vh;
   padding: 4.5rem 4vw 6.5rem;
   position: relative;
@@ -267,13 +267,13 @@ numero {
   text-shadow: 0 0 20px var(--theme-origen);
 }
 
-modulo-03 numero { color: #f43f5e; text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
-modulo-04 numero { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
-modulo-06 numero,
-modulo-07 numero { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
-modulo-08 numero { color: var(--theme-angisa); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
-modulo-09 numero { color: var(--theme-rio); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
-modulo-10 numero { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+observacion numero { color: #f43f5e; text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
+memoria numero { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+comprension numero,
+reflexion numero { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
+lenguaje numero { color: var(--theme-angisa); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
+experiencia numero { color: var(--theme-rio); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
+construccion numero { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
 
 titulo {
   font-family: var(--font-mono);
@@ -595,16 +595,16 @@ despedida {
   }
 
   saludo,
-  modulo-01,
-  modulo-02,
-  modulo-03,
-  modulo-04,
-  modulo-05,
-  modulo-06,
-  modulo-07,
-  modulo-08,
-  modulo-09,
-  modulo-10 {
+  pensamiento,
+  revelacion,
+  observacion,
+  memoria,
+  intencion,
+  comprension,
+  reflexion,
+  lenguaje,
+  experiencia,
+  construccion {
     min-height: auto !important;
     padding: 2rem 0 !important;
     border-bottom: 1px solid #ddd !important;
@@ -628,5 +628,3 @@ despedida {
     padding: 0 !important;
   }
 }
-
-

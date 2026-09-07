@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
- * TECNOLOGÍAS DEL SECRETO — MOTOR VISUAL E INTERACTIVO EN 10 MÓDULOS
- * Ensayo interactivo de revelación progresiva y semántica editorial limpia.
+ * TECNOLOGÍAS PARA LA EDICIÓN — ALEJANDRA GÓMEZ GUTIÉRREZ
+ * Lógica e interactividad en 10 módulos semánticos y redes interactivas
  * ==========================================================================
  */
 
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   allConceptNodes.forEach((node) => {
     // Permitir clic para fijar o desfijar la tarjeta de contenido
     node.addEventListener('click', (e) => {
-      // Si el clic fue dentro de un enlace o botón de audio, no togglear el nodo
       if (e.target.closest('reproductor')) return;
       node.classList.toggle('fijado');
     });
@@ -77,29 +76,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sectionThemes = {
       '00': { r: 0, g: 240, b: 255 },    // Apertura: Cyan
-      '01': { r: 0, g: 240, b: 255 },    // Mod 01: Artefacto (Cyan)
-      '02': { r: 0, g: 229, b: 255 },    // Mod 02: Comunidad (Turquesa)
-      '03': { r: 244, g: 63, b: 94 },    // Mod 03: Vigilancia (Rojo carmesí)
-      '04': { r: 255, g: 184, b: 0 },    // Mod 04: Memoria (Ámbar)
-      '05': { r: 0, g: 240, b: 255 },    // Mod 05: Traducción digital (Cyan)
-      '06': { r: 168, g: 85, b: 247 },   // Mod 06: Anansi (Violeta)
-      '07': { r: 192, g: 132, b: 252 },  // Mod 07: Capas ocultas (Púrpura)
-      '08': { r: 255, g: 0, b: 127 },    // Mod 08: Angisas (Magenta)
-      '09': { r: 0, g: 229, b: 255 },    // Mod 09: Río (Turquesa fluvial)
-      '10': { r: 255, g: 184, b: 0 }     // Mod 10: Reflexión y libertad (Dorado solar)
+      '01': { r: 0, g: 240, b: 255 },    // 01 Pensamiento: Artefacto (Cyan)
+      '02': { r: 0, g: 229, b: 255 },    // 02 Revelación: Comunidad (Turquesa)
+      '03': { r: 244, g: 63, b: 94 },    // 03 Observación: Vigilancia (Rojo carmesí)
+      '04': { r: 255, g: 184, b: 0 },    // 04 Memoria: Recursos (Ámbar)
+      '05': { r: 0, g: 240, b: 255 },    // 05 Intención: Traducción digital (Cyan)
+      '06': { r: 168, g: 85, b: 247 },   // 06 Comprensión: Anansi (Violeta)
+      '07': { r: 192, g: 132, b: 252 },  // 07 Reflexión: Capas ocultas (Púrpura)
+      '08': { r: 255, g: 0, b: 127 },    // 08 Lenguaje: Angisas (Magenta)
+      '09': { r: 0, g: 229, b: 255 },    // 09 Experiencia: Río (Turquesa fluvial)
+      '10': { r: 255, g: 184, b: 0 }     // 10 Construcción: Libertad (Dorado solar)
     };
 
     let currentRGB = { r: 0, g: 240, b: 255 };
     let targetRGB = { r: 0, g: 240, b: 255 };
 
     const sections = document.querySelectorAll(
-      'saludo, modulo-01, modulo-02, modulo-03, modulo-04, modulo-05, modulo-06, modulo-07, modulo-08, modulo-09, modulo-10'
+      'saludo, pensamiento, revelacion, observacion, memoria, intencion, comprension, reflexion, lenguaje, experiencia, construccion'
     );
 
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const secId = entry.target.getAttribute('data-seccion') || entry.target.getAttribute('data-section') || '00';
+          const secId = entry.target.getAttribute('data-seccion') || '00';
           if (sectionThemes[secId]) {
             targetRGB = sectionThemes[secId];
           }
@@ -167,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. CANVASES DE LOS 10 MÓDULOS DIAGRAMÁTICOS
   // ==========================================================================
 
-  // --- MÓDULO 01: ESCANEO DE ARTEFACTO (#canvasModulo01) ---
+  // --- 01. PENSAMIENTO: ESCANEO DE ARTEFACTO (#canvasModulo01) ---
   const canvas01 = document.getElementById('canvasModulo01');
   if (canvas01) {
     const ctx = canvas01.getContext('2d');
@@ -199,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw01();
   }
 
-  // --- MÓDULO 02: RED COMUNITARIA DE SURINAM (#canvasModulo02) ---
+  // --- 02. REVELACIÓN: RED COMUNITARIA DE SURINAM (#canvasModulo02) ---
   const canvas02 = document.getElementById('canvasModulo02');
   if (canvas02) {
     const ctx = canvas02.getContext('2d');
@@ -249,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw02();
   }
 
-  // --- MÓDULO 03: RADAR DE VIGILANCIA COLONIAL (#canvasModulo03) ---
+  // --- 03. OBSERVACIÓN: RADAR DE VIGILANCIA COLONIAL (#canvasModulo03) ---
   const canvas03 = document.getElementById('canvasModulo03');
   if (canvas03) {
     const ctx = canvas03.getContext('2d');
@@ -293,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw03();
   }
 
-  // --- MÓDULO 04: CONSTELACIÓN DE MEMORIA VIVA (#canvasModulo04) ---
+  // --- 04. MEMORIA: CONSTELACIÓN DE MEMORIA VIVA (#canvasModulo04) ---
   const canvas04 = document.getElementById('canvasModulo04');
   if (canvas04) {
     const ctx = canvas04.getContext('2d');
@@ -332,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw04();
   }
 
-  // --- MÓDULO 05: TRADUCCIÓN DIGITAL Y MATRIZ (#canvasModulo05) ---
+  // --- 05. INTENCIÓN: TRADUCCIÓN DIGITAL Y MATRIZ (#canvasModulo05) ---
   const canvas05 = document.getElementById('canvasModulo05');
   if (canvas05) {
     const ctx = canvas05.getContext('2d');
@@ -382,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw05();
   }
 
-  // --- MÓDULO 06: TELARAÑA FRACTAL DE ANANSI (#anansiWebCanvas) ---
+  // --- 06. COMPRENSIÓN: TELARAÑA FRACTAL DE ANANSI (#anansiWebCanvas) ---
   const webCanvas = document.getElementById('anansiWebCanvas');
   if (webCanvas) {
     const wctx = webCanvas.getContext('2d');
@@ -446,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     drawAnansiWeb();
   }
 
-  // --- MÓDULO 07: MATRIZ DE LA SEGUNDA CAPA OCULTA (#canvasModulo07) ---
+  // --- 07. REFLEXIÓN: MATRIZ DE LA SEGUNDA CAPA OCULTA (#canvasModulo07) ---
   const canvas07 = document.getElementById('canvasModulo07');
   if (canvas07) {
     const ctx = canvas07.getContext('2d');
@@ -485,7 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw07();
   }
 
-  // --- MÓDULO 08: SEMIESFERA DE RAYOS TEXTILES DE ANGISAS (#rayosCanvas) ---
+  // --- 08. LENGUAJE: RAYOS TEXTILES DE ANGISAS (#rayosCanvas) ---
   const rayosCanvas = document.getElementById('rayosCanvas');
   if (rayosCanvas) {
     const rctx = rayosCanvas.getContext('2d');
@@ -568,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
     drawFiberRays();
   }
 
-  // --- MÓDULO 09: ESPECTROGRAMA FLUVIAL DEL RÍO (#rioCanvas) ---
+  // --- 09. EXPERIENCIA: ESPECTROGRAMA FLUVIAL DEL RÍO (#rioCanvas) ---
   const rioCanvas = document.getElementById('rioCanvas');
   if (rioCanvas) {
     const ctx = rioCanvas.getContext('2d');
@@ -651,7 +650,7 @@ document.addEventListener('DOMContentLoaded', () => {
     drawRio();
   }
 
-  // --- MÓDULO 10: CONSTELACIÓN SOLAR DE LA LIBERTAD (#cierreCanvas) ---
+  // --- 10. CONSTRUCCIÓN: CONSTELACIÓN SOLAR DE LA LIBERTAD (#cierreCanvas) ---
   const cierreCanvas = document.getElementById('cierreCanvas');
   if (cierreCanvas) {
     const ctx = cierreCanvas.getContext('2d');
@@ -750,4 +749,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
