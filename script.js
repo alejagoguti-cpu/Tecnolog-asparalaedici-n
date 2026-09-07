@@ -356,20 +356,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     // ========================================================================
-    // RENDERIZADOR DE NODOS / BADGES DE ALTA DEFINICIÓN (GLASSMORPHISM)
+    // RENDERIZADOR DE NODOS / BADGES DE ALTA DEFINICIÓN (SOLO NOMBRE)
     // ========================================================================
-    function drawNodeBadge(x, y, text, isHovered, scale = 1, alpha = 1, accentColor = themeColor, extraSubtext = '') {
+    function drawNodeBadge(x, y, text, isHovered, scale = 1, alpha = 1, accentColor = themeColor) {
       ctx.save();
       ctx.globalAlpha = Math.max(0.15, Math.min(1, alpha));
-      ctx.font = `600 ${Math.max(10, Math.round(12 * scale))}px "DM Mono", monospace`;
+      ctx.font = `600 ${Math.max(10, Math.round(12.5 * scale))}px "DM Mono", monospace`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       const metrics = ctx.measureText(text);
-      const padX = 12 * scale;
+      const padX = 13 * scale;
       const padY = 6 * scale;
       const bw = metrics.width + padX * 2;
-      const bh = (extraSubtext ? 32 : 24) * scale;
+      const bh = 24 * scale;
 
       // Aura de Resplandor
       if (isHovered) {
@@ -397,16 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fillStyle = isHovered ? '#ffffff' : accentColor;
       ctx.fill();
 
-      // Texto Principal
+      // Texto Principal Único (Solo el nombre)
       ctx.fillStyle = isHovered ? '#010306' : '#f0f6fc';
-      ctx.fillText(text, x, extraSubtext ? y - 4 * scale : y + 0.5);
-
-      // Subtexto Técnico opcional
-      if (extraSubtext) {
-        ctx.font = `500 ${Math.max(8, Math.round(8.5 * scale))}px "DM Mono", monospace`;
-        ctx.fillStyle = isHovered ? 'rgba(1, 3, 6, 0.75)' : accentColor;
-        ctx.fillText(extraSubtext, x, y + 8 * scale);
-      }
+      ctx.fillText(text, x, y + 0.5);
 
       ctx.restore();
     }
@@ -521,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 * p.p})`;
           ctx.stroke();
 
-          drawNodeBadge(p.x, p.y, word, isHovered, Math.min(1.2, Math.max(0.8, p.p * 0.95)), p.p > 0.8 ? 1 : 0.65, '#00f0ff', `3D:Z ${p.z.toFixed(1)}`);
+          drawNodeBadge(p.x, p.y, word, isHovered, Math.min(1.2, Math.max(0.8, p.p * 0.95)), p.p > 0.8 ? 1 : 0.65, '#00f0ff');
         });
 
       // ======================================================================
@@ -627,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.arc(px, py, 25, 0, Math.PI * 2);
             ctx.fill();
 
-            drawNodeBadge(px, py, node.text, isHovered, 1, 1, '#00e5ff', 'SYNAPSE ACTIVE');
+            drawNodeBadge(px, py, node.text, isHovered, 1, 1, '#00e5ff');
           } else {
             ctx.beginPath();
             ctx.arc(px, py, node.radius, 0, Math.PI * 2);
@@ -744,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Esquina inf der
           ctx.beginPath(); ctx.moveTo(px + 38 - 6, py + sz); ctx.lineTo(px + 38, py + sz); ctx.lineTo(px + 38, py + sz - 6); ctx.stroke();
 
-          drawNodeBadge(px, py, word, isHovered, 1, 1, '#f43f5e', `LOCK:${(isHovered ? 98 : 45) + (i % 5)}%`);
+          drawNodeBadge(px, py, word, isHovered, 1, 1, '#f43f5e');
         });
 
         // Retícula de mira en el Cursor
@@ -850,7 +843,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.stroke();
 
           const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#ffb800', `ORBIT ${i+1}`);
+          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#ffb800');
         });
 
       // ======================================================================
@@ -925,7 +918,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.setLineDash([]);
 
           const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#00f0ff', 'ISO // LOGIC');
+          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#00f0ff');
         });
 
       // ======================================================================
@@ -997,7 +990,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const py = cy + Math.sin(ang) * ringR;
 
           const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#a855f7', 'ANANSI SILK');
+          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#a855f7');
         });
 
       // ======================================================================
@@ -1055,7 +1048,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayText = word.split('').map((c, idx) => glyphChars[(idx + i) % glyphChars.length]).join('');
           }
 
-          drawNodeBadge(px, py, displayText, isDecoded, 1, 1, isDecoded ? '#00f0ff' : '#c084fc', isDecoded ? 'DECRYPTED' : 'CIPHERED');
+          drawNodeBadge(px, py, displayText, isDecoded, 1, 1, isDecoded ? '#00f0ff' : '#c084fc');
         });
 
       // ======================================================================
@@ -1165,7 +1158,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.stroke();
 
           const distMouse = Math.hypot(p.x - localMouseX, p.y - localMouseY);
-          drawNodeBadge(p.x, p.y, word, distMouse < 90, Math.min(1.15, Math.max(0.85, p.p * 0.95)), 1, '#ff007f', 'ANGISA 3D FOLD');
+          drawNodeBadge(p.x, p.y, word, distMouse < 90, Math.min(1.15, Math.max(0.85, p.p * 0.95)), 1, '#ff007f');
         });
 
       // ======================================================================
@@ -1240,7 +1233,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.stroke();
 
           const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#00e5ff', 'RIVER BUOY');
+          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#00e5ff');
         });
 
       // ======================================================================
@@ -1339,7 +1332,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.stroke();
 
           const distMouse = Math.hypot(px - localMouseX, py - localMouseY);
-          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#ffb800', 'LIBERTAD // SOLAR');
+          drawNodeBadge(px, py, word, distMouse < 90, 1, 1, '#ffb800');
         });
       }
 
