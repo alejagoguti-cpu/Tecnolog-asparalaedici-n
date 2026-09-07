@@ -7,27 +7,24 @@
   /* Paleta Obsidian */
   --bg-deep: #020408;
   --bg-translucent: rgba(6, 12, 24, 0.85);
-  --bg-card: rgba(10, 18, 36, 0.85);
-  --bg-card-hover: rgba(15, 26, 50, 0.95);
+  --bg-card-glow: rgba(10, 18, 36, 0.95);
   
   /* Luces Espectrales */
   --theme-origen: #00f0ff;      /* Cyan */
   --theme-anansi: #a855f7;      /* Violeta */
   --theme-angisa: #ff007f;      /* Magenta */
   --theme-rio: #00e5ff;         /* Turquesa */
-  --theme-cierre: #ffb800;      /* Ámbar / Dorado */
-  --theme-alerta: #f43f5e;      /* Rojo alerta */
+  --theme-cierre: #ffb800;      /* Ámbar */
   
-  --glow-cyan: rgba(0, 240, 255, 0.4);
-  --glow-violet: rgba(168, 85, 247, 0.4);
-  --glow-magenta: rgba(255, 0, 127, 0.4);
-  --glow-amber: rgba(255, 184, 0, 0.4);
-  --glow-red: rgba(244, 63, 94, 0.4);
+  --glow-cyan: rgba(0, 240, 255, 0.5);
+  --glow-violet: rgba(168, 85, 247, 0.5);
+  --glow-magenta: rgba(255, 0, 127, 0.5);
+  --glow-amber: rgba(255, 184, 0, 0.5);
   
   /* Tipografía */
   --paper: #f0f5fa;
-  --paper-dim: rgba(240, 245, 250, 0.85);
-  --paper-faint: rgba(240, 245, 250, 0.45);
+  --paper-dim: rgba(240, 245, 250, 0.82);
+  --paper-faint: rgba(240, 245, 250, 0.35);
   
   --font-cyber: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
@@ -42,57 +39,41 @@ malla-cuadricula,
 haz-cursor,
 barra-superior,
 titulo-autora,
-manuscrito,
+ensayo,
 saludo,
 campo-apertura,
 onda-pulso,
 texto-saludo,
 linea-guia,
-modulo,
-titulo-seccion,
-pensamiento,
-revelacion,
-observacion,
-memoria,
-intencion,
-relato,
-comprension,
-afirmacion,
-traduccion-digital,
-reflexion,
-lenguaje,
-transformacion,
-alerta,
-resistencia,
-logica,
-diseno,
-sonido,
-medio,
-experiencia,
+modulo-01,
+modulo-02,
+modulo-03,
+modulo-04,
+modulo-05,
+modulo-06,
+modulo-07,
+modulo-08,
+modulo-09,
+modulo-10,
+encabezado,
+numero,
+titulo,
+escenario,
+nodo,
+boton,
+icono,
+etiqueta,
+contenido,
+texto,
 reproductor,
 codigo-qr,
 info-audio,
 texto-audio,
-eco,
-construccion,
-mirada,
-esencia,
-proceso,
-sentido,
-libertad,
 despedida {
   display: block;
 }
 
-concepto {
-  display: inline;
-}
-
-modulo[nombre="segunda-tecnologia-los-panuelos-angisas"] > secreto {
-  display: block;
-}
-
-afirmacion > secreto {
+clave {
   display: inline;
 }
 
@@ -118,11 +99,12 @@ body {
   color: var(--paper);
   font-family: var(--font-cyber);
   font-size: 1.15rem;
-  line-height: 1.85;
+  line-height: 1.8;
   overflow-x: hidden;
   position: relative;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  cursor: crosshair;
 }
 
 /* Barra superior fija con el nombre de la autora */
@@ -131,9 +113,9 @@ barra-superior {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 14px 5vw;
-  background: rgba(2, 4, 8, 0.85);
-  backdrop-filter: blur(14px);
+  padding: 14px 4vw;
+  background: rgba(2, 4, 8, 0.75);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 100;
   display: flex;
@@ -143,8 +125,8 @@ barra-superior {
 
 titulo-autora {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
-  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--paper-dim);
   font-weight: 500;
@@ -160,7 +142,7 @@ malla-cuadricula {
   pointer-events: none;
   z-index: 1;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
   background-size: 48px 48px, 96px 96px, 96px 96px;
@@ -170,13 +152,13 @@ malla-cuadricula {
 /* Haz de luz de seguimiento del cursor */
 haz-cursor {
   position: fixed;
-  width: 450px;
-  height: 450px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 2;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, rgba(168, 85, 247, 0.03) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.09) 0%, rgba(168, 85, 247, 0.04) 40%, transparent 70%);
   transition: opacity 0.3s ease;
   mix-blend-mode: screen;
 }
@@ -199,27 +181,15 @@ fondo-luz canvas {
 }
 
 /* ==========================================================================
-   CONTENEDOR PRINCIPAL: MANUSCRITO
-   ========================================================================== */
-manuscrito {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 6rem 1.5rem 10rem;
-  position: relative;
-  z-index: 10;
-}
-
-/* ==========================================================================
    00. SALUDO DE APERTURA
    ========================================================================== */
 saludo {
-  min-height: 80vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 1rem 4rem;
+  padding: 8rem 4vw 6rem;
 }
 
 campo-apertura {
@@ -227,333 +197,334 @@ campo-apertura {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.2rem;
-  max-width: 800px;
+  gap: 2rem;
+  max-width: 860px;
 }
 
 texto-saludo {
-  font-size: clamp(3.8rem, 10vw, 7.5rem);
+  font-size: clamp(4rem, 11vw, 8.5rem);
   font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
   background: linear-gradient(135deg, #ffffff 15%, var(--theme-origen) 60%, var(--theme-anansi) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.4));
+  filter: drop-shadow(0 0 50px rgba(0, 240, 255, 0.4));
 }
 
 linea-guia {
   width: 2px;
-  height: 54px;
+  height: 48px;
   background: linear-gradient(to bottom, var(--theme-origen), transparent);
-  animation: guiaGlow 2.2s infinite ease-in-out;
+  animation: guiaGlow 2s infinite ease-in-out;
 }
 
 @keyframes guiaGlow {
-  0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
+  0%, 100% { transform: scaleY(0.6); opacity: 0.3; }
   50% { transform: scaleY(1); opacity: 1; }
 }
 
 /* ==========================================================================
-   ESTRUCTURA DE LOS MÓDULOS EDITORIALES
+   ESTRUCTURA DE LOS 10 MÓDULOS
    ========================================================================== */
-modulo {
+ensayo {
+  width: 100%;
+  max-width: 100vw;
   position: relative;
-  min-height: 60vh;
-  margin-bottom: 5.5rem;
-  padding: 3.5rem 2.5rem;
-  background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(16px);
+  z-index: 5;
+}
+
+modulo-01,
+modulo-02,
+modulo-03,
+modulo-04,
+modulo-05,
+modulo-06,
+modulo-07,
+modulo-08,
+modulo-09,
+modulo-10 {
+  min-height: 75vh;
+  padding: 4.5rem 4vw 6.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+encabezado {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2.2rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  padding-bottom: 0.8rem;
+}
+
+numero {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--theme-origen);
+  text-shadow: 0 0 20px var(--theme-origen);
+}
+
+modulo-03 numero { color: #f43f5e; text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
+modulo-04 numero { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+modulo-06 numero,
+modulo-07 numero { color: var(--theme-anansi); text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
+modulo-08 numero { color: var(--theme-angisa); text-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
+modulo-09 numero { color: var(--theme-rio); text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
+modulo-10 numero { color: var(--theme-cierre); text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+
+titulo {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  color: var(--paper-dim);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   ESCENARIO Y NODOS
+   ========================================================================== */
+escenario {
+  position: relative;
+  min-height: 480px;
+  width: 100%;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 50%, rgba(8, 16, 32, 0.75) 0%, rgba(2, 4, 8, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), inset 0 0 60px rgba(0, 0, 0, 0.6);
   overflow: hidden;
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-modulo:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.12);
+.diagrama-compacto {
+  min-height: 420px;
 }
 
-/* Canvases de fondo por módulo */
-modulo canvas {
+.diagrama-anansi {
+  min-height: 520px;
+}
+
+.diagrama-angisa {
+  min-height: 600px;
+}
+
+.diagrama-rio {
+  min-height: 500px;
+}
+
+.diagrama-cierre {
+  min-height: 750px;
+}
+
+escenario canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  opacity: 0.35;
+  display: block;
   z-index: 1;
-  transition: opacity 0.5s ease;
 }
 
-modulo:hover canvas {
-  opacity: 0.55;
+/* Nodo interactivo */
+nodo {
+  position: absolute;
+  left: var(--posX, 50%);
+  top: var(--posY, 50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 15;
+  transition: z-index 0.3s ease;
 }
 
-/* Títulos de sección */
-titulo-seccion {
+nodo:hover,
+nodo.activo,
+nodo.fijado {
+  z-index: 50;
+}
+
+boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 10px 20px;
+  background: rgba(8, 16, 32, 0.92);
+  border: 1.5px solid var(--theme-origen);
+  border-radius: 30px;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+
+icono {
+  font-size: 1.15rem;
+  line-height: 1;
   font-family: var(--font-mono);
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: inherit;
+}
+
+etiqueta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
-  position: relative;
-  z-index: 2;
+  color: #ffffff;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-modulo[nombre="apertura"] titulo-seccion { color: var(--theme-origen); }
-modulo[nombre="primera-tecnologia-el-mito-de-anansi"] titulo-seccion { color: var(--theme-anansi); }
-modulo[nombre="segunda-tecnologia-los-panuelos-angisas"] titulo-seccion { color: var(--theme-angisa); }
-modulo[nombre="tercera-tecnologia-las-canciones-en-el-rio"] titulo-seccion { color: var(--theme-rio); }
-modulo[nombre="reflexion-final"] titulo-seccion { color: var(--theme-cierre); }
+boton.boton-alerta {
+  border-color: #f43f5e;
+  box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
+}
+
+boton.boton-libertad {
+  border-color: var(--theme-cierre);
+  box-shadow: 0 0 25px rgba(255, 184, 0, 0.4);
+}
+
+nodo:hover boton,
+nodo.activo boton,
+nodo.fijado boton {
+  transform: scale(1.12);
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+nodo:hover boton etiqueta,
+nodo.activo boton etiqueta,
+nodo.fijado boton etiqueta {
+  color: var(--bg-deep);
+}
 
 /* ==========================================================================
-   PÁRRAFOS Y BLOQUES EDITORIALES SEMÁNTICOS
+   CONTENIDO REVELADO & TEXTO
    ========================================================================== */
-pensamiento,
-revelacion,
-observacion,
-memoria,
-intencion,
-relato,
-comprension,
-afirmacion,
-traduccion-digital,
-reflexion,
-lenguaje,
-transformacion,
-logica,
-diseno,
-sonido,
-medio,
-experiencia,
-eco,
-construccion,
-mirada,
-esencia,
-proceso,
-sentido {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 1.6rem;
-  color: var(--paper-dim);
-  font-size: 1.15rem;
+contenido {
+  position: absolute;
+  top: calc(100% + 14px);
+  width: min(580px, 86vw);
+  background: var(--bg-card-glow);
+  border: 1px solid var(--theme-origen);
+  border-radius: 16px;
+  padding: 1.8rem 2.2rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 45px rgba(0, 240, 255, 0.35);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.94) translateY(10px);
+  filter: blur(8px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  z-index: 40;
+}
+
+nodo:hover contenido,
+nodo.activo contenido,
+nodo.fijado contenido {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* Ajustes de posición */
+nodo.nodo-pliegue contenido {
+  width: min(340px, 80vw);
+}
+
+.contenido-libertad {
+  top: auto;
+  bottom: calc(100% + 14px);
+  transform: scale(0.94) translateY(-10px);
+  width: min(780px, 88vw);
+}
+
+nodo:hover .contenido-libertad,
+nodo.activo .contenido-libertad,
+nodo.fijado .contenido-libertad {
+  transform: scale(1) translateY(0);
+}
+
+texto {
+  font-size: 1.12rem;
   line-height: 1.85;
-  transition: color 0.3s ease, transform 0.3s ease;
+  color: var(--paper);
+  margin-bottom: 1.1rem;
 }
 
-pensamiento:hover,
-revelacion:hover,
-observacion:hover,
-memoria:hover,
-intencion:hover,
-relato:hover,
-comprension:hover,
-afirmacion:hover,
-traduccion-digital:hover,
-reflexion:hover,
-lenguaje:hover,
-transformacion:hover,
-logica:hover,
-diseno:hover,
-sonido:hover,
-medio:hover,
-experiencia:hover,
-eco:hover,
-construccion:hover,
-mirada:hover,
-esencia:hover,
-proceso:hover,
-sentido:hover {
-  color: #ffffff;
+texto:last-child {
+  margin-bottom: 0;
 }
 
-/* Conceptos clave resaltados */
-concepto {
+texto.texto-libertad {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: #fffbeb;
+  text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
+  text-align: center;
+  margin-bottom: 1.1rem;
+}
+
+clave {
   color: #ffffff;
   font-weight: 600;
-  padding: 2px 8px;
+  padding: 2px 6px;
   background: rgba(0, 240, 255, 0.12);
-  border-bottom: 1.5px solid var(--theme-origen);
-  border-radius: 4px;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 3px;
 }
 
-concepto:hover {
-  background: rgba(0, 240, 255, 0.22);
-  box-shadow: 0 0 15px var(--glow-cyan);
-}
-
-/* ==========================================================================
-   LOS 3 PLIEGUES DIRECTOS (MÓDULO 03: ANGISAS)
-   ========================================================================== */
-modulo[nombre="segunda-tecnologia-los-panuelos-angisas"] > secreto {
-  position: relative;
-  z-index: 2;
-  margin: 1.4rem 0;
-  padding: 1.2rem 1.6rem;
-  background: rgba(168, 85, 247, 0.08);
-  border-left: 3px solid var(--theme-anansi);
-  border-radius: 0 12px 12px 0;
-  color: rgba(240, 245, 250, 0.5);
-  filter: blur(1.5px);
-  cursor: pointer;
-  transition: filter 0.4s ease, color 0.4s ease, background 0.4s ease;
-}
-
-modulo[nombre="segunda-tecnologia-los-panuelos-angisas"] > secreto:hover,
-modulo[nombre="segunda-tecnologia-los-panuelos-angisas"] > secreto.activo {
-  filter: blur(0);
-  color: #ffffff;
-  background: rgba(168, 85, 247, 0.18);
-  box-shadow: 0 0 25px var(--glow-violet);
-}
-
-alerta {
-  position: relative;
-  z-index: 2;
-  margin: 1.4rem 0;
-  padding: 1.2rem 1.6rem;
-  background: rgba(244, 63, 94, 0.08);
-  border-left: 3px solid var(--theme-alerta);
-  border-radius: 0 12px 12px 0;
-  color: var(--paper);
-  transform: rotate(-0.5deg);
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-alerta:hover,
-alerta.activo {
-  transform: rotate(0deg) scale(1.01);
-  background: rgba(244, 63, 94, 0.18);
-  box-shadow: 0 0 25px var(--glow-red);
-}
-
-resistencia {
-  position: relative;
-  z-index: 2;
-  margin: 1.4rem 0;
-  padding: 1.2rem 1.6rem;
-  background: rgba(255, 0, 127, 0.08);
-  border-left: 3px solid var(--theme-angisa);
-  border-radius: 0 12px 12px 0;
-  color: var(--paper);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-resistencia:hover,
-resistencia.activo {
-  background: rgba(255, 0, 127, 0.18);
-  box-shadow: 0 0 25px var(--glow-magenta), inset 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Secreto inline en afirmación */
-afirmacion > secreto {
-  color: #ffffff;
-  font-weight: 600;
-  padding: 2px 8px;
-  background: rgba(168, 85, 247, 0.14);
-  border-bottom: 1.5px solid var(--theme-anansi);
-  border-radius: 4px;
-  filter: blur(1px);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-afirmacion > secreto:hover,
-afirmacion > secreto.activo {
-  filter: blur(0);
-  background: rgba(168, 85, 247, 0.28);
-  box-shadow: 0 0 15px var(--glow-violet);
-}
-
-/* ==========================================================================
-   REPRODUCTOR Y CÓDIGO QR (MÓDULO 04: RÍO)
-   ========================================================================== */
+/* Audio y QR */
 reproductor {
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
-  gap: 1.6rem;
-  padding: 1.2rem 1.6rem;
+  gap: 1.4rem;
+  padding: 0.9rem 1.4rem;
   background: rgba(14, 24, 46, 0.95);
-  border: 1.5px solid var(--theme-cierre);
-  border-radius: 14px;
-  margin: 2rem 0;
+  border: 1px solid rgba(255, 184, 0, 0.5);
+  border-radius: 10px;
+  margin: 1rem 0;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 184, 0, 0.2);
   transition: all 0.3s ease;
 }
 
-reproductor:hover,
-reproductor.reproduciendo {
+reproductor:hover {
   background: rgba(24, 38, 70, 1);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 35px var(--glow-amber);
-  transform: translateY(-2px);
+  box-shadow: 0 0 35px var(--glow-amber);
 }
 
 codigo-qr {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   flex: none;
   background-color: #ffffff;
   background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fgithub.com%2Falejagoguti-cpu%2FTecnolog-asparalaedici-n");
   background-size: contain;
-  border-radius: 8px;
-}
-
-info-audio {
-  display: flex;
-  flex-direction: column;
+  border-radius: 6px;
 }
 
 texto-audio {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--theme-cierre);
-  letter-spacing: 0.06em;
-}
-
-/* ==========================================================================
-   LIBERTAD Y DESPEDIDA (MÓDULO 05: CIERRE)
-   ========================================================================== */
-libertad {
-  position: relative;
-  z-index: 2;
-  font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
-  font-style: italic;
-  line-height: 1.6;
-  color: #fffbeb;
-  text-shadow: 0 0 25px rgba(255, 184, 0, 0.45);
-  text-align: center;
-  margin: 2.5rem 0 1.5rem;
-  padding: 1.5rem 1rem;
-  border-top: 1px solid rgba(255, 184, 0, 0.25);
-  border-bottom: 1px solid rgba(255, 184, 0, 0.25);
+  color: #ffb800;
 }
 
 despedida {
-  position: relative;
-  z-index: 2;
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.5rem);
   font-weight: 800;
   text-align: center;
   background: linear-gradient(135deg, #ffffff 20%, var(--theme-cierre) 70%, #ff007f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 2rem;
+  margin-top: 1.8rem;
   filter: drop-shadow(0 0 30px rgba(255, 184, 0, 0.5));
 }
 
@@ -567,14 +538,18 @@ despedida {
     font-size: 11pt;
     line-height: 1.6;
     padding: 0;
+    cursor: auto !important;
   }
 
   fondo-luz,
   malla-cuadricula,
   haz-cursor,
+  boton,
   canvas,
   linea-guia,
-  onda-pulso {
+  onda-pulso,
+  codigo-qr,
+  info-audio {
     display: none !important;
   }
 
@@ -591,108 +566,67 @@ despedida {
     font-size: 1.1rem !important;
   }
 
-  manuscrito {
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-
-  modulo {
+  escenario {
     position: static !important;
     background: none !important;
     border: none !important;
     box-shadow: none !important;
     min-height: auto !important;
-    padding: 1.5rem 0 !important;
-    border-bottom: 1px solid #ccc !important;
-    page-break-inside: avoid;
   }
 
-  saludo {
+  nodo {
+    position: static !important;
+    transform: none !important;
+    display: block !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  contenido {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    width: 100% !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    color: #111111 !important;
+  }
+
+  saludo,
+  modulo-01,
+  modulo-02,
+  modulo-03,
+  modulo-04,
+  modulo-05,
+  modulo-06,
+  modulo-07,
+  modulo-08,
+  modulo-09,
+  modulo-10 {
     min-height: auto !important;
     padding: 2rem 0 !important;
-    border-bottom: 1px solid #ccc !important;
+    border-bottom: 1px solid #ddd !important;
+    page-break-inside: avoid;
   }
 
   texto-saludo,
   despedida,
-  titulo-seccion {
+  titulo {
     color: #000000 !important;
     -webkit-text-fill-color: #000000 !important;
     background: none !important;
     filter: none !important;
   }
 
-  pensamiento,
-  revelacion,
-  observacion,
-  memoria,
-  intencion,
-  relato,
-  comprension,
-  afirmacion,
-  traduccion-digital,
-  reflexion,
-  lenguaje,
-  transformacion,
-  logica,
-  diseno,
-  sonido,
-  medio,
-  experiencia,
-  eco,
-  construccion,
-  mirada,
-  esencia,
-  proceso,
-  sentido {
-    color: #111111 !important;
-  }
-
-  modulo[nombre="segunda-tecnologia-los-panuelos-angisas"] > secreto,
-  afirmacion > secreto {
-    filter: none !important;
-    color: #111111 !important;
-    background: none !important;
-    box-shadow: none !important;
-    border-left: 2px solid #333 !important;
-  }
-
-  alerta {
-    transform: none !important;
-    background: none !important;
-    border-left: 2px solid #333 !important;
-    color: #111111 !important;
-    box-shadow: none !important;
-  }
-
-  resistencia {
-    background: none !important;
-    border-left: 2px solid #333 !important;
-    color: #111111 !important;
-    box-shadow: none !important;
-  }
-
-  concepto {
+  clave {
     color: #000000 !important;
     border: none !important;
     border-bottom: 1px dashed #333 !important;
     background: none !important;
     padding: 0 !important;
   }
-
-  reproductor {
-    border: 1px solid #333 !important;
-    background: #f9f9f9 !important;
-    color: #111111 !important;
-  }
-
-  texto-audio {
-    color: #111111 !important;
-  }
-
-  libertad {
-    color: #000000 !important;
-    text-shadow: none !important;
-    border-color: #333 !important;
-  }
 }
+
+
