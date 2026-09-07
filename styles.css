@@ -41,6 +41,7 @@ malla-cuadricula,
 haz-cursor,
 barra-superior,
 titulo-autora,
+institucion-academica,
 ensayo,
 saludo,
 campo-apertura,
@@ -190,6 +191,35 @@ titulo-autora {
   text-transform: uppercase;
   color: var(--paper-dim);
   font-weight: 500;
+}
+
+institucion-academica {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffb800;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: rgba(255, 184, 0, 0.08);
+  border: 1px solid rgba(255, 184, 0, 0.28);
+  box-shadow: 0 0 10px rgba(255, 184, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+institucion-academica:hover {
+  background: rgba(255, 184, 0, 0.2);
+  border-color: #ffb800;
+  color: #ffffff;
+  box-shadow: 0 0 20px var(--glow-amber);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  institucion-academica {
+    display: none;
+  }
 }
 
 /* Malla de Fondo */
