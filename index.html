@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tecnologías del secreto — Ensayo en código visual de extremo a extremo</title>
+  <title>Tecnologías del secreto — Diagrama enigmático y ensayo en código</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -11,462 +11,416 @@
 </head>
 <body>
   <!-- ==========================================================================
-       * / * /  LIENZO AMBIENTAL & SISTEMA HUD GLOBAL DE EXTREMO A EXTREMO  / * / *
+       * / * /  LIENZO AMBIENTAL & ESPACIO ENIGMÁTICO GLOBAL  / * / *
        ========================================================================== -->
   <fondo-luz id="ambientCanvas"></fondo-luz>
 
-  <!-- Malla de cuadrícula cibernética de fondo global -->
+  <!-- Malla de cuadrícula de rastreo latente -->
   <malla-cuadricula></malla-cuadricula>
 
-  <!-- Línea de escaneo láser continuo -->
-  <linea-laser-hud></linea-laser-hud>
+  <!-- Haz de escaneo lumínico interactivo -->
+  <haz-cursor id="cursorGlow"></haz-cursor>
 
-  <!-- Indicador HUD lateral de navegación por secciones -->
-  <nav-lateral>
-    <item-nav data-target="sec-00"><indicador-nodo></indicador-nodo><etiqueta-nav>00 APERTURA</etiqueta-nav></item-nav>
-    <item-nav data-target="sec-01"><indicador-nodo></indicador-nodo><etiqueta-nav>01 ORIGEN</etiqueta-nav></item-nav>
-    <item-nav data-target="sec-02"><indicador-nodo></indicador-nodo><etiqueta-nav>02 ANANSI</etiqueta-nav></item-nav>
-    <item-nav data-target="sec-03"><indicador-nodo></indicador-nodo><etiqueta-nav>03 ANGISA</etiqueta-nav></item-nav>
-    <item-nav data-target="sec-04"><indicador-nodo></indicador-nodo><etiqueta-nav>04 RÍO</etiqueta-nav></item-nav>
-    <item-nav data-target="sec-05"><indicador-nodo></indicador-nodo><etiqueta-nav>05 LIBERTAD</etiqueta-nav></item-nav>
-  </nav-lateral>
+  <!-- HUD Global de Transmisión y Revelación de Secretos -->
+  <hud-control>
+    <marca-hud>[TRANSMISIÓN ENIGMÁTICA // SURINAM 05°50′N]</marca-hud>
+    <indicador-secretos id="indicadorSecretos">PASA EL CURSOR POR LA RED PARA REVELAR EL TEXTO [0/5]</indicador-secretos>
+  </hud-control>
 
   <ensayo>
 
     <!-- ==========================================================================
-         * / * /  00. APERTURA : SALUDO PROTOCOLAR & HERO DE EXTREMO A EXTREMO  / * / *
+         * / * /  00. APERTURA : LA SEÑAL LATENTE EN LA PENUMBRA  / * / *
          ========================================================================== -->
-    <saludo id="sec-00" data-section="00" data-label="TRANSMISIÓN INICIAL">
-      <contenedor-ancho>
-        <badge-terminal>[PROTOCOLO DE EDICIÓN // SISTEMAS DE RESISTENCIA Y CRIPTOGRAFÍA EN SURINAM]</badge-terminal>
-        <texto-saludo>Buenos días.</texto-saludo>
-        <subtitulo-hero>
-          <etiqueta-subtitulo>ENSAYO VISUAL EN CÓDIGO // DE EXTREMO A EXTREMO</etiqueta-subtitulo>
-          <coordenadas-hero>[LAT: 05°50′N | LNG: 55°10′W | CUENCA FLUVIAL]</coordenadas-hero>
-        </subtitulo-hero>
-      </contenedor-ancho>
+    <saludo id="sec-00" data-section="00" class="nodo-revelador">
+      <campo-diagrama>
+        <onda-pulso></onda-pulso>
+        <emisor-central>
+          <icono-emisor>✦</icono-emisor>
+          <etiqueta-frecuencia>[FRECUENCIA 00 // INICIAR DESCODIFICACIÓN]</etiqueta-frecuencia>
+        </emisor-central>
+        <frase-revelada class="frase-hero">
+          <texto-saludo>Buenos días.</texto-saludo>
+          <subtitulo-enigma>El siguiente ensayo no es un texto visible: es una red de tecnologías clandestinas que debes explorar con el cursor para descifrar.</subtitulo-enigma>
+        </frase-revelada>
+      </campo-diagrama>
     </saludo>
 
     <!-- ==========================================================================
-         * / * /  01. ORIGEN : LA TECNOLOGÍA COMO RESPUESTA CREATIVA  / * / *
-         * / * /  Sector: Recontextualización de la técnica y la limitación  / * / *
+         * / * /  01. ORIGEN : LA RED LATENTE Y LA DESMITIFICACIÓN DEL OBJETO  / * / *
+         * / * /  Diagrama Vivo: De los artefactos aislados a la red comunitaria  / * / *
          ========================================================================== -->
-    <origen id="sec-01" data-section="01" data-title="ORIGEN // SISTEMA COMUNITARIO">
-      <contenedor-ancho>
+    <origen id="sec-01" data-section="01">
+      <encabezado-enigma>
+        <numero-enigma>01</numero-enigma>
+        <titulo-enigma>ORIGEN // LA RESPUESTA CREATIVA FRENTE A UNA LIMITACIÓN</titulo-enigma>
+      </encabezado-enigma>
 
-        <!-- SUB-SECCIÓN A: Visión inicial limitada (Laptop con estelas + Anillos orbitales concéntricos) -->
-        <bloque-cinematico>
-          <columna-texto>
-            <encabezado-sector>
-              <numero-sector>01.1</numero-sector>
-              <etiqueta-sector>CONCEPCIÓN ARTEFACTUAL // ILUSIÓN DIGITAL</etiqueta-sector>
-            </encabezado-sector>
+      <!-- DIAGRAMA 1: EL CAMPO DE ARTEFACTOS Y LA ALERTA DE ERROR COGNITIVO -->
+      <escenario-enigma class="diagrama-origen">
+        <canvas id="redOrigenCanvas"></canvas>
 
-            <pensamiento>
-              Cuando en las primeras clases empezamos definiendo qué era la tecnología, yo siempre pensaba en artefactos tecnológicos, como el computador o el celular. Para mí, la tecnología estaba relacionada con objetos nuevos, digitales o con algún tipo de avance. Pero en esta clase entendí que estaba viendo la tecnología de una manera muy limitada.
-            </pensamiento>
+        <nodos-diagrama>
+          <!-- Nodo 1.1: Visión Inicial de Artefactos -->
+          <nodo-revelador class="nodo-artefacto" data-index="1" style="--posX: 20%; --posY: 28%;">
+            <ancla-luz>
+              <icono-nodo>💻</icono-nodo>
+              <etiqueta-ancla>COMPUTADOR / CELULAR</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <pensamiento>
+                Cuando en las primeras clases empezamos definiendo qué era la tecnología, yo siempre pensaba en artefactos tecnológicos, como el computador o el celular. Para mí, la tecnología estaba relacionada con objetos nuevos, digitales o con algún tipo de avance. Pero en esta clase entendí que estaba viendo la tecnología de una manera muy limitada.
+              </pensamiento>
+            </frase-revelada>
+          </nodo-revelador>
 
-            <!-- Sello de alerta roja: Limitación cognitiva -->
-            <alerta-limitacion>
-              <icono-alerta>⚠</icono-alerta>
-              <cuerpo-alerta>
+          <!-- Nodo 1.2: El Pulso Rojo de Ruptura (Alerta) -->
+          <nodo-revelador class="nodo-alerta-roja" data-index="2" style="--posX: 50%; --posY: 42%;">
+            <ancla-luz class="alerta-nucleo">
+              <icono-nodo>⚠</icono-nodo>
+              <etiqueta-ancla>ERROR COGNITIVO</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <alerta-limitacion>
                 <titulo-alerta>ERROR COGNITIVO // VISIÓN REDUCCIONISTA:</titulo-alerta>
                 <mensaje-alerta>
                   La tecnología no es solo el artefacto físico digital. Es la capacidad humana y comunitaria de responder creativamente ante una limitación.
                 </mensaje-alerta>
-              </cuerpo-alerta>
-            </alerta-limitacion>
-          </columna-texto>
+              </alerta-limitacion>
+            </frase-revelada>
+          </nodo-revelador>
 
-          <columna-visual>
-            <!-- Composición Visual 1: Laptop Futurista con Estelas de Luz y Órbita Concéntrica (Referencias 1 y 3) -->
-            <escenario-dispositivos>
-              <!-- Sistema Orbital Concéntrico (Referencia 3) -->
-              <anillos-orbitales>
-                <anillo class="anillo-exterior"></anillo>
-                <anillo class="anillo-medio"></anillo>
-                <anillo class="anillo-interior"></anillo>
-                
-                <!-- Nodos Orbitales de Dispositivos Interactivos -->
-                <nodo-orbital data-tipo="pc" class="orbita-1">
-                  <icono-svg>
-                    <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="12" rx="2"/><path d="M6 20h12M12 16v4"/></svg>
-                  </icono-svg>
-                  <label-nodo>PC OS</label-nodo>
-                </nodo-orbital>
+          <!-- Nodo 1.3: Red Comunitaria de Surinam (Globo 3D Vivo) -->
+          <nodo-revelador class="nodo-comunidad" data-index="3" style="--posX: 78%; --posY: 32%;">
+            <ancla-luz>
+              <icono-nodo>🌐</icono-nodo>
+              <etiqueta-ancla>SURINAM [05°50′N]</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <definicion>
+                A partir del fotoensayo sobre Surinam entendí que la tecnología también puede ser un sistema que una comunidad construye para responder a una necesidad. No necesariamente tiene que existir un objeto nuevo. Puede surgir de algo que ya existe, cuando las personas encuentran una manera diferente de utilizarlo.
+              </definicion>
+            </frase-revelada>
+          </nodo-revelador>
 
-                <nodo-orbital data-tipo="phone" class="orbita-2">
-                  <icono-svg>
-                    <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg>
-                  </icono-svg>
-                  <label-nodo>PHONE OS</label-nodo>
-                </nodo-orbital>
+          <!-- Nodo 1.4: Vigilancia Colonial -->
+          <nodo-revelador class="nodo-vigilancia" data-index="4" style="--posX: 30%; --posY: 75%;">
+            <ancla-luz class="peligro-nucleo">
+              <icono-nodo>👁</icono-nodo>
+              <etiqueta-ancla>VIGILANCIA COLONIAL</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <vigilancia>
+                Esto fue lo que más me llamó la atención del fotoensayo. Las personas esclavizadas estaban en una situación en la que incluso comunicarse podía representar un riesgo. Tenían prohibido hablar entre ellas y estaban siendo vigiladas constantemente. Entonces tuvieron que encontrar otras maneras de transmitir información sin que esa comunicación fuera evidente para quienes las vigilaban.
+              </vigilancia>
+            </frase-revelada>
+          </nodo-revelador>
 
-                <nodo-orbital data-tipo="iot" class="orbita-3">
-                  <icono-svg>
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
-                  </icono-svg>
-                  <label-nodo>IoT HUB</label-nodo>
-                </nodo-orbital>
-
-                <nodo-orbital data-tipo="tablet" class="orbita-4">
-                  <icono-svg>
-                    <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="18" r="0.5"/></svg>
-                  </icono-svg>
-                  <label-nodo>TABLET</label-nodo>
-                </nodo-orbital>
-
-                <nodo-orbital data-tipo="chip" class="orbita-5">
-                  <icono-svg>
-                    <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/></svg>
-                  </icono-svg>
-                  <label-nodo>MICROCHIP</label-nodo>
-                </nodo-orbital>
-              </anillos-orbitales>
-
-              <!-- Laptop Brillante con Estelas Horizontales de Código (Referencia 1) -->
-              <laptop-holograma>
-                <estelas-luz>
-                  <estela class="estela-1"></estela>
-                  <estela class="estela-2"></estela>
-                  <estela class="estela-3"></estela>
-                  <estela class="estela-4"></estela>
-                </estelas-luz>
-                <pantalla-laptop>
-                  <codigo-pantalla>
-                    <linea-p>const tech = { type: "artefacto" };</linea-p>
-                    <linea-p>tech.limit = true; // REPLANTEAR</linea-p>
-                    <linea-p>redefinir_concepto(tech);</linea-p>
-                  </codigo-pantalla>
-                </pantalla-laptop>
-                <base-laptop></base-laptop>
-              </laptop-holograma>
-            </escenario-dispositivos>
-          </columna-visual>
-        </bloque-cinematico>
-
-        <!-- SUB-SECCIÓN B: Red Comunitaria y Fotoensayo Surinam (Globo 3D de Partículas - Referencia 5) -->
-        <bloque-cinematico class="inverso">
-          <columna-texto>
-            <encabezado-sector>
-              <numero-sector>01.2</numero-sector>
-              <etiqueta-sector>SISTEMA COMUNITARIO // LA TÉCNICA COLECTIVA</etiqueta-sector>
-            </encabezado-sector>
-
-            <definicion>
-              A partir del fotoensayo sobre Surinam entendí que la tecnología también puede ser un sistema que una comunidad construye para responder a una necesidad. No necesariamente tiene que existir un objeto nuevo. Puede surgir de algo que ya existe, cuando las personas encuentran una manera diferente de utilizarlo.
-            </definicion>
-
-            <vigilancia>
-              Esto fue lo que más me llamó la atención del fotoensayo. Las personas esclavizadas estaban en una situación en la que incluso comunicarse podía representar un riesgo. Tenían prohibido hablar entre ellas y estaban siendo vigiladas constantemente. Entonces tuvieron que encontrar otras maneras de transmitir información sin que esa comunicación fuera evidente para quienes las vigilaban.
-
-              <!-- Escáner visual de vigilancia colonial con radar láser -->
-              <escaner-vigilancia>
-                <linea-escaner></linea-escaner>
-                <aviso-vigilancia>[ESCÁNER COLONIAL: VIGILANCIA PERMANENTE // COMUNICACIÓN CLANDESTINA REQUERIDA]</aviso-vigilancia>
-              </escaner-vigilancia>
-            </vigilancia>
-
-            <memoria>
-              <!-- Constelación interactiva de recursos colectivos -->
-              <constelacion-recursos>
-                <recurso-item><icono-recurso>📖</icono-recurso> HISTORIAS</recurso-item>
-                <recurso-item><icono-recurso>🧣</icono-recurso> TELAS</recurso-item>
-                <recurso-item><icono-recurso>🎵</icono-recurso> CANCIONES</recurso-item>
-                <recurso-item><icono-recurso>🌊</icono-recurso> EL AGUA</recurso-item>
-                <recurso-item><icono-recurso>🧠</icono-recurso> MEMORIA VIVA</recurso-item>
-              </constelacion-recursos>
-
-              Utilizaron historias, telas, canciones, el agua y su propia memoria. Y para mí ahí aparece una idea diferente de tecnología: <clave>la tecnología como una respuesta creativa frente a una limitación.</clave>
-            </memoria>
-
-            <intencion>
-              Eso fue lo que quise llevar a mi página web. No quería simplemente representar las tres tecnologías del fotoensayo, sino entender qué había detrás de ellas y traducir su lógica a una experiencia digital.
-            </intencion>
-          </columna-texto>
-
-          <columna-visual>
-            <!-- Composición Visual 2: Globo de Red 3D de Partículas (Referencia 5) + Portal Surinam -->
-            <escenario-red-surinam>
-              <red-comunidad-3d>
-                <badge-red>[RED GLOBAL // SISTEMA COLECTIVO EN 3D]</badge-red>
-                <canvas id="comunidadCanvas"></canvas>
-              </red-comunidad-3d>
-
-              <foto-surinam>
-                <meta-surinam>
-                  <titulo-surinam>FOTOENSAYO SURINAM</titulo-surinam>
-                  <coord-surinam>[ARCHIVOS DE RESISTENCIA MAROON // 05°50′N]</coord-surinam>
-                </meta-surinam>
-              </foto-surinam>
-            </escenario-red-surinam>
-          </columna-visual>
-        </bloque-cinematico>
-
-      </contenedor-ancho>
+          <!-- Nodo 1.5: Constelación de Recursos y Memoria Viva -->
+          <nodo-revelador class="nodo-memoria" data-index="5" style="--posX: 70%; --posY: 78%;">
+            <ancla-luz>
+              <icono-nodo>✨</icono-nodo>
+              <etiqueta-ancla>MEMORIA VIVA</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <memoria>
+                <constelacion-recursos>
+                  <recurso-item><icono-recurso>📖</icono-recurso> HISTORIAS</recurso-item>
+                  <recurso-item><icono-recurso>🧣</icono-recurso> TELAS</recurso-item>
+                  <recurso-item><icono-recurso>🎵</icono-recurso> CANCIONES</recurso-item>
+                  <recurso-item><icono-recurso>🌊</icono-recurso> EL AGUA</recurso-item>
+                  <recurso-item><icono-recurso>🧠</icono-recurso> MEMORIA VIVA</recurso-item>
+                </constelacion-recursos>
+                Utilizaron historias, telas, canciones, el agua y su propia memoria. Y para mí ahí aparece una idea diferente de tecnología: <clave>la tecnología como una respuesta creativa frente a una limitación.</clave>
+              </memoria>
+              <intencion>
+                Eso fue lo que quise llevar a mi página web. No quería simplemente representar las tres tecnologías del fotoensayo, sino entender qué había detrás de ellas y traducir su lógica a una experiencia digital.
+              </intencion>
+            </frase-revelada>
+          </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
     </origen>
 
     <!-- ==========================================================================
          * / * /  02. PRIMERA TECNOLOGÍA : EL MITO DE ANANSI  / * / *
-         * / * /  Protocolo: Criptografía oral y terminal sintáctica  / * / *
+         * / * /  Diagrama Vivo: Telaraña fractal y código de camuflaje  / * / *
          ========================================================================== -->
-    <historias-anansi id="sec-02" data-section="02" data-title="PROTOCOLO 01 // CRIPTOGRAFÍA ORAL">
-      <contenedor-ancho>
+    <historias-anansi id="sec-02" data-section="02">
+      <encabezado-enigma>
+        <numero-enigma>02</numero-enigma>
+        <titulo-enigma>PRIMERA TECNOLOGÍA // EL MITO DE ANANSI [CRIPTOGRAFÍA ORAL]</titulo-enigma>
+      </encabezado-enigma>
 
-        <encabezado-tecnologia>
-          <numero-tecnologia>01</numero-tecnologia>
-          <titulo>Primera tecnología: el mito de Anansi</titulo>
-        </encabezado-tecnologia>
+      <!-- DIAGRAMA 2: TELARAÑA Y TERMINAL DE CÓDIGO CRIPTOGRÁFICO INTERACTIVO -->
+      <escenario-enigma class="diagrama-anansi">
+        <canvas id="anansiWebCanvas"></canvas>
 
-        <bloque-cinematico>
-          <columna-texto>
-            <relato>
-              La primera tecnología son los cuentos de la araña Anansi.
-            </relato>
+        <nodos-diagrama>
+          <!-- Centro de la telaraña: El Mito -->
+          <nodo-revelador class="nodo-anansi-centro" style="--posX: 50%; --posY: 22%;">
+            <ancla-luz class="violeta-nucleo">
+              <icono-nodo>🕷</icono-nodo>
+              <etiqueta-ancla>CUENTOS DE ANANSI</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <relato>La primera tecnología son los cuentos de la araña Anansi.</relato>
+            </frase-revelada>
+          </nodo-revelador>
 
-            <camuflaje>
-              En el fotoensayo, las historias de Anansi podían parecer simples cuentos, pero para quienes conocían su significado podían contener mensajes que no eran evidentes para los demás. La historia funcionaba entonces como una forma de esconder y transmitir información al mismo tiempo.
-            </camuflaje>
-
-            <mensaje>
-              Esto me hizo pensar que <clave>la información no siempre tiene que ser visible para ser efectiva.</clave>
-            </mensaje>
-
-            <capas>
-              Por eso, en mi página quise trabajar con una segunda capa de información. A simple vista, la página parece un texto continuo, pero existen mensajes que permanecen ocultos y que solo aparecen cuando el usuario interactúa con ella.
-            </capas>
-
-            <silencio>
-              Para mí, esto fue importante porque entendí que esconder información también puede ser una forma de comunicación. No todo tiene que estar expuesto inmediatamente. A veces, la persona que recibe el mensaje también tiene que participar para poder encontrarlo.
-            </silencio>
-          </columna-texto>
-
-          <columna-visual>
-            <!-- Composición Visual: Bloque de Código Sintáctico Futurista con Números de Línea (Referencia 2) -->
-            <escenario-anansi>
+          <!-- Terminal Criptográfica interactiva -->
+          <nodo-revelador class="nodo-terminal-sintaxis" style="--posX: 25%; --posY: 58%;">
+            <ancla-luz>
+              <icono-nodo>⌨</icono-nodo>
+              <etiqueta-ancla>CÓDIGO DE CAMUFLAJE</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
               <terminal-codigo>
                 <barra-superior-terminal>
-                  <puntos-control>
-                    <punto class="rojo"></punto>
-                    <punto class="amarillo"></punto>
-                    <punto class="verde"></punto>
-                  </puntos-control>
-                  <titulo-archivo>anansi_crypto_protocol.js</titulo-archivo>
+                  <puntos-control><punto class="rojo"></punto><punto class="amarillo"></punto><punto class="verde"></punto></puntos-control>
+                  <titulo-archivo>anansi_secret_cipher.js</titulo-archivo>
                 </barra-superior-terminal>
-
                 <contenido-terminal>
-                  <lineas-numeracion>
-                    <num>1</num>
-                    <num>2</num>
-                    <num>3</num>
-                    <num>4</num>
-                    <num>5</num>
-                  </lineas-numeracion>
-
+                  <lineas-numeracion><num>1</num><num>2</num><num>3</num></lineas-numeracion>
                   <codigo-fuente>
                     <linea-sintaxis><sintaxis-kw>do</sintaxis-kw> {</linea-sintaxis>
-                    <linea-sintaxis class="destacada"><sintaxis-fn>transmitir_mensaje</sintaxis-fn>(<sintaxis-str>"camuflado_en_mito"</sintaxis-str>);</linea-sintaxis>
+                    <linea-sintaxis class="destacada"><sintaxis-fn>transmitir_mensaje</sintaxis-fn>(<sintaxis-str>"camuflado_en_cuento"</sintaxis-str>);</linea-sintaxis>
                     <linea-sintaxis><sintaxis-kw>} while</sintaxis-kw> (<sintaxis-cond>vigilancia_colonial === true</sintaxis-cond>);</linea-sintaxis>
-                    <linea-sintaxis><sintaxis-comment>// La información no tiene que ser visible para ser efectiva</sintaxis-comment></linea-sintaxis>
-                    <linea-sintaxis><sintaxis-fn>activar_capa_oculta</sintaxis-fn>();</linea-sintaxis>
                   </codigo-fuente>
                 </contenido-terminal>
-
-                <pie-terminal>
-                  <texto-pie-codigo>A tecnologia é um meio de resistência secreta.</texto-pie-codigo>
-                </pie-terminal>
               </terminal-codigo>
+              <camuflaje>
+                En el fotoensayo, las historias de Anansi podían parecer simples cuentos, pero para quienes conocían su significado podían contener mensajes que no eran evidentes para los demás. La historia funcionaba entonces como una forma de esconder y transmitir información al mismo tiempo.
+              </camuflaje>
+            </frase-revelada>
+          </nodo-revelador>
 
-              <!-- Telaraña Geométrica Cuántica de Anansi en Canvas -->
-              <visor-anansi>
-                <canvas id="anansiWebCanvas"></canvas>
-                <etiqueta-canvas>[TOPOLOGÍA MATRICIAL // RED ARAÑA ANANSI]</etiqueta-canvas>
-              </visor-anansi>
-            </escenario-anansi>
-          </columna-visual>
-        </bloque-cinematico>
-
-      </contenedor-ancho>
+          <!-- Nodo de Segunda Capa de Información -->
+          <nodo-revelador class="nodo-segunda-capa" style="--posX: 75%; --posY: 58%;">
+            <ancla-luz class="violeta-nucleo">
+              <icono-nodo>🔒</icono-nodo>
+              <etiqueta-ancla>SEGUNDA CAPA OCULTA</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <mensaje>
+                Esto me hizo pensar que <clave>la información no siempre tiene que ser visible para ser efectiva.</clave>
+              </mensaje>
+              <capas>
+                Por eso, en mi página quise trabajar con una segunda capa de información. A simple vista, la página parece un texto continuo, pero existen mensajes que permanecen ocultos y que solo aparecen cuando el usuario interactúa con ella.
+              </capas>
+              <silencio>
+                Para mí, esto fue importante porque entendí que esconder información también puede ser una forma de comunicación. No todo tiene que estar expuesto inmediatamente. A veces, la persona que recibe el mensaje también tiene que participar para poder encontrarlo.
+              </silencio>
+            </frase-revelada>
+          </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
     </historias-anansi>
 
     <!-- ==========================================================================
          * / * /  03. SEGUNDA TECNOLOGÍA : LOS PAÑUELOS ANGISA  / * / *
-         * / * /  Morfología: Topología del pliegue y emisión de rayos  / * / *
+         * / * /  Diagrama Vivo: Semiesfera de rayos y origami cinético  / * / *
          ========================================================================== -->
-    <panuelos-angisa id="sec-03" data-section="03" data-title="SISTEMA 02 // TOPOLOGÍA TEXTIL">
-      <contenedor-ancho>
+    <panuelos-angisa id="sec-03" data-section="03">
+      <encabezado-enigma>
+        <numero-enigma>03</numero-enigma>
+        <titulo-enigma>SEGUNDA TECNOLOGÍA // LOS PAÑUELOS ANGISA [TOPOLOGÍA TEXTIL]</titulo-enigma>
+      </encabezado-enigma>
 
-        <encabezado-tecnologia>
-          <numero-tecnologia>02</numero-tecnologia>
-          <titulo>Segunda tecnología: los pañuelos angisa</titulo>
-        </encabezado-tecnologia>
+      <!-- DIAGRAMA 3: SEMIESFERA DE RAYOS Y TRÍADA DE PLIEGUES DESDOBLABLES -->
+      <escenario-enigma class="diagrama-angisa">
+        <canvas id="rayosCanvas"></canvas>
+        <etiqueta-transicion>um estado de transição</etiqueta-transicion>
 
-        <bloque-cinematico>
-          <columna-texto>
-            <relato>
-              La segunda tecnología son los pañuelos en la cabeza, las angisas.
-            </relato>
+        <nodos-diagrama>
+          <!-- Origen de la tela -->
+          <nodo-revelador class="nodo-angisa-intro" style="--posX: 50%; --posY: 18%;">
+            <ancla-luz class="magenta-nucleo">
+              <icono-nodo>🧣</icono-nodo>
+              <etiqueta-ancla>LAS ANGISAS</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <relato>La segunda tecnología son los pañuelos en la cabeza, las angisas.</relato>
+              <lenguaje>
+                En el fotoensayo, las mujeres utilizaban diferentes formas de doblar la tela para transmitir mensajes sin necesidad de hablar. Una prenda cotidiana podía convertirse en un lenguaje.
+              </lenguaje>
+              <transformacion>
+                Lo que más me interesó de esta tecnología fue que <clave>el objeto no cambió, cambió la manera en que las personas lo utilizaban.</clave>
+              </transformacion>
+              <pantalla>
+                Esto lo relacioné directamente con el diseño de mi página. Tomé la idea del pliegue y la convertí en diferentes comportamientos visuales durante el scroll.
+              </pantalla>
+            </frase-revelada>
+          </nodo-revelador>
 
-            <lenguaje>
-              En el fotoensayo, las mujeres utilizaban diferentes formas de doblar la tela para transmitir mensajes sin necesidad de hablar. Una prenda cotidiana podía convertirse en un lenguaje.
-            </lenguaje>
-
-            <transformacion>
-              Lo que más me interesó de esta tecnología fue que <clave>el objeto no cambió, cambió la manera en que las personas lo utilizaban.</clave>
-            </transformacion>
-
-            <pantalla>
-              Esto lo relacioné directamente con el diseño de mi página. Tomé la idea del pliegue y la convertí en diferentes comportamientos visuales durante el scroll.
-            </pantalla>
-
-            <!-- Tríada de Pliegues Cinéticos Interactivos 3D -->
-            <pliegues-contenedor>
+          <!-- Pliegue 1: El Secreto -->
+          <nodo-revelador class="nodo-pliegue-1" style="--posX: 22%; --posY: 64%;">
+            <ancla-luz class="cyan-nucleo">
+              <icono-nodo>01</icono-nodo>
+              <etiqueta-ancla>PLIEGUE: EL SECRETO</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
               <secreto>
                 Primero está El Secreto, donde el texto está casi oculto y aparece cuando el usuario pasa el mouse sobre él.
               </secreto>
+            </frase-revelada>
+          </nodo-revelador>
 
+          <!-- Pliegue 2: La Alerta -->
+          <nodo-revelador class="nodo-pliegue-2" style="--posX: 50%; --posY: 64%;">
+            <ancla-luz class="magenta-nucleo">
+              <icono-nodo>02</icono-nodo>
+              <etiqueta-ancla>PLIEGUE: LA ALERTA</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
               <alerta>
                 Después está La Alerta, donde el bloque se inclina y cambia a un tono rojizo para interrumpir la lectura y llamar la atención.
               </alerta>
+            </frase-revelada>
+          </nodo-revelador>
 
+          <!-- Pliegue 3: La Resistencia & Lógica -->
+          <nodo-revelador class="nodo-pliegue-3" style="--posX: 78%; --posY: 64%;">
+            <ancla-luz class="ambar-nucleo">
+              <icono-nodo>03</icono-nodo>
+              <etiqueta-ancla>PLIEGUE: RESISTENCIA</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
               <resistencia>
                 Y finalmente está La Resistencia, donde el bloque cerrado y la sombra profunda funcionan visualmente como una especie de protección.
               </resistencia>
-            </pliegues-contenedor>
-
-            <logica>
-              Pero más allá de copiar los dobleces de las angisas, lo que intenté conservar fue su lógica: <clave>un elemento cotidiano puede convertirse en un lenguaje cuando existe la necesidad de comunicar algo.</clave>
-            </logica>
-
-            <diseno>
-              Y eso también me hizo cuestionar mi propia manera de diseñar. Muchas veces pensamos que para crear algo nuevo necesitamos inventar algo completamente diferente. Este ejercicio me hizo pensar que también podemos diseñar a partir de transformar lo que ya existe y darle otro significado.
-            </diseno>
-          </columna-texto>
-
-          <columna-visual>
-            <!-- Composición Visual: Semiesfera de Rayos de Fibra Óptica (Referencia 4 - "um estado de transição") -->
-            <escenario-rayos-angisa>
-              <semiesfera-rayos>
-                <canvas id="rayosCanvas"></canvas>
-                <overlay-rayos>
-                  <etiqueta-estado>um estado de transição</etiqueta-estado>
-                  <subetiqueta-estado>[TOPOLOGÍA KINÉTICA // DEL PLIEGUE AL CÓDIGO]</subetiqueta-estado>
-                </overlay-rayos>
-              </semiesfera-rayos>
-            </escenario-rayos-angisa>
-          </columna-visual>
-        </bloque-cinematico>
-
-      </contenedor-ancho>
+              <logica>
+                Pero más allá de copiar los dobleces de las angisas, lo que intenté conservar fue su lógica: <clave>un elemento cotidiano puede convertirse en un lenguaje cuando existe la necesidad de comunicar algo.</clave>
+              </logica>
+              <diseno>
+                Y eso también me hizo cuestionar mi propia manera de diseñar. Muchas veces pensamos que para crear algo nuevo necesitamos inventar algo completamente diferente. Este ejercicio me hizo pensar que también podemos diseñar a partir de transformar lo que ya existe y darle otro significado.
+              </diseno>
+            </frase-revelada>
+          </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
     </panuelos-angisa>
 
     <!-- ==========================================================================
          * / * /  04. TERCERA TECNOLOGÍA : LAS CANCIONES EN EL RÍO  / * / *
-         * / * /  Espectro: Acústica fluvial y propagación del medio  / * / *
+         * / * /  Diagrama Vivo: Espectro hidro-acústico y transmisión oral  / * / *
          ========================================================================== -->
-    <canciones-rio id="sec-04" data-section="04" data-title="FRECUENCIA 03 // ACÚSTICA FLUVIAL">
-      <contenedor-ancho>
+    <canciones-rio id="sec-04" data-section="04">
+      <encabezado-enigma>
+        <numero-enigma>04</numero-enigma>
+        <titulo-enigma>TERCERA TECNOLOGÍA // LAS CANCIONES EN EL RÍO [ACÚSTICA FLUVIAL]</titulo-enigma>
+      </encabezado-enigma>
 
-        <encabezado-tecnologia>
-          <numero-tecnologia>03</numero-tecnologia>
-          <titulo>Tercera tecnología: las canciones en el río</titulo>
-        </encabezado-tecnologia>
+      <!-- DIAGRAMA 4: ESPECTROGRAMA FLUVIAL CUÁNTICO Y TRANSMISIÓN DE AUDIO -->
+      <escenario-enigma class="diagrama-rio">
+        <canvas id="rioCanvas"></canvas>
 
-        <bloque-cinematico>
-          <columna-texto>
-            <relato>
-              La tercera tecnología son las canciones de los remeros.
-            </relato>
+        <nodos-diagrama>
+          <!-- Nodo 4.1: Canciones y Sonido Fluvial -->
+          <nodo-revelador class="nodo-rio-intro" style="--posX: 30%; --posY: 30%;">
+            <ancla-luz class="cyan-nucleo">
+              <icono-nodo>🌊</icono-nodo>
+              <etiqueta-ancla>EL RÍO COMO MEDIO</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <relato>La tercera tecnología son las canciones de los remeros.</relato>
+              <sonido>
+                En el fotoensayo, las canciones podían parecer simplemente parte del trabajo, pero también funcionaban como una manera de transmitir información y mantener conexiones. El río, además de ser un espacio de desplazamiento, se convertía en un medio por donde podía viajar el sonido.
+              </sonido>
+              <medio>
+                Lo que me interesó aquí fue entender que <clave>el medio también puede convertirse en parte de la tecnología.</clave>
+              </medio>
+            </frase-revelada>
+          </nodo-revelador>
 
-            <sonido>
-              En el fotoensayo, las canciones podían parecer simplemente parte del trabajo, pero también funcionaban como una manera de transmitir información y mantener conexiones. El río, además de ser un espacio de desplazamiento, se convertía en un medio por donde podía viajar el sonido.
-            </sonido>
-
-            <medio>
-              Lo que me interesó aquí fue entender que <clave>el medio también puede convertirse en parte de la tecnología.</clave>
-            </medio>
-
-            <experiencia>
-              En mi página quise llevar esta idea al final de la experiencia. Por eso utilicé una animación de ondas que hace referencia al movimiento del río y un código QR que permite acceder a una pista de audio donde se escucha este cierre en mi propia voz.
-            </experiencia>
-
-            <eco>
-              De alguna manera, estoy haciendo el mismo ejercicio pero con otro medio. El río se convierte en pantalla, el sonido se convierte en audio digital y la comunicación que antes viajaba entre personas ahora llega al usuario a través de una interacción.
-            </eco>
-          </columna-texto>
-
-          <columna-visual>
-            <!-- Composición Visual: Espectrograma Cuántico Fluvial + Módulo de Audio y QR -->
-            <escenario-acustico>
-              <!-- Osciloscopio Fluvial Cuántico Interactivo -->
-              <rio id="rio">
-                <etiqueta-rio>[ESPECTROGRAMA FLUVIAL // FRECUENCIAS DE TRANSMISIÓN HIDRO-ACÚSTICA]</etiqueta-rio>
-              </rio>
-
-              <!-- Módulo de Voz en Vivo y Código QR -->
+          <!-- Nodo 4.2: Experiencia Digital y QR -->
+          <nodo-revelador class="nodo-rio-audio" style="--posX: 70%; --posY: 30%;">
+            <ancla-luz class="ambar-nucleo">
+              <icono-nodo>🎙</icono-nodo>
+              <etiqueta-ancla>VOZ & QR</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <experiencia>
+                En mi página quise llevar esta idea al final de la experiencia. Por eso utilicé una animación de ondas que hace referencia al movimiento del río y un código QR que permite acceder a una pista de audio donde se escucha este cierre en mi propia voz.
+              </experiencia>
               <voz id="voz">
                 <qr></qr>
                 <contenedor-voz>
                   <escuchar>ESCUCHAR EN MI PROPIA VOZ</escuchar>
-                  <subtexto-audio>[SÍNTESIS DE VOZ NEURAL EN TIEMPO REAL]</subtexto-audio>
+                  <subtexto-audio>[CLICK PARA SÍNTESIS DE VOZ EN VIVO]</subtexto-audio>
                 </contenedor-voz>
               </voz>
-            </escenario-acustico>
-          </columna-visual>
-        </bloque-cinematico>
-
-      </contenedor-ancho>
+              <eco>
+                De alguna manera, estoy haciendo el mismo ejercicio pero con otro medio. El río se convierte en pantalla, el sonido se convierte en audio digital y la comunicación que antes viajaba entre personas ahora llega al usuario a través de una interacción.
+              </eco>
+            </frase-revelada>
+          </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
     </canciones-rio>
 
     <!-- ==========================================================================
          * / * /  05. EPÍLOGO : REFLEXIÓN FINAL Y LIBERTAD  / * / *
-         * / * /  Manifiesto: La tecnología como pulsión humana hacia la libertad  / * / *
+         * / * /  Diagrama Vivo: Constelación de la técnica y horizonte solar  / * / *
          ========================================================================== -->
-    <cierre id="sec-05" data-section="05" data-title="SÍNTESIS // MANIFIESTO & LIBERTAD">
-      <contenedor-ancho>
+    <cierre id="sec-05" data-section="05">
+      <encabezado-enigma>
+        <numero-enigma>05</numero-enigma>
+        <titulo-enigma>SÍNTESIS // MANIFIESTO SOLAR & LIBERTAD</titulo-enigma>
+      </encabezado-enigma>
 
-        <encabezado-tecnologia>
-          <numero-tecnologia>04</numero-tecnologia>
-          <titulo>Reflexión final</titulo>
-        </encabezado-tecnologia>
+      <!-- DIAGRAMA 5: CONSTELACIÓN FILOSÓFICA Y DESPEDIDA -->
+      <escenario-enigma class="diagrama-cierre">
+        <canvas id="cierreCanvas"></canvas>
 
-        <bloque-cinematico class="manifiesto-completo">
-          <pensamiento>
-            Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología.
-          </pensamiento>
+        <nodos-diagrama>
+          <!-- Nodo Central de la Reflexión -->
+          <nodo-revelador class="nodo-cierre-axioma" style="--posX: 50%; --posY: 25%;">
+            <ancla-luz class="ambar-nucleo">
+              <icono-nodo>☀️</icono-nodo>
+              <etiqueta-ancla>REFLEXIÓN FINAL</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada>
+              <titulo>Reflexión final</titulo>
+              <pensamiento>
+                Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología.
+              </pensamiento>
+              <construccion>
+                Antes pensaba en la tecnología como algo que nosotros utilizamos. Ahora pienso que también puede ser algo que <clave>construimos cuando tenemos una necesidad y buscamos una manera de responder a ella.</clave>
+              </construccion>
+              <mirada>
+                El fotoensayo me hizo pensar que muchas veces llamamos tecnología únicamente a aquello que reconocemos como moderno: una pantalla, un computador, un programa. Pero al mirar estas historias, me di cuenta de que también hubo tecnología en la manera en que una comunidad utilizó una historia para ocultar un mensaje, una tela para comunicarse en silencio o una canción para mantener un vínculo.
+              </mirada>
+              <esencia>
+                Y creo que ahí está mi principal reflexión: <clave>la tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos.</clave>
+              </esencia>
+              <proceso>
+                Eso también cambió mi manera de mirar mi propia página. Al principio pensaba que simplemente estaba haciendo una traducción del fotoensayo a un formato digital. Pero durante el proceso entendí que realmente estaba intentando hacer lo mismo que hicieron esas comunidades: tomar un medio disponible y encontrar una manera diferente de utilizarlo para comunicar algo.
+              </proceso>
+              <sentido>
+                Por eso, para mí, esta entrega no se trata solamente de hacer una página web sobre tres tecnologías del fotoensayo. Se trata de entender que diseñar también puede ser encontrar nuevas formas de comunicar cuando las formas tradicionales no son suficientes.
+              </sentido>
+            </frase-revelada>
+          </nodo-revelador>
 
-          <construccion>
-            Antes pensaba en la tecnología como algo que nosotros utilizamos. Ahora pienso que también puede ser algo que <clave>construimos cuando tenemos una necesidad y buscamos una manera de responder a ella.</clave>
-          </construccion>
-
-          <mirada>
-            El fotoensayo me hizo pensar que muchas veces llamamos tecnología únicamente a aquello que reconocemos como moderno: una pantalla, un computador, un programa. Pero al mirar estas historias, me di cuenta de que también hubo tecnología en la manera en que una comunidad utilizó una historia para ocultar un mensaje, una tela para comunicarse en silencio o una canción para mantener un vínculo.
-          </mirada>
-
-          <esencia>
-            Y creo que ahí está mi principal reflexión: <clave>la tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos.</clave>
-          </esencia>
-
-          <proceso>
-            Eso también cambió mi manera de mirar mi propia página. Al principio pensaba que simplemente estaba haciendo una traducción del fotoensayo a un formato digital. Pero durante el proceso entendí que realmente estaba intentando hacer lo mismo que hicieron esas comunidades: tomar un medio disponible y encontrar una manera diferente de utilizarlo para comunicar algo.
-          </proceso>
-
-          <sentido>
-            Por eso, para mí, esta entrega no se trata solamente de hacer una página web sobre tres tecnologías del fotoensayo. Se trata de entender que diseñar también puede ser encontrar nuevas formas de comunicar cuando las formas tradicionales no son suficientes.
-          </sentido>
-
-          <!-- Declaración Final de Libertad Full-Bleed -->
-          <libertad>
-            Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres.
-          </libertad>
-
-          <!-- ==========================================================================
-               * / * /  DESPEDIDA : GRATITUD FINAL  / * / *
-               ========================================================================== -->
-          <despedida data-label="FIN TRANSMISIÓN">Muchas gracias.</despedida>
-        </bloque-cinematico>
-
-      </contenedor-ancho>
+          <!-- Nodo Monumental de Libertad -->
+          <nodo-revelador class="nodo-cierre-libertad" style="--posX: 50%; --posY: 80%;">
+            <ancla-luz class="ambar-nucleo libertad-ancla">
+              <icono-nodo>🕊</icono-nodo>
+              <etiqueta-ancla>EL HORIZONTE DE LA LIBERTAD</etiqueta-ancla>
+            </ancla-luz>
+            <frase-revelada class="revelacion-libertad">
+              <libertad>
+                Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres.
+              </libertad>
+              <!-- ==========================================================================
+                   * / * /  DESPEDIDA : GRATITUD FINAL  / * / *
+                   ========================================================================== -->
+              <despedida data-label="FIN TRANSMISIÓN">Muchas gracias.</despedida>
+            </frase-revelada>
+          </nodo-revelador>
+        </nodos-diagrama>
+      </escenario-enigma>
     </cierre>
 
   </ensayo>
