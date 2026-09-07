@@ -484,8 +484,14 @@ ancla-luz {
 }
 
 icono-nodo {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
 }
 
 etiqueta-ancla {
