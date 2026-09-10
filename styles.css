@@ -858,9 +858,30 @@ codigo-qr {
   background-color: #ffffff;
   background-image: url("https://api.qrserver.com/v1/create-qr-code/?size=260x260&format=svg&data=https%3A%2F%2Fgithub.com%2Falejagoguti-cpu%2FTecnolog-asparalaedici-n%2Fraw%2Fmain%2Faudio_ensayo.mp3");
   background-size: contain;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 2px solid #ffffff;
-  box-shadow: 0 0 15px rgba(255, 184, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 184, 0, 0.45);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+codigo-qr:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255, 184, 0, 0.85);
+  border-color: #ffb800;
+}
+
+reproductor.reproduciendo codigo-qr {
+  border-color: #00f0ff;
+  box-shadow: 0 0 30px var(--glow-cyan);
+  animation: pulsoQR 1.8s infinite ease-in-out;
+}
+
+@keyframes pulsoQR {
+  0% { transform: scale(1); box-shadow: 0 0 15px var(--glow-cyan); }
+  50% { transform: scale(1.05); box-shadow: 0 0 35px var(--glow-cyan); }
+  100% { transform: scale(1); box-shadow: 0 0 15px var(--glow-cyan); }
 }
 
 info-audio {
