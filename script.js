@@ -1400,51 +1400,61 @@ document.addEventListener('DOMContentLoaded', () => {
   initUniqueDynamicAnimation(document.getElementById('cierreCanvas'), 'rgb(255, 184, 0)', 'solar');
 
   // ==========================================================================
-  // 5. SÍNTESIS DE VOZ Y TRANSMISIÓN DE AUDIO (#voz)
+  // 5. REPRODUCTOR DE AUDIO REAL DE ALEJANDRA (#voz) CON AUDIO_ENSAYO.MP3
   // ==========================================================================
-  const closingNarrative =
-    'Después de hacer este ejercicio, creo que lo que más cambió para mí fue la forma de entender qué significa realmente diseñar tecnología. La tecnología no está necesariamente en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos. Y quizás por eso la tecnología ha existido mucho antes de las pantallas: porque antes de existir los dispositivos ya existía la necesidad humana de comunicarse, organizarse, protegerse y encontrar formas de ser libres. Muchas gracias.';
+  const voicePlayer = document.querySelector('#voz');
+  if (voicePlayer) {
+    const audio = new Audio('audio_ensayo.mp3');
+    const playIcon = voicePlayer.querySelector('icono-audio');
+    const playText = voicePlayer.querySelector('texto-audio');
 
-  function speakClosing() {
-    if (!('speechSynthesis' in window)) {
-      alert('La síntesis de voz no está disponible en este navegador.');
-      return;
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          voicePlayer.classList.add('reproduciendo');
+          if (playIcon) playIcon.textContent = '⏸';
+          if (playText) playText.textContent = 'Pausar audio de Alejandra';
+        }).catch((err) => {
+          console.warn('Reproducción de audio falló, usando síntesis:', err);
+          fallbackSynthesis();
+        });
+      } else {
+        audio.pause();
+        voicePlayer.classList.remove('reproduciendo');
+        if (playIcon) playIcon.textContent = '▶';
+        if (playText) playText.textContent = 'Escuchar en mi propia voz';
+      }
     }
 
-    const voicePlayer = document.querySelector('#voz');
+    audio.addEventListener('ended', () => {
+      voicePlayer.classList.remove('reproduciendo');
+      if (playIcon) playIcon.textContent = '▶';
+      if (playText) playText.textContent = 'Escuchar en mi propia voz';
+    });
 
-    if (window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel();
-      if (voicePlayer) voicePlayer.classList.remove('reproduciendo');
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(closingNarrative);
-    utterance.lang = 'es-CO';
-    utterance.rate = 0.88;
-    utterance.pitch = 0.92;
-
-    if (voicePlayer) voicePlayer.classList.add('reproduciendo');
-
-    utterance.onend = () => {
-      if (voicePlayer) voicePlayer.classList.remove('reproduciendo');
-    };
-
-    utterance.onerror = () => {
-      if (voicePlayer) voicePlayer.classList.remove('reproduciendo');
-    };
-
-    window.speechSynthesis.speak(utterance);
-  }
-
-  const voiceTrigger = document.querySelector('#voz');
-  if (voiceTrigger) {
-    voiceTrigger.addEventListener('click', speakClosing);
-    voiceTrigger.addEventListener('keydown', (e) => {
+    voicePlayer.addEventListener('click', toggleAudio);
+    voicePlayer.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        speakClosing();
+        toggleAudio();
       }
     });
+
+    function fallbackSynthesis() {
+      if (!('speechSynthesis' in window)) return;
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        voicePlayer.classList.remove('reproduciendo');
+        return;
+      }
+      const utterance = new SpeechSynthesisUtterance(
+        'La tecnología no está en el objeto, sino en la relación que construimos con él y en la capacidad que tenemos de transformarlo según lo que necesitamos. Muchas gracias.'
+      );
+      utterance.lang = 'es-CO';
+      voicePlayer.classList.add('reproduciendo');
+      utterance.onend = () => voicePlayer.classList.remove('reproduciendo');
+      utterance.onerror = () => voicePlayer.classList.remove('reproduciendo');
+      window.speechSynthesis.speak(utterance);
+    }
   }
 });
